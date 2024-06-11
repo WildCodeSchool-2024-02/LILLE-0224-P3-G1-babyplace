@@ -1,0 +1,47 @@
+.babyplace_flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
+  margin-top: 5em;
+  text-align: center;
+}
+.babyplace_text h1 {
+  font-size: 3em;
+  margin-bottom: 1.5em;
+  font-family: system-ui;
+  letter-spacing: 2px;
+  color: #7e72f2;
+}
+
+.babyplace_text p {
+  margin-bottom: 2em;
+  font-size: 1em;
+  color: grey;
+  width: 60%;
+}
+
+.para_babyplace {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.babyplace_img {
+  width: 10em;
+}
+
+.button_container {
+  display: flex;
+  justify-content: center;
+}
+
+.babyplace_button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7e72f2;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
