@@ -35,7 +35,7 @@ function Parent() {
                 src="../../../public/assets/images/go.png"
                 alt="logo"
               />
-              <Link to="/creche">
+              <Link to="/creches">
                 <button id="Lille" type="button" className="input_parent">
                   Lille{" "}
                 </button>
@@ -47,7 +47,7 @@ function Parent() {
                 src="../../../public/assets/images/go.png"
                 alt="logo"
               />
-              <Link to="/creche">
+              <Link to="/creches">
                 <button id="Rennes" type="button" className="input_parent">
                   Rennes{" "}
                 </button>

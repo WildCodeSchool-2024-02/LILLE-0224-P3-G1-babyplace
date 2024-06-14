@@ -12,7 +12,9 @@ function BottomNavbar() {
           <Link to="/creche">
             <img alt="loop" src="assets/images/loop_bottom.svg" />
           </Link>
-          <img alt="avatar" src="assets/images/avatar_bottom.svg" />
+          <Link to="/dashboard">
+            <img alt="avatar" src="assets/images/avatar_bottom.svg" />
+          </Link>
         </div>
       </div>
     </div>
