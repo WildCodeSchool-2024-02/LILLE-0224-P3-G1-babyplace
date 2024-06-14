@@ -32,7 +32,6 @@ function Dashboard() {
           <div className="creche_info">
             <ul>
               <li>
-                {" "}
                 <h5>Crèche Picoti Picota</h5>
               </li>
               <li>15h-17h</li>
@@ -47,14 +46,14 @@ function Dashboard() {
         </div>
         <div className="creche_all_info">
           <img
-            className="creche_image_dashboard"
+
+            className="image_creche_dashboard"
             alt="yo"
             src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
           />
           <div className="creche_info">
             <ul>
               <li>
-                {" "}
                 <h5>Crèche Picoti Picota</h5>
               </li>
               <li>15h-17h</li>
