@@ -2,7 +2,7 @@ import "./Dashboard.css"
 
 function Dashboard() {
     return (
-        <div>
+        <div className="dashboard">
 
             <div className="head_dashboard">
                 <h3 className="dashbard_title">Mon Profil</h3>
