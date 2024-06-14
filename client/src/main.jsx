@@ -6,6 +6,7 @@ import App from "./App";
 // page components
 
 import Home from "./pages/Home/Home";
+import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
 
 // router creation
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/creche",
         element: <NurseriesSearch />,
+      },
+      {
+        path: "/NurseryDetails",
+        element: <NurseryDetails />,
       },
     ],
   },
