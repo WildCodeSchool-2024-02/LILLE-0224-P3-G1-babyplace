@@ -26,10 +26,10 @@
 
 .image_parent {
   width: 1em;
-  margin-bottom: 1.5em;
+  margin-bottom: 2em;
   position: absolute;
   margin-top: 1em;
-  margin-left: 2em;
+  margin-left: 3em;
 }
 
 #parent_parent {
@@ -56,20 +56,20 @@
   margin-top: 2em;
   margin-bottom: 2em;
   text-align: center;
-  font-size: 0.6em;
+  font-size: 0.8em;
 }
 
 .input_parent {
   display: flex;
-  justify-content: left;
+  justify-content: flex-start;
+  padding-left: 1em;
   align-items: center;
   height: 3em;
   border-radius: 2em;
   border-color: transparent;
   background-color: rgb(255, 255, 255);
   text-align: right;
-  width: 20em;
-  text-align: left;
+  width: 25em;
   box-shadow: 1px 6px 5px 1px rgba(92, 92, 92, 0.65);
   -webkit-box-shadow: 1px 6px 5px 1px rgba(92, 92, 92, 0.65);
   -moz-box-shadow: 1px 6px 5px 1px rgba(92, 92, 92, 0.65);
@@ -79,11 +79,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40%;
+  width: 80%;
 }
 
 .city_parent button {
-  font-size: 0.5em;
+  font-size: 1em;
   width: 10em;
   height: 3em;
   text-align: left;

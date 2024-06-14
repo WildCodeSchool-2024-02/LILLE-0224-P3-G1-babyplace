@@ -3,6 +3,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 
 import "./App.css";
+import BottomNavbar from "./components/Bottom_navbar/BottomNavbar";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Outlet />
       </main>
       <Footer />
+      <BottomNavbar />
     </>
   );
 }

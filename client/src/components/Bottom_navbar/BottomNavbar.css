@@ -1,6 +1,6 @@
 .all_bottom_navbar {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .bottom_navbar {
@@ -15,13 +15,14 @@
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
+  width: 100vw;
 }
 
 .all_image_bottom img {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 8%;
+  width: 50px;
 }
 
 @media screen and (min-width: 990px) {

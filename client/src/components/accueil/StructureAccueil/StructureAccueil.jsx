@@ -15,7 +15,7 @@ function StructureAccueil() {
           <h3 id="agenda_structure" className="title_structure">
             Agenda en ligne
           </h3>
-          <p className="text_structure">
+          <p className="text_structure" id="text_structure_agenda">
             Consultez en temps reel votre agenda et modifiez le en quelques
             cliques afin d’optimiser votre temps et votre rentabilite.
             Accessible de puis votre smartphone ou tablette{" "}
