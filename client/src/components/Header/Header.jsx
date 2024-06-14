@@ -1,8 +1,13 @@
 import "./Header.css";
+import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <div className="the_header">
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/page1">Crèches</Link>
+      </nav>
       <div className="all_header">
         <div className="icon_header">
           <img
@@ -37,7 +42,7 @@ function Header() {
                 alt="logo"
               />
               <button id="input_header" type="button" className="input_header">
-                Se connecter | S’inscrire{" "}
+                Profil
               </button>
             </div>
           </div>
