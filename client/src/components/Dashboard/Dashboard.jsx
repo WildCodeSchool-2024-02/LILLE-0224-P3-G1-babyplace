@@ -2,10 +2,10 @@ import "./Dashboard.css"
 
 function Dashboard() {
     return (
-        <div>
+        <div className="dashboard">
 
             <div className="head_dashboard">
-                <h3>Mon Profil</h3>
+                <h3 className="dashboard_info">Mon Profil</h3>
                 <h4>mes réservations</h4>
             </div>
             <nav>
@@ -24,7 +24,7 @@ function Dashboard() {
                     <p>27/06/2024</p>
                 </div>
                 <div className="creche_all_info">
-                    <img alt="yo" src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg" />
+                    <img className="image_creche_dashboard" alt="yo" src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg" />
                     <div className="creche_info">
                         <ul>
                             <li> <h5>Crèche Picoti Picota</h5></li>
