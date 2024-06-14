@@ -1,4 +1,5 @@
 import "./Parent.css";
+import { Link } from "react-router-dom";
 
 function Parent() {
   return (
@@ -34,9 +35,11 @@ function Parent() {
                 src="../../../public/assets/images/go.png"
                 alt="logo"
               />
-              <button id="Lille" type="button" className="input_parent">
-                Lille{" "}
-              </button>
+              <Link to="/creches">
+                <button id="Lille" type="button" className="input_parent">
+                  Lille{" "}
+                </button>
+              </Link>
             </div>
             <div className="city_parent">
               <img
@@ -44,29 +47,11 @@ function Parent() {
                 src="../../../public/assets/images/go.png"
                 alt="logo"
               />
-              <button id="Montpellier" type="button" className="input_parent">
-                Montpellier{" "}
-              </button>
-            </div>
-            <div className="city_parent">
-              <img
-                className="image_parent"
-                src="../../../public/assets/images/go.png"
-                alt="logo"
-              />
-              <button id="Nantes" type="button" className="input_parent">
-                Nantes{" "}
-              </button>
-            </div>
-            <div className="city_parent">
-              <img
-                className="image_parent"
-                src="../../../public/assets/images/go.png"
-                alt="logo"
-              />
-              <button id="Rennes" type="button" className="input_parent">
-                Rennes{" "}
-              </button>
+              <Link to="/creches">
+                <button id="Rennes" type="button" className="input_parent">
+                  Rennes{" "}
+                </button>
+              </Link>
             </div>
           </div>
         </div>

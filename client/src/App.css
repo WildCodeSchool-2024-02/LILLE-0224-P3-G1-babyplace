@@ -1,0 +1,21 @@
+#root {
+  --first-color: #9c69e2;
+  --second-color: ;
+  --third-color: #7e72f2;
+  --light-bg-color: #f063b859;
+  --white: ;
+  --black: ;
+  --title-font: "Baloo 2";
+}
+
+body {
+  font-family: "Red Hat Display";
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button {
+  font-family: "Red Hat Display";
+}
