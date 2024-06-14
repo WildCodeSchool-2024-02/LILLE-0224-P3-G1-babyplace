@@ -1,0 +1,79 @@
+.return_btn_h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2em 0 2em 0;
+}
+
+.back-arrow {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  background: none;
+  color: #f063b8;
+  margin-right: 1em;
+}
+
+.nursery_name {
+  color: #f063b8;
+}
+
+.img_nursery {
+  width: 90%;
+  border-radius: 20px 20px 0 0;
+}
+
+.img_container {
+  display: flex;
+  justify-content: center;
+}
+
+.color_h2 {
+  color: #1d0042;
+  padding: 1em 0 1em 2em;
+}
+
+.presentation {
+  text-align: center;
+  line-height: 1.4em;
+  margin: 0 1.4em 0 1.4em;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 1.4em 0 1.4em;
+  background-color: #e8e0fe;
+  height: 100px;
+}
+
+.info_img {
+  width: 24px;
+  margin: 0 1em 0 5em;
+}
+
+.info_text {
+  color: #616167;
+}
+
+.information {
+  display: flex;
+}
+
+.information:nth-of-type(1),
+.information:nth-of-type(2) {
+  margin-bottom: 1em;
+}
+
+.rate {
+  margin-top: 2em;
+  margin-left: 3em;
+}
+
+.time_slot {
+  display: none;
+  background-color: grey;
+  height: 10px;
+}

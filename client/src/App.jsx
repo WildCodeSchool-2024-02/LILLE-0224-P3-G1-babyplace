@@ -8,6 +8,7 @@ function App() {
       <nav>
         <Link to="/">Home</Link>
         <Link to="/page1">Page 1</Link>
+        <Link to="/NurseryDetails">Nursery détails</Link>
       </nav>
       <main>
         <Outlet />
