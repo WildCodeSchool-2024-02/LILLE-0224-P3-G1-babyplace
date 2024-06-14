@@ -46,7 +46,7 @@ CREATE TABLE allergy (
   arachides tinyint(1) DEFAULT NULL,
   mollusques tinyint(1) DEFAULT NULL,
   autres varchar(255) DEFAULT NULL,
-  allergy_id int DEFAULT NULL,
+  child_id int DEFAULT NULL,
   PRIMARY KEY (allergy_id),
   KEY fk_child (child_id),
   CONSTRAINT allergy_ibfk_1 FOREIGN KEY (child_id) REFERENCES child (child_id)
