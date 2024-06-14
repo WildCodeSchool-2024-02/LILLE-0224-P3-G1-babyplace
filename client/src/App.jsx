@@ -8,6 +8,12 @@ import BottomNavbar from "./components/Bottom_navbar/BottomNavbar";
 function App() {
   return (
     <>
+
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/page1">Page 1</Link>
+      </nav>
+
       <Header />
 
       <main>

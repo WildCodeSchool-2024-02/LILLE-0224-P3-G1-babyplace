@@ -6,8 +6,10 @@ import App from "./App";
 // page components
 
 import Home from "./pages/Home/Home";
+import PageDashboard from "./pages/Page/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
+
 
 // router creation
 
@@ -27,6 +29,11 @@ const router = createBrowserRouter([
         path: "/NurseryDetails",
         element: <NurseryDetails />,
       },
+      {
+        path: "/page2",
+        element: <PageDashboard />,
+      },
+      
     ],
   },
 ]);
