@@ -6,7 +6,7 @@ CREATE TABLE moderator (
 );
 
 CREATE TABLE parent (
-  parent_id int NOT NULL,
+  parent_id int NOT NULL AUTO_INCREMENT,
   parent_firstname varchar(50) NOT NULL,
   parent_lastname varchar(50) NOT NULL,
   parent_adress varchar(255) NOT NULL,
