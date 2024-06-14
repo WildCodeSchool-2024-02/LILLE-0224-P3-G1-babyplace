@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <NurseryDetails />,
       },
       {
-        path: "/page2",
+        path: "/dashboard",
         element: <PageDashboard />,
       },
       
