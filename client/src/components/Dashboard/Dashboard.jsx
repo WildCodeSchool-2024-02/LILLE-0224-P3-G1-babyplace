@@ -46,6 +46,7 @@ function Dashboard() {
         </div>
         <div className="creche_all_info">
           <img
+
             className="image_creche_dashboard"
             alt="yo"
             src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
