@@ -3,7 +3,7 @@ body {
   margin-right: 5%;
 }
 
-h3 {
+.dashbard_title {
   font-size: xx-large;
   padding-bottom: 5%;
 }
@@ -27,7 +27,7 @@ h3 {
   align-items: center;
 }
 
-img {
+.creche_image_dashboard {
   width: 150px;
   object-fit: cover;
 }
