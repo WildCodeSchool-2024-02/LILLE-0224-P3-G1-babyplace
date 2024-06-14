@@ -9,10 +9,20 @@ import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Page/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
-
+import NurseryForm from "./components/formulaires/NurseryForm";
 
 // router creation
 
+const getDataAddresses = async () => {
+  try {
+    const response = await fetch("/addresses/lille-addresses.json");
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+    return [];
+  }
+};
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -33,7 +43,11 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PageDashboard />,
       },
-      
+      {
+        path: "/register/nursery",
+        element: <NurseryForm />,
+        loader: getDataAddresses,
+      },
     ],
   },
 ]);

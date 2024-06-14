@@ -88,6 +88,7 @@
 .modify_info {
   color: blue;
   text-decoration: underline;
+  list-style: none;
 }
 .title {
   color: #9c69e2;
@@ -123,4 +124,8 @@
   margin-top: 8%;
   justify-content: center;
   border-radius: 1.5em;
+}
+
+.liste_creche_info {
+  list-style: none;
 }
