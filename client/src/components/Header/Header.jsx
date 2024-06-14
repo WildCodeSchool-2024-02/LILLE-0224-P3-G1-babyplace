@@ -42,7 +42,7 @@ function Header() {
                 alt="logo"
               />
               <button id="input_header" type="button" className="input_header">
-                Se connecter | S’inscrire{" "}
+                Profil
               </button>
             </div>
           </div>

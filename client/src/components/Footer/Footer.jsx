@@ -2,7 +2,7 @@ import "./Footer.css";
 
 function Footer() {
   return (
-    <div>
+    <div className="all_all_footer">
       <div className="all_footer">
         <div className="first_part_footer">
           <div className="icon_footer">
