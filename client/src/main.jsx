@@ -7,7 +7,7 @@ import App from "./App";
 
 import Home from "./pages/Home/Home";
 import Page1 from "./pages/Page/Page";
-
+import PageDashboard from "./pages/Page/PageDashboard";
 // router creation
 
 const router = createBrowserRouter([
@@ -22,6 +22,11 @@ const router = createBrowserRouter([
         path: "/page1",
         element: <Page1 />,
       },
+      {
+        path: "/page2",
+        element: <PageDashboard />,
+      },
+      
     ],
   },
 ]);
