@@ -1,0 +1,218 @@
+/* whole page */
+
+.nurseries-all-city-title {
+  margin-top: 60px;
+  font-family: var(--title-font);
+  font-size: 3em;
+  color: var(--third-color);
+  text-align: center;
+}
+.nurseries-all-list-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(232, 234, 250);
+  padding-top: 1em;
+}
+
+.nurseries-all-buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nurseries-all-button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  color: black;
+}
+
+/* one card */
+.nursery-list-img {
+  width: 90vw;
+  height: 25vh;
+  object-fit: cover;
+  margin: auto;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.nursery-list-title {
+  position: absolute;
+  bottom: 294px;
+  left: 0;
+  text-align: left;
+  color: white;
+  width: 70vw;
+  border-radius: 0px 20px 20px 0px;
+  background-color: rgba(30, 10, 31, 0.5);
+  padding: 0.5em;
+  padding-top: -5%;
+  font-family: var(--title-font);
+}
+.nursery-list-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+/* card description */
+.nursery-list-desc {
+  height: 30vh;
+  background-color: rgb(254, 252, 255);
+  width: 90vw;
+  border-radius: 0px 0px 20px 20px;
+  margin-bottom: 12%;
+  margin-top: -2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.nursery-list-price {
+  font-weight: bolder;
+  margin-right: 2em;
+}
+.nursery-list-button {
+  background-color: var(--first-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+/* calender preview */
+.nursery-card-calender-section {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+}
+/* one day */
+.nursery-card-calender-date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  width: 15%;
+}
+.nursery-card-hour-false {
+  background-color: lightgray;
+  color: white;
+}
+
+.nursery-card-hour-true {
+  background-color: lightgreen;
+  color: white;
+  box-shadow: 0px 2px 2px black;
+}
+
+/* decorative lines */
+.line-map-section {
+  border-top: 4px solid var(--third-color);
+  text-align: left;
+  margin-left: 50%;
+  width: 50%;
+  margin-top: 1em;
+}
+.line-list-section {
+  border-top: 4px solid var(--third-color);
+  width: 50%;
+  text-align: right;
+  margin: right 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.desktop-nurseries-all {
+  display: none;
+}
+
+/* map*/
+
+.map-container {
+  height: 500px;
+  width: 100%;
+}
+
+.button-link-map {
+  background-color: var(--first-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-top: 0.5em;
+}
+@media screen and (min-width: 992px) {
+  /* whole page content */
+  .nurseries-all-list-section {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    position: relative;
+    margin-top: 3em;
+  }
+  .nurseries-all-list-desktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  /* map */
+  .nurseries-all-map-desktop {
+    width: 50%;
+  }
+  .map-container {
+    height: 80vh;
+    width: 100%;
+    margin: auto;
+  }
+  /* solo card */
+  .nursery-list-img {
+    width: 100%;
+  }
+
+  .nursery-list-title {
+    bottom: 318px;
+    left: 0;
+    width: 50%;
+    padding: 1em;
+    height: fit-content;
+  }
+
+  .nursery-list-desc {
+    height: 30vh;
+    width: 30vw;
+    border-radius: 0px 0px 20px 20px;
+    margin-bottom: 12%;
+    margin-top: 0;
+  }
+
+  .desktop-nurseries-all {
+    display: initial;
+  }
+  .mobile-nurseries-all {
+    display: none;
+  }
+
+  .line-map-section,
+  .line-list-section {
+    display: none;
+  }
+  .info-carte {
+    padding: 0;
+  }
+}

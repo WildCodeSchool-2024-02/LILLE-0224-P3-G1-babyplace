@@ -3,17 +3,14 @@
   flex-direction: column;
   align-items: center;
   margin-bottom: 2em;
-  margin-top: 3em;
-  text-align: left;
+  margin-top: 5em;
+  text-align: center;
 }
-
 .babyplace_text h1 {
   font-size: 3em;
-  margin-bottom: 1em;
-  font-family: system-ui;
+  margin-bottom: 1.5em;
   letter-spacing: 2px;
-  color: #9c69e2;
-  text-align: center;
+  color: #7e72f2;
 }
 
 .babyplace_text p {
@@ -46,21 +43,4 @@
   border: none;
   border-radius: 20px;
   cursor: pointer;
-}
-
-@media screen and (min-width: 990px) {
-  .babyplace_flex {
-    margin-top: 5em;
-  }
-  .babyplace_flex {
-    display: row;
-    flex-direction: row;
-  }
-
-  .babyplace_img {
-    margin-right: 2em;
-  }
-  .babyplace_text p {
-    font-size: 1.5em;
-  }
 }
