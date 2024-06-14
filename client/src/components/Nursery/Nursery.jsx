@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
+import NurseriesCardCalender from "../NurseriesPlateform/NurseriesCardCalender";
 import "./Nursery.css";
 
 function Nursery() {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="nursery-details-page">
       <div className="return_btn_h1">
         <button
           type="button"
@@ -99,7 +100,7 @@ function Nursery() {
       </p>
 
       <h2 className="color_h2">Disponibilités</h2>
-
+      <NurseriesCardCalender />
       <div className="time_slot" />
       <div className="time_slot" />
       <div className="time_slot" />
@@ -107,7 +108,11 @@ function Nursery() {
       <div className="time_slot" />
       <div className="time_slot" />
 
-      <button type="button" className="nursery-list-button">
+      <button
+        type="button"
+        className="nursery-list-button"
+        id="nursery-detail-button"
+      >
         Réserver &gt;
       </button>
     </div>

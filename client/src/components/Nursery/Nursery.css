@@ -77,3 +77,11 @@
   background-color: grey;
   height: 10px;
 }
+#nursery-detail-button {
+  margin-top: 2em;
+  margin-left: 10em;
+}
+
+.nursery-details-page {
+  margin-top: 5em;
+}

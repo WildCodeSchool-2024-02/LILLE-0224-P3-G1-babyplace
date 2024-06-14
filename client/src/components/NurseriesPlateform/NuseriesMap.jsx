@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable react/prop-types */
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Link } from "react-router-dom";
 import "leaflet/dist/leaflet.css";
 import "./nurseriesAll.css";
 import NurseriesCardCalender from "./NurseriesCardCalender";
@@ -45,9 +46,11 @@ function NurseriesMap({ lilleNurseries }) {
                   {nursery.name}
                 </p>
                 <NurseriesCardCalender />
-                <button type="button" className="button-link-map">
-                  Voir
-                </button>
+                <Link to="/creche/details">
+                  <button type="button" className="button-link-map">
+                    Voir
+                  </button>
+                </Link>
               </div>
             </Popup>
           </Marker>

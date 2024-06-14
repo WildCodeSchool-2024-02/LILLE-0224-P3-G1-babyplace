@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import "./nurseriesAll.css";
+import { Link } from "react-router-dom";
 import NurseriesCardCalender from "./NurseriesCardCalender";
 
 function NurseriesMini({ name, image1, prices }) {
@@ -10,9 +11,12 @@ function NurseriesMini({ name, image1, prices }) {
       <div className="nursery-list-desc">
         <p className="nursery-list-price">Tarif : {prices} €</p>
         <NurseriesCardCalender />
-        <button type="button" className="nursery-list-button">
-          Réserver &gt;
-        </button>
+        <Link to="/creche/details">
+          {" "}
+          <button type="button" className="nursery-list-button">
+            Réserver &gt;
+          </button>{" "}
+        </Link>
       </div>
     </div>
   );
