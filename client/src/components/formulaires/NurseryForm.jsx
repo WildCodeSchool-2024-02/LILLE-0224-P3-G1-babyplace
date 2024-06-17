@@ -4,25 +4,28 @@ import "leaflet/dist/leaflet.css";
 import { useLoaderData } from "react-router-dom";
 
 export default function NurseryForm() {
-  // charge la database
+  // charge la database depuis main
   const data = useLoaderData();
 
   // dans le module, nécessité de donner deux coordonnées pour le centre de la map (ici centre de Lille)
   const lilleMapCenter = [50.633333, 3.066667];
 
-  // gère ce qu'écrit l'utilisateur pour le nom de la rue
+  // gère ce qu'écrit l'utilisateur pour le nom de la rue, ce qui est tapé dans l'input
   const [streetNameInput, setStreetNameInput] = useState("");
   // rue sélectionnée par l'utilisateur
   const [streetName, setStreetName] = useState("");
-  // numéro de la rue entrée par l'utilisateur
+  // numéro de la rue entré par l'utilisateur
   const [streetNumber, setStreetNumber] = useState("");
+
+  // permet de passer à l'étape suivante une fois que la rue a été sélectionnée (afficher l'input pour le numéro)
   const [adressSelected, setAdressSelected] = useState(false);
 
   // nom de la crèche entrée par l'utilisateur
   const [nurseryName, setNurseryName] = useState("");
   const [nurseryPlacesLille, setNurseryPlacesLille] = useState([]);
 
-  // Ne filtre les résultats que si le champ de saisie contient au moins 5 caractères
+  // compare ce qui a été saisi par l'utilisateur avec les noms de rues du json
+  // ne filtre les résultats que si le champ de saisie contient au moins 5 caractères
   const filteredResults =
     streetNameInput.length >= 5
       ? data.filter((address) =>
@@ -49,6 +52,7 @@ export default function NurseryForm() {
         )
       : [];
 
+  // fonctions qui permettent de changer les states selon les données entrées par l'utilisateur
   const handleStreetNameChange = (e) => {
     setStreetNameInput(e.target.value);
   };
