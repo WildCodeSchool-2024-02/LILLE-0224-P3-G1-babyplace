@@ -3,19 +3,20 @@ const express = require("express");
 const router = express.Router();
 
 /* ************************************************************************* */
-// Import And Use Routers Here
+// Define Your API Routes Here
 /* ************************************************************************* */
-const moderatorRouter = require("./moderator/router");
 
-router.use("/moderator", moderatorRouter);
+// Import child-related actions
+const { browse, read, add } = require("../../../controllers/childActions");
 
-const parentRouter = require("./parent/router");
+// Route to get a list of children
+router.get("/", browse);
 
-router.use("/parent", parentRouter);
+// Route to get a specific child by ID
+router.get("/:id", read);
 
-const childRouter = require("./child/router");
-
-router.use("/child", childRouter);
+// Route to add a new child
+router.post("/", add);
 
 /* ************************************************************************* */
 

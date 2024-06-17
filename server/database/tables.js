@@ -1,5 +1,8 @@
 // Import the repository modules responsible for handling data operations on the tables
+const ModeratorRepository = require("./models/ModeratorRepository");
 const ParentRepository = require("./models/ParentRepository");
+const ChildRepository = require("./models/ChildRepository");
+// const AllergyRepository = require("./models/AllergyRepository");
 
 // Create an empty object to hold data repositories for different tables
 const tables = {};
@@ -9,7 +12,10 @@ const tables = {};
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
+tables.moderator = new ModeratorRepository();
 tables.parent = new ParentRepository();
+tables.child = new ChildRepository();
+// tables.allergy = new AllergyRepository();
 
 /* ************************************************************************* */
 
