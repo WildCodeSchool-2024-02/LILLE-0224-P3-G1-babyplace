@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "./Nursery.css";
+import SimpleMap from "./NurseryMap";
 
 function Nursery() {
   const navigate = useNavigate();
@@ -23,7 +24,21 @@ function Nursery() {
           src="https://sp-ao.shortpixel.ai/client/to_auto,q_glossy,ret_img,w_4032,h_3024/https://www.lillomomes.fr/wp-content/uploads/2021/09/A6240589-7B2D-43C7-B98C-E9E76F3DCAFB.png"
           alt="Crèche Lillomomes"
         />
+
+        <div className="small_picture">
+          <img
+            className="img_detail"
+            src="https://www.lillomomes.fr/wp-content/uploads/2019/08/0I9A8517.jpg"
+            alt=""
+          />
+          <img
+            className="img_detail"
+            src="https://www.lillomomes.fr/wp-content/uploads/2019/08/0I9A8558.jpg"
+            alt=""
+          />
+        </div>
       </div>
+
       <h2 className="color_h2">Présentation</h2>
 
       <p className="presentation">
@@ -37,60 +52,103 @@ function Nursery() {
         Téléphone : 05 56 56 56 56 <br />
         Mail : contact@contact.fr
       </section>
-
-      <h2 className="color_h2">Expérience</h2>
-      <section className="info_element">
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing.png" alt="" />
-          <p className="info_text">Formation 1er secours</p>
+      <section className="map_display">
+        <div className="function_map">
+          <SimpleMap />
         </div>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing2.png" alt="" />
-          <p className="info_text">Formation Nesting</p>
-        </div>
+        <div className="info_flex">
+          <h2 className="color_h2">Expérience</h2>
+          <section className="info_element">
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing.png"
+                alt=""
+              />
+              <p className="info_text">Formation 1er secours</p>
+            </div>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing3.png" alt="" />
-          <p className="info_text">Pédagogie Montessori</p>
-        </div>
-      </section>
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing2.png"
+                alt=""
+              />
+              <p className="info_text">Formation Nesting</p>
+            </div>
 
-      <h2 className="color_h2">Accueil</h2>
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing3.png"
+                alt=""
+              />
+              <p className="info_text">Pédagogie Montessori</p>
+            </div>
+          </section>
 
-      <section className="info_element">
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing.png" alt="" />
-          <p className="info_text">Sorties extérieure </p>
-        </div>
+          <h2 className="color_h2">Accueil</h2>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing2.png" alt="" />
-          <p className="info_text">Repas maison</p>
-        </div>
+          <section className="info_element">
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing.png"
+                alt=""
+              />
+              <p className="info_text">Sorties extérieure </p>
+            </div>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing3.png" alt="" />
-          <p className="info_text">Foyer Non-Fumeur</p>
-        </div>
-      </section>
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing2.png"
+                alt=""
+              />
+              <p className="info_text">Repas maison</p>
+            </div>
 
-      <h2 className="color_h2">Activité</h2>
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing3.png"
+                alt=""
+              />
+              <p className="info_text">Foyer Non-Fumeur</p>
+            </div>
+          </section>
 
-      <section className="info_element">
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing.png" alt="" />
-          <p className="info_text">Promenade</p>
-        </div>
+          <h2 className="color_h2">Activité</h2>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing2.png" alt="" />
-          <p className="info_text">Activité d’éveil</p>
-        </div>
+          <section className="info_element">
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing.png"
+                alt=""
+              />
+              <p className="info_text">Promenade</p>
+            </div>
 
-        <div className="information">
-          <img className="info_img" src="/assets/images/Pricing3.png" alt="" />
-          <p className="info_text">Atelier musique</p>
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing2.png"
+                alt=""
+              />
+              <p className="info_text">Activité d’éveil</p>
+            </div>
+
+            <div className="information">
+              <img
+                className="info_img"
+                src="/assets/images/Pricing3.png"
+                alt=""
+              />
+              <p className="info_text">Atelier musique</p>
+            </div>
+          </section>
         </div>
       </section>
 
