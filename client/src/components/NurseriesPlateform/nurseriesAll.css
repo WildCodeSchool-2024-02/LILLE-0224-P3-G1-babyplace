@@ -212,9 +212,7 @@
   .line_list_section {
     display: none;
   }
-  .info-carte {
-    padding: 0;
-  }
+
   .nurseries_all_map_desktop {
     position: fixed;
     width: 40em;
