@@ -62,18 +62,18 @@ function Dashboard() {
           </button>
         </div>
       </nav>
-      <div className="all_creche_container">
-        <div className="creche_container">
+      <div className="all_nursery_container">
+        <div className="nursery_container">
           <div className="date">
             <p>27/06/2024</p>
           </div>
-          <div className="creche_all_info">
+          <div className="nursery_all_info">
             <img
-              className="image_creche_dashboard"
+              className="image_nursery_dashboard"
               alt=""
               src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
             />
-            <div className="creche_info">
+            <div className="nursery_info">
               <ul>
                 <li>
                   <h5>Crèche Picoti Picota</h5>
@@ -84,17 +84,17 @@ function Dashboard() {
             </div>
           </div>
         </div>
-        <div className="creche_container">
+        <div className="nursery_container">
           <div className="date">
             <p>27/06/2024</p>
           </div>
-          <div className="creche_all_info">
+          <div className="nursery_all_info">
             <img
-              className="image_creche_dashboard"
+              className="image_nursery_dashboard"
               alt=""
               src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
             />
-            <div className="creche_info">
+            <div className="nursery_info">
               <ul>
                 <li>
                   <h5>Crèche Picoti Picota</h5>
