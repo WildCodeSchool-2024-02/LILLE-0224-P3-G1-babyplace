@@ -11,8 +11,8 @@ function NurseriesMap({ lilleNurseries }) {
 
   return (
     <>
-      <div className="line-map-section"> </div>
-      <MapContainer center={lilleMapCenter} zoom={13} className="map-container">
+      <div className="line_map_section"> </div>
+      <MapContainer center={lilleMapCenter} zoom={13} className="map_container">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -47,7 +47,7 @@ function NurseriesMap({ lilleNurseries }) {
                 </p>
                 <NurseriesCardCalender />
                 <Link to="/creche/details">
-                  <button type="button" className="button-link-map">
+                  <button type="button" className="button_link_map">
                     Voir
                   </button>
                 </Link>
