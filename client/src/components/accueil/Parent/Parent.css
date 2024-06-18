@@ -136,4 +136,9 @@
     margin-bottom: 3em;
     margin-left: 6em;
   }
+
+  .all_city_parent {
+    flex-direction: row;
+    margin: 5em;
+  }
 }

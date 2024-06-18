@@ -1,5 +1,5 @@
-import "./Parent.css";
 import { Link } from "react-router-dom";
+import "./Parent.css";
 
 function Parent() {
   return (
@@ -35,7 +35,7 @@ function Parent() {
                 src="../../../public/assets/images/go.png"
                 alt="logo"
               />
-              <Link to="/creches">
+              <Link to="/creche">
                 <button id="Lille" type="button" className="input_parent">
                   Lille{" "}
                 </button>

@@ -17,7 +17,11 @@ function Babyplace() {
             </p>
           </div>
         </div>
-        <img className="babyplace_img" src="assets/images/image1.png" alt="" />
+        <img
+          className="babyplace_img"
+          src="assets/images/image1.png"
+          alt="babyplace"
+        />
       </section>
       <div className="button_container">
         <button type="button" className="babyplace_button">

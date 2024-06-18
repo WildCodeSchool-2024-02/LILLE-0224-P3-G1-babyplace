@@ -44,3 +44,20 @@
   border-radius: 20px;
   cursor: pointer;
 }
+
+@media screen and (min-width: 990px) {
+  .babyplace_flex {
+    margin-top: 5em;
+  }
+  .babyplace_flex {
+    display: row;
+    flex-direction: row;
+  }
+
+  .babyplace_img {
+    margin-right: 15em;
+  }
+  .babyplace_text p {
+    font-size: 1.5em;
+  }
+}

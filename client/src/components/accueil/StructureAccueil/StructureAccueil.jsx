@@ -20,7 +20,7 @@ function StructureAccueil() {
             cliques afin d’optimiser votre temps et votre rentabilite.
             Accessible de puis votre smartphone ou tablette{" "}
           </p>
-          <img src="assets/images/1_structure.png" alt="" />
+          <img src="assets/images/1_structure.png" alt="Agenda" />
         </div>
         <div className="forimages_container">
           <h3 id="alertee_structure" className="title_structure">
@@ -30,7 +30,7 @@ function StructureAccueil() {
             Choisissez le mode de notifications afin d’etre informe au plus vote
             des annulations et des demandes de reservation.
           </p>
-          <img src="assets/images/2_structure.png" alt="" />
+          <img src="assets/images/2_structure.png" alt="Alerte" />
         </div>
         <div className="forimages_container">
           <h3 className="title_structure">Marketing de votre activité</h3>
@@ -38,7 +38,7 @@ function StructureAccueil() {
             Optimisez votre page profil pour vous rendre plus visible et vous
             permettre de vous decouvrir par les parents de votre quartier.{" "}
           </p>
-          <img src="assets/images/3_structure.png" alt="" />
+          <img src="assets/images/3_structure.png" alt="marketing" />
         </div>
         <div className="forimages_container">
           <h3 className="title_structure">Communiquez avec les parents</h3>
@@ -46,7 +46,7 @@ function StructureAccueil() {
             Les parents doivent avoir prerempliss leur liste de documents pour
             pouvoir faire des reservations.
           </p>
-          <img src="assets/images/4_structure.png" alt="" />
+          <img src="assets/images/4_structure.png" alt="talk" />
         </div>
       </div>
     </div>
