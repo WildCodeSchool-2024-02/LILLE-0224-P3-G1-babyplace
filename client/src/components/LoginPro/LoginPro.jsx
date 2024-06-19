@@ -5,7 +5,7 @@ import "./LoginPro.css";
 function LoginPro() {
   const [accountButton, setAccountButton] = useState(true);
 
-  const handleaccountButton = () => {
+  const handleAccountButton = () => {
     setAccountButton(true);
   };
 
@@ -52,7 +52,7 @@ function LoginPro() {
             </div>
             <button type="button">Connexion</button>
             {accountButton && (
-              <Link to="/inscription/creche" onClick={handleaccountButton}>
+              <Link to="/inscription/creche" onClick={handleAccountButton}>
                 <p>Vous n'avez pas encore de compte ?</p>
               </Link>
             )}
@@ -79,7 +79,7 @@ function LoginPro() {
             </div>
             <button type="button">Connexion</button>
             {accountButton && (
-              <Link to="/inscription/parent" onClick={handleaccountButton}>
+              <Link to="/inscription/parent" onClick={handleAccountButton}>
                 <p>Vous n'avez pas encore de compte ?</p>
               </Link>
             )}
