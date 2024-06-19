@@ -1,6 +1,6 @@
 /* whole page */
 
-.form-nursery-page {
+.form_nursery_page {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -107,7 +107,7 @@
 }
 
 @media screen and (max-width: 990px) {
-  .form-nursery-page img {
+  .form_nursery_page img {
     display: none;
   }
   .nursery_form_P1 form {

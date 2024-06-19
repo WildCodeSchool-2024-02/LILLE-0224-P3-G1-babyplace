@@ -6,10 +6,6 @@ import "./nurseryRegister.css";
 export default function NurseryRegisterForm() {
   // charge la database depuis main
   const data = useLoaderData();
-
-  // dans le module, nécessité de donner deux coordonnées pour le centre de la map (ici centre de Lille)
-  //  const lilleMapCenter = [50.633333, 3.066667];
-
   // gère ce qu'écrit l'utilisateur pour le nom de la rue, ce qui est tapé dans l'input
   const [streetNameInput, setStreetNameInput] = useState("");
   // rue sélectionnée par l'utilisateur
@@ -106,7 +102,7 @@ export default function NurseryRegisterForm() {
   };
 
   return (
-    <div className="form-nursery-page">
+    <div className="form_nursery_page">
       <section className="nursery_form_P1">
         <h2>Inscription</h2>
         <form method="post">
