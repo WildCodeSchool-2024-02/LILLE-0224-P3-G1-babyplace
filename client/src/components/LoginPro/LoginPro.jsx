@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import "./LoginPro.css";
 
 function LoginPro() {
-  const [accountButton, setaccountButton] = useState(true);
+  const [accountButton, setAccountButton] = useState(true);
 
   const handleaccountButton = () => {
-    setaccountButton(true);
+    setAccountButton(true);
   };
 
   const [isLogin, setIsLogin] = useState(true);
