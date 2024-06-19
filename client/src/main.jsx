@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Page/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
+import PageLoginPro from "./pages/Login/LoginPro";
 
 
 // router creation
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <PageDashboard />,
+      },
+      {
+        path: "/connexion",
+        element: <PageLoginPro />,
       },
       
     ],

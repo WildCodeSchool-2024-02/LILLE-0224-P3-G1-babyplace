@@ -12,17 +12,17 @@ function Header() {
   return (
     <div className="the_header">
       <div className="all_header">
-      {homeButton && 
-        <div className="icon_header">
-          <Link to="/" onClick={handleHomeButton}>
-            <img
-              id="logo_header"
-              src="../../../public/assets/images/logo.svg"
-              alt="logo"
-            />
-          </Link>
-        </div>
-        }
+        {homeButton && (
+          <div className="icon_header">
+            <Link to="/" onClick={handleHomeButton}>
+              <img
+                id="logo_header"
+                src="../../../public/assets/images/logo.svg"
+                alt="logo"
+              />
+            </Link>
+          </div>
+        )}
         <div className="search">
           <div>
             <img
@@ -36,22 +36,28 @@ function Header() {
             <input
               className="input_header"
               id="search_header"
-              type="search"
+              type="text"
               name="search-form"
               placeholder="Rechercher"
               value=""
             />
-            <div className="register">
-              <img
-                id="go_header"
-                className="image_header"
-                src="../../../public/assets/images/go.png"
-                alt="logo"
-              />
-              <button id="input_header" type="button" className="input_header">
-                Profil
-              </button>
-            </div>
+            <Link to="/connexion" onClick={handleHomeButton}>
+              <div className="register">
+                <img
+                  id="go_header"
+                  className="image_header"
+                  src="../../../public/assets/images/go.png"
+                  alt="logo"
+                />
+                <button
+                  id="input_header"
+                  type="button"
+                  className="input_header"
+                >
+                  Profil
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
