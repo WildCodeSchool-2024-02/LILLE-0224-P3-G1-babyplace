@@ -96,6 +96,7 @@
 .modify_info {
   color: blue;
   text-decoration: underline;
+  list-style: none;
 }
 .title {
   color: #9c69e2;
@@ -224,4 +225,5 @@
   .children {
     width: 70%;
   }
+
 }
