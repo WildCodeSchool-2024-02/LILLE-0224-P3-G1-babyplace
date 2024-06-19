@@ -36,7 +36,6 @@
 
 .image_contenair {
   display: flex;
-  /* justify-content: center; */
 }
 
 .accueil_image img:nth-child(1),

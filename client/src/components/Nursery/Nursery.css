@@ -5,7 +5,7 @@
   margin: 2em 0 2em 0;
 }
 
-.back-arrow {
+.back_arrow {
   display: inline-block;
   cursor: pointer;
   font-size: 24px;
@@ -77,11 +77,11 @@
   background-color: grey;
   height: 10px;
 }
-#nursery-detail-button {
+#nursery_detail_button {
   margin-top: 2em;
   margin-left: 10em;
 }
 
-.nursery-details-page {
+.nursery_details_page {
   margin-top: 5em;
 }

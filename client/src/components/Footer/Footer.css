@@ -91,4 +91,7 @@
   .credits_footer p {
     font-size: 1em;
   }
+  .all_footer {
+    justify-content: space-evenly;
+  }
 }

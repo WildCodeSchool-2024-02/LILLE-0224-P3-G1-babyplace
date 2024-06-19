@@ -1,18 +1,17 @@
-/* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable react/prop-types */
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "leaflet/dist/leaflet.css";
-import "./nurseriesAll.css";
 import NurseriesCardCalender from "./NurseriesCardCalender";
+import "./nurseriesAll.css";
 
 function NurseriesMap({ lilleNurseries }) {
   const lilleMapCenter = [50.633333, 3.066667];
 
   return (
     <>
-      <div className="line-map-section"> </div>
-      <MapContainer center={lilleMapCenter} zoom={13} className="map-container">
+      <div className="line_map_section"> </div>
+      <MapContainer center={lilleMapCenter} zoom={13} className="map_container">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -47,7 +46,7 @@ function NurseriesMap({ lilleNurseries }) {
                 </p>
                 <NurseriesCardCalender />
                 <Link to="/creche/details">
-                  <button type="button" className="button-link-map">
+                  <button type="button" className="button_link_map">
                     Voir
                   </button>
                 </Link>
@@ -59,5 +58,15 @@ function NurseriesMap({ lilleNurseries }) {
     </>
   );
 }
+
+NurseriesMap.propTypes = {
+  lilleNurseries: PropTypes.arrayOf(
+    PropTypes.shape({
+      map: PropTypes.arrayOf(PropTypes.number).isRequired,
+      name: PropTypes.string.isRequired,
+      image1: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default NurseriesMap;

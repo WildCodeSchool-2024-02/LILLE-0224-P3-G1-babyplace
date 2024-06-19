@@ -7,16 +7,24 @@
   padding-bottom: 5%;
 }
 
+.select_desktop {
+  display: none;
+}
+
 .head_dashboard {
   margin-top: 15%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.creche_container {
+.nursery_container {
   padding-top: 5%;
   display: flex;
   flex-direction: column;
+}
+
+.nursery_container li {
+  list-style-type: none;
 }
 .date {
   color: white;
@@ -27,11 +35,11 @@
   align-items: center;
 }
 
-.image_creche_dashboard {
+.image_nursery_dashboard {
   width: 150px;
   object-fit: cover;
 }
-.creche_all_info {
+.nursery_all_info {
   padding-top: 10%;
   display: flex;
   flex-direction: row;
@@ -39,13 +47,13 @@
   padding-bottom: 10%;
 }
 
-.creche_info {
+.nursery_info {
   display: flex;
   align-items: center;
   padding-left: 3%;
   list-style: none;
 }
-.custom-select {
+.custom_select {
   background-color: white;
   border-color: #9c69e2;
   border-radius: 1em;
@@ -125,7 +133,97 @@
   justify-content: center;
   border-radius: 1.5em;
 }
+.child_presentation .modify_info {
+  display: flex;
+  align-items: end;
+}
 
-.liste_creche_info {
-  list-style: none;
+.modify_info li {
+  list-style-type: none;
+}
+
+@media screen and (min-width: 990px) {
+  .select_mobile {
+    display: none;
+  }
+  .head_dashboard {
+    align-items: flex-start;
+  }
+  .head_dashboard h4 {
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    color: #9c69e2;
+    border: 1px solid;
+    width: 20em;
+    height: 3em;
+    font-size: 1.5em;
+  }
+
+  .select_desktop {
+    margin-top: 4em;
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .select_desktop {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .select_desktop button {
+    all: unset;
+  }
+
+  .select_desktop button.active {
+    border-bottom: 4px solid var(--third-color);
+  }
+  .all_nursery_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .nursery_container {
+    width: 40%;
+  }
+  .container_container {
+    justify-content: left;
+  }
+  .info_container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border: solid 1px #9c69e2;
+    justify-content: flex-start;
+    font-weight: 700;
+    padding-left: 2em;
+    width: 20em;
+    height: 3em;
+    border-radius: 0em;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    font-size: 1.5em;
+  }
+
+  .parent_info {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .parent {
+    display: flex;
+    justify-content: center;
+  }
+  .general_parent {
+    justify-content: space-evenly;
+  }
+
+  .child_info {
+    width: 250px;
+    height: 120px;
+  }
+  .children {
+    width: 70%;
+  }
+
 }
