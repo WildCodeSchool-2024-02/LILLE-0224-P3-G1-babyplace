@@ -1,16 +1,28 @@
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./Header.css";
 
 function Header() {
+  const [homeButton, setHomeButton] = useState(true);
+
+  const handleHomeButton = () => {
+    setHomeButton(true);
+  };
+
   return (
     <div className="the_header">
       <div className="all_header">
+      {homeButton && 
         <div className="icon_header">
-          <img
-            id="logo_header"
-            src="../../../public/assets/images/logo.svg"
-            alt="logo"
-          />
+          <Link to="/" onClick={handleHomeButton}>
+            <img
+              id="logo_header"
+              src="../../../public/assets/images/logo.svg"
+              alt="logo"
+            />
+          </Link>
         </div>
+        }
         <div className="search">
           <div>
             <img

@@ -6,10 +6,12 @@ import App from "./App";
 // page components
 
 import Home from "./pages/Home/Home";
-import PageDashboard from "./pages/Page/PageDashboard";
+import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
 import NurseryRegisterForm from "./components/Forms/NurseryRegisterForm";
+import PageProDashboard from "./pages/Dashboard/PageProDashboard";
+
 
 // router creation
 
@@ -44,10 +46,16 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
+
         path: "/inscription/creche",
         element: <NurseryRegisterForm />,
         loader: getDataAddresses,
       },
+
+        path: "/dashboard/pro",
+        element: <PageProDashboard />,
+      },
+      
     ],
   },
 ]);

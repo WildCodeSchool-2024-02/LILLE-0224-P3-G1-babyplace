@@ -166,18 +166,18 @@ function NurseriesAll() {
   ];
   return (
     <>
-      <h2 className="nurseries-all-city-title">Lille</h2>
-      <div className="mobile-nurseries-all">
-        <div className="nurseries-all-buttons-container">
+      <h2 className="nurseries_all_city_title">Lille</h2>
+      <div className="mobile_nurseries_all">
+        <div className="nurseries_all_buttons_container">
           <button
             type="button"
-            className="nurseries-all-button"
+            className="nurseries_all_button"
             onClick={handleViewList}
           >
             Liste
           </button>
           <button
-            className="nurseries-all-button"
+            className="nurseries_all_button"
             type="button"
             onClick={handleViewMap}
           >
@@ -186,8 +186,8 @@ function NurseriesAll() {
         </div>
         {viewList ? (
           <>
-            <div className="line-list-section"> </div>
-            <div className="nurseries-all-list-section">
+            <div className="line_list_section"> </div>
+            <div className="nurseries_all_list_section">
               {lilleNurseries.map((nursery) => (
                 <NurseriesMini
                   key={nursery.id}
@@ -208,9 +208,9 @@ function NurseriesAll() {
           />
         )}
       </div>
-      <div className="desktop-nurseries-all">
-        <div className="nurseries-all-list-section">
-          <div className="nurseries-all-list-desktop">
+      <div className="desktop_nurseries_all">
+        <div className="nurseries_all_list_section">
+          <div className="nurseries_all_list_desktop">
             {lilleNurseries.map((nursery) => (
               <NurseriesMini
                 key={nursery.id}
@@ -223,7 +223,7 @@ function NurseriesAll() {
               />
             ))}
           </div>
-          <div className="nurseries-all-map-desktop">
+          <div className="nurseries_all_map_desktop">
             <NurseriesMap
               lilleNurseries={lilleNurseries}
               handleViewList={handleViewList}

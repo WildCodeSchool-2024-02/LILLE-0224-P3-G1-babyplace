@@ -6,11 +6,11 @@ function Nursery() {
   const navigate = useNavigate();
 
   return (
-    <div className="nursery-details-page">
+    <div className="nursery_details_page">
       <div className="return_btn_h1">
         <button
           type="button"
-          className="back-arrow"
+          className="back_arrow"
           onClick={() => navigate(-1)}
         >
           &lt;
@@ -110,8 +110,8 @@ function Nursery() {
 
       <button
         type="button"
-        className="nursery-list-button"
-        id="nursery-detail-button"
+        className="nursery_list_button"
+        id="nursery_detail_button"
       >
         Réserver &gt;
       </button>

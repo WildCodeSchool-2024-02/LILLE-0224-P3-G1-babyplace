@@ -6,7 +6,7 @@ function Footer() {
       <div className="all_footer">
         <div className="first_part_footer">
           <div className="icon_footer">
-            <img src="../../../public/assets/images/logo.svg" alt="logo" />
+            <img src="../../../public/assets/images/logo.svg" alt="logo_footer" />
             <p>Babyplace</p>
           </div>
           <div className="first_part_footer">

@@ -24,6 +24,7 @@
 #logo_header {
   display: flex;
   width: 60%;
+  margin-left: 1em;
 }
 
 .image_header {
@@ -75,6 +76,10 @@
 }
 
 @media screen and (min-width: 990px) {
+  #logo_header {
+    margin-top: 0.5em;
+  }
+
   .input_header {
     display: flex;
   }

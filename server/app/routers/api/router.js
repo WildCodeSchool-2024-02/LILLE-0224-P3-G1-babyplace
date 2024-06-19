@@ -6,9 +6,13 @@ const router = express.Router();
 // Import And Use Routers Here
 /* ************************************************************************* */
 
-const itemsRouter = require("./items/router");
+const parentRouter = require("./parent/router");
 
-router.use("/items", itemsRouter);
+router.use("/parent", parentRouter);
+
+const nurseryRouter = require("./nursery/router");
+
+router.use("/nursery", nurseryRouter);
 
 /* ************************************************************************* */
 

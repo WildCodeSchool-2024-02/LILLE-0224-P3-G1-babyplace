@@ -6,16 +6,16 @@ const router = express.Router();
 // Define Your API Routes Here
 /* ************************************************************************* */
 
-// Import item-related actions
-const { browse, read, add } = require("../../../controllers/itemActions");
+// Import nursery-related actions
+const { browse, read, add } = require("../../../controllers/nuseryActions");
 
-// Route to get a list of items
+// Route to get a list of nurseries
 router.get("/", browse);
 
-// Route to get a specific item by ID
+// Route to get a specific parent by ID
 router.get("/:id", read);
 
-// Route to add a new item
+// Route to add a new nursery
 router.post("/", add);
 
 /* ************************************************************************* */
