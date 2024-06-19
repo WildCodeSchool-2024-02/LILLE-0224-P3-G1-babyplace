@@ -9,7 +9,7 @@ import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Page/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
-import NurseryForm from "./components/formulaires/NurseryForm";
+import NurseryRegisterForm from "./components/Forms/NurseryRegisterForm";
 
 // router creation
 
@@ -44,8 +44,8 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
-        path: "/register/nursery",
-        element: <NurseryForm />,
+        path: "/inscription/creche",
+        element: <NurseryRegisterForm />,
         loader: getDataAddresses,
       },
     ],
