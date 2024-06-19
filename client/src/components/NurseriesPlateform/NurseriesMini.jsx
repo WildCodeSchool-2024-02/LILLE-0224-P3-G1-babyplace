@@ -1,7 +1,7 @@
-/* eslint-disable react/prop-types */
-import "./nurseriesAll.css";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import NurseriesCardCalender from "./NurseriesCardCalender";
+import "./nurseriesAll.css";
 
 function NurseriesMini({ name, image1, prices }) {
   return (
@@ -21,5 +21,11 @@ function NurseriesMini({ name, image1, prices }) {
     </div>
   );
 }
+
+NurseriesMini.propTypes = {
+  name: PropTypes.string.isRequired,
+  image1: PropTypes.string.isRequired,
+  prices: PropTypes.number.isRequired,
+};
 
 export default NurseriesMini;

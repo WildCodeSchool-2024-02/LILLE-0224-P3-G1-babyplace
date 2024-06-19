@@ -1,9 +1,9 @@
-/* eslint-disable react/prop-types */
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "leaflet/dist/leaflet.css";
-import "./nurseriesAll.css";
 import NurseriesCardCalender from "./NurseriesCardCalender";
+import "./nurseriesAll.css";
 
 function NurseriesMap({ lilleNurseries }) {
   const lilleMapCenter = [50.633333, 3.066667];
@@ -58,5 +58,15 @@ function NurseriesMap({ lilleNurseries }) {
     </>
   );
 }
+
+NurseriesMap.propTypes = {
+  lilleNurseries: PropTypes.arrayOf(
+    PropTypes.shape({
+      map: PropTypes.arrayOf(PropTypes.number).isRequired,
+      name: PropTypes.string.isRequired,
+      image1: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default NurseriesMap;
