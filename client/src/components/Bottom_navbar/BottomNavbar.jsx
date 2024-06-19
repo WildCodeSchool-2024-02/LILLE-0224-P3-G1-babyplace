@@ -5,7 +5,7 @@ import "./BottomNavbar.css";
 function BottomNavbar() {
   const [homeButton, setHomeButton] = useState(true);
   const [searchButton, setSearchButton] = useState(false);
-  const [dashboardeButton, setDashboardButton] = useState(false);
+  const [dashboardButton, setDashboardButton] = useState(false);
 
   const handleHomeButton = () => {
     setHomeButton(true);
@@ -44,7 +44,7 @@ function BottomNavbar() {
             )}
           </Link>
           <Link to="/dashboard" onClick={handleDashboardButton}>
-            {dashboardeButton ? (
+            {dashboardButton ? (
               <img alt="avatar_nav" src="assets/images/avatar_bottom_active.svg" />
             ) : (
               <img alt="avatar_nav" src="assets/images/avatar_bottom.svg" />
