@@ -26,10 +26,10 @@ function DashboardPro() {
                 </ul>
             </div>
             <div className="info_container_pro">
-                <p className="info_pro">Gérer Les Créneaux</p>
+                <p className="info_pro">Gérer les créneaux</p>
             </div>
             <div className="info_container_pro">
-                <p className="info_pro">Gérer Les Réservations</p>
+                <p className="info_pro">Gérer les réservations</p>
             </div>
             <div>
                 <select className="custom-select">
