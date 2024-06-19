@@ -35,7 +35,7 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
-        path: "/dashboardpro",
+        path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
       

@@ -6,7 +6,7 @@ function DashboardPro() {
             <div className="message_pro_container">
                 <div className="message_pro_dashboard">
                     <h3>Espace Pro</h3>
-                    <p>Bienvenue dans votre espace profesionnel. Ici, nous vous proposons d’ajouter à votre fiche crèche vos créneaux disponibles dans les 15 prochains jours.Si un parent inscrit son enfant, vous recevrez une alerte sur notre site pour pouvoir confirmer ou non sa réservation. </p>
+                    <p>Bienvenue dans votre espace professionnel. Ici, nous vous proposons d’ajouter à votre fiche crèche vos créneaux disponibles dans les 15 prochains jours.Si un parent inscrit son enfant, vous recevrez une alerte sur notre site pour pouvoir confirmer ou non sa réservation. </p>
                 </div>
             </div>
             <div className="creche_info">
@@ -21,8 +21,8 @@ function DashboardPro() {
                 <p className="creche_contact">+33.7.83.98.04.52</p>
                 <p className="creche_contact">contact@picotti.fr</p>
                 <ul className="modify_info">
-                    <li>modifier mes informations</li>
-                    <li>modifier mes coordonnées</li>
+                    <li>Modifier mes informations</li>
+                    <li>Modifier mes coordonnées</li>
                 </ul>
             </div>
             <div className="info_container_pro">
