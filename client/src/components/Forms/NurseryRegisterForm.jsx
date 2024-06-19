@@ -296,7 +296,7 @@ export default function NurseryRegisterForm() {
           Continuer
         </button>
       </section>
-      <img src="../../assets/images/img-nursery-form.jpeg" alt="Nursery" />
+      <img src="../../assets/images/nursery-inscription.jpg" alt="Nursery" />
     </div>
   );
 }
