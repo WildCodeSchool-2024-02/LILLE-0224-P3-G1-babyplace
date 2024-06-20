@@ -5,8 +5,8 @@ import "leaflet/dist/leaflet.css";
 import NurseriesCardCalender from "./NurseriesCardCalender";
 import "./nurseriesAll.css";
 
-function NurseriesMap({ allNurseries }) {
-  const lilleMapCenter = [50.633333, 3.066667];
+function NurseriesMapRennes({ allNurseries }) {
+  const rennesMapCenter = [48.1147, -1.6794];
   const updatedAllNurseries = allNurseries.map((nursery) => ({
     ...nursery,
     position: [nursery.latitude, nursery.longitude],
@@ -15,7 +15,11 @@ function NurseriesMap({ allNurseries }) {
   return (
     <>
       <div className="line_map_section"> </div>
-      <MapContainer center={lilleMapCenter} zoom={13} className="map_container">
+      <MapContainer
+        center={rennesMapCenter}
+        zoom={13}
+        className="map_container"
+      >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -63,7 +67,7 @@ function NurseriesMap({ allNurseries }) {
   );
 }
 
-NurseriesMap.propTypes = {
+NurseriesMapRennes.propTypes = {
   allNurseries: PropTypes.arrayOf(
     PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -74,4 +78,4 @@ NurseriesMap.propTypes = {
   ).isRequired,
 };
 
-export default NurseriesMap;
+export default NurseriesMapRennes;

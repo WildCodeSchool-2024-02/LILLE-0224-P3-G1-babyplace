@@ -1,14 +1,14 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
 import NurseriesMini from "./NurseriesMini";
-import NurseriesMap from "./NuseriesMap";
+import NurseriesMapRennes from "./NuseriesMapRennes";
 import "./nurseriesAll.css";
 
-function NurseriesAll() {
+function NurseriesAllRennes() {
   const [allNurseries, setAllNurseries] = useState([]);
 
-  const getNurseries = async () => {
-    const result = await fetch("http://localhost:3310/api/nursery");
+  const getNurseriesRennes = async () => {
+    const result = await fetch("http://localhost:3310/api/nursery?city=Rennes");
     const data = await result.json();
     setAllNurseries(data);
   };
@@ -28,8 +28,8 @@ function NurseriesAll() {
 
   return (
     <>
-      <h2 className="nurseries_all_city_title">Lille</h2>
-      <button type="button" onClick={getNurseries}>
+      <h2 className="nurseries_all_city_title">Rennes</h2>
+      <button type="button" onClick={getNurseriesRennes}>
         Letsgo
       </button>
       <div className="mobile_nurseries_all">
@@ -66,7 +66,7 @@ function NurseriesAll() {
             </div>
           </>
         ) : (
-          <NurseriesMap
+          <NurseriesMapRennes
             allNurseries={allNurseries}
             handleViewList={handleViewList}
           />
@@ -87,7 +87,7 @@ function NurseriesAll() {
             ))}
           </div>
           <div className="nurseries_all_map_desktop">
-            <NurseriesMap
+            <NurseriesMapRennes
               allNurseries={allNurseries}
               handleViewList={handleViewList}
             />
@@ -98,4 +98,4 @@ function NurseriesAll() {
   );
 }
 
-export default NurseriesAll;
+export default NurseriesAllRennes;
