@@ -36,7 +36,7 @@ function BottomNavbar() {
               <img alt="home_nav" src="assets/images/home_bottom.svg" />
             )}
           </Link>
-          <Link to="/creche" onClick={handleSearchButton}>
+          <Link to="/creche/lille" onClick={handleSearchButton}>
             {searchButton ? (
               <img alt="loop_nav" src="assets/images/loop_bottom_active.svg" />
             ) : (
@@ -45,9 +45,12 @@ function BottomNavbar() {
           </Link>
           <Link to="/dashboard" onClick={handleDashboardButton}>
             {dashboardButton ? (
-              <img alt="avatar_nav" src="assets/images/avatar_bottom_active.svg" />
+              <img
+                alt="avatar_nav"
+                src="assets/images/avatar_bottom_active.svg"
+              />
             ) : (
-              <img alt="avatar_nav" src="assets/images/avatar_bottom.svg" />
+              <img alt="avatar_nav" src="./assets/images/avatar_bottom.svg" />
             )}
           </Link>
         </div>
