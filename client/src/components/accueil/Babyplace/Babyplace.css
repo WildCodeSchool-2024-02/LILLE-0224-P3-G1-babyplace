@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 2em;
   margin-top: 5em;
   text-align: center;
 }
@@ -10,16 +9,18 @@
   font-size: 3em;
   margin-bottom: 1.5em;
   letter-spacing: 2px;
-  color: #7e72f2;
+  color: var(--first-color);
 }
 
 .babyplace_text p {
   margin-bottom: 2em;
   font-size: 1em;
-  color: grey;
+  color: rgb(95, 95, 95);
   width: 60%;
 }
-
+.bold_text {
+  font-weight: bold;
+}
 .para_babyplace {
   display: flex;
   justify-content: center;
@@ -27,20 +28,36 @@
 }
 
 .babyplace_img {
-  width: 10em;
+  width: 20em;
+  margin-right: 5em;
+  margin-top: 4em;
 }
 
-.button_container {
-  display: flex;
-  justify-content: center;
-}
+@media screen and (min-width: 990px) {
+  .babyplace_flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+  }
+  .para_babyplace {
+    display: block;
+  }
+  .babyplace_text {
+    margin-left: 10em;
+  }
+  .babyplace_img {
+    width: 40%;
+  }
 
-.babyplace_button {
-  padding: 10px 20px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #7e72f2;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
+  .babyplace_text p {
+    width: 80%;
+    font-size: 1.2em;
+  }
+
+  .babyplace_text h1 {
+    font-size: 8em;
+    margin-bottom: 0;
+  }
 }
