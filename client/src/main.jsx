@@ -10,7 +10,7 @@ import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
-
+import ContactPage from "./pages/Contact/ContactPage";
 
 // router creation
 
@@ -38,7 +38,10 @@ const router = createBrowserRouter([
         path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
-      
+      {
+        path: "/contact",
+        element: <ContactPage />,
+      },
     ],
   },
 ]);

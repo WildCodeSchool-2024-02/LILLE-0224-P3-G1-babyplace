@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 function Footer() {
@@ -6,36 +7,15 @@ function Footer() {
       <div className="all_footer">
         <div className="first_part_footer">
           <div className="icon_footer">
-            <img src="../../../public/assets/images/logo.svg" alt="logo_footer" />
+            <img
+              src="../../../public/assets/images/logo.svg"
+              alt="logo_footer"
+            />
             <p>Babyplace</p>
           </div>
-          <div className="first_part_footer">
-            <ul>
-              <li>Warehouse Society, 234</li>
-              <li>Bahagia Ave Street PRBW 29281</li>
-              <li>info@warehouse.project</li>
-              <li>1-232-3434 (main)</li>
-            </ul>
-          </div>
+          <div className="first_part_footer" />
         </div>
         <div className="second_part_footer">
-          <div>
-            <ul>
-              <li>About</li>
-              <li>Profile</li>
-              <li>Features</li>
-            </ul>
-          </div>
-        </div>
-        <div className="third_part_footer">
-          <div>
-            <ul>
-              <li>Help</li>
-              <li>Support</li>
-            </ul>
-          </div>
-        </div>
-        <div className="fourth_part_footer">
           <div className="social_media_footer">
             <p>Social Media</p>
           </div>
@@ -45,10 +25,33 @@ function Footer() {
             <img src="../../../public/assets/images/i.png" alt="i" />
           </div>
         </div>
+        <div className="third_part_footer">
+          <div>
+            <ul>
+              <li>
+                {" "}
+                <Link to="/contact">Contact</Link>
+              </li>
+              <li>
+                {" "}
+                <Link to="/">A propos</Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div className="fourth_part_footer">
+          <ul>
+            <li>
+              <span className="bold_text">Site réalisé par </span>
+            </li>
+            <li>Elias Ben Brahim | Emilie Lingat </li>
+            <li> Benoit Mezaguer | Morgan Pouilly </li>
+            <li>Vincent Van Volsem</li>
+          </ul>
+        </div>
       </div>
       <div className="credits_footer">
-        <p>© Datawarehouse™, 2020. All rights reserved.</p>
-        <p>Company Registration Number: 21479524.</p>
+        <p>© Wild Code School 2024</p>
       </div>
     </div>
   );

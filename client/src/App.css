@@ -19,3 +19,7 @@ button:hover {
 button {
   font-family: "Red Hat Display";
 }
+
+a {
+  text-decoration: none;
+}

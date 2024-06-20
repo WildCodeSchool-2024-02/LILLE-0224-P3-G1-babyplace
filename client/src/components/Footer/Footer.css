@@ -1,10 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .all_all_footer {
   margin-bottom: 3em;
+}
+
+.bold_text {
+  font-weight: bold;
 }
 .all_footer {
   display: flex;
