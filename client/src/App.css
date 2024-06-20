@@ -1,15 +1,23 @@
 #root {
   --first-color: #9c69e2;
-  --second-color: ;
+  --second-color: #f063b8;
   --third-color: #7e72f2;
   --light-bg-color: #f063b859;
   --white: ;
-  --black: ;
+  --black: rgb(95, 95, 95);
   --title-font: "Baloo 2";
+  --text-font: "Red Hat Display";
 }
 
+h1 {
+  font-family: var(--title-font);
+}
+h2 {
+  font-family: var(--title-font);
+}
 body {
   font-family: "Red Hat Display";
+  color: rgb(95, 95, 95);
 }
 
 button:hover {
