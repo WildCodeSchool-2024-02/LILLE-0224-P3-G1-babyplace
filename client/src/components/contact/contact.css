@@ -1,0 +1,13 @@
+.contact_content {
+  margin-top: 7em;
+  text-align: center;
+  min-height: 60vh;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.contact_content h2 {
+  color: var(--first-color);
+  margin-bottom: 1em;
+  font-size: 3em;
+}
