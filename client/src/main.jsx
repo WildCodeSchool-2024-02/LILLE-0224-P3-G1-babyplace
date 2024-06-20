@@ -8,6 +8,7 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
+import ParentAccount from "./pages/ParentAccount/ParentAccount";
 
 // router creation
 
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/NurseryDetails",
         element: <NurseryDetails />,
+      },
+      {
+        path: "/ParentAccount",
+        element: <ParentAccount />,
       },
     ],
   },
