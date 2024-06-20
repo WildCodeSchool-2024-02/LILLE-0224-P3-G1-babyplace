@@ -3,9 +3,14 @@ import "./Dashboard.css";
 
 function Dashboard() {
   const [selectedButton, setSelectedButton] = useState(null);
-
+  const [selectedChild, setSelectedChild] = useState(null);
+  
   const handleViewList = (buttonName) => {
     setSelectedButton(buttonName);
+  };
+
+  const handleChildClick = (childName) => {
+    setSelectedChild(childName);
   };
 
   return (
@@ -70,7 +75,7 @@ function Dashboard() {
           <div className="nursery_all_info">
             <img
               className="image_nursery_dashboard"
-              alt=""
+              alt="Nursery"
               src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
             />
             <div className="nursery_info">
@@ -91,7 +96,7 @@ function Dashboard() {
           <div className="nursery_all_info">
             <img
               className="image_nursery_dashboard"
-              alt=""
+              alt="Nursery"
               src="https://www.vandoeuvre.fr/wp-content/uploads/2021/03/Creche_les_Alizees.jpg"
             />
             <div className="nursery_info">
@@ -103,49 +108,65 @@ function Dashboard() {
                 <li>Enfant 1 (Pomme)</li>
               </ul>
             </div>
-
           </div>
         </div>
       </div>
-      <div className="parent_info">
-        <div className="parent">
-          <h4 className="title">Parents</h4>
-        </div>
-        <div className="container_container">
-          <div className="info_container">
-            <p className="info">Mes Informations</p>
-          </div>
-        </div>
+      <div className="info_container">
+        <h4 className="info">Mes Informations</h4>
       </div>
-      <div className="general_parent">
-        <ul className="parent_info">
-          <li>José Mars</li>
-          <li>18 rue Boudet</li>
-          <li>59000 LILLE</li>
-        </ul>
-        <ul className="modify_info">
-          <li>modifier mes informations</li>
-          <li>modifier mes coordonnées</li>
-        </ul>
-      </div>
-      <div className="children">
-        <h4 className="title">Enfants</h4>
-        <div className="child">
-          <div className="child_info">
-            <p>Enfant 1</p>
+      <div className="user_info">
+        <div className="parent_all_info">
+          <div className="parent_info">
+            <div className="parent">
+              <h4 className="title">Parents</h4>
+            </div>
+            <div className="container_container" />
           </div>
-          <div className="child_info">
-            <p>Enfant 2</p>
-          </div>
-          <div className="child_info">
-            <p>+</p>
+          <div className="general_parent">
+            <ul className="parent_info">
+              <li>José Mars</li>
+              <li>18 rue Boudet</li>
+              <li>59000 LILLE</li>
+            </ul>
+            <ul className="modify_info">
+              <li>modifier mes informations</li>
+              <li>modifier mes coordonnées</li>
+            </ul>
           </div>
         </div>
-        <div className="child_presentation">
-          <p>Enfant 1</p>
-          <p>José Mars</p>
-          <p>33 mois</p>
-          <p className="modify_info">Modifier</p>
+        <div className="children">
+          <h4 className="title">Enfants</h4>
+          <div className="child">
+            <button
+              type="button"
+              className="child_info"
+              onClick={() => handleChildClick("Enfant 1")}
+            >
+              <p>Enfant 1</p>
+            </button>
+            <button
+              type="button"
+              className="child_info"
+              onClick={() => handleChildClick("Enfant 2")}
+            >
+              <p>Enfant 2</p>
+            </button>
+            <button
+              type="button"
+              className="child_info"
+              onClick={() => handleChildClick("+")}
+            >
+              <p>+</p>
+            </button>
+          </div>
+          {selectedChild && (
+            <div className="child_presentation">
+              <p>{selectedChild}</p>
+              <p>José Mars</p>
+              <p>33 mois</p>
+              <p className="modify_info">Modifier</p>
+            </div>
+          )}
         </div>
       </div>
     </div>
