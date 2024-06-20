@@ -19,7 +19,7 @@ class NurserySeeder extends AbstractSeeder {
         price: 10,
         nursery_phone: "03 20 85 96 41",
         nursery_mail: "contact@lillomomes.fr",
-        image1: "./assets/images/nurseriesImages/0101.jpg",
+        image1: "../../public/assets/images/nurseriesImages/0101.jpg",
         image2: "../../public/assets/images/nurseriesImages/0102.jpg",
         image3: "../../public/assets/images/nurseriesImages/0103.jpg",
         nursery_password: "",
