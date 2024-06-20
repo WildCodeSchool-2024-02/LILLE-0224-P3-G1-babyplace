@@ -133,6 +133,7 @@
   justify-content: center;
   border-radius: 1.5em;
 }
+
 .child_presentation .modify_info {
   display: flex;
   align-items: end;
@@ -231,6 +232,7 @@
   .children {
     width: 70%;
   }
+
   .image_nursery_dashboard {
     width: 200px;
     object-fit: cover;
@@ -244,4 +246,5 @@
   .user_info {
     display: flex;
   }
+
 }

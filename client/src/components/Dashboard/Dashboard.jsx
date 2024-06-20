@@ -66,6 +66,7 @@ function Dashboard() {
             Annulées
           </button>
         </div>
+
       </nav>
       <div className="all_nursery_container">
         <div className="nursery_container">
@@ -87,6 +88,7 @@ function Dashboard() {
                 <li>Enfant 1 (Pomme)</li>
               </ul>
             </div>
+
           </div>
         </div>
         <div className="nursery_container">
