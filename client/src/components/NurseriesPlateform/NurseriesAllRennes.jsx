@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useState } from "react";
 import NurseriesMini from "./NurseriesMini";
 import NurseriesMapRennes from "./NuseriesMapRennes";
@@ -14,15 +13,12 @@ function NurseriesAllRennes() {
   };
 
   const [viewList, setViewList] = useState(true);
-  const [viewMap, setViewMap] = useState(false);
 
   const handleViewList = () => {
     setViewList(true);
-    setViewMap(false);
   };
 
   const handleViewMap = () => {
-    setViewMap(true);
     setViewList(false);
   };
 
