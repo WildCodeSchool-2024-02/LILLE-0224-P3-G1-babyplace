@@ -8,7 +8,7 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
-import NurseryRegisterForm from "./components/Forms/NurseryRegisterForm";
+import NurseryRegisterPage from "./pages/Register/nurseryRegisterPage";
 import PageLoginPro from "./pages/Login/LoginPro";
 import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/inscription/creche",
-        element: <NurseryRegisterForm />,
+        element: <NurseryRegisterPage />,
         loader: getDataAddresses,
       },
 
