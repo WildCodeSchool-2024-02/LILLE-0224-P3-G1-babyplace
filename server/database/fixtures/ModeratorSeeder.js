@@ -19,7 +19,12 @@ class ModeratorSeeder extends AbstractSeeder {
     ];
 
     moderators.forEach((moderator) => {
-      this.insert(moderator);
+      const moderatorWithRefName = {
+        ...moderator,
+        refName: `moderator_${moderator.moderator_mail}`,
+      };
+
+      this.insert(moderatorWithRefName); // insert into moderator(mail) values (?)
     });
   }
 }
