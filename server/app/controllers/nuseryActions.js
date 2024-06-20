@@ -3,7 +3,7 @@ const tables = require("../../database/tables");
 // The B of BREAD - Browse (Read All) operation
 const browse = async (req, res, next) => {
   try {
-    // Fetch all players from the database
+    // Fetch all nurseries from the database
     const nurseries = await tables.nursery.readAll();
     if (req.query.city != null) {
       const filteredNurseries = nurseries.filter((nursery) =>
