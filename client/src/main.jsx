@@ -10,8 +10,10 @@ import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
 import NurseryRegisterForm from "./components/Forms/NurseryRegisterForm";
+import PageLoginPro from "./pages/Login/LoginPro";
+import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
+import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
-
 
 // router creation
 
@@ -34,8 +36,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/creche",
-        element: <NurseriesSearch />,
+        path: "/creche/lille",
+        element: <NurseriesSearchLille />,
+      },
+      {
+        path: "/creche/rennes",
+        element: <NurseriesSearchRennes />,
       },
       {
         path: "/creche/details",
@@ -47,15 +53,20 @@ const router = createBrowserRouter([
       },
       {
 
+
         path: "/inscription/creche",
         element: <NurseryRegisterForm />,
         loader: getDataAddresses,
       },
 
+  {
+        path: "/connexion",
+        element: <PageLoginPro />,
+      },
+  {
         path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
-      
     ],
   },
 ]);

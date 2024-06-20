@@ -1,108 +1,82 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .the_header {
   position: fixed;
+  padding: 1%;
   z-index: 9999999;
-  top: 3%;
+  top: 0%;
   display: flex;
-
   width: 100%;
-}
-
-.all_header {
-  display: flex;
-}
-
-.icon_header {
-  display: flex;
-  justify-content: center;
+  background-color: white;
+  padding: 0.5em;
 }
 
 #logo_header {
-  display: flex;
   width: 60%;
   margin-left: 1em;
 }
-
-.image_header {
+.header_search_and_nav {
   display: none;
-  position: absolute;
-  margin-top: 0.4em;
-  margin-left: 0.5em;
 }
-
-#loop_header {
-  margin-right: 1em;
-}
-
-.input_header {
-  display: none;
-  height: 3em;
-  border-radius: 2em;
-  border-style: none;
-  background-color: rgb(240, 240, 240);
-  text-align: right;
-  align-items: center;
-  font-size: 0.5em;
-}
-
-.input_header:hover {
-  background-color: #f063b859;
-}
-
-#search_header {
-  width: 12em;
-  text-align: right;
-}
-
-.search_register {
-  display: flex;
-}
-
-.register {
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  margin-left: 1em;
-}
-
-#input_header {
-  width: 15em;
-  text-align: left;
-  padding-left: 0.5em;
-}
-
 @media screen and (min-width: 990px) {
+  .header_search_and_nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+  }
+
   #logo_header {
     margin-top: 0.5em;
   }
 
-  .input_header {
-    display: flex;
-  }
-
-  .image_header {
-    display: flex;
-  }
-
-  .input_header {
+  .input_reasearch {
+    width: 300px;
+    display: initial;
+    height: 3em;
+    border-radius: 2em;
+    border: 2px solid var(--first-color);
+    text-align: left;
+    padding: 1em;
+    align-items: center;
+    font-size: 0.5em;
     font-size: 1em;
+    color: var(--first-color);
+  }
+  #loop_header {
+    position: absolute;
+    right: 26%;
+    z-index: 1;
   }
   .the_header {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
+    gap: 40%;
+    align-items: center;
   }
 
-  #loop_header {
-    width: 2em;
+  .button_header {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: var(--first-color);
+    height: 3em;
+    width: 150px;
+    border-style: none;
+    text-align: right;
+    color: white;
+    border-radius: 2em;
+    border-style: none;
+    text-decoration: none;
+    padding-left: 1em;
+    font-weight: bold;
   }
-
+  .button_header:hover {
+    background-color: var(--second-color);
+  }
   #go_header {
-    position: absolute;
-    margin-right: 0.5em;
-    margin-bottom: 0.4em;
     width: 2em;
+    margin-left: 4em;
   }
 }

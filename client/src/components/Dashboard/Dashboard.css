@@ -149,6 +149,7 @@
   }
   .head_dashboard {
     align-items: flex-start;
+    margin-top: 8%;
   }
   .head_dashboard h4 {
     display: flex;
@@ -156,20 +157,20 @@
     padding-left: 2em;
     color: #9c69e2;
     border: 1px solid;
-    width: 20em;
-    height: 3em;
-    font-size: 1.5em;
+    padding: 2%;
+    padding-right: 20%;
+    font-size: 1.3em;
+    border-radius: 0.5em;
   }
 
   .select_desktop {
-    margin-top: 4em;
+    margin-top: 3em;
     display: flex;
-    justify-content: space-evenly;
+    padding-right: 50%;
+    justify-content: space-between;
   }
-
-  .select_desktop {
-    display: flex;
-    justify-content: space-evenly;
+  .select_desktop:hover {
+    cursor: pointer;
   }
 
   .select_desktop button {
@@ -177,53 +178,73 @@
   }
 
   .select_desktop button.active {
-    border-bottom: 4px solid var(--third-color);
+    border-bottom: 4px solid var(--first-color);
   }
   .all_nursery_container {
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    margin-bottom: 7%;
   }
   .nursery_container {
     width: 40%;
+    margin-right: 5%;
   }
   .container_container {
     justify-content: left;
+    padding-top: 0%;
   }
   .info_container {
     display: flex;
     align-items: center;
-    background-color: white;
-    border: solid 1px #9c69e2;
-    justify-content: flex-start;
-    font-weight: 700;
     padding-left: 2em;
-    width: 20em;
-    height: 3em;
-    border-radius: 0em;
-    padding-top: 0%;
-    padding-bottom: 0%;
-    font-size: 1.5em;
+    color: #9c69e2;
+    border: 1px solid;
+    padding: 2%;
+    padding-right: 2%;
+    padding-right: 20%;
+    font-size: 1.3em;
+    border-radius: 0.5em;
+    margin-bottom: 7%;
+  }
+  .modify_info li {
+    margin-bottom: 5%;
   }
 
   .parent_info {
     display: flex;
     flex-direction: column-reverse;
+    margin-right: 8%;
   }
 
   .parent {
     display: flex;
-    justify-content: center;
   }
   .general_parent {
-    justify-content: space-evenly;
+    justify-content: normal;
+    margin-top: 13%;
   }
 
   .child_info {
-    width: 250px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
+    font-size: large;
   }
   .children {
     width: 70%;
   }
+
+  .image_nursery_dashboard {
+    width: 200px;
+    object-fit: cover;
+  }
+  .parent_all_info {
+    width: 50%;
+  }
+  .title {
+    padding-top: 0px;
+  }
+  .user_info {
+    display: flex;
+  }
+
 }
