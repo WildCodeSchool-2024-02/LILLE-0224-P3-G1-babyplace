@@ -8,6 +8,8 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
+import NurseriesSearch from "./pages/Platform/NurseriesSearch";
+import PageLoginPro from "./pages/Login/LoginPro";
 import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
@@ -39,6 +41,9 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
+        path: "/connexion",
+        element: <PageLoginPro />,
+      },
         path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
