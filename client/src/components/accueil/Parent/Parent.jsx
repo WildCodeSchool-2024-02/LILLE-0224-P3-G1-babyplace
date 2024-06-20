@@ -42,8 +42,9 @@ function Parent() {
                 className="image_parent"
                 src="../../../public/assets/images/go.png"
                 alt="logo"
-              />
             </Link>
+
+            </div>
           </div>
         </div>
       </div>
