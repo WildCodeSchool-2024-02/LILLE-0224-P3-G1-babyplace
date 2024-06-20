@@ -5,8 +5,15 @@ const browse = async (req, res, next) => {
   try {
     // Fetch all nurseries from the database
     const nurseries = await tables.nursery.readAll();
-    // Respond with the nurseries in JSON format
-    res.json(nurseries);
+    if (req.query.city != null) {
+      const filteredNurseries = nurseries.filter((nursery) =>
+        nursery.city.includes(req.query.city)
+      );
+
+      res.json(filteredNurseries);
+    } else {
+      res.json(nurseries);
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

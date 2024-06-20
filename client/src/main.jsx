@@ -8,9 +8,9 @@ import App from "./App";
 import Home from "./pages/Home/Home";
 import PageDashboard from "./pages/Dashboard/PageDashboard";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
-import NurseriesSearch from "./pages/Platform/NurseriesSearch";
+import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
+import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
-
 
 // router creation
 
@@ -23,8 +23,12 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/creche",
-        element: <NurseriesSearch />,
+        path: "/creche/lille",
+        element: <NurseriesSearchLille />,
+      },
+      {
+        path: "/creche/rennes",
+        element: <NurseriesSearchRennes />,
       },
       {
         path: "/creche/details",
@@ -38,7 +42,6 @@ const router = createBrowserRouter([
         path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
-      
     ],
   },
 ]);
