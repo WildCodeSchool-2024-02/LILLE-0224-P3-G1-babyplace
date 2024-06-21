@@ -24,7 +24,7 @@ class AccountRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific account by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select * from ${this.table} where account_id = ?`,
       [id]
     );
 
