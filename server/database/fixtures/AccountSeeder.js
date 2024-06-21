@@ -23,7 +23,7 @@ class AccountSeeder extends AbstractSeeder {
       },
       {
         role: "parent",
-        parent_id: this.getRef("parent_Styles").insertId,
+        parent_id: this.getRef("parent_harry.styles@gmail.com").insertId,
         moderator_id: null,
       },
     ];

@@ -125,7 +125,7 @@ class ParentSeeder extends AbstractSeeder {
         parent_lastname: "St-Martin",
         parent_adress: "34 avenue du peuple belge 59350 Lille",
         parent_phone: "03 20 56 56 87",
-        parent_mail: "Laurine.st-martin@gmail.com",
+        parent_mail: "laurine.st-martin@gmail.com",
         parent_password: "************",
       },
       {
@@ -173,10 +173,10 @@ class ParentSeeder extends AbstractSeeder {
     parents.forEach((parent) => {
       const parentWithRefName = {
         ...parent,
-        refName: `parent_${parent.parent_lastname}`,
+        refName: `parent_${parent.parent_mail}`,
       };
 
-      this.insert(parentWithRefName); // insert into parent(lastname) values (?)
+      this.insert(parentWithRefName); // insert into parent(mail) values (?)
     });
   }
 }

@@ -1,6 +1,6 @@
 CREATE TABLE moderator (
   moderator_id int NOT NULL AUTO_INCREMENT,
-  moderator_mail varchar(50) NOT NULL,
+  moderator_mail varchar(50) UNIQUE NOT NULL,
   moderator_password varchar(50) NOT NULL,
   PRIMARY KEY (moderator_id)
 );
@@ -11,7 +11,7 @@ CREATE TABLE parent (
   parent_lastname varchar(50) NOT NULL,
   parent_adress varchar(255) NOT NULL,
   parent_phone varchar(50) NOT NULL,
-  parent_mail varchar(255) NOT NULL,
+  parent_mail varchar(255) UNIQUE NOT NULL,
   parent_password varchar(50) NOT NULL,
   PRIMARY KEY (parent_id)
 );
@@ -62,7 +62,7 @@ CREATE TABLE nursery (
   capacity int NOT NULL,
   price int NOT NULL,
   nursery_phone varchar(50) NOT NULL,
-  nursery_mail varchar(255) NOT NULL,
+  nursery_mail varchar(255) UNIQUE NOT NULL,
   image1 varchar(500) NOT NULL,
   image2 varchar(500) NOT NULL,
   image3 varchar(500) NOT NULL,

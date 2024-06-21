@@ -15,7 +15,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-06-17",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_Roland").insertId,
+        parent_id: this.getRef("parent_thierry.roland@gmail.com").insertId,
       },
       {
         child_firstname: "Morgan",
@@ -23,7 +23,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-08-24",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_Styles").insertId,
+        parent_id: this.getRef("parent_harry.styles@gmail.com").insertId,
       },
       {
         child_firstname: "Benoit",
@@ -31,7 +31,8 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-04-28",
         walk_status: 1,
         clean_status: 1,
-        parent_id: this.getRef("parent_St-Pierre").insertId,
+        parent_id: this.getRef("parent_georges.rush.st-pierre@gmail.com")
+          .insertId,
       },
       {
         child_firstname: "Elias",
@@ -39,7 +40,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-12-12",
         walk_status: 0,
         clean_status: 0,
-        parent_id: this.getRef("parent_Goujon").insertId,
+        parent_id: this.getRef("parent_caroline.goujon@gmail.com").insertId,
       },
       {
         child_firstname: "Lucie",
@@ -47,7 +48,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-09-03",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_Swift").insertId,
+        parent_id: this.getRef("parent_taylor.swift@gmail.com").insertId,
       },
       {
         child_firstname: "Matheo",
@@ -55,7 +56,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-07-22",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_Lelouche").insertId,
+        parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
       },
       {
         child_firstname: "Bob",
@@ -63,7 +64,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-11-12",
         walk_status: 1,
         clean_status: 1,
-        parent_id: this.getRef("parent_Cachin").insertId,
+        parent_id: this.getRef("parent_sebastien.cachin@gmail.com").insertId,
       },
       {
         child_firstname: "Eloise",
@@ -71,7 +72,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-10-23",
         walk_status: 0,
         clean_status: 0,
-        parent_id: this.getRef("parent_Gardot").insertId,
+        parent_id: this.getRef("parent_chantel.gardot@gmail.com").insertId,
       },
       {
         child_firstname: "Coralie",
@@ -79,7 +80,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-06-09",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_Moussin").insertId,
+        parent_id: this.getRef("parent_marie.moussin@gmail.com").insertId,
       },
       {
         child_firstname: "Valentin",
@@ -87,7 +88,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-06-13",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_Fouillon").insertId,
+        parent_id: this.getRef("parent_paul.fouillon@gmail.com").insertId,
       },
       {
         child_firstname: "Zayn",
@@ -95,7 +96,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-03-25",
         walk_status: 1,
         clean_status: 1,
-        parent_id: this.getRef("parent_Malik").insertId,
+        parent_id: this.getRef("parent_kadr.malik@gmail.com").insertId,
       },
       {
         child_firstname: "Johnatan",
@@ -103,7 +104,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-09-23",
         walk_status: 0,
         clean_status: 0,
-        parent_id: this.getRef("parent_Poirier").insertId,
+        parent_id: this.getRef("parent_dustin.poirier@gmail.com").insertId,
       },
       {
         child_firstname: "Alexandre",
@@ -111,7 +112,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-06-18",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_Lejuste").insertId,
+        parent_id: this.getRef("parent_gaylord.lejuste@gmail.com").insertId,
       },
       {
         child_firstname: "Marceau",
@@ -119,7 +120,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-08-03",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_Fouquerin").insertId,
+        parent_id: this.getRef("parent_justine.fouquerin@gmail.com").insertId,
       },
       {
         child_firstname: "Julie",
@@ -127,7 +128,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-01-22",
         walk_status: 1,
         clean_status: 1,
-        parent_id: this.getRef("parent_St-Martin").insertId,
+        parent_id: this.getRef("parent_laurine.st-martin@gmail.com").insertId,
       },
       {
         child_firstname: "Sophie",
@@ -135,7 +136,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-07-12",
         walk_status: 0,
         clean_status: 0,
-        parent_id: this.getRef("parent_Gilbert").insertId,
+        parent_id: this.getRef("parent_claire.gilbert@gmail.com").insertId,
       },
       {
         child_firstname: "Charlotte",
@@ -143,7 +144,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-05-05",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_Neullin").insertId,
+        parent_id: this.getRef("parent_tatiana.neullin@gmail.com").insertId,
       },
       {
         child_firstname: "Aline",
@@ -151,7 +152,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-07-21",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_Souplin").insertId,
+        parent_id: this.getRef("parent_heloise.souplin@gmail.com").insertId,
       },
       {
         child_firstname: "Corentin",
@@ -159,7 +160,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-02-13",
         walk_status: 1,
         clean_status: 1,
-        parent_id: this.getRef("parent_Jamin").insertId,
+        parent_id: this.getRef("parent_camille.jamin@gmail.com").insertId,
       },
       {
         child_firstname: "Axel",
@@ -167,7 +168,7 @@ class ChildSeeder extends AbstractSeeder {
         child_birth: "2023-12-27",
         walk_status: 0,
         clean_status: 0,
-        parent_id: this.getRef("parent_Rotieu").insertId,
+        parent_id: this.getRef("parent_cedric.rotieu@gmail.com").insertId,
       },
     ];
 
