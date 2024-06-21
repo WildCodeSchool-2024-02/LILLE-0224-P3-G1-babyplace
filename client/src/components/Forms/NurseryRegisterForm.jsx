@@ -102,197 +102,207 @@ export default function NurseryRegisterForm() {
   };
 
   return (
-    <div className="form_nursery_page">
-      <section className="nursery_form_P1">
-        <h2>Inscription</h2>
-        <form method="post">
-          <label htmlFor="nursery_name_form" className="nursery_subtitles_form">
-            Quel est le nom de votre structure ?
-          </label>
-          <input
-            id="nursery_name_form"
-            className="input_nursery_form"
-            value={nurseryName}
-            onChange={handleNurseryNameChange}
-          />
-          <div>
-            <span className="nursery_subtitles_form">
-              Où se situe votre structure ?
-            </span>
-            <div className="box_choices_nursery_form">
-              <label>
-                Lille
-                <input
-                  type="radio"
-                  value="Lille"
-                  checked={selectedCity === "Lille"}
-                  onChange={handleCityChange}
-                />
-              </label>
-              <label>
-                Rennes
-                <input
-                  type="radio"
-                  value="Rennes"
-                  checked={selectedCity === "Rennes"}
-                  onChange={handleCityChange}
-                />
-              </label>
-            </div>
-            <h4>Adresse</h4>
+    <>
+      <h2 className="nursery_title_form ">Inscription</h2>
+      <div className="form_nursery_page">
+        <section className="nursery_form_P1">
+          <form method="post">
+            <label
+              htmlFor="nursery_name_form"
+              className="nursery_subtitles_form"
+            >
+              Quel est le nom de votre structure ?
+            </label>
+            <input
+              id="nursery_name_form"
+              className="input_nursery_form"
+              value={nurseryName}
+              onChange={handleNurseryNameChange}
+            />
             <div>
-              <label htmlFor="street_name_form">
-                Entrez le nom de votre rue :
-              </label>
-              <input
-                id="street_name_form"
-                className="input_nursery_form_street_name"
-                value={streetNameInput}
-                onChange={handleStreetNameChange}
-              />
-            </div>
-            {uniqueResults.length > 0 && (
-              <>
-                <span className="street_name_designated">Rue :</span>
-                <select
-                  onChange={handleSelectionChange}
-                  className="select_street_register"
-                >
-                  <option value=""> --- </option>
-                  {uniqueResults.map((address) => (
-                    <option key={address.id} value={address.voie_nom}>
-                      {address.voie_nom}
-                    </option>
-                  ))}
-                </select>
-              </>
-            )}
-            {adressSelected && (
-              <span className="street_number_container">
-                <label htmlFor="street_number">N°:</label>
-                <input
-                  id="street_number"
-                  className="input_nursery_form_street_number"
-                  value={streetNumber}
-                  onChange={handleStreetNumberChange}
-                />
+              <span className="nursery_subtitles_form">
+                Où se situe votre structure ?
               </span>
-            )}
-          </div>
-          <h4>Coordonnées</h4>
-          <label htmlFor="phone_number_nursery">
-            <div>Numéro de téléphone</div>
-            <input
-              id="phone_number_nursery"
-              className="input_nursery_form"
-              type="tel"
-              pattern="[0-9]{10}"
-              title="Veuillez entrer un numéro de téléphone valide"
-            />
-          </label>
-          <label htmlFor="nursery_email_form">
-            <div>Adresse e-mail</div>
-            <input
-              id="nursery_email_form"
-              className="input_nursery_form"
-              type="email"
-            />
-          </label>
-          <label htmlFor="nursery_password_form">
-            <div>Mot de passe</div>
-            <input
-              id="nursery_password_form"
-              className="input_nursery_form"
-              type="password"
-            />
-          </label>
-          <h4>Informations</h4>
-          <label htmlFor="nursery_capacity_form">
-            <div>Quelle est votre capacité d'accueil ?</div>
-            <input
-              id="nursery_capacity_form"
-              className="input_nursery_form"
-              type="number"
-              min="0"
-            />
-          </label>
-          <label htmlFor="nursery_price_form">
-            <div>Quel est le tarif pour une demie-journée ?</div>
-            <input
-              id="nursery_price_form"
-              className="input_nursery_form"
-              type="number"
-              min="0"
-            />
-          </label>
-          <div>Quelles activités proposez-vous ? (3 maximum)</div>
-          <div className="check_box_container_register">
-            {[
-              "Bilingue anglais",
-              "Bilingue espagnol",
-              "Bilingue arabe",
-              "Éveil musical",
-              "Jardinage",
-              "Éveil sensoriel",
-              "Yoga",
-              "Arts plastiques",
-              "Puzzle et jeux de construction",
-              "Cuisine",
-            ].map((activity) => (
-              <label key={activity}>
+              <div className="box_choices_nursery_form">
+                <label>
+                  Lille
+                  <input
+                    type="radio"
+                    value="Lille"
+                    checked={selectedCity === "Lille"}
+                    onChange={handleCityChange}
+                  />
+                </label>
+                <label>
+                  Rennes
+                  <input
+                    type="radio"
+                    value="Rennes"
+                    checked={selectedCity === "Rennes"}
+                    onChange={handleCityChange}
+                  />
+                </label>
+              </div>
+              <h4>Adresse</h4>
+              <div>
+                <label htmlFor="street_name_form">
+                  Entrez le nom de votre rue
+                </label>
                 <input
-                  type="checkbox"
-                  value={activity}
-                  checked={selectedActivities.includes(activity)}
-                  onChange={(e) =>
-                    handleCheckboxChange(
-                      e,
-                      setSelectedActivities,
-                      selectedActivities
-                    )
-                  }
+                  id="street_name_form"
+                  className="input_nursery_form_street_name"
+                  value={streetNameInput}
+                  onChange={handleStreetNameChange}
                 />
-                {activity}
-              </label>
-            ))}
-          </div>
-          <div>Quelles certifications avez-vous ? (3 maximum)</div>
-          <div className="check_box_container_register">
-            {[
-              "Repas Bio",
-              "Montessori",
-              "PMI",
-              "Certi'crèche",
-              "Label Ecolo Crèche",
-              "Quali Crèche",
-            ].map((certification) => (
-              <label key={certification}>
-                <input
-                  type="checkbox"
-                  value={certification}
-                  checked={selectedCertifications.includes(certification)}
-                  onChange={(e) =>
-                    handleCheckboxChange(
-                      e,
-                      setSelectedCertifications,
-                      selectedCertifications
-                    )
-                  }
-                />
-                {certification}
-              </label>
-            ))}
-          </div>
-        </form>
-        <button
-          type="submit"
-          onClick={handleAddNursery}
-          className="nursery_list_button"
-        >
-          Continuer
-        </button>
-      </section>
-      <img src="../../assets/images/nursery-inscription.jpg" alt="Nursery" />
-    </div>
+              </div>
+              {uniqueResults.length > 0 && (
+                <>
+                  <span className="street_name_designated">Rue :</span>
+                  <select
+                    onChange={handleSelectionChange}
+                    className="select_street_register"
+                  >
+                    <option value=""> --- </option>
+                    {uniqueResults.map((address) => (
+                      <option key={address.id} value={address.voie_nom}>
+                        {address.voie_nom}
+                      </option>
+                    ))}
+                  </select>
+                </>
+              )}
+              {adressSelected && (
+                <span className="street_number_container">
+                  <label htmlFor="street_number">N°:</label>
+                  <input
+                    id="street_number"
+                    className="input_nursery_form_street_number"
+                    value={streetNumber}
+                    onChange={handleStreetNumberChange}
+                  />
+                </span>
+              )}
+            </div>
+            <h4>Coordonnées</h4>
+            <label htmlFor="phone_number_nursery">
+              <div>Numéro de téléphone</div>
+              <input
+                id="phone_number_nursery"
+                className="input_nursery_form"
+                type="tel"
+                pattern="[0-9]{10}"
+                title="Veuillez entrer un numéro de téléphone valide"
+              />
+            </label>
+            <label htmlFor="nursery_email_form">
+              <div>Adresse e-mail</div>
+              <input
+                id="nursery_email_form"
+                className="input_nursery_form"
+                type="email"
+              />
+            </label>
+            <label htmlFor="nursery_password_form">
+              <div>Mot de passe</div>
+              <input
+                id="nursery_password_form"
+                className="input_nursery_form"
+                type="password"
+              />
+            </label>
+            <h4>Informations</h4>
+            <label htmlFor="nursery_capacity_form">
+              <div>Quelle est votre capacité d'accueil ?</div>
+              <input
+                id="nursery_capacity_form"
+                className="input_nursery_form"
+                type="number"
+                min="0"
+              />
+            </label>
+            <label htmlFor="nursery_price_form">
+              <div>Quel est le tarif pour une demie-journée ?</div>
+              <input
+                id="nursery_price_form"
+                className="input_nursery_form"
+                type="number"
+                min="0"
+              />
+            </label>
+            <div>Quelles activités proposez-vous ? (3 maximum)</div>
+            <div className="check_box_container_register">
+              {[
+                "Bilingue anglais",
+                "Bilingue espagnol",
+                "Bilingue arabe",
+                "Éveil musical",
+                "Jardinage",
+                "Éveil sensoriel",
+                "Yoga",
+                "Arts plastiques",
+                "Puzzle et jeux de construction",
+                "Cuisine",
+              ].map((activity) => (
+                <label key={activity}>
+                  <input
+                    type="checkbox"
+                    value={activity}
+                    checked={selectedActivities.includes(activity)}
+                    onChange={(e) =>
+                      handleCheckboxChange(
+                        e,
+                        setSelectedActivities,
+                        selectedActivities
+                      )
+                    }
+                  />
+                  {activity}
+                </label>
+              ))}
+            </div>
+            <div>Quelles certifications avez-vous ? (3 maximum)</div>
+            <div className="check_box_container_register">
+              {[
+                "Repas Bio",
+                "Montessori",
+                "PMI",
+                "Certi'crèche",
+                "Label Ecolo Crèche",
+                "Quali Crèche",
+              ].map((certification) => (
+                <label key={certification}>
+                  <input
+                    type="checkbox"
+                    value={certification}
+                    checked={selectedCertifications.includes(certification)}
+                    onChange={(e) =>
+                      handleCheckboxChange(
+                        e,
+                        setSelectedCertifications,
+                        selectedCertifications
+                      )
+                    }
+                  />
+                  {certification}
+                </label>
+              ))}
+            </div>
+          </form>
+          <button
+            type="submit"
+            onClick={handleAddNursery}
+            className="validate_button_nursery_form"
+          >
+            Continuer
+          </button>
+        </section>
+
+        <img
+          src="../../assets/images/nursery-inscription.jpg"
+          alt="nursery decorative img"
+          className="nursery_form_img"
+        />
+      </div>
+    </>
   );
 }
