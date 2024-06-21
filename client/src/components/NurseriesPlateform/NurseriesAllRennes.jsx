@@ -1,17 +1,12 @@
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import NurseriesMini from "./NurseriesMini";
 import NurseriesMapRennes from "./NuseriesMapRennes";
+
 import "./nurseriesAll.css";
 
 function NurseriesAllRennes() {
-  const [allNurseries, setAllNurseries] = useState([]);
-
-  const getNurseriesRennes = async () => {
-    const result = await fetch("http://localhost:3310/api/nursery?city=Rennes");
-    const data = await result.json();
-    setAllNurseries(data);
-  };
-
+  const allNurseries = useLoaderData();
   const [viewList, setViewList] = useState(true);
 
   const handleViewList = () => {
@@ -25,9 +20,7 @@ function NurseriesAllRennes() {
   return (
     <>
       <h2 className="nurseries_all_city_title">Rennes</h2>
-      <button type="button" onClick={getNurseriesRennes}>
-        Letsgo
-      </button>
+
       <div className="mobile_nurseries_all">
         <div className="nurseries_all_buttons_container">
           <button
@@ -51,8 +44,8 @@ function NurseriesAllRennes() {
             <div className="nurseries_all_list_section">
               {allNurseries.map((nursery) => (
                 <NurseriesMini
-                  key={nursery.id}
-                  name={nursery.nursery_name}
+                  key={nursery.nursery_id}
+                  name={nursery.nursery_id}
                   price={nursery.price}
                   image1={nursery.image1}
                   image2={nursery.image2}
@@ -73,7 +66,8 @@ function NurseriesAllRennes() {
           <div className="nurseries_all_list_desktop">
             {allNurseries.map((nursery) => (
               <NurseriesMini
-                key={nursery.id}
+                key={nursery.nursery_id}
+                id={nursery.nursery_id}
                 name={nursery.nursery_name}
                 price={nursery.price}
                 image1={nursery.image1}

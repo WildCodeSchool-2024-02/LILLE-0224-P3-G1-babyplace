@@ -53,7 +53,7 @@ function NurseriesMapRennes({ allNurseries }) {
                   {nursery.nursery_name}
                 </p>
                 <NurseriesCardCalender />
-                <Link to="/creche/details">
+                <Link to={`/creche/details/${nursery.id}`}>
                   <button type="button" className="button_link_map">
                     Voir
                   </button>
