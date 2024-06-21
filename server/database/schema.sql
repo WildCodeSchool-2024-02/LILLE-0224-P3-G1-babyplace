@@ -57,8 +57,9 @@ CREATE TABLE nursery (
   nursery_name varchar(50) NOT NULL,
   nursery_street varchar(200) NOT NULL,
   nursery_street_number int NOT NULL,
-  latitude decimal (20,15) NOT NULL,
-  longitude decimal (20,15) NOT NULL,
+  latitude DECIMAL(20, 15) NOT NULL,
+  longitude DECIMAL(20, 15) NOT NULL,
+  city varchar (50) NOT NULL,
   capacity int NOT NULL,
   price int NOT NULL,
   nursery_phone varchar(50) NOT NULL,
@@ -121,6 +122,7 @@ CREATE TABLE booking_operation (
   CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (account_id) REFERENCES account (account_id),
   CONSTRAINT booking_operation_ibfk_3 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id)
 );
+
 
 -- INSERT INTO moderator (moderator_mail, moderator_password) VALUES ('moderator1@example.com', 'password123'), ('moderator2@example.com', 'password456'), ('moderator3@example.com', 'password789');
 -- INSERT INTO parent (parent_firstname, parent_lastname, parent_adress, parent_phone, parent_mail, parent_password) VALUES ('John', 'Doe', '123 Main St, Cityville', '1234567890', 'john.doe@example.com', 'password123'), ('Jane', 'Smith', '456 Elm St, Townsville', '2345678901', 'jane.smith@example.com', 'password456'), ('Emily', 'Johnson', '789 Oak St, Villagetown', '3456789012', 'emily.johnson@example.com', 'password789'); 

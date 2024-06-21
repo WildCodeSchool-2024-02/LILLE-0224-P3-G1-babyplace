@@ -33,6 +33,10 @@ const bookingOperationRouter = require("./booking-operation/router");
 
 router.use("/booking-operation", bookingOperationRouter);
 
+const nurseryRouter = require("./nursery/router");
+
+router.use("/nursery", nurseryRouter);
+
 /* ************************************************************************* */
 
 module.exports = router;

@@ -1,0 +1,224 @@
+/* whole page */
+
+.nurseries_all_city_title {
+  margin-top: 60px;
+  font-family: var(--title-font);
+  font-size: 3em;
+  color: var(--third-color);
+  text-align: center;
+}
+.nurseries_all_list_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(232, 234, 250);
+  padding-top: 1em;
+}
+
+.nurseries_all_buttons_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.nurseries_all_button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  color: black;
+}
+
+/* one card */
+.nursery_list_img {
+  width: 90vw;
+  height: 25vh;
+  object-fit: cover;
+  margin: auto;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.nursery_list_title {
+  position: absolute;
+  bottom: 294px;
+  left: 0;
+  text-align: left;
+  color: white;
+  width: 70vw;
+  border-radius: 0px 20px 20px 0px;
+  background-color: rgba(30, 10, 31, 0.5);
+  padding: 0.5em;
+  padding-top: -5%;
+  font-family: var(--title-font);
+}
+.nursery_list_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+/* card description */
+.nursery_list_desc {
+  height: 30vh;
+  background-color: rgb(254, 252, 255);
+  width: 90vw;
+  border-radius: 0px 0px 20px 20px;
+  margin-bottom: 12%;
+  margin-top: -2%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-around;
+}
+.nursery_list_price {
+  font-weight: bolder;
+  margin-right: 2em;
+}
+.nursery_list_button {
+  background-color: var(--first-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+/* calender preview */
+.nursery_card_calender_section {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  text-align: center;
+}
+/* one day */
+.nursery_card_calender_date {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4em;
+  width: 15%;
+}
+.nursery_card_hour_false {
+  background-color: lightgray;
+  color: white;
+}
+
+.nursery_card_hour_true {
+  background-color: lightgreen;
+  color: white;
+  box-shadow: 0px 2px 2px black;
+}
+
+/* decorative lines  */
+.line_map_section {
+  border-top: 4px solid var(--third-color);
+  text-align: left;
+  margin-left: 50%;
+  width: 50%;
+  margin-top: 1em;
+}
+.line_list_section {
+  border-top: 4px solid var(--third-color);
+  width: 50%;
+  text-align: right;
+  margin: right 50%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.desktop_nurseries_all {
+  display: none;
+}
+
+/* map*/
+
+.map_container {
+  height: 500px;
+  width: 100%;
+}
+
+.button_link_map {
+  background-color: var(--first-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 10px 30px;
+  font-size: 1em;
+  text-decoration: none;
+  margin-top: 0.5em;
+}
+@media screen and (min-width: 992px) {
+  /* whole page content */
+  .nurseries_all_list_section {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    margin-top: 3em;
+  }
+  .nurseries_all_list_desktop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 80vh;
+    overflow: scroll;
+  }
+  /* map */
+  .nurseries_all_map_desktop {
+    width: 50%;
+  }
+  .map_container {
+    height: 80vh;
+    width: 100%;
+    margin: auto;
+  }
+  /* solo card */
+  .nursery_list_img {
+    width: 100%;
+  }
+
+  .nursery_list_title {
+    bottom: 318px;
+    left: 0;
+    width: 50%;
+    padding: 1em;
+    height: fit-content;
+  }
+
+  .nursery_list_desc {
+    height: 30vh;
+    width: 30vw;
+    border-radius: 0px 0px 20px 20px;
+    margin-bottom: 12%;
+    margin-top: 0;
+  }
+
+  .desktop_nurseries_all {
+    display: initial;
+  }
+  .mobile_nurseries_all {
+    display: none;
+  }
+
+  .line_map_section,
+  .line_list_section {
+    display: none;
+  }
+
+  .nurseries_all_map_desktop {
+    width: 40em;
+    right: 0;
+  }
+  .nurseries_all_list_desktop {
+    width: 65%;
+  }
+}

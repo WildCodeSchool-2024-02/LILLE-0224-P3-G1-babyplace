@@ -1,0 +1,32 @@
+.all_bottom_navbar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bottom_navbar {
+  position: fixed;
+  bottom: 0%;
+  background-color: rgb(236, 231, 241);
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.all_image_bottom {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 100vw;
+}
+
+.all_image_bottom img {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 40px;
+}
+
+@media screen and (min-width: 990px) {
+  .all_bottom_navbar {
+    display: none;
+  }
+}
