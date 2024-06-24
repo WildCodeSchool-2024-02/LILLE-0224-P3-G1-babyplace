@@ -5,8 +5,9 @@ import "leaflet/dist/leaflet.css";
 import NurseriesCardCalender from "./NurseriesCardCalender";
 import "./nurseriesAll.css";
 
-function NurseriesMapRennes({ allNurseries }) {
-  const rennesMapCenter = [48.1147, -1.6794];
+function NurseriesMapLille({ allNurseries }) {
+  const lilleMapCenter = [50.633333, 3.066667];
+
   const updatedAllNurseries = allNurseries.map((nursery) => ({
     ...nursery,
     position: [nursery.latitude, nursery.longitude],
@@ -15,11 +16,7 @@ function NurseriesMapRennes({ allNurseries }) {
   return (
     <>
       <div className="line_map_section"> </div>
-      <MapContainer
-        center={rennesMapCenter}
-        zoom={13}
-        className="map_container"
-      >
+      <MapContainer center={lilleMapCenter} zoom={13} className="map_container">
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -53,7 +50,7 @@ function NurseriesMapRennes({ allNurseries }) {
                   {nursery.nursery_name}
                 </p>
                 <NurseriesCardCalender />
-                <Link to="/creche/details">
+                <Link to={`/creche/details/${nursery.id}`}>
                   <button type="button" className="button_link_map">
                     Voir
                   </button>
@@ -67,7 +64,7 @@ function NurseriesMapRennes({ allNurseries }) {
   );
 }
 
-NurseriesMapRennes.propTypes = {
+NurseriesMapLille.propTypes = {
   allNurseries: PropTypes.arrayOf(
     PropTypes.shape({
       latitude: PropTypes.number.isRequired,
@@ -78,4 +75,4 @@ NurseriesMapRennes.propTypes = {
   ).isRequired,
 };
 
-export default NurseriesMapRennes;
+export default NurseriesMapLille;

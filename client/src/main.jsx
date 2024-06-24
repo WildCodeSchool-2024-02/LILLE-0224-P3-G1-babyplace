@@ -1,5 +1,10 @@
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  redirect,
+} from "react-router-dom";
+import myAxios from "./services/myAxios";
 
 import App from "./App";
 
@@ -26,6 +31,7 @@ const getDataAddresses = async () => {
     return [];
   }
 };
+
 const router = createBrowserRouter([
   {
     element: <App />,
@@ -37,14 +43,42 @@ const router = createBrowserRouter([
       {
         path: "/creche/lille",
         element: <NurseriesSearchLille />,
+        loader: async () => {
+          const response = await myAxios.get("/api/nursery?city=Lille");
+          return response.data;
+        },
+        action: async ({ request }) => {
+          const formData = await request.formData();
+          const nurseryId = formData.get("nursery_id");
+          const response = await myAxios.post("/api/nursery?city=Lille", {
+            nurseryId,
+          });
+          return redirect(`/nursery/${response.data.insertId}`);
+        },
       },
       {
         path: "/creche/rennes",
         element: <NurseriesSearchRennes />,
+        loader: async () => {
+          const response = await myAxios.get("/api/nursery?city=Rennes");
+          return response.data;
+        },
+        action: async ({ request }) => {
+          const formData = await request.formData();
+          const nurseryId = formData.get("nursery_id");
+          const response = await myAxios.post("/api/nursery&city=Rennes", {
+            nurseryId,
+          });
+          return redirect(`/nursery/${response.data.insertId}`);
+        },
       },
       {
-        path: "/creche/details",
+        path: "/creche/:id",
         element: <NurseryDetails />,
+        loader: async ({ params }) => {
+          const response = await myAxios.get(`api/nursery/${params.id}`);
+          return response.data;
+        },
       },
       {
         path: "/dashboard",
@@ -55,7 +89,6 @@ const router = createBrowserRouter([
         element: <NurseryRegisterPage />,
         loader: getDataAddresses,
       },
-
       {
         path: "/connexion",
         element: <PageLoginPro />,
@@ -67,8 +100,6 @@ const router = createBrowserRouter([
     ],
   },
 ]);
-
-// rendering
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <RouterProvider router={router} />
