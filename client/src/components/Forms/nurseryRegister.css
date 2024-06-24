@@ -1,0 +1,158 @@
+/* whole page */
+
+.form_nursery_page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 7em;
+}
+
+/* deocrative image */
+.nursery_form_img {
+  width: 700px;
+  height: 1200px;
+  object-fit: cover;
+}
+/* whole form */
+
+.nursery_form_P1 form {
+  margin-left: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1em;
+  width: 100%;
+}
+.validate_button_nursery_form {
+  background-color: var(--first-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  font-size: 1.2em;
+  text-decoration: none;
+  margin-left: 550px;
+}
+/* titles */
+.nursery_title_form {
+  text-align: center;
+  color: var(--first-color);
+  margin-bottom: 2em;
+  margin-top: 2em;
+  font-size: 3em;
+}
+
+.nursery_subtitles_form {
+  font-weight: bolder;
+  font-size: 1.2em;
+}
+
+.nursery_form_P1 h4 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* inputs */
+.input_nursery_form {
+  width: 500px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-top: 1em;
+}
+.input_nursery_form_street_name {
+  width: 200px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-top: 1em;
+  margin-right: 1em;
+}
+.input_nursery_form_street_number {
+  width: 30px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-top: 1em;
+}
+.street_number_register_nursery {
+  margin-left: 1em;
+}
+.street_number_container {
+  margin-right: 1em;
+}
+
+/* boxes */
+.box_choices_nursery_form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 1em;
+}
+.box_choices_nursery_form input {
+  margin: 1em;
+}
+.check_box_container_register {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 20vh;
+  gap: 1em;
+  margin-left: 3vw;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.check_box_container_register input {
+  margin-right: 1em;
+}
+/* select */
+.select_street_register {
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 300px;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+@media screen and (max-width: 990px) {
+  .nursery_title_form {
+    text-align: center;
+    color: var(--first-color);
+    margin-bottom: 0;
+    margin-top: 2em;
+    font-size: 3em;
+  }
+  .form_nursery_page img {
+    display: none;
+  }
+  .nursery_form_P1 form {
+    margin: 0;
+    padding-left: 20px;
+    width: 90%;
+  }
+
+  .input_nursery_form {
+    margin: 0;
+    width: 80vw;
+    padding: 0.5em;
+  }
+  .check_box_container_register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: fit-content;
+    gap: 1em;
+    margin-left: 30px;
+  }
+
+  .validate_button_nursery_form {
+    margin-left: 35%;
+    margin-top: 1em;
+  }
+}
