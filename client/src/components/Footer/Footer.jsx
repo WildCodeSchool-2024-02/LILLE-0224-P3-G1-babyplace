@@ -16,13 +16,10 @@ function Footer() {
           <div className="first_part_footer" />
         </div>
         <div className="second_part_footer">
-          <div className="social_media_footer">
-            <p>Social Media</p>
-          </div>
           <div className="image_footer">
-            <img src="../../../public/assets/images/f.png" alt="f" />
-            <img src="../../../public/assets/images/t.png" alt="t" />
-            <img src="../../../public/assets/images/i.png" alt="i" />
+            <img src="/assets/images/logo_socials/social_fb.svg" alt="f" />
+            <img src="/assets/images/logo_socials/social_insta.svg" alt="t" />
+            <img src="/assets/images/logo_socials/social_twitter.svg" alt="i" />
           </div>
         </div>
         <div className="third_part_footer">
@@ -42,7 +39,7 @@ function Footer() {
         <div className="fourth_part_footer">
           <ul>
             <li>
-              <span className="bold_text">Site réalisé par </span>
+              <span className="bold_text pink_text">Site réalisé par </span>
             </li>
             <li>Elias Ben Brahim | Emilie Lingat </li>
             <li> Benoit Mezaguer | Morgan Pouilly </li>

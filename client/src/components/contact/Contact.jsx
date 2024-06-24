@@ -14,12 +14,28 @@ export default function Contact() {
         Merci de contacter notre équipe, nous vous répondrons dans les plus
         brefs délais.
       </p>
-      <form>
+      <form className="form_contact">
         <label htmlFor="motif">Motif</label>
-        <input type="text" />
+        <select className="select_contact">
+          <option value="--">--</option>
+          <option value="--">Signalement de compte</option>
+          <option value="--">Problème site</option>
+          <option value="--">Informations</option>
+        </select>
         <label htmlFor="details">Demande</label>
-        <input type="text" />
-        <button type="submit">Envoyer</button>
+        <textarea
+          id="details"
+          className="textarea_contact"
+          rows="5"
+          cols="33"
+        />
+        <button
+          type="submit"
+          className="nursery_list_button"
+          id="button_contact"
+        >
+          Envoyer
+        </button>
       </form>
     </section>
   );
