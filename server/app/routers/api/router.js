@@ -5,10 +5,33 @@ const router = express.Router();
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
+const moderatorRouter = require("./moderator/router");
+
+router.use("/moderator", moderatorRouter);
 
 const parentRouter = require("./parent/router");
 
 router.use("/parent", parentRouter);
+
+const childRouter = require("./child/router");
+
+router.use("/child", childRouter);
+
+const allergyRouter = require("./allergy/router");
+
+router.use("/allergy", allergyRouter);
+
+const accountRouter = require("./account/router");
+
+router.use("/account", accountRouter);
+
+const managementOperationRouter = require("./management-operation/router");
+
+router.use("/management-operation", managementOperationRouter);
+
+const bookingOperationRouter = require("./booking-operation/router");
+
+router.use("/booking-operation", bookingOperationRouter);
 
 const nurseryRouter = require("./nursery/router");
 
