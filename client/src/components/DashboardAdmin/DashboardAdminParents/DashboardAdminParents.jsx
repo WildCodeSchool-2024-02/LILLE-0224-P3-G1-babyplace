@@ -44,7 +44,7 @@ function DashboardAdminParents() {
         {parents.map((parent) => (
           <div key={parent.id} className="dashboard_admin_parent_all">
             <div className="dashboard_admin_container_container">
-              <div className="dashboard_admin_parent_container logo">
+              <div className="dashboard_admin_parent_container">
                 <div className="dashboard_admin_parent_logo">
                   <img src={parent.image} alt="" />
                 </div>

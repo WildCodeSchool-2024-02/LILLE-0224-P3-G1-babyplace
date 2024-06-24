@@ -2,7 +2,6 @@ import "./SelectCity.css";
 
 function SelectCity() {
   return (
-    <div>
       <div className="dashboard_reservation_lille">
         <select className="reservation_select">
           <option value="0" disabled selected>
@@ -12,7 +11,6 @@ function SelectCity() {
           <option value="2">Renne</option>
         </select>
       </div>
-    </div>
   );
 }
 

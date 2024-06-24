@@ -2,7 +2,6 @@ import "./SearchByName.css";
 
 function SearchByName() {
   return (
-    <div>
       <div className="dashboard_reservation_container_input">
         <input
           className="dashboard_reservation_input"
@@ -11,7 +10,6 @@ function SearchByName() {
           placeholder="Rechercher par nom:"
         />
       </div>
-    </div>
   );
 }
 
