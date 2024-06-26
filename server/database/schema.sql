@@ -74,6 +74,7 @@ CREATE TABLE nursery (
   certification1 varchar(100) DEFAULT NULL,
   certification2 varchar(100) DEFAULT NULL,
   certification3 varchar(100) DEFAULT NULL,
+  about varchar(6000) DEFAULT NULL,
   PRIMARY KEY (nursery_id)
 );
 

@@ -228,6 +228,15 @@ export default function NurseryRegisterForm() {
                 type="number"
                 min="0"
               />
+              €
+            </label>
+            <label htmlFor="nursery_about_form">
+              {" "}
+              <div> Décrivez votre crèche en quelques lignes</div>
+              <textarea
+                id="nursery_about_form"
+                className="input_nursery_form"
+              />
             </label>
             <div>Quelles activités proposez-vous ? (3 maximum)</div>
             <div className="check_box_container_register">
