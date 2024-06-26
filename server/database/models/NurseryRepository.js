@@ -11,7 +11,7 @@ class NurseryRepository extends AbstractRepository {
 
   async create(nursery) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (nursery_name, nursery_street, nursery_street_number, latitude,longitude,city,capacity,price,nursery_phone, nursery_mail,image1, image2, image3, nursery_password, activity1, activity2, activity3, certification1, certification2, certification3) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (nursery_name, nursery_street, nursery_street_number, latitude,longitude,city,capacity,price,nursery_phone, nursery_mail,image1, image2, image3, nursery_password, activity1, activity2, activity3, certification1, certification2, certification3, about) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         nursery.nursery_name,
         nursery.nursery_street,
@@ -33,6 +33,7 @@ class NurseryRepository extends AbstractRepository {
         nursery.certification1,
         nursery.certification2,
         nursery.certification3,
+        nursery.about,
       ]
     );
 
@@ -52,7 +53,6 @@ class NurseryRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific nursery by its ID
     const [rows] = await this.database.query(
-
       `select * from ${this.table} where nursery_id = ?`,
 
       [id]
