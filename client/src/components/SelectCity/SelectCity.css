@@ -1,0 +1,22 @@
+.dashboard_reservation_lille {
+  color: #7e72f2;
+}
+
+.reservation_select {
+  color: #7e72f2;
+  border-radius: 1em;
+  border: #7e72f2 solid 1px;
+  width: 15em;
+  height: 3em;
+}
+
+.dashboard_reservation_lille option {
+  border-radius: 1em;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #7e72f2;
+}

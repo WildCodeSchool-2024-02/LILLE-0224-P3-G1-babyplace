@@ -1,0 +1,111 @@
+.dashboard_moderator_parent_search {
+  margin-top: 3em;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard_moderator_parent_h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  color: #7e72f2;
+  font-size: 1.5em;
+}
+
+.dashboard_moderator_container_container {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+}
+
+.dashboard_moderator_parent_container {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90em;
+  background-color: #f5f5f5;
+  border-radius: 5em;
+  padding: 2em;
+}
+
+.dashboard_moderator_parent_logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard_moderator_parent_logo img {
+  margin-left: -10em;
+  width: 60px;
+}
+
+.dashboard_moderator_parent_info_first {
+  color: #7e72f2;
+}
+.dashboard_moderator_parent_details {
+  display: flex;
+  align-items: end;
+  text-decoration: underline;
+  font-weight: 700;
+}
+.dashboard_moderator_parent_details:hover {
+  scale: 105%;
+}
+
+.dashboard_moderator_paretn_delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboard_moderator_paretn_delete button {
+  background-color: #ef3672;
+  border: #ef3672 solid 1px;
+  border-radius: 2em;
+  padding: 1em;
+  font-size: 1em;
+  color: white;
+}
+
+.dashboard_moderator_paretn_delete button:hover {
+  scale: 110%;
+}
+
+.dashboard_moderator_container_info {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  padding: 2em;
+  border-radius: 2em;
+  width: 30em;
+}
+
+#dashboard_moderator_container_pop {
+  margin-top: 1em;
+}
+
+.dashboard_moderator_container_info p {
+  margin-bottom: 1em;
+  font-size: 1em;
+  color: #7e72f2;
+  margin-left: 1em;
+}
+.dashboard_moderator_container_child {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.dashboard_moderator_parent_info p {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.dashboard_moderator_parent_info {
+  display: flex;
+}
+
+.dashboard_moderator_parent_info_weigh {
+  font-weight: 700;
+}

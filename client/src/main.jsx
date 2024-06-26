@@ -18,7 +18,9 @@ import PageLoginPro from "./pages/Login/LoginPro";
 import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
+import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
 import ContactPage from "./pages/Contact/ContactPage";
+
 
 
 // router creation
@@ -100,6 +102,9 @@ const router = createBrowserRouter([
         element: <PageProDashboard />,
       },
       {
+        path: "/dashboard/moderator",
+        element: <PageModeratorDashboard />,
+      },
         path: "/contact",
         element: <ContactPage />,
       },
