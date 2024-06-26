@@ -1,4 +1,4 @@
-#search_dashboard_admin {
+#search_dashboard_moderator {
   border: #7e72f2 solid 1px;
   border-radius: 1em;
   width: 20em;
@@ -10,18 +10,18 @@
   background-position: right;
 }
 
-#search_dashboard_admin:focus {
+#search_dashboard_moderator:focus {
   border: #7e72f2 solid 1px;
   outline: none;
 }
 
-#search_dashboard_admin::-webkit-input-placeholder {
+#search_dashboard_moderator::-webkit-input-placeholder {
   color: #7e72f2;
 }
 
-#search_dashboard_admin::-webkit-search-decoration,
-#search_dashboard_admin::-webkit-search-cancel-button,
-#search_dashboard_admin::-webkit-search-results-button,
-#search_dashboard_admin::-webkit-search-results-decoration {
+#search_dashboard_moderator::-webkit-search-decoration,
+#search_dashboard_moderator::-webkit-search-cancel-button,
+#search_dashboard_moderator::-webkit-search-results-button,
+#search_dashboard_moderator::-webkit-search-results-decoration {
   display: none;
 }

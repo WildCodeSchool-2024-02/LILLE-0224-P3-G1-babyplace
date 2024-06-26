@@ -1,8 +1,8 @@
 import SelectCity from "../../SelectCity/SelectCity";
 import SearchByName from "../../SearchByName/SearchByName";
-import "./DashboardAdminReservation.css";
+import "./DashboardModeratorReservation.css";
 
-function DashboardAdminReservation() {
+function DashboardModeratorReservation() {
   return (
     <div>
       <div className="dashboard_reservation_filter">
@@ -29,15 +29,15 @@ function DashboardAdminReservation() {
         </div>
         <div className="dashboard_reservation_all_container">
           <div
-            id="dashboard_agree_admin"
+            id="dashboard_agree_moderator"
             className="dashboard_reservation_container"
           >
             <div className="dashboard_reservation_agree">
               <p>accepté</p>
             </div>
-            <div className="dashboard_admin_reservation_logo_container">
+            <div className="dashboard_moderator_reservation_logo_container">
               <img
-                className="dashboard_admin_reservation_logo"
+                className="dashboard_moderator_reservation_logo"
                 src="/public/assets/images/avatar_bottom_active.svg"
                 alt=""
               />
@@ -55,9 +55,9 @@ function DashboardAdminReservation() {
             <div className="dashboard_reservation_disagree">
               <p>refusé</p>
             </div>
-            <div className="dashboard_admin_reservation_logo_container">
+            <div className="dashboard_moderator_reservation_logo_container">
               <img
-                className="dashboard_admin_reservation_logo"
+                className="dashboard_moderator_reservation_logo"
                 src="/public/assets/images/avatar_bottom_active.svg"
                 alt=""
               />
@@ -77,4 +77,4 @@ function DashboardAdminReservation() {
   );
 }
 
-export default DashboardAdminReservation;
+export default DashboardModeratorReservation;

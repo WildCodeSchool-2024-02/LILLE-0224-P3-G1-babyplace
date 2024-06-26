@@ -1,10 +1,10 @@
-.dashboard_admin_parent_search {
+.dashboard_moderator_parent_search {
   margin-top: 3em;
   display: flex;
   justify-content: center;
 }
 
-.dashboard_admin_parent_h1 {
+.dashboard_moderator_parent_h1 {
   display: flex;
   justify-content: center;
   margin-top: 3em;
@@ -13,13 +13,13 @@
   font-size: 1.5em;
 }
 
-.dashboard_admin_container_container {
+.dashboard_moderator_container_container {
   margin-top: 2em;
   display: flex;
   justify-content: center;
 }
 
-.dashboard_admin_parent_container {
+.dashboard_moderator_parent_container {
   display: flex;
   justify-content: space-evenly;
   width: 90em;
@@ -28,37 +28,37 @@
   padding: 2em;
 }
 
-.dashboard_admin_parent_logo {
+.dashboard_moderator_parent_logo {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.dashboard_admin_parent_logo img {
+.dashboard_moderator_parent_logo img {
   margin-left: -10em;
   width: 60px;
 }
 
-.dashboard_admin_parent_info_first {
+.dashboard_moderator_parent_info_first {
   color: #7e72f2;
 }
-.dashboard_admin_parent_details {
+.dashboard_moderator_parent_details {
   display: flex;
   align-items: end;
   text-decoration: underline;
   font-weight: 700;
 }
-.dashboard_admin_parent_details:hover {
+.dashboard_moderator_parent_details:hover {
   scale: 105%;
 }
 
-.dashboard_admin_paretn_delete {
+.dashboard_moderator_paretn_delete {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dashboard_admin_paretn_delete button {
+.dashboard_moderator_paretn_delete button {
   background-color: #ef3672;
   border: #ef3672 solid 1px;
   border-radius: 2em;
@@ -67,11 +67,11 @@
   color: white;
 }
 
-.dashboard_admin_paretn_delete button:hover {
+.dashboard_moderator_paretn_delete button:hover {
   scale: 110%;
 }
 
-.dashboard_admin_container_info {
+.dashboard_moderator_container_info {
   display: flex;
   flex-direction: column;
   background-color: #f5f5f5;
@@ -80,32 +80,32 @@
   width: 30em;
 }
 
-#dashboard_admin_container_pop {
+#dashboard_moderator_container_pop {
   margin-top: 1em;
 }
 
-.dashboard_admin_container_info p {
+.dashboard_moderator_container_info p {
   margin-bottom: 1em;
   font-size: 1em;
   color: #7e72f2;
   margin-left: 1em;
 }
-.dashboard_admin_container_child {
+.dashboard_moderator_container_child {
   display: flex;
   justify-content: space-around;
   margin-top: 2em;
   margin-bottom: 2em;
 }
 
-.dashboard_admin_parent_info p {
+.dashboard_moderator_parent_info p {
   margin-left: 1em;
   margin-bottom: 1em;
 }
 
-.dashboard_admin_parent_info {
+.dashboard_moderator_parent_info {
   display: flex;
 }
 
-.dashboard_admin_parent_info_weigh {
+.dashboard_moderator_parent_info_weigh {
   font-weight: 700;
 }

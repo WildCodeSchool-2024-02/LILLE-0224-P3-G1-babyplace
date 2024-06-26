@@ -1,10 +1,10 @@
 import { useState } from "react";
-import DashboardAdminPro from "./DashboardAdminPro/DashboardAdminPro";
-import DashboardAdminParents from "./DashboardAdminParents/DashboardAdminParents";
-import DashboardAdminReservation from "./DashboardAdminReservation/DashboardAdminReservation";
-import "./DashboardAdmin.css";
+import DashboardModeratorPro from "./DashboardModeratorPro/DashboardModeratorPro";
+import DashboardModeratorParents from "./DashboardModeratorParents/DashboardModeratorParents";
+import DashboardModeratorReservation from "./DashboardModeratorReservation/DashboardModeratorReservation";
+import "./DashboardModerator.css";
 
-function DashboardAdmin() {
+function DashboardModerator() {
   const [activeTab, setActiveTab] = useState("reservation");
 
   const handleReservationClick = () => {
@@ -20,7 +20,7 @@ function DashboardAdmin() {
   };
 
   return (
-    <div className="all_dashboard_admin">
+    <div className="all_dashboard_moderator">
       <div className="buttons_select_categories">
         <button
           type="button"
@@ -46,18 +46,18 @@ function DashboardAdmin() {
       </div>
       <div>
         {activeTab === "reservation" && (
-          <div className="dashboard_admin_reservation">
-            <DashboardAdminReservation />
+          <div className="dashboard_moderator_reservation">
+            <DashboardModeratorReservation />
           </div>
         )}
         {activeTab === "parents" && (
-          <div className="dashboard_admin_parents">
-            <DashboardAdminParents />
+          <div className="dashboard_moderator_parents">
+            <DashboardModeratorParents />
           </div>
         )}
         {activeTab === "pro" && (
-          <div className="dashboard_admin_pro">
-            <DashboardAdminPro />
+          <div className="dashboard_moderator_pro">
+            <DashboardModeratorPro />
           </div>
         )}
       </div>
@@ -65,4 +65,4 @@ function DashboardAdmin() {
   );
 }
 
-export default DashboardAdmin;
+export default DashboardModerator;

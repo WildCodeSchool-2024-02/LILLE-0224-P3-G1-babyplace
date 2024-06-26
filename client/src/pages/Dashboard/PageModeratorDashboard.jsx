@@ -1,11 +1,11 @@
 import Header from "../../components/Header/Header";
-import DashboardAdmin from "../../components/DashboardAdmin/DashboardAdmin";
+import DashboardModerator from "../../components/DashboardModerator/DashboardModerator";
 
 function PageDashboard() {
   return (
       <div>
         <Header />
-        <DashboardAdmin />
+        <DashboardModerator />
       </div>
   );
 }

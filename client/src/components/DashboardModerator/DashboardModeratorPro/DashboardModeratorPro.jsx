@@ -2,9 +2,9 @@ import { useState } from "react";
 import SearchByName from "../../SearchByName/SearchByName";
 import SelectCity from "../../SelectCity/SelectCity";
 
-import "./DashboardAdminPro.css";
+import "./DashboardModeratorPro.css";
 
-function DashboardAdminPro() {
+function DashboardModeratorPro() {
   const [visibleProfiles, setVisibleProfiles] = useState([]);
 
   const toggleProfileVisibility = (nurseryId) => {
@@ -43,42 +43,42 @@ function DashboardAdminPro() {
   ];
   return (
     <div>
-      <div className="dashboard_admin_pro_select_search">
-        <div className="dashboard_admin_pro_select">
+      <div className="dashboard_moderator_pro_select_search">
+        <div className="dashboard_moderator_pro_select">
           <SelectCity />
         </div>
-        <div className="dashboard_admin_pro_search">
+        <div className="dashboard_moderator_pro_search">
           <SearchByName />
         </div>
       </div>
       <div>
-        <div className="dashboard_admin_pro_h1">
+        <div className="dashboard_moderator_pro_h1">
           <h1>Lille</h1>
         </div>
         {nurseries.map((nursery) => (
-          <div key={nursery.id} className="dashboard_admin_parent_all">
-            <div className="dashboard_admin_container_container">
-              <div className="dashboard_admin_parent_container">
-                <div className="dashboard_admin_parent_logo">
+          <div key={nursery.id} className="dashboard_moderator_parent_all">
+            <div className="dashboard_moderator_container_container">
+              <div className="dashboard_moderator_parent_container">
+                <div className="dashboard_moderator_parent_logo">
                   <img src={nursery.image} alt="" />
                 </div>
-                <div className="dashboard_admin_parent_info_first">
-                  <div className="dashboard_admin_parent_info">
-                    <p className="dashboard_admin_parent_info_weigh">
+                <div className="dashboard_moderator_parent_info_first">
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">
                       Crèche :
                     </p>
                     <p>{nursery.name}</p>
                   </div>
-                  <div className="dashboard_admin_parent_info">
-                    <p className="dashboard_admin_parent_info_weigh">
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">
                       Adresse :
                     </p>
                     <p>{nursery.adresse}</p>
                   </div>
-                  <div className="dashboard_admin_parent_info" />
+                  <div className="dashboard_moderator_parent_info" />
                 </div>
                 <div
-                  className="dashboard_admin_parent_details"
+                  className="dashboard_moderator_parent_details"
                   role="button"
                   tabIndex={0}
                   onClick={() => toggleProfileVisibility(nursery.id)}
@@ -90,29 +90,29 @@ function DashboardAdminPro() {
                 >
                   <p>Voir le profil</p>
                 </div>
-                <div className="dashboard_admin_paretn_delete">
+                <div className="dashboard_moderator_paretn_delete">
                   <button type="button">Suspendre compte</button>
                 </div>
               </div>
             </div>
             {visibleProfiles.includes(nursery.id) && (
               <div
-                id="dashboard_admin_container_pop"
-                className="dashboard_admin_container_container"
+                id="dashboard_moderator_container_pop"
+                className="dashboard_moderator_container_container"
               >
-                <div className="dashboard_admin_container_info">
-                  <div className="dashboard_admin_parent_info">
-                    <p className="dashboard_admin_parent_info_weigh">
+                <div className="dashboard_moderator_container_info">
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">
                       Crèche :
                     </p>
                     <p>{nursery.name}</p>
                   </div>
-                  <div className="dashboard_admin_parent_info">
-                    <p className="dashboard_admin_parent_info_weigh">Mail :</p>
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">Mail :</p>
                     <p>{nursery.mail}</p>
                   </div>
-                  <div className="dashboard_admin_parent_info">
-                    <p className="dashboard_admin_parent_info_weigh">
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">
                       Téléphone :
                     </p>
                     <p>{nursery.phone}</p>
@@ -127,4 +127,4 @@ function DashboardAdminPro() {
   );
 }
 
-export default DashboardAdminPro;
+export default DashboardModeratorPro;

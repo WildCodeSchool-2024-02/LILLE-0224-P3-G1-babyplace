@@ -114,15 +114,15 @@
   transform: scaleX(-1) scaleY(-1);
 }
 
-#dashboard_agree_admin {
+#dashboard_agree_moderator {
   margin-bottom: 1em;
 }
 
-.dashboard_admin_reservation_logo {
+.dashboard_moderator_reservation_logo {
   width: 60px;
 }
 
-.dashboard_admin_reservation_logo_container {
+.dashboard_moderator_reservation_logo_container {
   display: flex;
   margin-left: -9em;
   margin-right: -5em;
