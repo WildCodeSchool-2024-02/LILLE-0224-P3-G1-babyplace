@@ -18,6 +18,8 @@ import PageLoginPro from "./pages/Login/LoginPro";
 import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
+import ContactPage from "./pages/Contact/ContactPage";
+
 
 // router creation
 
@@ -96,6 +98,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/pro",
         element: <PageProDashboard />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },
