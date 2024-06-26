@@ -31,7 +31,7 @@ class ParentRepository extends AbstractRepository {
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific parent by its ID
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select * from ${this.table} where parent_id = ?`,
       [id]
     );
 
