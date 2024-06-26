@@ -30,12 +30,7 @@ function Nursery() {
           </div>
           <h2 className="color_h2">Présentation</h2>
 
-          <p className="presentation">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatem
-            enim dicta ipsum corporis voluptas velit est deserunt recusandae
-            mollitia perferendis soluta laboriosam molestiae, fugit quos! Iusto
-            sapiente nostrum qui laboriosam!{" "}
-          </p>
+          <p className="presentation">{data.about}</p>
           <section className="contact">
             Horaires : Lundi - Samedi : 9h-16h <br />
             Téléphone : {data.nursery_phone} <br />
@@ -68,7 +63,7 @@ function Nursery() {
                 src="/assets/images/Pricing3.png"
                 alt=""
               />
-              <p className="info_text"> {data.certification2}</p>
+              <p className="info_text"> {data.certification3}</p>
             </div>
           </section>
 

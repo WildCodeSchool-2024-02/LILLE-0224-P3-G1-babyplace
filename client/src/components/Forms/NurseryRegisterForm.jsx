@@ -5,19 +5,20 @@ import "./nurseryRegister.css";
 
 export default function NurseryRegisterForm() {
   const navigate = useNavigate();
-  // charge la database des adresses depuis main
+
+  // charge la database des adresses (lille et rennes)
   const data = useLoaderData();
-  // gère ce qu'écrit l'utilisateur pour le nom de la rue, ce qui est tapé dans l'input
+  // gére la ville sélectionnée pour que ça parte chercher dans le bon json
+  const [selectedCity, setSelectedCity] = useState("");
+  const handleCityChange = (e) => {
+    setSelectedCity(e.target.value);
+  };
+  // gère l'adresse entrée par l'utilisateur
   const [streetNameInput, setStreetNameInput] = useState("");
-  // rue sélectionnée par l'utilisateur
   const [streetName, setStreetName] = useState("");
-  // numéro de la rue entré par l'utilisateur
   const [streetNumber, setStreetNumber] = useState("");
   // permet de passer à l'étape suivante une fois que la rue a été sélectionnée (afficher l'input pour le numéro)
   const [adressSelected, setAdressSelected] = useState(false);
-
-  // nom de la crèche entrée par l'utilisateur
-  const [nurseryName, setNurseryName] = useState("");
 
   // compare ce qui a été saisi par l'utilisateur avec les noms de rues du json
   // ne filtre les résultats que si le champ de saisie contient au moins 5 caractères
@@ -27,7 +28,6 @@ export default function NurseryRegisterForm() {
           address.voie_nom.toLowerCase().includes(streetNameInput.toLowerCase())
         )
       : [];
-
   // évite les doublons dans les résultats des rues
   const uniqueResults = filteredResults.reduce((acc, current) => {
     const x = acc.find((item) => item.voie_nom === current.voie_nom);
@@ -36,24 +36,6 @@ export default function NurseryRegisterForm() {
     }
     return acc;
   }, []);
-  // États pour le mot de passe et la confirmation du mot de passe
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  // Gestionnaire de changement du mot de passe
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  // Gestionnaire de changement de la confirmation du mot de passe
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-  // gére la ville sélectionnée pour que ça parte chercher dans le bon json
-  const [selectedCity, setSelectedCity] = useState("");
-
-  const handleCityChange = (e) => {
-    setSelectedCity(e.target.value);
-  };
   //  recherche dans la base de données la tuple qui correspond exactement au nom de la rue/numéro sélectionnés par l'utilisateur
   const adresseDefinitive =
     streetName && streetNumber
@@ -63,6 +45,16 @@ export default function NurseryRegisterForm() {
             parseInt(address.numero, 10) === parseInt(streetNumber, 10)
         )
       : [];
+
+  // États pour le mot de passe et la confirmation du mot de passe
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
+  };
 
   // fonctions qui permettent de changer les states selon les données entrées par l'utilisateur
   const handleStreetNameChange = (e) => {
@@ -78,15 +70,9 @@ export default function NurseryRegisterForm() {
     setStreetNumber(e.target.value);
   };
 
-  const handleNurseryNameChange = (e) => {
-    setNurseryName(e.target.value);
-  };
-
   // gère le nombre d'activités
   const [selectedActivities, setSelectedActivities] = useState([]);
   const [selectedCertifications, setSelectedCertifications] = useState([]);
-
-  // limiter le nombre de cases à cocher pour les listes activités et certification
   const handleCheckboxChange = (e, setSelected, selected) => {
     const { value } = e.target;
     if (selected.includes(value)) {
@@ -96,28 +82,29 @@ export default function NurseryRegisterForm() {
     }
   };
 
-  const streetNameRef = useRef();
   const emailRef = useRef();
+  const nurseryNameRef = useRef();
   const capacityRef = useRef();
   const phoneNumberRef = useRef();
-
   const priceRef = useRef();
   const image1Ref = useRef();
   const image2Ref = useRef();
   const image3Ref = useRef();
+  const aboutRef = useRef();
+
   // Gestionnaire de soumission du formulaire
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      // Appel à l'API pour créer un nouvel utilisateur
+      // Appel à l'API pour créer une nouvelle crèche
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/nursery`,
         {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            nursery_name: nurseryName,
-            nursery_street: streetNameRef.current.value,
+            nursery_name: nurseryNameRef.current.value,
+            nursery_street: streetName,
             nursery_street_number: streetNumber,
             latitude: adresseDefinitive[0].lat,
             longitude: adresseDefinitive[0].longitude,
@@ -130,15 +117,20 @@ export default function NurseryRegisterForm() {
             image2: image2Ref.current.value,
             image3: image3Ref.current.value,
             nursery_password: password,
-            selectedActivities,
-            selectedCertifications,
+            acitivy1: selectedActivities[0],
+            activity2: selectedActivities[1],
+            activity3: selectedActivities[2],
+            certification1: selectedCertifications[0],
+            certification2: selectedCertifications[1],
+            certification3: selectedCertifications[2],
+            about: aboutRef.current.value,
           }),
         }
       );
 
       // Redirection vers la page de connexion si la création réussit
       if (response.status === 201) {
-        navigate("/login");
+        navigate("/dashboard/pro");
       } else {
         // Log des détails de la réponse en cas d'échec
         console.info(response);
@@ -164,8 +156,7 @@ export default function NurseryRegisterForm() {
             <input
               id="nursery_name_form"
               className="input_nursery_form"
-              value={nurseryName}
-              onChange={handleNurseryNameChange}
+              ref={nurseryNameRef}
               required
             />
             <div>
@@ -212,10 +203,7 @@ export default function NurseryRegisterForm() {
                     onChange={handleSelectionChange}
                     className="select_street_register"
                   >
-                    <option value="" ref={streetNameRef}>
-                      {" "}
-                      ---{" "}
-                    </option>
+                    <option value=""> --- </option>
                     {uniqueResults.map((address) => (
                       <option key={address.id} value={address.voie_nom}>
                         {address.voie_nom}
@@ -303,6 +291,16 @@ export default function NurseryRegisterForm() {
                 ref={priceRef}
                 required
               />
+              €
+            </label>
+            <label htmlFor="nursery_about_form">
+              {" "}
+              <div> Décrivez votre crèche en quelques lignes</div>
+              <textarea
+                id="nursery_about_form"
+                className="input_nursery_form"
+                ref={aboutRef}
+              />
             </label>
             <div>Quelles activités proposez-vous ? (3 maximum)</div>
             <div className="check_box_container_register">
@@ -376,7 +374,6 @@ export default function NurseryRegisterForm() {
                   <input
                     ref={image1Ref}
                     type="file"
-                    value=""
                     className="image_input_register"
                   />
                 </div>
@@ -385,7 +382,6 @@ export default function NurseryRegisterForm() {
                   <input
                     ref={image2Ref}
                     type="file"
-                    value=""
                     className="image_input_register"
                   />
                 </div>
@@ -394,7 +390,6 @@ export default function NurseryRegisterForm() {
                   <input
                     ref={image3Ref}
                     type="file"
-                    value=""
                     className="image_input_register"
                   />
                 </div>
