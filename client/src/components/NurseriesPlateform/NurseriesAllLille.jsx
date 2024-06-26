@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import NurseriesMini from "./NurseriesMini";
-import NurseriesMapLille from "./NuseriesMapLille";
+import NurseriesMapLille from "./NurseriesMapLille";
 import "./nurseriesAll.css";
 
 function NurseriesAllLille() {

@@ -21,8 +21,6 @@ import PageProDashboard from "./pages/Dashboard/PageProDashboard";
 import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
 import ContactPage from "./pages/Contact/ContactPage";
 
-
-
 // router creation
 
 const getDataAddresses = async () => {
@@ -105,6 +103,7 @@ const router = createBrowserRouter([
         path: "/dashboard/moderator",
         element: <PageModeratorDashboard />,
       },
+      {
         path: "/contact",
         element: <ContactPage />,
       },
