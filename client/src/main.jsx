@@ -21,15 +21,24 @@ import PageProDashboard from "./pages/Dashboard/PageProDashboard";
 import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
 import ContactPage from "./pages/Contact/ContactPage";
 
-
-
 // router creation
-
 const getDataAddresses = async () => {
   try {
-    const response = await fetch("/addresses/lille-addresses.json");
-    const data = await response.json();
-    return data;
+    const [lilleResponse, rennesResponse] = await Promise.all([
+      fetch("/addresses/lille-addresses.json"),
+      fetch("/addresses/rennes-addresses.json"),
+    ]);
+
+    if (!lilleResponse.ok || !rennesResponse.ok) {
+      throw new Error("One or both fetch requests failed");
+    }
+
+    const lilleData = await lilleResponse.json();
+    const rennesData = await rennesResponse.json();
+
+    const combinedData = [...lilleData, ...rennesData];
+
+    return combinedData;
   } catch (error) {
     console.error("Error fetching data: ", error);
     return [];
@@ -105,6 +114,7 @@ const router = createBrowserRouter([
         path: "/dashboard/moderator",
         element: <PageModeratorDashboard />,
       },
+      {
         path: "/contact",
         element: <ContactPage />,
       },
