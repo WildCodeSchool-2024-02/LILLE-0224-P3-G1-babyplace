@@ -1,8 +1,27 @@
-import SelectCity from "../../SelectCity/SelectCity";
+import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import SearchByName from "../../SearchByName/SearchByName";
+import SelectCity from "../../SelectCity/SelectCity";
 import "./DashboardModeratorReservation.css";
 
 function DashboardModeratorReservation() {
+  const { booking: allBooking } = useLoaderData();
+  const [filteredBookings, setFilteredBookings] = useState(allBooking);
+
+  function getStatusClass(state) {
+    if (state === "passed") {
+      return "dashboard_reservation_agree";
+    }
+    return state === "pending" ? "dashboard_reservation_disagree" : "";
+  }
+
+  const handleSearch = (searchValue) => {
+    const filteredBookingsList = allBooking.filter((booking) =>
+      booking.account_id.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setFilteredBookings(filteredBookingsList);
+  };
+
   return (
     <div>
       <div className="dashboard_reservation_filter">
@@ -13,7 +32,7 @@ function DashboardModeratorReservation() {
           <p id="dashboard_reservation_p">Trier par date</p>
         </div>
         <div className="reservation_search_name">
-          <SearchByName />
+          <SearchByName onSearch={handleSearch} />
         </div>
       </div>
       <div className="dashboard_reservation_title">
@@ -28,48 +47,27 @@ function DashboardModeratorReservation() {
           <p>Crèche Picoti Picota</p>
         </div>
         <div className="dashboard_reservation_all_container">
-          <div
-            id="dashboard_agree_moderator"
-            className="dashboard_reservation_container"
-          >
-            <div className="dashboard_reservation_agree">
-              <p>accepté</p>
-            </div>
-            <div className="dashboard_moderator_reservation_logo_container">
-              <img
-                className="dashboard_moderator_reservation_logo"
-                src="/public/assets/images/avatar_bottom_active.svg"
-                alt=""
-              />
-            </div>
-            <div className="dashboard_reservation_infos">
-              <p>Parent : Benoît Mezaguer</p>
-              <p>Enfant 1(Pomme)</p>
-              <p>Matin</p>
-            </div>
-            <div className="dashboard_reservation_cancel">
-              <button type="button">Annuler la réservation</button>
-            </div>
-          </div>
-          <div className="dashboard_reservation_container">
-            <div className="dashboard_reservation_disagree">
-              <p>refusé</p>
-            </div>
-            <div className="dashboard_moderator_reservation_logo_container">
-              <img
-                className="dashboard_moderator_reservation_logo"
-                src="/public/assets/images/avatar_bottom_active.svg"
-                alt=""
-              />
-            </div>
-            <div className="dashboard_reservation_infos">
-              <p>Parent : Benoît Mezaguer</p>
-              <p>Enfant 2(Poire)</p>
-              <p>Matin</p>
-            </div>
-            <div className="dashboard_reservation_cancel">
-              <button type="button">Annuler la réservation</button>
-            </div>
+          <div>
+            {filteredBookings.map((reservation) => (
+              <div
+                id={`dashboard_agree_moderator_${reservation.id}`}
+                className="dashboard_reservation_container"
+                key={reservation.id}
+              >
+                <div className={getStatusClass(reservation.state)}>
+                  <p>{reservation.state}</p>
+                </div>
+                <div className="dashboard_reservation_infos">
+                  <p>Parent : {reservation.account_id}</p>
+                  <p>Enfant : ""</p>
+                  <p>Crèche : {reservation.nursery_id}</p>
+                  <p>Date : {reservation.booking_operation_date}</p>
+                </div>
+                <div className="dashboard_reservation_cancel">
+                  <button type="button">Annuler la réservation</button>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import SearchByName from "../../SearchByName/SearchByName";
 import "./DashboardModeratorParents.css";
 
 function DashboardModeratorParents() {
+  const { parents: allParents } = useLoaderData();
   const [visibleProfiles, setVisibleProfiles] = useState([]);
+  const [filteredParents, setFilteredParents] = useState(allParents);
 
   const toggleProfileVisibility = (parentId) => {
     setVisibleProfiles((prevState) =>
@@ -13,36 +16,29 @@ function DashboardModeratorParents() {
     );
   };
 
-  const parents = [
-    {
-      id: 1,
-      name: "Elias Brandon",
-      mail: "elias.brandon@homtail.fr",
-      phone: "06 06 06 06 06",
-      children: ["Brian", "Jean-Eudes"],
-      image: "/public/assets/images/avatar_bottom_active.svg",
-    },
-    {
-      id: 2,
-      name: "Benoît Mezaguer",
-      mail: "benoit.mezaguer@hotmail.fr",
-      phone: "07 07 07 07 07",
-      children: ["Pomme", "Poire", "Cerise"],
-      image: "/public/assets/images/avatar_bottom_active.svg",
-    },
-  ];
+  const handleSearch = (searchValue) => {
+    const filteredParentsList = allParents.filter((parent) =>
+      `${parent.parent_firstname} ${parent.parent_lastname}`
+        .toLowerCase()
+        .includes(searchValue.toLowerCase())
+    );
+    setFilteredParents(filteredParentsList);
+  };
 
   return (
     <div>
       <div className="all_dashboard_moderator_parent">
         <div className="dashboard_moderator_parent_search">
-          <SearchByName />
+          <SearchByName onSearch={handleSearch} />
         </div>
         <div className="dashboard_moderator_parent_h1">
           <h1>Parent</h1>
         </div>
-        {parents.map((parent) => (
-          <div key={parent.id} className="dashboard_moderator_parent_all">
+        {filteredParents.map((parent) => (
+          <div
+            key={parent.parent_id}
+            className="dashboard_moderator_parent_all"
+          >
             <div className="dashboard_moderator_container_container">
               <div className="dashboard_moderator_parent_container">
                 <div className="dashboard_moderator_parent_logo">
@@ -53,23 +49,27 @@ function DashboardModeratorParents() {
                     <p className="dashboard_moderator_parent_info_weigh">
                       Parent :
                     </p>
-                    <p>{parent.name}</p>
+                    <p className="admin_parent_info_name">
+                      {parent.parent_firstname}
+                    </p>
+                    <p className="admin_parent_info_name">
+                      {parent.parent_lastname}
+                    </p>
                   </div>
                   <div className="dashboard_moderator_parent_info">
                     <p className="dashboard_moderator_parent_info_weigh">
                       Nombre d'enfants :
                     </p>
-                    <p>{parent.children.length}</p>
                   </div>
                 </div>
                 <div
                   className="dashboard_moderator_parent_details"
                   role="button"
                   tabIndex={0}
-                  onClick={() => toggleProfileVisibility(parent.id)}
+                  onClick={() => toggleProfileVisibility(parent.parent_id)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                      toggleProfileVisibility(parent.id);
+                      toggleProfileVisibility(parent.parent_id);
                     }
                   }}
                 >
@@ -80,7 +80,7 @@ function DashboardModeratorParents() {
                 </div>
               </div>
             </div>
-            {visibleProfiles.includes(parent.id) && (
+            {visibleProfiles.includes(parent.parent_id) && (
               <div
                 id="dashboard_moderator_container_pop"
                 className="dashboard_moderator_container_container"
@@ -90,28 +90,30 @@ function DashboardModeratorParents() {
                     <p className="dashboard_moderator_parent_info_weigh">
                       Parent :
                     </p>
-                    <p>{parent.name}</p>
+                    <p className="admin_parent_info_name">
+                      {parent.parent_firstname}
+                    </p>
+                    <p className="admin_parent_info_name">
+                      {parent.parent_lastname}
+                    </p>
                   </div>
                   <div className="dashboard_moderator_parent_info">
-                    <p className="dashboard_moderator_parent_info_weigh">Mail :</p>
-                    <p>{parent.mail}</p>
+                    <p className="dashboard_moderator_parent_info_weigh">
+                      Mail :
+                    </p>
+                    <p>{parent.parent_mail}</p>
                   </div>
                   <div className="dashboard_moderator_parent_info">
                     <p className="dashboard_moderator_parent_info_weigh">
                       Téléphone :
                     </p>
-                    <p>{parent.phone}</p>
+                    <p>{parent.parent_phone}</p>
                   </div>
-
-                  <div className="dashboard_moderator_container_child">
-                    {parent.children.map((child, index) => (
-                      <div key={`${parent.id}-${child}`}>
-                        <p className="dashboard_moderator_parent_info_weigh">
-                          Enfant {index + 1} :{" "}
-                        </p>
-                        <p className="dashboard_moderator_parent_info">{child}</p>
-                      </div>
-                    ))}
+                  <div className="dashboard_moderator_parent_info">
+                    <p className="dashboard_moderator_parent_info_weigh">
+                      Adresse :
+                    </p>
+                    <p>{parent.parent_adress}</p>
                   </div>
                 </div>
               </div>
