@@ -85,3 +85,79 @@
 .nursery_details_page {
   margin-top: 5em;
 }
+@media screen and (min-width: 990px) {
+  .info_element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .color_h2 {
+    display: flex;
+    margin-left: 4%;
+  }
+  .rate {
+    display: flex;
+    justify-content: center;
+  }
+  .reservation_button_container {
+    display: flex;
+    justify-content: center;
+  }
+  .nursery_list_button {
+    width: 30%;
+  }
+  #nursery_detail_button {
+    margin-top: 3em;
+    margin-left: 0em;
+  }
+  .presentation_container {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact {
+    background-color: transparent;
+    justify-content: flex-end;
+    text-align: left;
+    margin-right: 20%;
+  }
+  .presentation {
+    text-align: left;
+    width: 56%;
+  }
+  .container_nursery_activities {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .img_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+  }
+  .secondary_img_container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+  }
+  .img_nursery {
+    width: 800px;
+    height: 310px;
+    object-fit: cover;
+  }
+  .secondary_img_nursery {
+    width: 400px;
+    height: 150px;
+    object-fit: cover;
+  }
+  .nursery_map_container {
+    height: 300px;
+    width: 300px;
+  }
+  .container_nursery_map_container {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin-right: 7%;
+  }
+}
