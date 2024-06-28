@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseriesSearch from "./pages/Platform/NurseriesSearch";
 import ParentAccount from "./pages/ParentAccount/ParentAccount";
+import ChildForm from "./pages/ChildForm/ChildForm";
 
 // router creation
 
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/ParentAccount",
         element: <ParentAccount />,
+      },
+      {
+        path: "/ChildForm",
+        element: <ChildForm />,
       },
     ],
   },
