@@ -31,7 +31,7 @@ function Footer() {
               </li>
               <li>
                 {" "}
-                <Link to="/">A propos</Link>
+                <Link to="/accueil">A propos</Link>
               </li>
             </ul>
           </div>
