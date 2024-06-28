@@ -75,7 +75,7 @@ function DashboardModeratorParents() {
                 >
                   <p>Voir le profil</p>
                 </div>
-                <div className="dashboard_moderator_paretn_delete">
+                <div className="dashboard_moderator_parent_delete">
                   <button type="button">Suspendre compte</button>
                 </div>
               </div>

@@ -44,7 +44,8 @@ function NurseriesAllRennes() {
               {allNurseries.map((nursery) => (
                 <NurseriesMini
                   key={nursery.nursery_id}
-                  name={nursery.nursery_id}
+                  id={nursery.nursery_id}
+                  name={nursery.nursery_name}
                   price={nursery.price}
                   image1={nursery.image1}
                   image2={nursery.image2}
