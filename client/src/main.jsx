@@ -19,26 +19,14 @@ import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
 import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
-import ContactPage from "./pages/Contact/ContactPage";
 
 // router creation
+
 const getDataAddresses = async () => {
   try {
-    const [lilleResponse, rennesResponse] = await Promise.all([
-      fetch("/addresses/lille-addresses.json"),
-      fetch("/addresses/rennes-addresses.json"),
-    ]);
-
-    if (!lilleResponse.ok || !rennesResponse.ok) {
-      throw new Error("One or both fetch requests failed");
-    }
-
-    const lilleData = await lilleResponse.json();
-    const rennesData = await rennesResponse.json();
-
-    const combinedData = [...lilleData, ...rennesData];
-
-    return combinedData;
+    const response = await fetch("/addresses/lille-addresses.json");
+    const data = await response.json();
+    return data;
   } catch (error) {
     console.error("Error fetching data: ", error);
     return [];
@@ -113,10 +101,48 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/moderator",
         element: <PageModeratorDashboard />,
-      },
-      {
-        path: "/contact",
-        element: <ContactPage />,
+        loader: async () => {
+          const [parentsResponse, nurseryResponse, bookingResponse] =
+            await Promise.all([
+              myAxios.get("/api/parent"),
+              myAxios.get("/api/nursery"),
+              myAxios.get("/api/booking-operation"),
+            ]);
+
+          return {
+            parents: parentsResponse.data,
+            nurseries: nurseryResponse.data,
+            booking: bookingResponse.data,
+          };
+        },
+        action: async ({ request }) => {
+          const formData = await request.formData();
+
+          if (formData.has("parent_id")) {
+            const parentId = formData.get("parent_id");
+            const response = await myAxios.post("/api/parent", {
+              parentId,
+            });
+            return redirect(`/parent/${response.data.insertId}`);
+          }
+
+          if (formData.has("nursery_id")) {
+            const nurseryId = formData.get("nursery_id");
+            const response = await myAxios.post("/api/nursery", {
+              nurseryId,
+            });
+            return redirect(`/nursery/${response.data.insertId}`);
+          }
+          if (formData.has("booking_operation_id")) {
+            const bookingId = formData.get("booking_operation_id");
+            const response = await myAxios.post("/api/booking-operation", {
+              bookingId,
+            });
+            return redirect(`/booking-operation/${response.data.insertId}`);
+          }
+
+          return null;
+        },
       },
     ],
   },
