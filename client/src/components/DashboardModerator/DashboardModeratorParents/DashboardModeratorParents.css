@@ -55,13 +55,13 @@
   scale: 105%;
 }
 
-.dashboard_moderator_paretn_delete {
+.dashboard_moderator_parent_delete {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.dashboard_moderator_paretn_delete button {
+.dashboard_moderator_parent_delete button {
   background-color: #ef3672;
   border: #ef3672 solid 1px;
   border-radius: 2em;
@@ -70,7 +70,7 @@
   color: white;
 }
 
-.dashboard_moderator_paretn_delete button:hover {
+.dashboard_moderator_parent_delete button:hover {
   scale: 110%;
 }
 
