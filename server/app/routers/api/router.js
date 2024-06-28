@@ -5,6 +5,7 @@ const router = express.Router();
 /* ************************************************************************* */
 // Import And Use Routers Here
 /* ************************************************************************* */
+
 const moderatorRouter = require("./moderator/router");
 
 router.use("/moderator", moderatorRouter);
@@ -32,6 +33,10 @@ router.use("/management-operation", managementOperationRouter);
 const bookingOperationRouter = require("./booking-operation/router");
 
 router.use("/booking-operation", bookingOperationRouter);
+
+const uploadRouter = require("./upload/router");
+
+router.use("/upload", uploadRouter);
 
 const nurseryRouter = require("./nursery/router");
 

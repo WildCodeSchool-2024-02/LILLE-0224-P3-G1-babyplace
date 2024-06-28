@@ -46,16 +46,6 @@ export default function NurseryRegisterForm() {
         )
       : [];
 
-  // États pour le mot de passe et la confirmation du mot de passe
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-  const handleConfirmPasswordChange = (event) => {
-    setConfirmPassword(event.target.value);
-  };
-
   // fonctions qui permettent de changer les states selon les données entrées par l'utilisateur
   const handleStreetNameChange = (e) => {
     setStreetNameInput(e.target.value);
@@ -68,6 +58,16 @@ export default function NurseryRegisterForm() {
 
   const handleStreetNumberChange = (e) => {
     setStreetNumber(e.target.value);
+  };
+
+  // États pour le mot de passe et la confirmation du mot de passe
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+  };
+  const handleConfirmPasswordChange = (event) => {
+    setConfirmPassword(event.target.value);
   };
 
   // gère le nombre d'activités
@@ -92,15 +92,42 @@ export default function NurseryRegisterForm() {
   const image3Ref = useRef();
   const aboutRef = useRef();
 
-  // Gestionnaire de soumission du formulaire
+  // fonction pour upload les images et les envoyer en back
+  const handleUpload = async (image) => {
+    const formData = new FormData();
+    formData.append("file", image);
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/upload`,
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+      const imageData = await response.json();
+      return `/assets/images${imageData.filePath}`;
+    } catch (error) {
+      console.error("Error uploading file:", error);
+      return null;
+    }
+  };
+
+  // fonction pour envoyer les données du formulaire crèche vers le back, créer une nouvelle crèche dans notre db (après avoir récupéré les images)
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const image1File = image1Ref.current.files[0];
+    const image2File = image2Ref.current.files[0];
+    const image3File = image3Ref.current.files[0];
+
     try {
-      // Appel à l'API pour créer une nouvelle crèche
+      const image1Path = await handleUpload(image1File);
+      const image2Path = await handleUpload(image2File);
+      const image3Path = await handleUpload(image3File);
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/nursery`,
         {
-          method: "post",
+          method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             nursery_name: nurseryNameRef.current.value,
@@ -113,30 +140,32 @@ export default function NurseryRegisterForm() {
             price: priceRef.current.value,
             nursery_phone: phoneNumberRef.current.value,
             nursery_mail: emailRef.current.value,
-            image1: image1Ref.current.value,
-            image2: image2Ref.current.value,
-            image3: image3Ref.current.value,
+            image1: image1Path,
+            image2: image2Path,
+            image3: image3Path,
             nursery_password: password,
             acitivy1: selectedActivities[0],
-            activity2: selectedActivities[1],
-            activity3: selectedActivities[2],
-            certification1: selectedCertifications[0],
-            certification2: selectedCertifications[1],
-            certification3: selectedCertifications[2],
+            activity2:
+              selectedActivities.length > 1 ? selectedActivities[1] : "",
+            activity3:
+              selectedActivities.length > 2 ? selectedActivities[2] : "",
+            certification1: selectedActivities[0],
+            certification2:
+              selectedActivities.length > 1 ? selectedActivities[1] : "",
+            certification3:
+              selectedActivities.length > 2 ? selectedActivities[2] : "",
             about: aboutRef.current.value,
           }),
         }
       );
 
-      // Redirection vers la page de connexion si la création réussit
+      // redirection vers la page dashboard de la crèche
       if (response.status === 201) {
         navigate("/dashboard/pro");
       } else {
-        // Log des détails de la réponse en cas d'échec
         console.info(response);
       }
     } catch (err) {
-      // Log des erreurs possibles
       console.error(err);
     }
   };
@@ -301,16 +330,8 @@ export default function NurseryRegisterForm() {
                 className="input_nursery_form"
                 ref={aboutRef}
               />
-              €
             </label>
-            <label htmlFor="nursery_about_form">
-              {" "}
-              <div> Décrivez votre crèche en quelques lignes</div>
-              <textarea
-                id="nursery_about_form"
-                className="input_nursery_form"
-              />
-            </label>
+
             <div>Quelles activités proposez-vous ? (3 maximum)</div>
             <div className="check_box_container_register">
               {[
