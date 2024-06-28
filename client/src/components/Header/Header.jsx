@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="the_header">
       <div className="icon_header">
-        <Link to="/">
+        <Link to="/accueil">
           <img
             id="logo_header"
             src="../../../public/assets/images/logo.svg"
@@ -37,7 +37,6 @@ function Header() {
             alt="logo"
           />
         </Link>
-
       </div>
     </div>
   );

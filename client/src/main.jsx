@@ -19,6 +19,7 @@ import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
 import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
+import ContactPage from "./pages/Contact/ContactPage";
 
 // router creation
 
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <PageLoginPro />,
       },
       {
         path: "/creche/lille",
@@ -91,13 +92,14 @@ const router = createBrowserRouter([
         loader: getDataAddresses,
       },
       {
-        path: "/connexion",
-        element: <PageLoginPro />,
+        path: "/accueil",
+        element: <Home />,
       },
       {
         path: "/dashboard/pro",
         element: <PageProDashboard />,
       },
+      { path: "/contact", element: <ContactPage /> },
       {
         path: "/dashboard/moderator",
         element: <PageModeratorDashboard />,
