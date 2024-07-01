@@ -15,21 +15,8 @@ function Header() {
       </div>
 
       <div className="header_search_and_nav">
-        <img
-          id="loop_header"
-          className="icons_header"
-          src="../../../public/assets/images/loop.png"
-          alt="logo"
-        />
-        <input
-          className="input_reasearch"
-          id="search_header"
-          type="search"
-          name="search-form"
-          placeholder="Rechercher"
-        />
         <Link to="/dashboard" className="button_header">
-          Profil{" "}
+          Mon compte{" "}
           <img
             id="go_header"
             className="images_header"
