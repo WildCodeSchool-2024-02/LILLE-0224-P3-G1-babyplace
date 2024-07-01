@@ -350,10 +350,14 @@ class NurserySeeder extends AbstractSeeder {
     ];
 
     nurseries.forEach((nursery) => {
-      this.insert(nursery);
+      const nurseryWithRefName = {
+        ...nursery,
+        refName: `nursery_${nursery.nursery_mail}`,
+      };
+
+      this.insert(nurseryWithRefName);
     });
   }
 }
 
-// Export the NurserySeeder class
 module.exports = NurserySeeder;

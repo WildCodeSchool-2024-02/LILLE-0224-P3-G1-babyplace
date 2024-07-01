@@ -35,5 +35,5 @@ class OperationManagementSeeder extends AbstractSeeder {
   }
 }
 
-// Export the ModeratorSeeder class
+// Export the OperationManagementSeeder class
 module.exports = OperationManagementSeeder;
