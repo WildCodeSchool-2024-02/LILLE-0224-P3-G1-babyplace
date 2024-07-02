@@ -30,13 +30,13 @@ const hashPassword = async (req, res, next) => {
 
     // Add the hashed password and remove the original _password
     if (parent_password) {
-      req.body.parenthashed_password = hashedPassword;
+      req.body.parent_hashedPassword = hashedPassword;
       delete req.body.parent_password;
     } else if (moderator_password) {
-      req.body.moderator_hashedpassword = hashedPassword;
+      req.body.moderator_hashedPassword = hashedPassword;
       delete req.body.moderator_password;
     } else if (nursery_password) {
-      req.body.nursery_hashedpassword = hashedPassword;
+      req.body.nursery_hashedPassword = hashedPassword;
       delete req.body.nursery_password;
     }
 
@@ -46,4 +46,4 @@ const hashPassword = async (req, res, next) => {
   }
 };
 
-module.ex_ports = hashPassword;
+module.exports = hashPassword;
