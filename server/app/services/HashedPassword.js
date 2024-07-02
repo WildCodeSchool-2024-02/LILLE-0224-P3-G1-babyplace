@@ -1,7 +1,8 @@
+/* eslint-disable camelcase */
 const argon2 = require("argon2");
 
 const hashingOptions = {
-  type: argon2.argon2id,
+  ty_pe: argon2.argon2id,
   memoryCost: 19 * 2 ** 10,
   timeCost: 2,
   parallelism: 1,
@@ -10,16 +11,16 @@ const hashingOptions = {
 // eslint-disable-next-line consistent-return
 const hashPassword = async (req, res, next) => {
   try {
-    const { parentPassword, moderatorPassword, nurseryPassword } = req.body;
+    const { parent_password, moderator_password, nursery_password } = req.body;
 
-    // Hashed password verification
+    // Hashed _password verification
     let passwordToHash;
-    if (parentPassword) {
-      passwordToHash = parentPassword;
-    } else if (moderatorPassword) {
-      passwordToHash = moderatorPassword;
-    } else if (nurseryPassword) {
-      passwordToHash = nurseryPassword;
+    if (parent_password) {
+      passwordToHash = parent_password;
+    } else if (moderator_password) {
+      passwordToHash = moderator_password;
+    } else if (nursery_password) {
+      passwordToHash = nursery_password;
     } else {
       // No password entered
       return res.status(400).send("No password provided");
@@ -27,16 +28,16 @@ const hashPassword = async (req, res, next) => {
 
     const hashedPassword = await argon2.hash(passwordToHash, hashingOptions);
 
-    // Add the hashed password and remove the original password
-    if (parentPassword) {
-      req.body.parent_hashedPassword = hashedPassword;
-      delete req.body.parentPassword;
-    } else if (moderatorPassword) {
-      req.body.moderator_hashedPassword = hashedPassword;
-      delete req.body.moderatorPassword;
-    } else if (nurseryPassword) {
-      req.body.nursery_hashedPassword = hashedPassword;
-      delete req.body.nurseryPassword;
+    // Add the hashed password and remove the original _password
+    if (parent_password) {
+      req.body.parenthashed_password = hashedPassword;
+      delete req.body.parent_password;
+    } else if (moderator_password) {
+      req.body.moderator_hashedpassword = hashedPassword;
+      delete req.body.moderator_password;
+    } else if (nursery_password) {
+      req.body.nursery_hashedpassword = hashedPassword;
+      delete req.body.nursery_password;
     }
 
     next();
@@ -45,4 +46,4 @@ const hashPassword = async (req, res, next) => {
   }
 };
 
-module.exports = hashPassword;
+module.ex_ports = hashPassword;
