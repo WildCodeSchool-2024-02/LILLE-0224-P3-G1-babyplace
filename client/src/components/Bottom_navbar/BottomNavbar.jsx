@@ -35,7 +35,7 @@ function BottomNavbar() {
     <div className="all_bottom_navbar">
       <div className="bottom_navbar">
         <div className="all_image_bottom">
-          <Link to="/" onClick={handleHomeButton}>
+          <Link to="/accueil" onClick={handleHomeButton}>
             {homeButton ? (
               <img alt="home_nav" src={homeSVGActive} />
             ) : (
