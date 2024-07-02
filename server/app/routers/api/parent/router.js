@@ -15,8 +15,13 @@ router.get("/", browse);
 // Route to get a specific parent by ID
 router.get("/:id", read);
 
+const hashPassword = require("../../../services/HashedPassword");
 // Route to add a new parent
-router.post("/", add);
+router.post("/", hashPassword, add);
+
+const login = require("../../../controllers/authentificationActions");
+// ajouter les middleware dans tous les login pour verifier le mdp.
+router.post("/login", login);
 
 /* ************************************************************************* */
 

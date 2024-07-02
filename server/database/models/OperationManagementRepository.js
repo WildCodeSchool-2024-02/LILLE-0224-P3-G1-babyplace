@@ -41,18 +41,29 @@ class OperationManagementRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing managed operation
 
-  // async update(management_operation) {
-  //   ...
-  // }
+  async update(managedOperation) {
+    // Execute the SQL UPDATE query to update an operation from the 'operation_management' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set date = ?, type = ?, where operation_management_id = ?`,
+      [managedOperation.operation_management_date, managedOperation.type]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a managed operation by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete an operation from the 'operation_management' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where operation_management_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = OperationManagementRepository;

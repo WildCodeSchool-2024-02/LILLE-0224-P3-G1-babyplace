@@ -16,6 +16,7 @@ router.get("/", browse);
 router.get("/:id", read);
 
 // Route to add a new account
+//  TODO // ajouter la fonction middleware de hashage de password pour enregistrer un mdp crypté dans le BDD;
 router.post("/", add);
 
 /* ************************************************************************* */
