@@ -2,7 +2,7 @@ const argon2 = require("argon2");
 const tables = require("../../database/tables");
 
 const login = async (req, res) => {
-  // je vais recuperer le body de la requete d'authentification
+  // Retrieve the info of the body
   try {
     const { role } = req.body;
 
