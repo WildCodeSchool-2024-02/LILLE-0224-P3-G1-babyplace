@@ -34,7 +34,6 @@ const read = async (req, res, next) => {
   }
 };
 
-// todo creer une nouvelle fonction get by email
 const readByEmail = async (req, res, next) => {
   try {
     // Fetch a specific parent from the database based on the provided ID
@@ -46,7 +45,6 @@ const readByEmail = async (req, res, next) => {
       res.sendStatus(404);
     } else {
       res.status(201).json(parent);
-      //   { nom: "toto", prenom: "richard", email: "toto@richard.com", mdp: "jaimeleketchupdu59"...}
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
