@@ -20,7 +20,6 @@ const hashPassword = require("../../../services/HashedPassword");
 router.post("/", hashPassword, add);
 
 const login = require("../../../controllers/authentificationActions");
-// ajouter les middleware dans tous les login pour verifier le mdp.
 router.post("/login", login);
 
 /* ************************************************************************* */
