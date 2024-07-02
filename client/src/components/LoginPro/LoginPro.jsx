@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPro.css";
 
 function LoginPro() {
+  const navigate = useNavigate();
   const [accountButton, setAccountButton] = useState(true);
 
   const handleAccountButton = () => {
@@ -17,6 +18,35 @@ function LoginPro() {
 
   const handleRegisterClick = () => {
     setIsLogin(false);
+  };
+
+  const emailWithRef = useRef();
+  const passwordWithRef = useRef();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            uerMail: emailWithRef.current.value,
+            parent_password: passwordWithRef.current.value,
+          }),
+        }
+      );
+
+      // redirection vers la page dashboard de la crèche
+      if (response.status === 201) {
+        navigate("/dashboard");
+      } else {
+        console.info(response);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   return (
@@ -90,12 +120,22 @@ function LoginPro() {
             </div>
             <h3>Se connecter</h3>
             <div className="input_login_pro">
-              <input type="text" placeholder="adresse email" />
-              <input type="password" placeholder="mot de passe" />
+              <input
+                type="text"
+                placeholder="adresse email"
+                ref={emailWithRef}
+              />
+              <input
+                type="password"
+                placeholder="mot de passe"
+                ref={passwordWithRef}
+              />
             </div>
-            <Link to="/accueil">
-              <button type="button">Connexion</button>
-            </Link>
+
+            <button type="button" onClick={handleSubmit}>
+              Connexion
+            </button>
+
             {accountButton && (
               <Link to="/inscription/parent" onClick={handleAccountButton}>
                 <p>Vous n'avez pas encore de compte ?</p>
