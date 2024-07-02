@@ -1,4 +1,4 @@
-.accueil_text {
+accueil_text {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,34 +18,28 @@
   color: #212353;
   width: 80%;
 }
-
 .accueil_image {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   flex-direction: column;
 }
-
 .image_contenair {
   display: flex;
 }
-
 .accueil_image img:nth-child(1),
 .accueil_image img:nth-child(3) {
   margin-right: 10em;
 }
-
 .accueil_image img:nth-child(2) {
   margin-top: 1em;
 }
-
 .all_forimage {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 .forimages_container {
   display: flex;
   flex-direction: column;
@@ -54,20 +48,16 @@
   align-items: center;
   width: 100%;
 }
-
 .forimages_container img {
   width: 200vw;
 }
-
 .one_image {
   margin-bottom: 2em;
 }
-
 .forimages_container img {
   display: block;
   width: 250px;
 }
-
 .text_structure {
   margin-left: 10em;
   position: absolute;
@@ -78,7 +68,6 @@
   margin-top: 10em;
   margin-left: 20em;
 }
-
 .title_structure {
   margin-right: 5em;
   margin-bottom: 10em;
@@ -88,33 +77,54 @@
   margin-left: 12em;
   font-weight: 700;
 }
-
 #agenda_structure {
-  margin-bottom: 10em;
+  margin-bottom: 11em;
 }
-
 #text_structure_agenda {
-  margin-top: 11em;
+  margin-top: 12em;
 }
-
 @media screen and (min-width: 990px) {
   .all_forimage {
     flex-direction: row;
     flex-wrap: wrap;
+    background-image: url("/assets/images/bg2_home.png");
+    background-size: cover;
+
+    background-repeat: no-repeat;
   }
   .forimages_container {
     width: 50%;
   }
-
   .forimages_container img {
     width: 450px;
   }
-
   .title_structure {
     font-size: 1.2em;
   }
-
   .text_structure {
     font-size: 1em;
+  }
+  #text_structure_agenda {
+    margin-top: 13em;
+  }
+  #agenda_structure {
+    margin-bottom: 12em;
+  }
+  #marketing_activity {
+    margin-right: 7.5em;
+  }
+  #gestion_home {
+    margin-left: 12.5em;
+    margin-top: 2em;
+  }
+  #alertee_structure {
+    margin-left: 12.5em;
+    margin-top: 2em;
+  }
+  #left_image {
+    align-items: end;
+  }
+  #right_image {
+    align-items: start;
   }
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Parent() {
   return (
     <div className="all_parent">
-      <h2>Vous êtes parent ?</h2>
+      <h2>Découvrez les crèches proches de chez vous</h2>
 
       <div className="image_container">
         <img
