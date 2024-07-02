@@ -42,7 +42,7 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 0,
         arachides: 0,
         mollusques: 1,
-        autres: "Grasses",
+        autres: null,
         child_id: this.getRef("child_Styles").insertId,
       },
       {
@@ -78,7 +78,7 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 1,
         arachides: 0,
         mollusques: 0,
-        autres: "Dust",
+        autres: "Acariens",
         child_id: this.getRef("child_Goujon").insertId,
       },
       {
@@ -96,7 +96,7 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 0,
         arachides: 0,
         mollusques: 1,
-        autres: "Bee stings",
+        autres: "Piqures d'abeille",
         child_id: this.getRef("child_Swift").insertId,
       },
       // Continuez avec les autres enfants...

@@ -1,0 +1,27 @@
+#search_dashboard_moderator {
+  border: #7e72f2 solid 1px;
+  border-radius: 1em;
+  width: 20em;
+  height: 3em;
+  padding-left: 1em;
+  color: #7e72f2;
+  background-image: url("/public/assets/images/loop.png");
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+#search_dashboard_moderator:focus {
+  border: #7e72f2 solid 1px;
+  outline: none;
+}
+
+#search_dashboard_moderator::-webkit-input-placeholder {
+  color: #7e72f2;
+}
+
+#search_dashboard_moderator::-webkit-search-decoration,
+#search_dashboard_moderator::-webkit-search-cancel-button,
+#search_dashboard_moderator::-webkit-search-results-button,
+#search_dashboard_moderator::-webkit-search-results-decoration {
+  display: none;
+}

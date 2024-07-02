@@ -5,7 +5,7 @@ function Header() {
   return (
     <div className="the_header">
       <div className="icon_header">
-        <Link to="/">
+        <Link to="/accueil">
           <img
             id="logo_header"
             src="../../../public/assets/images/logo.svg"
@@ -15,21 +15,8 @@ function Header() {
       </div>
 
       <div className="header_search_and_nav">
-        <img
-          id="loop_header"
-          className="icons_header"
-          src="../../../public/assets/images/loop.png"
-          alt="logo"
-        />
-        <input
-          className="input_reasearch"
-          id="search_header"
-          type="search"
-          name="search-form"
-          placeholder="Rechercher"
-        />
         <Link to="/dashboard" className="button_header">
-          Profil{" "}
+          Mon compte{" "}
           <img
             id="go_header"
             className="images_header"
@@ -37,7 +24,6 @@ function Header() {
             alt="logo"
           />
         </Link>
-
       </div>
     </div>
   );

@@ -1,0 +1,29 @@
+.buttons_select_categories {
+  margin-top: 6em;
+}
+
+.buttons_select_categories {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.buttons_select_categories button {
+  border-radius: 5em;
+  width: 15em;
+  color: white;
+  font-size: 1em;
+  font-weight: 600;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: #c3c3c3;
+  border: solid 2px #c3c3c3;
+}
+.buttons_select_categories button:hover {
+  border: solid 2px #f272d2;
+  scale: 110%;
+}
+
+.buttons_select_categories button.active {
+  background-color: #7e72f2;
+  border: solid 2px #7e72f2;
+}

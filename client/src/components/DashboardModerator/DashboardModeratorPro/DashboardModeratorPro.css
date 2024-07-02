@@ -1,0 +1,17 @@
+.dashboard_moderator_pro_select_search {
+  margin-top: 2em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dashboard_moderator_pro_h1 {
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+  margin-bottom: 2em;
+}
+
+.dashboard_moderator_pro_h1 h1 {
+  color: #7e72f2;
+  font-size: 3em;
+}

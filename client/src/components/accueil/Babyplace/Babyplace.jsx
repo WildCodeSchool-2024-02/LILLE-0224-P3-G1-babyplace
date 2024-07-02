@@ -9,7 +9,7 @@ function Babyplace() {
           <div className="para_babyplace">
             <p>
               Gagnez du temps en{" "}
-              <span className="bold_text">omptimisant votre agenda</span> au
+              <span className="bold_text">optimisant votre agenda</span> au
               quotidien.
             </p>
             <p>

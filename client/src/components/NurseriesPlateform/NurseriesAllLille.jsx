@@ -1,17 +1,12 @@
 import { useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import NurseriesMapLille from "./NurseriesMapLille";
 import NurseriesMini from "./NurseriesMini";
-import NurseriesMapLille from "./NuseriesMapLille";
+
 import "./nurseriesAll.css";
 
 function NurseriesAllLille() {
-  const [allNurseries, setAllNurseries] = useState([]);
-
-  const getNurseriesLille = async () => {
-    const result = await fetch("http://localhost:3310/api/nursery?city=Lille");
-    const data = await result.json();
-    setAllNurseries(data);
-  };
-
+  const allNurseries = useLoaderData();
   const [viewList, setViewList] = useState(true);
 
   const handleViewList = () => {
@@ -25,9 +20,6 @@ function NurseriesAllLille() {
   return (
     <>
       <h2 className="nurseries_all_city_title">Lille</h2>
-      <button type="button" onClick={getNurseriesLille}>
-        Letsgo
-      </button>
       <div className="mobile_nurseries_all">
         <div className="nurseries_all_buttons_container">
           <button
@@ -45,13 +37,14 @@ function NurseriesAllLille() {
             Carte
           </button>
         </div>
-        {viewList ? (
+        {viewList && allNurseries ? (
           <>
             <div className="line_list_section"> </div>
             <div className="nurseries_all_list_section">
               {allNurseries.map((nursery) => (
                 <NurseriesMini
-                  key={nursery.id}
+                  key={nursery.nursery_id}
+                  id={nursery.nursery_id}
                   name={nursery.nursery_name}
                   price={nursery.price}
                   image1={nursery.image1}
@@ -73,7 +66,8 @@ function NurseriesAllLille() {
           <div className="nurseries_all_list_desktop">
             {allNurseries.map((nursery) => (
               <NurseriesMini
-                key={nursery.id}
+                key={nursery.nursery_id}
+                id={nursery.nursery_id}
                 name={nursery.nursery_name}
                 price={nursery.price}
                 image1={nursery.image1}

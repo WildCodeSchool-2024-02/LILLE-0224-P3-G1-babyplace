@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import NurseriesCardCalender from "./NurseriesCardCalender";
 import "./nurseriesAll.css";
 
-function NurseriesMini({ name, image1, price }) {
+function NurseriesMini({ id, name, image1, price }) {
   return (
     <div className="nursery_list_card">
       <h3 className="nursery_list_title">{name}</h3>
@@ -11,7 +11,7 @@ function NurseriesMini({ name, image1, price }) {
       <div className="nursery_list_desc">
         <p className="nursery_list_price">Tarif : {price} €</p>
         <NurseriesCardCalender />
-        <Link to="/creche/details">
+        <Link to={`/creche/${id}`}>
           {" "}
           <button type="button" className="nursery_list_button">
             Réserver &gt;
@@ -23,6 +23,7 @@ function NurseriesMini({ name, image1, price }) {
 }
 
 NurseriesMini.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   image1: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,

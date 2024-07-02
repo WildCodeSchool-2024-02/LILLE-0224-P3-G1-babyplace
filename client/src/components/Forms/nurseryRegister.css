@@ -4,20 +4,19 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: start;
-  margin-top: 7em;
+  align-items: center;
 }
 
 /* deocrative image */
-.form-nursery-page img {
-  width: 40%;
-  height: 100vh;
+.nursery_form_img {
+  width: 700px;
+  height: 1800px;
   object-fit: cover;
 }
 /* whole form */
 
 .nursery_form_P1 form {
-  margin-left: 20%;
+  margin-left: 10%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -25,12 +24,25 @@
   gap: 1em;
   width: 100%;
 }
-
-/* tiltles */
-.nursery_form_P1 h2 {
+.validate_button_nursery_form {
+  background-color: var(--second-color);
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 16px 31px;
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-left: 320px;
+  margin-top: 3em;
+}
+/* titles */
+.nursery_title_form {
   text-align: center;
   color: var(--first-color);
-  margin-bottom: 2em;
+  margin-top: 2em;
+  font-size: 3em;
 }
 
 .nursery_subtitles_form {
@@ -73,12 +85,36 @@
   margin-right: 1em;
 }
 
+.images_input_container input[type="file"]::file-selector-button {
+  border: none;
+  background: var(--first-color);
+  padding: 1em;
+  border-radius: 25px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.images_input_container input[type="file"] {
+  border: 2px solid var(--first-color);
+  border-radius: 25px;
+  padding-right: 5em;
+  margin-left: 1em;
+}
+.images_input_container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  margin-top: 1em;
+}
+
 /* boxes */
 .box_choices_nursery_form {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: 2em;
+  margin: 1em;
 }
 .box_choices_nursery_form input {
   margin: 1em;
@@ -90,7 +126,7 @@
   flex-wrap: wrap;
   height: 20vh;
   gap: 1em;
-  margin-left: 5vw;
+  margin-left: 3vw;
   margin-top: 1em;
   margin-bottom: 1em;
 }
@@ -107,19 +143,29 @@
 }
 
 @media screen and (max-width: 990px) {
+  .images_input_container input[type="file"] {
+    margin-top: 1em;
+  }
+  .nursery_title_form {
+    text-align: center;
+    color: var(--first-color);
+    margin-bottom: 0;
+    margin-top: 2em;
+    font-size: 3em;
+  }
   .form_nursery_page img {
     display: none;
   }
   .nursery_form_P1 form {
-    margin-left: 1em;
+    margin: 0;
+    padding-left: 20px;
+    width: 90%;
   }
 
   .input_nursery_form {
-    width: 100vw;
+    margin: 0;
+    width: 80vw;
     padding: 0.5em;
-    border-radius: 10px;
-    border: 1px solid grey;
-    margin-top: 1em;
   }
   .check_box_container_register {
     display: flex;
@@ -128,6 +174,11 @@
     flex-wrap: wrap;
     height: fit-content;
     gap: 1em;
-    margin: 0;
+    margin-left: 30px;
+  }
+
+  .validate_button_nursery_form {
+    margin-left: 30%;
+    margin-top: 1em;
   }
 }

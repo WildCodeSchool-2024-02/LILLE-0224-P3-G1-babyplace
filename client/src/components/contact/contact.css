@@ -1,0 +1,50 @@
+.contact_content {
+  margin-top: 7em;
+  text-align: center;
+  min-height: 60vh;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.contact_content h2 {
+  color: var(--first-color);
+  margin-bottom: 1em;
+  font-size: 3em;
+}
+
+.form_contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.form_contact label {
+  font-weight: bold;
+  margin: 1em;
+}
+.select_contact,
+.textarea_contact {
+  border-radius: 25px;
+  padding: 1em;
+  border: 2px solid var(--first-color);
+  font-family: "Red Hat Display";
+}
+
+.textarea_contact {
+  width: 70%;
+}
+
+#button_contact {
+  margin-top: 1em;
+}
+
+@media screen and (max-width: 992px) {
+  .textarea_contact {
+    width: 90%;
+  }
+  #button_contact {
+    margin-left: 1em;
+  }
+}
