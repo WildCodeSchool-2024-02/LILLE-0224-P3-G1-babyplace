@@ -41,18 +41,29 @@ class AccountRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing account
 
-  // async update(account) {
-  //   ...
-  // }
+  async update(account) {
+    // Execute the SQL UPDATE query to update an account from the 'account' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set role = ?, where account_id = ?`,
+      [account.role]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a account by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete an account from the 'account' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where account_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = AccountRepository;
