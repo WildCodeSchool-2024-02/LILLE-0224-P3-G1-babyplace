@@ -5,12 +5,16 @@ import "./LoginPro.css";
 function LoginPro() {
   const navigate = useNavigate();
   const [accountButton, setAccountButton] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+
+  const emailWithRef = useRef();
+  const emailWithRefNursery = useRef();
+  const passwordWithRefNursery = useRef();
+  const passwordWithRef = useRef();
 
   const handleAccountButton = () => {
     setAccountButton(true);
   };
-
-  const [isLogin, setIsLogin] = useState(true);
 
   const handleLoginClick = () => {
     setIsLogin(true);
@@ -20,32 +24,60 @@ function LoginPro() {
     setIsLogin(false);
   };
 
-  const emailWithRef = useRef();
-  const passwordWithRef = useRef();
-  const handleSubmit = async (event) => {
+  const handleSubmitParent = async (event) => {
     event.preventDefault();
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/login`,
+        `${import.meta.env.VITE_API_URL}/api/parent/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            uerMail: emailWithRef.current.value,
+            role: "parent",
+            parent_mail: emailWithRef.current.value,
             parent_password: passwordWithRef.current.value,
           }),
         }
       );
 
-      // redirection vers la page dashboard de la crèche
-      if (response.status === 201) {
-        navigate("/dashboard");
+      const data = await response.json();
+
+      if (response.status === 200) {
+        navigate("/dashboard", { state: { user: data.user } });
       } else {
-        console.info(response);
+        console.error(data.message || "Une erreur s'est produite dans le 200");
       }
     } catch (err) {
-      console.error(err);
+      console.error("Une erreur s'est produite ailleurs :", err);
+    }
+  };
+  const handleSubmitNursery = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/nursery/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "nursery",
+            nursery_mail: emailWithRefNursery.current.value,
+            nursery_password: passwordWithRefNursery.current.value,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        navigate("/dashboard/pro", { state: { user: data.user } });
+      } else {
+        console.error(data.message || "Une erreur s'est produite dans le 200");
+      }
+    } catch (err) {
+      console.error("Une erreur s'est produite ailleurs :", err);
     }
   };
 
@@ -56,10 +88,10 @@ function LoginPro() {
         <p>
           Bienvenue sur Babyplace, votre plateforme de mise en relation entre
           parents et crèches.{" "}
-          <p style={{ color: "var(--first-color)", fontWeight: "bold" }}>
-            Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
-            là !
-          </p>
+        </p>
+        <p style={{ color: "var(--first-color)", fontWeight: "bold" }}>
+          Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
+          là !
         </p>
         <img src="/assets/images/image3_homebgremoved.png" alt="home" />
         <p style={{ marginTop: "5em" }}>
@@ -92,12 +124,22 @@ function LoginPro() {
             </div>
             <h3>Se connecter</h3>
             <div className="input_login_pro">
-              <input type="text" placeholder="adresse email" />
-              <input type="password" placeholder="mot de passe" />
+              <input
+                type="text"
+                placeholder="adresse email"
+                ref={emailWithRefNursery}
+              />
+              <input
+                type="password"
+                placeholder="mot de passe"
+                ref={passwordWithRefNursery}
+              />
             </div>
-            <Link to="/accueil">
-              <button type="button">Connexion</button>
-            </Link>
+
+            <button type="button" onClick={handleSubmitNursery}>
+              Connexion
+            </button>
+
             {accountButton && (
               <Link to="/inscription/creche" onClick={handleAccountButton}>
                 <p>Vous n'avez pas encore de compte ?</p>
@@ -132,7 +174,7 @@ function LoginPro() {
               />
             </div>
 
-            <button type="button" onClick={handleSubmit}>
+            <button type="button" onClick={handleSubmitParent}>
               Connexion
             </button>
 
