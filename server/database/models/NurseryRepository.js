@@ -27,7 +27,7 @@ class NurseryRepository extends AbstractRepository {
         nursery.image1,
         nursery.image2,
         nursery.image3,
-        nursery.nursery_password,
+        nursery.nursery_hashedPassword,
         nursery.activity1,
         nursery.activity2,
         nursery.activity3,
@@ -55,7 +55,6 @@ class NurseryRepository extends AbstractRepository {
     // Execute the SQL SELECT query to retrieve a specific nursery by its ID
     const [rows] = await this.database.query(
       `select * from ${this.table} where nursery_id = ?`,
-
       [id]
     );
 
@@ -64,18 +63,50 @@ class NurseryRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing nursery
 
-  // async update(nursery) {
-  //   ...
-  // }
+  async update(nursery) {
+    // Execute the SQL UPDATE query to update a nursery from the 'nursery' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set nursery_name = ?, nursery_street = ?, nursery_street_number = ?, latitude = ?, longitude = ?, city = ?, capacity = ?, price = ?, nursery_phone = ?, nursery_mail = ?, image1 = ?, image2 = ?, image3 = ?, nursery_password = ?, activity1 = ?, activity2 = ?, activity3 = ?, certification1 = ?, certification2 = ?, certification3 = ?,  where account_id = ?`,
+      [
+        nursery.nursery_name,
+        nursery.nursery_street,
+        nursery.nursery_street_number,
+        nursery.latitude,
+        nursery.longitude,
+        nursery.city,
+        nursery.capacity,
+        nursery.price,
+        nursery.nursery_phone,
+        nursery.nursery_mail,
+        nursery.image1,
+        nursery.image2,
+        nursery.image3,
+        nursery.nursery_password,
+        nursery.activity1,
+        nursery.activity2,
+        nursery.activity3,
+        nursery.certification1,
+        nursery.certification2,
+        nursery.certification3,
+      ]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a nursery by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a nursery from the 'nursery' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where nursery_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = NurseryRepository;

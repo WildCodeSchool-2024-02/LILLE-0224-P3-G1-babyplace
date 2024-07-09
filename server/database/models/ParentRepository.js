@@ -19,7 +19,7 @@ class ParentRepository extends AbstractRepository {
         parent.parent_adress,
         parent.parent_phone,
         parent.parent_mail,
-        parent.parent_password,
+        parent.parent_hashedPassword,
       ]
     );
 
@@ -278,6 +278,17 @@ class ParentRepository extends AbstractRepository {
     return rows;
   }
 
+  async readByEmail(email) {
+    // Execute the SQL SELECT query to retrieve a specific parent by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where parent_mail = ?`,
+      [email]
+    );
+
+    // Return the first row of the result, which represents the parent
+    return rows[0];
+  }
+
   async readAll() {
     const parents = await this.readParentsAndChildren();
     const bookings = await this.readBookings();
@@ -330,18 +341,34 @@ class ParentRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing parent
+  async update(parent) {
+    // Execute the SQL UPDATE query to update a parent from the 'parent' table
+    const [rows] = await this.database.query(
+      `update ${this.table}set firstname = ?, lastname = ?, adress = ?, phone = ?, mail = ?, password = ? where parent_id = ?`,
+      [
+        parent.parent_firstname,
+        parent.parent_lastname,
+        parent.parent_adress,
+        parent.parent_phone,
+        parent.parent_mail,
+        parent.parent_password,
+      ]
+    );
 
-  // async update(parent) {
-  //   ...
-  // }
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a parent by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a parent from the 'parent' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where parent_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
-
 module.exports = ParentRepository;

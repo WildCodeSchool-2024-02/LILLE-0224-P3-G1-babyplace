@@ -355,10 +355,9 @@ class NurserySeeder extends AbstractSeeder {
         refName: `nursery_${nursery.nursery_mail}`,
       };
 
-      this.insert(nurseryWithRefName); // insert into parent(mail) values (?)
+      this.insert(nurseryWithRefName);
     });
   }
 }
 
-// Export the NurserySeeder class
 module.exports = NurserySeeder;
