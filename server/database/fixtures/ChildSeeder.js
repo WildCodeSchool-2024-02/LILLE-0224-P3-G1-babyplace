@@ -11,19 +11,19 @@ class ChildSeeder extends AbstractSeeder {
     const children = [
       {
         child_firstname: "Emilie",
-        child_lastname: "Roland",
+        child_lastname: "Lelouche",
         child_birth: "2023-06-17",
         walk_status: 1,
         clean_status: 0,
-        parent_id: this.getRef("parent_thierry.roland@gmail.com").insertId,
+        parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
       },
       {
         child_firstname: "Morgan",
-        child_lastname: "Styles",
+        child_lastname: "Lelouche",
         child_birth: "2023-08-24",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_harry.styles@gmail.com").insertId,
+        parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
       },
       {
         child_firstname: "Benoit",
@@ -33,6 +33,14 @@ class ChildSeeder extends AbstractSeeder {
         clean_status: 1,
         parent_id: this.getRef("parent_georges.rush.st-pierre@gmail.com")
           .insertId,
+      },
+      {
+        child_firstname: "Hannah",
+        child_lastname: "Styles",
+        child_birth: "2023-05-28",
+        walk_status: 0,
+        clean_status: 0,
+        parent_id: this.getRef("parent_harry.styles@gmail.com").insertId,
       },
       {
         child_firstname: "Elias",
@@ -52,11 +60,11 @@ class ChildSeeder extends AbstractSeeder {
       },
       {
         child_firstname: "Matheo",
-        child_lastname: "Lelouche",
+        child_lastname: "Roland",
         child_birth: "2023-07-22",
         walk_status: 0,
         clean_status: 1,
-        parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
+        parent_id: this.getRef("parent_thierry.roland@gmail.com").insertId,
       },
       {
         child_firstname: "Bob",
@@ -175,7 +183,7 @@ class ChildSeeder extends AbstractSeeder {
     children.forEach((child) => {
       const childWithRefName = {
         ...child,
-        refName: `child_${child.child_lastname}`,
+        refName: `child_${child.child_firstname}`,
       };
 
       this.insert(childWithRefName); // insert into child(lastname) values (?)

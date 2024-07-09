@@ -20,6 +20,7 @@ const hashPassword = require("../../../services/HashedPassword");
 router.post("/", hashPassword, add);
 
 const login = require("../../../controllers/authentificationActions");
+
 router.post("/login", login);
 
 /* ************************************************************************* */

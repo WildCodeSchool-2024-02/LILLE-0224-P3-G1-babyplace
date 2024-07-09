@@ -1,13 +1,9 @@
-// Import Faker library for generating fake data
-const { faker } = require("@faker-js/faker");
-
 // Import database client
 const database = require("../client");
 
 // Declare an object to store created objects from their names
 const refs = {};
 
-// Provide faker access through AbstractSeed class
 class AbstractSeeder {
   constructor({ table, truncate = true, dependencies = [] }) {
     // thx https://www.codeheroes.fr/2017/11/08/js-classes-abstraites-et-interfaces/
@@ -25,7 +21,6 @@ class AbstractSeeder {
 
     this.promises = [];
 
-    this.faker = faker;
     this.refs = refs;
   }
 

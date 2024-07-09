@@ -87,7 +87,7 @@
   .all_parent {
     background-color: transparent;
     background-image: url("/assets/images/backgd_accueil.png");
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     border: 000;
   }

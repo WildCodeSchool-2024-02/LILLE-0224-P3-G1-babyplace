@@ -1,5 +1,6 @@
 CREATE TABLE moderator (
   moderator_id int NOT NULL AUTO_INCREMENT,
+  role  varchar(50) DEFAULT 'moderator',
   moderator_mail varchar(50) UNIQUE NOT NULL,
   moderator_password varchar(500) NOT NULL,
   PRIMARY KEY (moderator_id)
@@ -7,6 +8,7 @@ CREATE TABLE moderator (
 
 CREATE TABLE parent (
   parent_id int NOT NULL AUTO_INCREMENT,
+  role  varchar(50) DEFAULT 'parent',
   parent_firstname varchar(50) NOT NULL,
   parent_lastname varchar(50) NOT NULL,
   parent_adress varchar(255) NOT NULL,
@@ -54,6 +56,7 @@ CREATE TABLE allergy (
 
 CREATE TABLE nursery (
   nursery_id int NOT NULL AUTO_INCREMENT,
+  role  varchar(50) DEFAULT 'nursery',
   nursery_name varchar(50) NOT NULL,
   nursery_street varchar(200) NOT NULL,
   nursery_street_number int NOT NULL,
@@ -78,49 +81,24 @@ CREATE TABLE nursery (
   PRIMARY KEY (nursery_id)
 );
 
-CREATE TABLE account (
-  account_id int NOT NULL AUTO_INCREMENT,
-  role varchar(50) NOT NULL,
-  nursery_id int DEFAULT NULL,
-  moderator_id int DEFAULT NULL,
-  parent_id int DEFAULT NULL,
-  PRIMARY KEY (account_id),
-  KEY nursery_id (nursery_id),
-  KEY moderator_id (moderator_id),
-  KEY parent_id (parent_id),
-  CONSTRAINT account_ibfk_1 FOREIGN KEY (nursery_id) REFERENCES nursery (nursery_id),
-  CONSTRAINT account_ibfk_2 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id),
-  CONSTRAINT account_ibfk_3 FOREIGN KEY (parent_id) REFERENCES parent (parent_id)
-);
 
-CREATE TABLE operation_management (
-  operation_management_id int NOT NULL AUTO_INCREMENT,
-  operation_management_date datetime NOT NULL,
-  -- 2 different types, creation and deletion
-  type varchar(25) NOT NULL,
-  account_id int DEFAULT NULL,
-  moderator_id int DEFAULT NULL,
-  PRIMARY KEY (operation_management_id),
-  KEY account_id (account_id),
-  KEY moderator_id (moderator_id),
-  CONSTRAINT operation_management_ibfk_1 FOREIGN KEY (account_id) REFERENCES account (account_id),
-  CONSTRAINT operation_management_ibfk_2 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id)
-);
 
 
 CREATE TABLE booking_operation (
   booking_operation_id int NOT NULL AUTO_INCREMENT,
   booking_operation_date datetime NOT NULL,
+  slots varchar(25) NOT NULL,
   state varchar(25) NOT NULL,
   nursery_id int DEFAULT NULL,
-  account_id int DEFAULT NULL,
+  parent_id int DEFAULT NULL,
+  child_id int DEFAULT NULL,
   moderator_id int DEFAULT NULL,
   PRIMARY KEY (booking_operation_id),
   KEY nursery_id (nursery_id),
-  KEY account_id (account_id),
+  KEY parent_id (parent_id),
   KEY moderator_id (moderator_id),
   CONSTRAINT booking_operation_ibfk_1 FOREIGN KEY (nursery_id) REFERENCES nursery (nursery_id),
-  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (account_id) REFERENCES account (account_id),
+  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (parent_id) REFERENCES parent (parent_id),
   CONSTRAINT booking_operation_ibfk_3 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id)
 );
 

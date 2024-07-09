@@ -11,7 +11,7 @@ class ModeratorRepository extends AbstractRepository {
 
   async create(moderator) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (moderator_mail, moderator_password) values (?, ?)`,
+      `insert into ${this.table} (moderator_mail, moderator_role, moderator_password) values (?, ?, ?)`,
       [moderator.moderator_mail, moderator.moderator_password]
     );
 

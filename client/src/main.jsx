@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         action: async ({ request }) => {
           const formData = await request.formData();
           const nurseryId = formData.get("nursery_id");
-          const response = await myAxios.post("/api/nursery&city=Rennes", {
+          const response = await myAxios.post("/api/nursery?city=Rennes", {
             nurseryId,
           });
           return redirect(`/nursery/${response.data.insertId}`);

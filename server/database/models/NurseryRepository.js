@@ -11,9 +11,10 @@ class NurseryRepository extends AbstractRepository {
 
   async create(nursery) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (nursery_name, nursery_street, nursery_street_number, latitude,longitude,city,capacity,price,nursery_phone, nursery_mail,image1, image2, image3, nursery_password, activity1, activity2, activity3, certification1, certification2, certification3, about) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (nursery_name, nursery_role, nursery_street, nursery_street_number, latitude,longitude,city,capacity,price,nursery_phone, nursery_mail,image1, image2, image3, nursery_password, activity1, activity2, activity3, certification1, certification2, certification3, about) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         nursery.nursery_name,
+        nursery.nusery_role,
         nursery.nursery_street,
         nursery.nursery_street_number,
         nursery.latitude,
