@@ -11,8 +11,12 @@ class ChildRepository extends AbstractRepository {
 
   async create(booking) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (booking_operation_date, booking_operation_state) values (?, ?)`,
-      [booking.booking_operation_date, booking.booking_operation_state]
+      `insert into ${this.table} (booking_operation_date, slots, booking_operation_state) values (?, ?, ?)`,
+      [
+        booking.booking_operation_date,
+        booking.slots,
+        booking.booking_operation_state,
+      ]
     );
 
     // Return the ID of the newly inserted booking
