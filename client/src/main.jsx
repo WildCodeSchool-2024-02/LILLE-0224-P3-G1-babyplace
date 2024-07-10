@@ -83,7 +83,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/dashboard/pro",
+        path: "/dashboard",
         element: <PageDashboard />,
       },
       {
