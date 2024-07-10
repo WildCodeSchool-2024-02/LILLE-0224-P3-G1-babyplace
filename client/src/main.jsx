@@ -20,6 +20,8 @@ import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
 import PageProDashboard from "./pages/Dashboard/PageProDashboard";
 import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
 import ContactPage from "./pages/Contact/ContactPage";
+import ParentForm from "./components/accueil/ParentForm/ParentForm";
+import ChildForm from "./components/accueil/ChildForm/ChildForm";
 
 // router creation
 
@@ -90,6 +92,15 @@ const router = createBrowserRouter([
         path: "/inscription/creche",
         element: <NurseryRegisterPage />,
         loader: getDataAddresses,
+      },
+
+      {
+        path: "/inscription/parent",
+        element: <ParentForm />,
+      },
+      {
+        path: "/inscription/enfant",
+        element: <ChildForm />,
       },
       {
         path: "/accueil",

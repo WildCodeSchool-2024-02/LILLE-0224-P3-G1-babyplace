@@ -7,13 +7,20 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import parent-related actions
-const { browse, read, add } = require("../../../controllers/parentActions");
+const {
+  browse,
+  read,
+  add,
+  readByMail,
+} = require("../../../controllers/parentActions");
 
 // Route to get a list of parents
 router.get("/", browse);
 
 // Route to get a specific parent by ID
 router.get("/:id", read);
+
+router.get("/mail/:mail", readByMail);
 
 // Route to add a new parent
 router.post("/", add);

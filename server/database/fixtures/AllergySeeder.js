@@ -25,8 +25,9 @@ class AllergySeeder extends AbstractSeeder {
         arachides: 1,
         mollusques: 0,
         autres: "Pollen",
-        child_id: this.getRef("child_Roland").insertId,
+        child_id: this.getRef("child_Emilie").insertId,
       },
+
       {
         gluten: 0,
         fruitsacoque: 1,
@@ -42,8 +43,8 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 0,
         arachides: 0,
         mollusques: 1,
-        autres: "Grasses",
-        child_id: this.getRef("child_Styles").insertId,
+        autres: "Herbe",
+        child_id: this.getRef("child_Morgan").insertId,
       },
       {
         gluten: 0,
@@ -61,7 +62,7 @@ class AllergySeeder extends AbstractSeeder {
         arachides: 1,
         mollusques: 0,
         autres: null,
-        child_id: this.getRef("child_St-Pierre").insertId,
+        child_id: this.getRef("child_Benoit").insertId,
       },
       {
         gluten: 0,
@@ -78,8 +79,8 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 1,
         arachides: 0,
         mollusques: 0,
-        autres: "Dust",
-        child_id: this.getRef("child_Goujon").insertId,
+        autres: "Poussière",
+        child_id: this.getRef("child_Elias").insertId,
       },
       {
         gluten: 1,
@@ -96,8 +97,8 @@ class AllergySeeder extends AbstractSeeder {
         lupin: 0,
         arachides: 0,
         mollusques: 1,
-        autres: "Bee stings",
-        child_id: this.getRef("child_Swift").insertId,
+        autres: "Piqure de guêpe",
+        child_id: this.getRef("child_Lucie").insertId,
       },
       // Continuez avec les autres enfants...
     ];

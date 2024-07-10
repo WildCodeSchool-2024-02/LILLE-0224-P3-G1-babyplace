@@ -2,7 +2,6 @@ const AbstractSeeder = require("./AbstractSeeder");
 
 class ParentSeeder extends AbstractSeeder {
   constructor() {
-    // Call the constructor of the parent class (AbstractSeeder) with appropriate options
     super({ table: "parent", truncate: true });
   }
 
@@ -176,10 +175,9 @@ class ParentSeeder extends AbstractSeeder {
         refName: `parent_${parent.parent_mail}`,
       };
 
-      this.insert(parentWithRefName); // insert into parent(mail) values (?)
+      this.insert(parentWithRefName);
     });
   }
 }
 
-// Export the ParentSeeder class
 module.exports = ParentSeeder;
