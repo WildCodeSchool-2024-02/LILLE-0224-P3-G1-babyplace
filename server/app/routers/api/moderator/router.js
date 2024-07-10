@@ -2,6 +2,7 @@ const express = require("express");
 
 const router = express.Router();
 
+const login = require("../../../controllers/authentificationActions");
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
@@ -15,8 +16,12 @@ router.get("/", browse);
 // Route to get a specific moderator by ID
 router.get("/:id", read);
 
+const hashPassword = require("../../../services/HashedPassword");
+
 // Route to add a new moderator
-router.post("/", add);
+router.post("/", hashPassword, add);
+
+router.post("/login", login);
 
 /* ************************************************************************* */
 

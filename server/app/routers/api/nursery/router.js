@@ -12,11 +12,17 @@ const { browse, read, add } = require("../../../controllers/nuseryActions");
 // Route to get a list of nurseries
 router.get("/", browse);
 
-// Route to get a specific parent by ID
+// Route to get a specific nursery by ID
 router.get("/:id", read);
 
+const hashPassword = require("../../../services/HashedPassword");
+
 // Route to add a new nursery
-router.post("/", add);
+router.post("/", hashPassword, add);
+
+const login = require("../../../controllers/authentificationActions");
+
+router.post("/login", login);
 
 /* ************************************************************************* */
 

@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
 import LoginAdmin from "../LoginAdmin/LoginAdmin";
+import { useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./LoginPro.css";
 
 function LoginPro() {
+  const navigate = useNavigate();
   const [accountButton, setAccountButton] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
   const [showLoginAdmin, setShowLoginAdmin] = useState(false);
+  const emailWithRef = useRef();
+  const emailWithRefNursery = useRef();
+  const passwordWithRefNursery = useRef();
+  const passwordWithRef = useRef();
 
   const handleAccountButton = () => {
     setAccountButton(true);
@@ -31,6 +36,61 @@ function LoginPro() {
   const handleOutsideClick = (e) => {
     if (e.target.className === "popup_admin") {
       handleClosePopup();
+
+  const handleSubmitParent = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/parent/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "parent",
+            parent_mail: emailWithRef.current.value,
+            parent_password: passwordWithRef.current.value,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        navigate("/dashboard", { state: { user: data.user } });
+      } else {
+        console.error(data.message || "Une erreur s'est produite dans le 200");
+      }
+    } catch (err) {
+      console.error("Une erreur s'est produite ailleurs :", err);
+    }
+  };
+  const handleSubmitNursery = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/nursery/login`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: "nursery",
+            nursery_mail: emailWithRefNursery.current.value,
+            nursery_password: passwordWithRefNursery.current.value,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        navigate("/dashboard/pro", { state: { user: data.user } });
+      } else {
+        console.error(data.message || "Une erreur s'est produite dans le 200");
+      }
+    } catch (err) {
+      console.error("Une erreur s'est produite ailleurs :", err);
     }
   };
 
@@ -94,12 +154,22 @@ function LoginPro() {
             </div>
             <h3>Se connecter</h3>
             <div className="input_login_pro">
-              <input type="text" placeholder="adresse email" />
-              <input type="password" placeholder="mot de passe" />
+              <input
+                type="text"
+                placeholder="adresse email"
+                ref={emailWithRefNursery}
+              />
+              <input
+                type="password"
+                placeholder="mot de passe"
+                ref={passwordWithRefNursery}
+              />
             </div>
-            <Link to="/accueil">
-              <button type="button">Connexion</button>
-            </Link>
+
+            <button type="button" onClick={handleSubmitNursery}>
+              Connexion
+            </button>
+
             {accountButton && (
               <Link
                 to="/inscription/creche"
@@ -130,12 +200,22 @@ function LoginPro() {
             </div>
             <h3>Se connecter</h3>
             <div className="input_login_pro">
-              <input type="text" placeholder="adresse email" />
-              <input type="password" placeholder="mot de passe" />
+              <input
+                type="text"
+                placeholder="adresse email"
+                ref={emailWithRef}
+              />
+              <input
+                type="password"
+                placeholder="mot de passe"
+                ref={passwordWithRef}
+              />
             </div>
-            <Link to="/accueil">
-              <button type="button">Connexion</button>
-            </Link>
+
+            <button type="button" onClick={handleSubmitParent}>
+              Connexion
+            </button>
+
             {accountButton && (
               <Link
                 to="/inscription/parent"

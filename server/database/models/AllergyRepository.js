@@ -57,18 +57,45 @@ class AllergyRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing allergy
 
-  // async update(allergy) {
-  //   ...
-  // }
+  async update(allergy) {
+    // Execute the SQL UPDATE query to update an allergy from the 'allergy' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set gluten = ?, fruitsacoque = ?, crustaces = ?, celeri = ?, oeufs = ?, moutarde = ?, poissons = ?, soja = ?, lait = ?, sulfites = ?, sesame = ?, lupin = ?, arachides = ?, mollusques = ?, autres = ?,  where allergy_id = ?`,
+      [
+        allergy.gluten,
+        allergy.fruitsacoque,
+        allergy.crustaces,
+        allergy.celeri,
+        allergy.oeufs,
+        allergy.moutarde,
+        allergy.poissons,
+        allergy.soja,
+        allergy.lait,
+        allergy.sulfites,
+        allergy.sesame,
+        allergy.lupin,
+        allergy.arachides,
+        allergy.mollusques,
+        allergy.autres,
+      ]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a allergy by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete an allergy from the 'allergy' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where allergy_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = AllergyRepository;
