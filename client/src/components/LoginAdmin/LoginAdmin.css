@@ -1,0 +1,28 @@
+.register_Admin {
+  margin-top: 3em;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.input_login_Admin {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2em;
+  width: 20em;
+}
+.input_login_Admin input {
+  border-radius: 3em;
+  border: solid 1px black;
+  color: black;
+  text-align: center;
+  font-size: 1em;
+}
+
+.login_admin_button {
+  border-radius: 3em;
+  border: solid black 1px;
+}

@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import "./LoginPro.css";
 
 function LoginPro() {
   const [accountButton, setAccountButton] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
+  const [showLoginAdmin, setShowLoginAdmin] = useState(false);
 
   const handleAccountButton = () => {
     setAccountButton(true);
   };
-
-  const [isLogin, setIsLogin] = useState(true);
 
   const handleLoginClick = () => {
     setIsLogin(true);
@@ -19,17 +20,42 @@ function LoginPro() {
     setIsLogin(false);
   };
 
+  const handleLoginAdminClick = () => {
+    setShowLoginAdmin(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowLoginAdmin(false);
+  };
+
+  const handleOutsideClick = (e) => {
+    if (e.target.className === "popup_admin") {
+      handleClosePopup();
+    }
+  };
+
   return (
     <div className="login_register_pro">
+      <div
+        className="login_admin"
+        onClick={handleLoginAdminClick}
+        onKeyPress={(e) => {
+          if (e.key === "Enter") handleLoginAdminClick();
+        }}
+        role="button"
+        tabIndex={0}
+      >
+        <img src="/assets/images/lock.svg" alt="Lock" />
+      </div>
       <div className="presentation_login">
         <h1>Babyplace</h1>
         <p>
           Bienvenue sur Babyplace, votre plateforme de mise en relation entre
           parents et crèches.{" "}
-          <p style={{ color: "var(--first-color)", fontWeight: "bold" }}>
+          <span style={{ color: "var(--first-color)", fontWeight: "bold" }}>
             Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
             là !
-          </p>
+          </span>
         </p>
         <img src="/assets/images/image3_homebgremoved.png" alt="home" />
         <p style={{ marginTop: "5em" }}>
@@ -40,6 +66,9 @@ function LoginPro() {
           <button
             type="button"
             onClick={handleLoginClick}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") handleLoginClick();
+            }}
             className={isLogin ? "active" : ""}
           >
             PRO
@@ -47,6 +76,9 @@ function LoginPro() {
           <button
             type="button"
             onClick={handleRegisterClick}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") handleRegisterClick();
+            }}
             className={!isLogin ? "active" : ""}
           >
             PARENT
@@ -69,7 +101,15 @@ function LoginPro() {
               <button type="button">Connexion</button>
             </Link>
             {accountButton && (
-              <Link to="/inscription/creche" onClick={handleAccountButton}>
+              <Link
+                to="/inscription/creche"
+                onClick={handleAccountButton}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") handleAccountButton();
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <p>Vous n'avez pas encore de compte ?</p>
               </Link>
             )}
@@ -97,7 +137,15 @@ function LoginPro() {
               <button type="button">Connexion</button>
             </Link>
             {accountButton && (
-              <Link to="/inscription/parent" onClick={handleAccountButton}>
+              <Link
+                to="/inscription/parent"
+                onClick={handleAccountButton}
+                onKeyPress={(e) => {
+                  if (e.key === "Enter") handleAccountButton();
+                }}
+                role="button"
+                tabIndex={0}
+              >
                 <p>Vous n'avez pas encore de compte ?</p>
               </Link>
             )}
@@ -108,6 +156,40 @@ function LoginPro() {
               className="login_register_image"
               src="/public/assets/images/parent_account.png"
             />
+          </div>
+        </div>
+      )}
+
+      {showLoginAdmin && (
+        <div
+          className="popup_admin"
+          onClick={handleOutsideClick}
+          onKeyPress={(e) => {
+            if (e.key === "Enter") handleOutsideClick(e);
+          }}
+          role="button"
+          tabIndex={0}
+        >
+          <div
+            className="popup_inner_admin"
+            onClick={(e) => e.stopPropagation()}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") e.stopPropagation();
+            }}
+            role="button"
+            tabIndex={0}
+          >
+            <button
+              onClick={handleClosePopup}
+              onKeyPress={(e) => {
+                if (e.key === "Enter") handleClosePopup(e);
+              }}
+              className="close_button_admin"
+              type="button"
+            >
+              &times;
+            </button>
+            <LoginAdmin />
           </div>
         </div>
       )}
