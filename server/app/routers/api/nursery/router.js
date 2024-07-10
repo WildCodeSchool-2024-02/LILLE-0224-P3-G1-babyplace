@@ -2,8 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 
-const login = require("../../../controllers/authentificationActions");
-
 /* ************************************************************************* */
 // Define Your API Routes Here
 /* ************************************************************************* */
@@ -21,6 +19,8 @@ const hashPassword = require("../../../services/HashedPassword");
 
 // Route to add a new nursery
 router.post("/", hashPassword, add);
+
+const login = require("../../../controllers/authentificationActions");
 
 router.post("/login", login);
 

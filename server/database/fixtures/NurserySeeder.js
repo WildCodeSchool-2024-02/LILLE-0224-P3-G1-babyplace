@@ -28,7 +28,8 @@ class NurserySeeder extends AbstractSeeder {
         certification1: "Crèche à Vocation d’Insertion Professionnelle",
         certification2: "Pédagogie Montessori",
         certification3: "Repas Bio",
-        nursery_password: "",
+        nursery_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
         about:
           "Lillomômes, créée en 2018, a pour objet la création et l’exploitation d’une crèche à Vocation d’Insertion Professionnelle. Elle accueille au minimum 30% d’enfants de moins de trois ans dont les parents sont demandeurs d’emploi, volontaires pour s’engager dans une démarche de recherche d’emploi intensive, et/ou pour s’inscrire dans un parcours de formation en vue d’une insertion professionnelle durable sur le marché du travail. La garde d’enfants, en particulier pour les mères élevant seules leurs enfants, les demandeurs d’emploi ainsi que les salariés en parcours d’insertion, constitue un frein majeur de retour à l’emploi. Face à cette situation, la crèche à Vocation d’Insertion Professionnelle est une solution d’accueil aux enfants afin que leurs parents puissent bénéficier d’un accompagnement intensif à la recherche d’un emploi.",
       },

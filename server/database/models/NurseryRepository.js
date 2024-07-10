@@ -51,6 +51,17 @@ class NurseryRepository extends AbstractRepository {
     return rows;
   }
 
+  async readByEmail(email) {
+    // Execute the SQL SELECT query to retrieve a specific nursery by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where nursery_mail = ?`,
+      [email]
+    );
+
+    // Return the first row of the result, which represents the nursery
+    return rows[0];
+  }
+
   async read(id) {
     const [nurseryRows] = await this.database.query(
       `SELECT * FROM ${this.table} WHERE nursery_id = ?`,
