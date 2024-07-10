@@ -22,7 +22,6 @@ function SimpleMap({ data }) {
 SimpleMap.propTypes = {
   data: PropTypes.shape({
     nursery_name: PropTypes.string.isRequired,
-
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
   }).isRequired,

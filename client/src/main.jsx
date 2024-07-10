@@ -83,8 +83,12 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/dashboard",
+        path: "/dashboard/pro",
         element: <PageDashboard />,
+      },
+      {
+        path: "/dashboard/pro",
+        element: <PageProDashboard />,
       },
       {
         path: "/inscription/creche",

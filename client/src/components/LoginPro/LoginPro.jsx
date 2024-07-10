@@ -56,11 +56,12 @@ function LoginPro() {
         <p>
           Bienvenue sur Babyplace, votre plateforme de mise en relation entre
           parents et crèches.{" "}
-          <p style={{ color: "var(--first-color)", fontWeight: "bold" }}>
-            Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
-            là !
-          </p>
         </p>
+        <p style={{ color: "var(--first-color)", fontWeight: "bold" }}>
+          Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
+          là !
+        </p>
+
         <img src="/assets/images/image3_homebgremoved.png" alt="home" />
         <p style={{ marginTop: "5em" }}>
           Inscrivez-vous sur notre site pour accéder à nos services, disponibles

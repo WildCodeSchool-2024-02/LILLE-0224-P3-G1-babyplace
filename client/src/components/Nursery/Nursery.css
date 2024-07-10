@@ -213,4 +213,27 @@
     margin-left: 10em;
     color: #f063b8;
   }
+  .no_slot,
+  slot {
+    margin-top: 0;
+  }
+}
+
+.slot {
+  background-color: var(--green);
+  border-radius: 25px;
+  color: white;
+  padding: 1em;
+  width: 100px;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.no_slot {
+  background-color: rgb(206, 198, 198);
+  border-radius: 25px;
+  color: white;
+  padding: 1em;
+  font-weight: lighter;
+  margin-top: 1em;
 }
