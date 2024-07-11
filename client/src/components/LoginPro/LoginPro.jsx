@@ -68,10 +68,10 @@ export default function LoginPro() {
       if (response.status === 200) {
         navigate("/dashboard", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite dans le 200");
+        console.error(data.message || "Une erreur s'est produite");
       }
     } catch (err) {
-      console.error("Une erreur s'est produite ailleurs :", err);
+      console.error("Une erreur s'est produite :", err);
     }
   };
 
@@ -97,10 +97,10 @@ export default function LoginPro() {
       if (response.status === 200) {
         navigate("/dashboard/pro", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite dans le 200");
+        console.error(data.message || "Une erreur s'est produite");
       }
     } catch (err) {
-      console.error("Une erreur s'est produite ailleurs :", err);
+      console.error("Une erreur s'est produite :", err);
     }
   };
 

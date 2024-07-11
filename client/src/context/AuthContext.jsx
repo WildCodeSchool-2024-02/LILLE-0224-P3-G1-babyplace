@@ -31,6 +31,18 @@ export default function AuthContextProvider({ children }) {
     }
     loadDashboardDataNursery();
   }, []);
+  
+  useEffect(() => {
+    async function loadDashboardDataAdmin() {
+      try {
+        const response = await myAxios.get(`/api/moderator/1`);
+        setUser(response.data);
+      } catch (error) {
+        console.error("Error loading dashboard data:", error);
+      }
+    }
+    loadDashboardDataAdmin();
+  }, []);
 
   const contextValue = useMemo(
     () => ({

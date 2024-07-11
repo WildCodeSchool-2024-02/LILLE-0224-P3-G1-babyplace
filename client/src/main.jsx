@@ -105,7 +105,7 @@ const router = createBrowserRouter([
       },
       { path: "/contact", element: <ContactPage /> },
       {
-        path: "/dashboard/moderator",
+        path: "/dashboard/moderateur",
         element: <PageModeratorDashboard />,
         loader: async () => {
           const [parentsResponse, nurseryResponse, bookingResponse] =

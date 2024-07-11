@@ -10,7 +10,8 @@ class ModeratorSeeder extends AbstractSeeder {
     const moderators = [
       {
         moderator_mail: "didier.delabre@babyplace.com",
-        moderator_password: "******",
+        moderator_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
       },
       {
         moderator_mail: "christian.samart@babyplace.com",

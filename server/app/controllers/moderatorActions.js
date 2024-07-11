@@ -53,6 +53,26 @@ const add = async (req, res, next) => {
   }
 };
 
+const readByEmail = async (req, res, next) => {
+  try {
+    // Fetch a specific moderator from the database based on the provided ID
+    const moderator = await tables.moderator.readByEmail(
+      req.body.moderator_mail
+    );
+
+    // If the moderator is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the moderator in JSON format
+    if (moderator == null) {
+      res.sendStatus(404);
+    } else {
+      res.status(201).json(moderator);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The D of BREAD - Destroy (Delete) operation
 // This operation is not yet implemented
 
@@ -63,4 +83,5 @@ module.exports = {
   // edit,
   add,
   // destroy,
+  readByEmail,
 };
