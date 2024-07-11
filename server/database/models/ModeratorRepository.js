@@ -11,7 +11,7 @@ class ModeratorRepository extends AbstractRepository {
 
   async create(moderator) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (moderator_mail, moderator_password) values (?, ?)`,
+      `insert into ${this.table} (moderator_mail, moderator_role, moderator_password) values (?, ?, ?)`,
       [moderator.moderator_mail, moderator.moderator_password]
     );
 
@@ -41,18 +41,29 @@ class ModeratorRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing moderator
 
-  // async update(moderator) {
-  //   ...
-  // }
+  async update(moderator) {
+    // Execute the SQL UPDATE query to update a moderator from the 'moderator' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set moderator_mail = ?, moderator_password, where moderator_id = ?`,
+      [moderator.moderator_mail, moderator.moderator_hashedPassword]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a moderator by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a moderator from the 'moderator' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where moderator_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = ModeratorRepository;

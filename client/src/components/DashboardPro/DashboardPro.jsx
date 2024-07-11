@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CalendarDashboard from "./CalendarDashboard";
 import "./DashboardPro.css";
 
 function DashboardPro() {
@@ -50,6 +51,7 @@ function DashboardPro() {
         <div className="info_container_pro">
           <p className="info_pro">Gérer les créneaux</p>
         </div>
+        <CalendarDashboard />
       </div>
       <div className="container_dashboard_pro_section">
         <div className="info_container_pro">

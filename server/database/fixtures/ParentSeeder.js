@@ -13,7 +13,8 @@ class ParentSeeder extends AbstractSeeder {
         parent_adress: "47 boulevard Victor Hugo 59000 Lille",
         parent_phone: "03 21 67 82 34",
         parent_mail: "thierry.roland@gmail.com",
-        parent_password: "************",
+        parent_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
       },
       {
         parent_firstname: "Harry",
@@ -21,7 +22,8 @@ class ParentSeeder extends AbstractSeeder {
         parent_adress: "1 rue de la monnaie 59350 Lille",
         parent_phone: "03 21 29 64 28",
         parent_mail: "harry.styles@gmail.com",
-        parent_password: "************",
+        parent_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
       },
       {
         parent_firstname: "Georges",
@@ -29,7 +31,7 @@ class ParentSeeder extends AbstractSeeder {
         parent_adress: "61 rue Basse 59350 Lille",
         parent_phone: "03 21 20 02 81",
         parent_mail: "georges.rush.st-pierre@gmail.com",
-        parent_password: "************",
+        parent_password: "azerty3",
       },
       {
         parent_firstname: "Caroline",

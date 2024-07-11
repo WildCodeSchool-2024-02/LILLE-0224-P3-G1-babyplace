@@ -11,8 +11,12 @@ class ChildRepository extends AbstractRepository {
 
   async create(booking) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (booking_operation_date, booking_operation_state) values (?, ?)`,
-      [booking.booking_operation_date, booking.booking_operation_state]
+      `insert into ${this.table} (booking_operation_date, slots, booking_operation_state) values (?, ?, ?)`,
+      [
+        booking.booking_operation_date,
+        booking.slots,
+        booking.booking_operation_state,
+      ]
     );
 
     // Return the ID of the newly inserted booking
@@ -41,18 +45,29 @@ class ChildRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing booking
 
-  // async update(child) {
-  //   ...
-  // }
+  async update(booking) {
+    // Execute the SQL UPDATE query to update a booking from the 'booking_operation' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set booking_operation_date = ?, booking_operation_state = ?, where booking_operation_id = ?`,
+      [booking.booking_operation_date, booking.booking_operation_state]
+    );
+
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a booking by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a booking from the 'booking_operation' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where booking_operation_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = ChildRepository;

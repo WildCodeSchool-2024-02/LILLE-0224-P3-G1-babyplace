@@ -22,14 +22,6 @@ const allergyRouter = require("./allergy/router");
 
 router.use("/allergy", allergyRouter);
 
-const accountRouter = require("./account/router");
-
-router.use("/account", accountRouter);
-
-const managementOperationRouter = require("./management-operation/router");
-
-router.use("/management-operation", managementOperationRouter);
-
 const bookingOperationRouter = require("./booking-operation/router");
 
 router.use("/booking-operation", bookingOperationRouter);

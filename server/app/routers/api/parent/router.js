@@ -22,8 +22,13 @@ router.get("/:id", read);
 
 router.get("/mail/:mail", readByMail);
 
+const hashPassword = require("../../../services/HashedPassword");
 // Route to add a new parent
-router.post("/", add);
+router.post("/", hashPassword, add);
+
+const login = require("../../../controllers/authentificationActions");
+
+router.post("/login", login);
 
 /* ************************************************************************* */
 

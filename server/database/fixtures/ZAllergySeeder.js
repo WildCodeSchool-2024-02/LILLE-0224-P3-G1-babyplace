@@ -1,7 +1,7 @@
 const AbstractSeeder = require("./AbstractSeeder");
 const ChildSeeder = require("./ChildSeeder");
 
-class AllergySeeder extends AbstractSeeder {
+class ZAllergySeeder extends AbstractSeeder {
   constructor() {
     // Call the constructor of the child class (AbstractSeeder) with appropriate options
     super({ table: "allergy", truncate: true, dependencies: [ChildSeeder] });
@@ -110,4 +110,4 @@ class AllergySeeder extends AbstractSeeder {
 }
 
 // Export the AllergySeeder class
-module.exports = AllergySeeder;
+module.exports = ZAllergySeeder;

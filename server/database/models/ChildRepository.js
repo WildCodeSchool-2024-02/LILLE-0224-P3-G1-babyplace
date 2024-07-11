@@ -48,18 +48,28 @@ class ChildRepository extends AbstractRepository {
   }
 
   // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing child
+  async update(child) {
+    // Execute the SQL UPDATE query to update a child from the 'child' table
+    const [rows] = await this.database.query(
+      `update ${this.table}set firstname = ?, lastname = ?, birth = ?, where child_id = ?`,
+      [child.child_firstname, child.child_lastname, child.child_birth]
+    );
 
-  // async update(child) {
-  //   ...
-  // }
+    // Return how many rows were affected
+    return rows;
+  }
 
   // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove a child by its ID
 
-  // async delete(id) {
-  //   ...
-  // }
+  async delete(id) {
+    // Execute the SQL DELETE query to delete a child from the 'child' table
+    const [rows] = await this.database.query(
+      `delete from ${this.table} where child_id = ?`,
+      [id]
+    );
+    // Return how many rows were affected
+    return rows;
+  }
 }
 
 module.exports = ChildRepository;
