@@ -87,6 +87,10 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
+        path: "/dashboard/pro",
+        element: <PageProDashboard />,
+      },
+      {
         path: "/inscription/creche",
         element: <NurseryRegisterPage />,
         loader: getDataAddresses,

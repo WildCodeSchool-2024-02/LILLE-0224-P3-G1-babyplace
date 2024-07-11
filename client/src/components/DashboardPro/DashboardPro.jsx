@@ -1,12 +1,44 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import CalendarDashboard from "./CalendarDashboard";
+import { AuthContext } from "../../context/AuthContext";
+import BookingsPro from "./BookingsPro";
 import "./DashboardPro.css";
 
 function DashboardPro() {
+  const { nurseryUser } = useContext(AuthContext);
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleViewList = (buttonName) => {
     setSelectedButton(buttonName);
+  };
+
+  const getFilteredBookings = () => {
+    if (!nurseryUser || !nurseryUser.bookings)
+      return [<div key="no-bookings">Pas de réservations !</div>];
+    switch (selectedButton) {
+      case "A venir":
+        return nurseryUser.bookings.filter(
+          (booking) => booking.state === "Validée"
+        );
+      case "En attente":
+        return nurseryUser.bookings.filter(
+          (booking) => booking.state === "En attente"
+        );
+      case "Passées":
+        return nurseryUser.bookings.filter(
+          (booking) => booking.state === "Passée"
+        );
+      case "Refusées":
+        return nurseryUser.bookings.filter(
+          (booking) => booking.state === "Refusée"
+        );
+      case "Annulées":
+        return nurseryUser.bookings.filter(
+          (booking) => booking.state === "Annulée"
+        );
+      default:
+        return [];
+    }
   };
 
   return (
@@ -16,29 +48,49 @@ function DashboardPro() {
           <h3>Espace Pro</h3>
           <p>
             Bienvenue dans votre espace professionnel. Ici, nous vous proposons
-            d’ajouter à votre fiche crèche vos créneaux disponibles dans les 15
-            prochains jours.Si un parent inscrit son enfant, vous recevrez une
-            alerte sur notre site pour pouvoir confirmer ou non sa réservation.{" "}
+            d’ajouter à votre fiche crèche vos créneaux disponibles dans les
+            prochaines semaines.{" "}
           </p>
         </div>
       </div>
+
       <div className="creche_info_container">
-        <div className="container_dashboard_pro_section">
-          <div className="info_container_pro">
-            <p className="info_pro">Mon Profil</p>
-          </div>
+        <div className="info_container_pro">
+          <p className="info_pro">Mon Profil</p>
         </div>
-        <h4 className="creche_name">Crèche Picotti Picotta</h4>
+        <div className="profile_pictures_container">
+          <img
+            src={nurseryUser.image1}
+            className="profile_picture"
+            alt="crèche"
+          />
+          <img
+            src={nurseryUser.image2}
+            className="profile_picture"
+            id="profile_picture_2"
+            alt="crèche"
+          />
+          <img
+            src={nurseryUser.image3}
+            className="profile_picture"
+            id="profile_picture_3"
+            alt="crèche"
+          />
+        </div>
+        <h4 className="creche_name">{nurseryUser.nursery_name}</h4>
+
         <div className="creche_info">
           <div className="creche_location">
             <div className="creche_adress">
-              <p>18 rue de Boudet</p>
-              <p>59000, Lille</p>
+              <p>
+                {nurseryUser.nursery_street_number} {nurseryUser.nursery_street}{" "}
+                {nurseryUser.city}
+              </p>
             </div>
 
             <div className="creche_contact">
-              <p className="creche_number">+33.7.83.98.04.52</p>
-              <p className="creche_mail">contact@picotti.fr</p>
+              <p className="creche_number">{nurseryUser.nursery_phone}</p>
+              <p className="creche_mail">{nurseryUser.nursery_mail}</p>
             </div>
           </div>
           <ul className="modify_info">
@@ -51,7 +103,7 @@ function DashboardPro() {
         <div className="info_container_pro">
           <p className="info_pro">Gérer les créneaux</p>
         </div>
-        <CalendarDashboard />
+        <CalendarDashboard nurseryUser={nurseryUser} />
       </div>
       <div className="container_dashboard_pro_section">
         <div className="info_container_pro">
@@ -59,12 +111,16 @@ function DashboardPro() {
         </div>
       </div>
       <div>
-        <select className="select_mobile">
-          <option value="1">À venir &ensp;</option>
-          <option value="2">En attente</option>
-          <option value="3">Passées</option>
-          <option value="4">Refusées</option>
-          <option value="5">Annulées</option>
+        <select
+          className="custom_select"
+          onChange={(e) => handleViewList(e.target.value)}
+        >
+          <option value="Sélectionnez">Sélectionnez un état</option>
+          <option value="A venir">À venir &ensp;</option>
+          <option value="En attente">En attente</option>
+          <option value="Passées">Passées</option>
+          <option value="Refusées">Refusées</option>
+          <option value="Annulées">Annulées</option>
         </select>
       </div>
       <div className="select_desktop">
@@ -104,74 +160,8 @@ function DashboardPro() {
           Annulées
         </button>
       </div>
-      <p className="reservation_date">31/06/2024</p>
-      <div className="reservation">
-        <div className="reservation_card">
-          <p className="statut_reservation">accepté</p>
-          <img
-            className="avatar_dashboard_pro"
-            alt=""
-            src="/public/assets/images/avatar_bottom_active.svg"
-          />
-          <div className="reservation_info">
-            <p>Parent: Benoit Mezaguer</p>
-            <p>Enfant 1 (Pomme)</p>
-            <p>Matin</p>
-          </div>
-        </div>
-        <div className="reservation_card">
-          <p className="statut_reservation">accepté</p>
-          <img
-            className="avatar_dashboard_pro"
-            alt=""
-            src="/public/assets/images/avatar_bottom_active.svg"
-          />
-          <div className="reservation_info">
-            <p>Parent: Benoit Mezaguer</p>
-            <p>Enfant 1 (Pomme)</p>
-            <p>Matin</p>
-          </div>
-        </div>
-        <div className="reservation_card">
-          <p className="statut_reservation">accepté</p>
-          <img
-            className="avatar_dashboard_pro"
-            alt=""
-            src="/public/assets/images/avatar_bottom_active.svg"
-          />
-          <div className="reservation_info">
-            <p>Parent: Benoit Mezaguer</p>
-            <p>Enfant 1 (Pomme)</p>
-            <p>Matin</p>
-          </div>
-        </div>
-        <div className="reservation_card">
-          <p className="statut_reservation">accepté</p>
-          <img
-            className="avatar_dashboard_pro"
-            alt=""
-            src="/public/assets/images/avatar_bottom_active.svg"
-          />
-          <div className="reservation_info">
-            <p>Parent: Benoit Mezaguer</p>
-            <p>Enfant 1 (Pomme)</p>
-            <p>Matin</p>
-          </div>
-        </div>
-        <div className="reservation_card">
-          <p className="statut_reservation">accepté</p>
-          <img
-            className="avatar_dashboard_pro"
-            alt=""
-            src="/public/assets/images/avatar_bottom_active.svg"
-          />
-          <div className="reservation_info">
-            <p>Parent: Benoit Mezaguer</p>
-            <p>Enfant 1 (Pomme)</p>
-            <p>Matin</p>
-          </div>
-        </div>
-      </div>
+
+      <BookingsPro bookings={getFilteredBookings()} nursery={nurseryUser} />
     </div>
   );
 }

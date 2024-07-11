@@ -132,6 +132,7 @@ export default function NurseryRegisterForm() {
           body: JSON.stringify({
             nursery_name: nurseryNameRef.current.value,
             nursery_street: streetName,
+            role: "nursery",
             nursery_street_number: streetNumber,
             latitude: adresseDefinitive[0].lat,
             longitude: adresseDefinitive[0].longitude,
