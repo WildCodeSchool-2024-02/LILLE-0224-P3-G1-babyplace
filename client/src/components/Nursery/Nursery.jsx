@@ -2,10 +2,8 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCertificate, faChild } from "@fortawesome/free-solid-svg-icons";
 import SimpleMap from "./NurseryMap";
-import NurseriesCardCalender from "../NurseriesPlateform/NurseriesCardCalender";
+import NurseryCalendarDetails from "./NurseryCalendarDetails";
 import "./Nursery.css";
-
-
 
 function Nursery() {
   const navigate = useNavigate();
@@ -117,15 +115,14 @@ function Nursery() {
                     <p className="info_text">{data.activity3}</p>
                   </div>
                 )}
-                <p className="rate">
-                  <h3>{data.price} €/demie-journée</h3>
-                </p>
+
+                <h3 className="rate">{data.price} €/demie-journée</h3>
               </section>
             </section>
           </section>
 
           <h2 className="color_h2">Disponibilités</h2>
-          <NurseriesCardCalender />
+          <NurseryCalendarDetails bookings={data.bookings} />
 
           <button
             type="button"
@@ -139,7 +136,5 @@ function Nursery() {
     </div>
   );
 }
-
-
 
 export default Nursery;

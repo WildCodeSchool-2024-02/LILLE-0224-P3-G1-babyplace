@@ -45,6 +45,49 @@ class BookingOperationSeeder extends AbstractSeeder {
           .insertId,
       },
       {
+        booking_operation_date: "2024-08-01",
+        slots: "14h-18h",
+        state: "Libre",
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
+        booking_operation_date: "2024-07-31",
+        slots: "8h-12h",
+        state: "Libre",
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
+        booking_operation_date: "2024-07-30",
+        slots: "10h-19h",
+        state: "Libre",
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
+        booking_operation_date: "2024-08-01",
+        slots: "10h-18h",
+        state: "Validée",
+        parent_id: this.getRef("parent_georges.rush.st-pierre@gmail.com")
+          .insertId,
+        child_id: this.getRef("child_Benoit").insertId,
+        moderator_id: null,
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
+        booking_operation_date: "2024-09-01",
+        slots: "10h-18h",
+        state: "Validée",
+        parent_id: this.getRef("parent_georges.rush.st-pierre@gmail.com")
+          .insertId,
+        child_id: this.getRef("child_Benoit").insertId,
+        moderator_id: null,
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
         booking_operation_date: "2024-06-02",
         slots: "10h-20h",
         state: "Validée",

@@ -6,6 +6,7 @@ export const AuthContext = createContext(null);
 
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [nurseryUser, setNurseryUser] = useState(null);
 
   useEffect(() => {
     async function loadDashboardData() {
@@ -19,12 +20,26 @@ export default function AuthContextProvider({ children }) {
     loadDashboardData();
   }, []);
 
+  useEffect(() => {
+    async function loadDashboardDataNursery() {
+      try {
+        const response = await myAxios.get(`/api/nursery/3`);
+        setNurseryUser(response.data);
+      } catch (error) {
+        console.error("Error loading dashboard data:", error);
+      }
+    }
+    loadDashboardDataNursery();
+  }, []);
+
   const contextValue = useMemo(
     () => ({
+      nurseryUser,
       user,
       setUser,
+      setNurseryUser,
     }),
-    [user, setUser]
+    [user, setUser, nurseryUser, setNurseryUser]
   );
 
   return (
