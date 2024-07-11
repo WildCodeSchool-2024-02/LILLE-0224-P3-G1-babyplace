@@ -50,9 +50,31 @@ class AbstractSeeder {
     this.promises.push(this.#doInsert(data));
   }
 
+  async truncateTable() {
+    if (this.truncate) {
+      await database.query(`TRUNCATE TABLE ${this.table}`);
+    }
+  }
+
+  async runDependencies() {
+    await Promise.all(
+      this.dependencies.map(async (Dependency) => {
+        const dep = new Dependency();
+        await dep.seed();
+      })
+    );
+  }
+
   // eslint-disable-next-line class-methods-use-this
-  run() {
+  async run() {
     throw new Error("You must implement this function");
+  }
+
+  async seed() {
+    await this.runDependencies();
+    await this.truncateTable();
+    await this.run();
+    await Promise.all(this.promises);
   }
 
   // eslint-disable-next-line class-methods-use-this

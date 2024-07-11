@@ -11,8 +11,15 @@ class ChildRepository extends AbstractRepository {
 
   async create(child) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (child_firstname, child_lastname, child_birth) values (?, ?, ?)`,
-      [child.child_firstname, child.child_lastname, child.child_birth]
+      `INSERT INTO ${this.table} (child_firstname, child_lastname, child_birth, walk_status, clean_status, parent_id) VALUES (?, ?, ?, ?, ?, ?)`,
+      [
+        child.child_firstname,
+        child.child_lastname,
+        child.child_birth,
+        child.walk_status,
+        child.clean_status,
+        child.parent_id,
+      ]
     );
 
     // Return the ID of the newly inserted child
