@@ -1,0 +1,239 @@
+/* whole page */
+.form_parent_page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: start;
+  margin-top: 7em;
+}
+
+/* whole form */
+.parent_form_P1 form {
+  margin-left: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1em;
+  width: 100%;
+}
+
+.parent_form_P1 h4 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+/* titles */
+.parent_form_P1 h2 {
+  text-align: center;
+  color: var(--first-color);
+  margin-bottom: 2em;
+}
+
+.parent_subtitles_form {
+  font-weight: bolder;
+  font-size: 1.2em;
+  margin-bottom: 1em;
+}
+
+.name_lastname {
+  margin-bottom: -1em;
+}
+
+.city_parent {
+  margin-top: 1em;
+  display: block;
+}
+
+.city_parent_flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.zip_code_city {
+  display: flex;
+}
+
+/* choix nombre d'enfants */
+.form-container {
+  display: flex;
+  align-items: center;
+}
+
+.form_label {
+  margin-right: 1em;
+}
+
+.number-container {
+  display: flex;
+  gap: 10px;
+}
+
+.number-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  color: black;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s,
+    color 0.3s,
+    border 0.3s;
+}
+
+.number-box.selected {
+  background-color: #9c69e2;
+  color: white;
+  border: 1px solid #000;
+}
+
+.number-box:hover {
+  background-color: #e0e0e0;
+}
+
+/* inputs */
+.input_city_zipcode {
+  width: 200px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-top: 1em;
+  margin-right: 6.3em;
+}
+
+.input_parent_form {
+  width: 500px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 1px solid grey;
+  margin-top: 1em;
+}
+
+/* decorative image */
+.img_parent_flex {
+  background-color: #9c69e2;
+  margin-top: 1em;
+}
+
+.img_parent_form {
+  margin-bottom: 13.5em;
+  margin-top: 13.5em;
+}
+
+/* boutton retour-suivant */
+
+.return_btn_parent_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 6em 0 2em 0;
+}
+
+.next_btn_parent_form {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #7e72f2;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 20.2em;
+}
+
+.parent_name {
+  color: #7e72f2;
+}
+
+.back-arrow {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 24px;
+  border: none;
+  background: none;
+  color: #7e72f2;
+  margin-right: 1em;
+}
+
+.navigation_flex {
+  display: ruby;
+  margin-top: -5em;
+}
+
+@media screen and (max-width: 990px) {
+  .form_parent_page img {
+    display: none;
+  }
+
+  .parent_form_P1 h2 {
+    text-align: center;
+    color: var(--first-color);
+    margin-bottom: 2em;
+    margin-right: 2em;
+  }
+
+  .parent_form_P1 form {
+    margin-left: 1em;
+  }
+
+  .input_parent_form {
+    width: 88vw;
+    padding: 0.5em;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-top: 1em;
+  }
+
+  /* choix nombre d' enfants */
+  .form_label {
+    margin-left: -13.3em;
+    margin-bottom: 1em;
+    margin-right: 0;
+  }
+
+  .check_box_container_register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: fit-content;
+    gap: 1em;
+    margin: 0;
+  }
+
+  .form-container {
+    flex-direction: column;
+  }
+
+  .input_city_zipcode {
+    width: 131px;
+    padding: 0.5em;
+    border-radius: 10px;
+    border: 1px solid grey;
+    margin-top: 1em;
+    margin-right: 5em;
+  }
+
+  /* boutton retour-suivant */
+  .return_btn_parent_form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6em 0 2em 0.1em;
+  }
+
+  .next_btn_parent_form {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #7e72f2;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-left: 10.2em;
+  }
+}

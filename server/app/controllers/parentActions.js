@@ -51,6 +51,25 @@ const readByEmail = async (req, res, next) => {
     next(err);
   }
 };
+
+const readByMail = async (req, res, next) => {
+  try {
+    // Fetch a specific parent from the database based on the provided ID
+    const parent = await tables.parent.readByMailFromDB(req.params.mail);
+
+    // If the parent is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the parent in JSON format
+    if (parent == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(parent);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // The E of BREAD - Edit (Update) operation
 
 const edit = async (req, res, next) => {
@@ -93,6 +112,8 @@ module.exports = {
   read,
   readByEmail,
   edit,
+  readByMail,
+  // edit,
   add,
   // destroy,
 };
