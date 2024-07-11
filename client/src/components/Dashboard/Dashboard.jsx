@@ -2,12 +2,15 @@ import { useContext, useState, useCallback } from "react";
 import "./Dashboard.css";
 import { AuthContext } from "../../context/AuthContext";
 import BookingsDashboard from "./BookingsDashboard";
+import InformationsForm from "./InformationsForm";
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedChildId, setSelectedChildId] = useState(null);
-
+  const [modifySelected, setModifySelected] = useState(false);
+  const [optionSelected, setOptionSelected] = useState("");
+  const [showForm, setShowForm] = useState(false);
   const handleViewList = useCallback((buttonName) => {
     setSelectedButton(buttonName);
   }, []);
@@ -18,6 +21,7 @@ function Dashboard() {
 
   const formatDate = (date) => date.split("T")[0];
 
+  // Filtre les réservations de l'utilistaeur, selon l'état de celle-ci. Permet d'afficher les réservations selon les catégories sur lequel l'utilisateur clique
   const getFilteredBookings = () => {
     if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];
@@ -42,6 +46,23 @@ function Dashboard() {
   const selectedChild = user.children.find(
     (child) => child.child_id === selectedChildId
   );
+
+  // fonctions pour gérer l'affichage ou non des options de modifications
+  function handleModify() {
+    setModifySelected(true);
+  }
+
+  // le useCallback sert à mémoriser la fonction entre les rendus (sinon on ne peut pas passer la fonction en props)
+  const handleCancelModify = useCallback(() => {
+    setModifySelected(false);
+    setShowForm(false);
+  }, []);
+
+  // fonction pour envoyer la bonne entité à modifier dans le formulaire
+  function handleOptions(value) {
+    setOptionSelected(value);
+    setShowForm(true);
+  }
 
   return (
     <div className="dashboard">
@@ -113,17 +134,91 @@ function Dashboard() {
         <div className="general_parent">
           <ul className="parent_info">
             <li className="name_parent_dashboard">
-              {user.parent_firstname} {user.parent_lastname}
+              {user.parent_firstname} {user.parent_lastname}{" "}
+              <button
+                type="button"
+                className={modifySelected ? "change_info_pen" : "hide_pen"}
+                onClick={() => {
+                  handleOptions("nom et prénom");
+                }}
+              >
+                <img src="/assets/images/pen.svg" alt="pen" />
+              </button>
             </li>
-            <li>{user.parent_adress}</li>
+            <li>
+              {user.parent_adress}{" "}
+              <button
+                type="button"
+                className={modifySelected ? "change_info_pen" : "hide_pen"}
+                onClick={() => {
+                  handleOptions("adresse");
+                }}
+              >
+                <img src="/assets/images/pen.svg" alt="pen" />
+              </button>
+            </li>
+            <li>
+              {user.parent_mail}{" "}
+              <button
+                type="button"
+                className={modifySelected ? "change_info_pen" : "hide_pen"}
+                onClick={() => {
+                  handleOptions("e-mail");
+                }}
+              >
+                <img src="/assets/images/pen.svg" alt="pen" />
+              </button>
+            </li>
+            <li>
+              {user.parent_phone}{" "}
+              <button
+                type="button"
+                className={modifySelected ? "change_info_pen" : "hide_pen"}
+                onClick={() => {
+                  handleOptions("numéro de téléphone");
+                }}
+              >
+                <img src="/assets/images/pen.svg" alt="pen" />
+              </button>
+            </li>
+            <button
+              type="button"
+              className={modifySelected ? "change_info_password" : "hide_pen"}
+              onClick={() => {
+                handleOptions("mot de passe");
+              }}
+            >
+              Modifier mon mot de passe
+            </button>
           </ul>
-          <ul className="modify_info">
-            <li>Modifier mes informations</li>
-            <li>Modifier mes coordonnées</li>
-          </ul>
+          <div className="modify_info">
+            {modifySelected ? (
+              <button
+                type="button"
+                onClick={handleCancelModify}
+                className="modify_info_parent"
+                id="cancel_modify_parent"
+              >
+                Annuler{" "}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleModify}
+                className="modify_info_parent"
+              >
+                Modifier mes informations
+              </button>
+            )}
+          </div>
         </div>
       </div>
-
+      {showForm && (
+        <InformationsForm
+          data={optionSelected}
+          handleCancelModify={handleCancelModify}
+        />
+      )}
       <h5 className="title">Enfants</h5>
 
       <div className="children_container">

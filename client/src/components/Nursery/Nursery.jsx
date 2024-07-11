@@ -5,8 +5,6 @@ import SimpleMap from "./NurseryMap";
 import NurseriesCardCalender from "../NurseriesPlateform/NurseriesCardCalender";
 import "./Nursery.css";
 
-
-
 function Nursery() {
   const navigate = useNavigate();
   const data = useLoaderData();
@@ -139,7 +137,5 @@ function Nursery() {
     </div>
   );
 }
-
-
 
 export default Nursery;

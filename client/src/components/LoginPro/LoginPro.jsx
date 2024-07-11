@@ -1,7 +1,8 @@
-import LoginAdmin from "../LoginAdmin/LoginAdmin";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import "./LoginPro.css";
+import { AuthContext } from "../../context/AuthContext";
 
 function LoginPro() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ function LoginPro() {
   const emailWithRefNursery = useRef();
   const passwordWithRefNursery = useRef();
   const passwordWithRef = useRef();
+  const { setUser } = useContext(AuthContext);
 
   const handleAccountButton = () => {
     setAccountButton(true);
@@ -36,6 +38,8 @@ function LoginPro() {
   const handleOutsideClick = (e) => {
     if (e.target.className === "popup_admin") {
       handleClosePopup();
+    }
+  };
 
   const handleSubmitParent = async (event) => {
     event.preventDefault();
@@ -57,6 +61,7 @@ function LoginPro() {
       const data = await response.json();
 
       if (response.status === 200) {
+        setUser(data.user);
         navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite dans le 200");
@@ -65,6 +70,7 @@ function LoginPro() {
       console.error("Une erreur s'est produite ailleurs :", err);
     }
   };
+
   const handleSubmitNursery = async (event) => {
     event.preventDefault();
 

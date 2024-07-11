@@ -58,8 +58,7 @@
   margin: 0;
 }
 .nursery_all_info h5 {
-  margin-top: 0;
-  margin-bottom: 1em;
+  margin: 0;
 }
 .nursery_info {
   display: flex;
@@ -86,9 +85,6 @@
 }
 
 .general_parent {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   width: 80vw;
   margin-bottom: 5%;
   list-style: none;
@@ -96,13 +92,13 @@
 .parent_info {
   list-style: none;
   padding: 0;
+  margin-top: 0;
 }
+
 .name_parent_dashboard {
   font-weight: bold;
 }
 .modify_info {
-  color: blue;
-  text-decoration: underline;
   list-style: none;
 }
 #title_informations {
@@ -111,6 +107,7 @@
 .title {
   color: #9c69e2;
   font-size: x-large;
+  margin: 1em 0;
 }
 .child {
   margin-top: 4%;
@@ -176,6 +173,66 @@
   width: 200px;
   margin: 0;
 }
+
+.change_info_pen {
+  background-color: transparent;
+  border: none;
+}
+.change_info_pen img {
+  height: 20px;
+  width: 20px;
+}
+.change_info_password {
+  background-color: transparent;
+  border: none;
+  color: var(--first-color);
+  font-weight: bolder;
+  border-radius: 25px;
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+.hide_pen {
+  display: none;
+}
+
+.modify_info_parent {
+  background-color: var(--first-color);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 1em;
+}
+#cancel_modify_parent {
+  background-color: var(--second-color);
+}
+
+/* formulaire changements informations */
+
+.modify_informations_form {
+  border: 2px solid var(--first-color);
+  border-radius: 25px;
+  text-align: center;
+  background-color: #efe4fe;
+}
+
+.modify_informations_form input {
+  border-radius: 20px;
+  border: 2px solid var(--first-color);
+  padding: 0.5em;
+  width: 80%;
+}
+
+.modify_informations_form button {
+  background-color: var(--first-color);
+  color: white;
+  border-radius: 25px;
+  border: none;
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;
@@ -247,7 +304,6 @@
   }
   .parent_info {
     display: flex;
-
     flex-direction: column;
     padding: 0;
     margin-right: 8%;
@@ -256,8 +312,6 @@
     display: flex;
   }
   .general_parent {
-    justify-content: space-between;
-
     margin-top: -8%;
     margin-bottom: 5%;
   }
@@ -295,5 +349,55 @@
     display: flex;
     margin-top: 10%;
     margin-left: -10%;
+  }
+
+  .change_info_password {
+    width: 200px;
+    text-align: left;
+  }
+
+  .hide_pen {
+    display: none;
+  }
+
+  .modify_info_parent {
+    background-color: var(--first-color);
+    color: white;
+    border-radius: 25px;
+    border: none;
+    padding: 1em;
+    width: 200px;
+  }
+  #cancel_modify_parent {
+    background-color: var(--second-color);
+  }
+
+  /* formulaire changements informations */
+
+  .modify_informations_form {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    text-align: center;
+    background-color: #efe4fe;
+    width: 50%;
+    margin-top: -12%;
+    margin-left: 30%;
+  }
+
+  .modify_informations_form input {
+    margin-top: 0.2em;
+    width: 40%;
+  }
+
+  .modify_informations_form button {
+    margin-left: 1em;
+  }
+  .parent_info {
+    margin-top: 2em;
+  }
+
+  .general_parent {
+    display: flex;
   }
 }
