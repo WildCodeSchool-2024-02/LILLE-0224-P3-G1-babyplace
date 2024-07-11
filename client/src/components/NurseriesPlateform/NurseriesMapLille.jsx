@@ -67,8 +67,8 @@ function NurseriesMapLille({ allNurseries }) {
 NurseriesMapLille.propTypes = {
   allNurseries: PropTypes.arrayOf(
     PropTypes.shape({
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
+      latitude: PropTypes.string.isRequired,
+      longitude: PropTypes.string.isRequired,
       nursery_name: PropTypes.string.isRequired,
       image1: PropTypes.string.isRequired,
     })

@@ -1,9 +1,17 @@
 body {
   margin: 0;
 }
-
+.presentation_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.image_login {
+  width: 80%;
+}
 .buttons_register_login {
-  background-color: #5d53b6;
+  column-gap: 10%;
   display: flex;
   flex-direction: row-reverse;
   justify-content: center;
@@ -11,12 +19,15 @@ body {
 }
 
 .buttons_register_login button {
-  width: 100%;
+  width: 100px;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
-  border: 3px solid transparent;
-  background-color: white;
+  border: 3px solid #5d53b6;
   font-weight: 600;
+  background-color: white;
+
+  border-radius: 0.7em;
+  margin-bottom: 0.5em;
 }
 
 .login_register_pro {
@@ -151,8 +162,8 @@ body {
     font-size: 8em;
     margin: 0;
   }
-  .presentation_login img {
-    height: 300px;
+  .image_login {
+    width: 33%;
   }
   .presentation_login p {
     font-size: 1.1em;

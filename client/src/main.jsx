@@ -89,6 +89,10 @@ const router = createBrowserRouter([
         element: <PageDashboard />,
       },
       {
+        path: "/dashboard/pro",
+        element: <PageProDashboard />,
+      },
+      {
         path: "/inscription/creche",
         element: <NurseryRegisterPage />,
         loader: getDataAddresses,
@@ -112,7 +116,7 @@ const router = createBrowserRouter([
       },
       { path: "/contact", element: <ContactPage /> },
       {
-        path: "/dashboard/moderator",
+        path: "/dashboard/moderateur",
         element: <PageModeratorDashboard />,
         loader: async () => {
           const [parentsResponse, nurseryResponse, bookingResponse] =
