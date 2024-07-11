@@ -71,8 +71,6 @@ const login = async (req, res) => {
         mail: userMail,
         psw: userPassword,
       },
-      // psw: info.parent_password,
-      // mail: info.parent_mail,
       token,
     });
   } catch (error) {
