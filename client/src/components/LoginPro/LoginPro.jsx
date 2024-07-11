@@ -1,9 +1,9 @@
-import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import "./LoginPro.css";
 
-function LoginPro() {
+export default function LoginPro() {
   const navigate = useNavigate();
   const [accountButton, setAccountButton] = useState(true);
   const [isLogin, setIsLogin] = useState(true);
@@ -12,17 +12,24 @@ function LoginPro() {
   const emailWithRefNursery = useRef();
   const passwordWithRefNursery = useRef();
   const passwordWithRef = useRef();
+  const registerProRef = useRef(null);
 
   const handleAccountButton = () => {
     setAccountButton(true);
   };
 
+  const scrollToRegisterPro = () => {
+    registerProRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleLoginClick = () => {
     setIsLogin(true);
+    scrollToRegisterPro();
   };
 
   const handleRegisterClick = () => {
     setIsLogin(false);
+    scrollToRegisterPro();
   };
 
   const handleLoginAdminClick = () => {
@@ -36,6 +43,8 @@ function LoginPro() {
   const handleOutsideClick = (e) => {
     if (e.target.className === "popup_admin") {
       handleClosePopup();
+    }
+  };
 
   const handleSubmitParent = async (event) => {
     event.preventDefault();
@@ -65,6 +74,7 @@ function LoginPro() {
       console.error("Une erreur s'est produite ailleurs :", err);
     }
   };
+
   const handleSubmitNursery = async (event) => {
     event.preventDefault();
 
@@ -112,13 +122,23 @@ function LoginPro() {
         <p>
           Bienvenue sur Babyplace, votre plateforme de mise en relation entre
           parents et crèches.{" "}
-          <span style={{ color: "var(--first-color)", fontWeight: "bold" }}>
-            Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
-            là !
-          </span>
         </p>
-        <img src="/assets/images/image3_homebgremoved.png" alt="home" />
-        <p style={{ marginTop: "5em" }}>
+        <p
+          style={{
+            color: "var(--first-color)",
+            fontWeight: "bold",
+            margin: "0",
+          }}
+        >
+          Un imprévu dans votre garde d'enfant ? Pas de panique, Babyplace est
+          là !
+        </p>
+        <img
+          className="image_login"
+          src="/assets/images/image3_homebgremoved.png"
+          alt="home"
+        />
+        <p style={{ marginTop: "2em" }}>
           Inscrivez-vous sur notre site pour accéder à nos services, disponibles
           (pour le moment) à Lille et Rennes{" "}
         </p>
@@ -147,7 +167,7 @@ function LoginPro() {
       </div>
 
       {isLogin ? (
-        <div className="login_pro">
+        <div className="login_pro" ref={registerProRef}>
           <div className="login_pro_info">
             <div className="login_pro_title">
               <h2>PRO</h2>
@@ -193,7 +213,7 @@ function LoginPro() {
           </div>
         </div>
       ) : (
-        <div className="register_pro">
+        <div className="register_pro" ref={registerProRef}>
           <div className="login_pro_info">
             <div className="login_pro_title">
               <h2>PARENT</h2>
@@ -276,5 +296,3 @@ function LoginPro() {
     </div>
   );
 }
-
-export default LoginPro;
