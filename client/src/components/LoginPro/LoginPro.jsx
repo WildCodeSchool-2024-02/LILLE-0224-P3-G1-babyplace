@@ -1,7 +1,8 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import "./LoginPro.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function LoginPro() {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ export default function LoginPro() {
   const emailWithRefNursery = useRef();
   const passwordWithRefNursery = useRef();
   const passwordWithRef = useRef();
+  const { setUser } = useContext(AuthContext);
   const registerProRef = useRef(null);
 
   const handleAccountButton = () => {
@@ -66,6 +68,7 @@ export default function LoginPro() {
       const data = await response.json();
 
       if (response.status === 200) {
+        setUser(data.user);
         navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");

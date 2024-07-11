@@ -5,20 +5,28 @@ import myAxios from "../services/myAxios";
 export const AuthContext = createContext(null);
 
 export default function AuthContextProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [nurseryUser, setNurseryUser] = useState(null);
+  const [user, setUser] = useState({});
+
+  async function loadDashboardData(role, id) {
+    try {
+      const response = await myAxios.get(`/api/${role}/${id}`);
+      setUser(response.data);
+    } catch (error) {
+      console.error(`Error loading dashboard data for ${role}`, error);
+    }
+  }
 
   useEffect(() => {
-    async function loadDashboardData() {
-      try {
-        const response = await myAxios.get(`/api/parent/5`);
-        setUser(response.data);
-      } catch (error) {
-        console.error("Error loading dashboard data:", error);
+    if (user) {
+      if (user.role === "parent") {
+        loadDashboardData("parent", user.parent_id);
+      } else if (user.role === "nursery") {
+        loadDashboardData("nursery", user.nursery_id);
+      } else if (user.role === "moderator") {
+        loadDashboardData("moderator", user.moderator_id);
       }
     }
-    loadDashboardData();
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     async function loadDashboardDataNursery() {
@@ -46,12 +54,11 @@ export default function AuthContextProvider({ children }) {
 
   const contextValue = useMemo(
     () => ({
-      nurseryUser,
       user,
       setUser,
-      setNurseryUser,
     }),
-    [user, setUser, nurseryUser, setNurseryUser]
+    [user, setUser]
+
   );
 
   return (

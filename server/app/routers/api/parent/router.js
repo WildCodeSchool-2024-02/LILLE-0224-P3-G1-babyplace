@@ -10,8 +10,10 @@ const router = express.Router();
 const {
   browse,
   read,
+  edit,
   add,
   readByMail,
+
 } = require("../../../controllers/parentActions");
 
 // Route to get a list of parents
@@ -19,6 +21,8 @@ router.get("/", browse);
 
 // Route to get a specific parent by ID
 router.get("/:id", read);
+
+router.put("/:id", edit);
 
 router.get("/mail/:mail", readByMail);
 
