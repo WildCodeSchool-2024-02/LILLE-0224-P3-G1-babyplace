@@ -160,7 +160,8 @@ class ParentSeeder extends AbstractSeeder {
         parent_adress: "68 faubourg 'd'Arras 59000 Lille",
         parent_phone: "03 21 20 56 18",
         parent_mail: "camille.jamin@gmail.com",
-        parent_password: "************",
+        parent_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$YK9+N6rTOn+kqBlC5jwGlg$8cPhGmxw4JEKwuSew2SK+DHAnq54KmjBSR8vY3O7nYA",
       },
       {
         parent_firstname: "Cedric",

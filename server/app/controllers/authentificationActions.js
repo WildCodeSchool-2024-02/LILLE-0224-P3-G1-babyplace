@@ -1,9 +1,9 @@
 const argon2 = require("argon2");
-
+const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
 
 const login = async (req, res) => {
-  // Retrieve the info of the body
+  // Je vais récupérer le body de la requête d'authentification
   try {
     const { role } = req.body;
 
@@ -35,7 +35,7 @@ const login = async (req, res) => {
 
     // Checking User informations
     if (!info) {
-      // if the user doesn't exists
+      // if the user doesn't exist
       return res.status(404).json({ message: "User not found" });
     }
 
@@ -47,11 +47,37 @@ const login = async (req, res) => {
       return res.status(401).json({ message: "Incorrect Password" });
     }
 
-    // If the User is found
-    return res.status(200).json({ message: "Login is successful", user: info });
+    // Token generation
+    const token = jwt.sign({ sub: info.id, role }, process.env.APP_SECRET, {
+      expiresIn: "1h",
+    });
+
+    // Setting the token in a cookie
+    const cookieOptions = {
+      httpOnly: true, // Preventing JS from accessing the cookie
+      secure: process.env.NODE_ENV === "production", // Cookie is only sent in https in production
+      sameSite: "strict", // Preventing the CSRF attacks
+      maxAge: 60 * 60 * 1000, // Time of validity
+    };
+
+    // Set the cookie using the options
+    res.cookie("token", token, cookieOptions);
+
+    // If the User is found and the password is correct
+    return res.status(200).json({
+      message: "Login is successful",
+      // user: info,
+      user: {
+        mail: userMail,
+        psw: userPassword,
+      },
+      // psw: info.parent_password,
+      // mail: info.parent_mail,
+      token,
+    });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occured", error });
+    return res.status(500).json({ message: "An error occurred", error });
   }
 };
 
