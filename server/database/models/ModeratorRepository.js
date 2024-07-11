@@ -12,7 +12,11 @@ class ModeratorRepository extends AbstractRepository {
   async create(moderator) {
     const [result] = await this.database.query(
       `insert into ${this.table} (moderator_mail, moderator_role, moderator_password) values (?, ?, ?)`,
-      [moderator.moderator_mail, moderator.moderator_password]
+      [
+        moderator.moderator_mail,
+        moderator.moderator_password,
+        moderator.moderator_role,
+      ]
     );
 
     // Return the ID of the newly inserted moderator
@@ -29,6 +33,17 @@ class ModeratorRepository extends AbstractRepository {
     );
 
     // Return the first row of the result, which represents the moderator
+    return rows[0];
+  }
+
+  async readByEmail(email) {
+    // Execute the SQL SELECT query to retrieve a specific moderator by its ID
+    const [rows] = await this.database.query(
+      `select * from ${this.table} where moderator_mail = ?`,
+      [email]
+    );
+
+    // Return the first row of the result, which represents the nursery
     return rows[0];
   }
 

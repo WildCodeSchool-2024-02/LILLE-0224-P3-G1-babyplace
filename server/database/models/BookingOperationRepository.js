@@ -1,6 +1,6 @@
 const AbstractRepository = require("./AbstractRepository");
 
-class ChildRepository extends AbstractRepository {
+class BookingOperationRepository extends AbstractRepository {
   constructor() {
     // Call the constructor of the booking class (AbstractRepository)
     // and pass the table name "booking_operation" as configuration
@@ -11,11 +11,12 @@ class ChildRepository extends AbstractRepository {
 
   async create(booking) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (booking_operation_date, slots, booking_operation_state) values (?, ?, ?)`,
+      `insert into ${this.table} (booking_operation_date, slots, state, nursery_id) values (?, ?, ?, ?)`,
       [
         booking.booking_operation_date,
         booking.slots,
-        booking.booking_operation_state,
+        booking.state,
+        booking.nursery_id,
       ]
     );
 
@@ -49,8 +50,8 @@ class ChildRepository extends AbstractRepository {
   async update(booking) {
     // Execute the SQL UPDATE query to update a booking from the 'booking_operation' table
     const [rows] = await this.database.query(
-      `update ${this.table} set booking_operation_date = ?, booking_operation_state = ?, where booking_operation_id = ?`,
-      [booking.booking_operation_date, booking.booking_operation_state]
+      `update ${this.table} set booking_operation_date = ?, state = ?, where booking_operation_id = ?`,
+      [booking.booking_operation_date, booking.state]
     );
 
     // Return how many rows were affected
@@ -70,4 +71,4 @@ class ChildRepository extends AbstractRepository {
   }
 }
 
-module.exports = ChildRepository;
+module.exports = BookingOperationRepository;

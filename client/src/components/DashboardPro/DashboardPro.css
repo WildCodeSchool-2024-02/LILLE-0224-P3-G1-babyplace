@@ -7,6 +7,7 @@
   text-align: center;
   border-radius: 1em;
   padding: 3%;
+  margin-top: 4em;
 }
 .message_pro_container {
   display: flex;
@@ -22,11 +23,10 @@
   background-color: white;
   border: solid 1px #9c69e2;
   justify-content: center;
-  width: 100px;
+  width: 200px;
   border-radius: 0.5em;
   padding: 3%;
-  margin-bottom: 8%;
-  margin-top: 6%;
+  margin: 1em auto;
 }
 .creche_info_container {
   display: flex;
@@ -45,9 +45,13 @@
 .creche_mail {
   padding-bottom: 2%;
 }
+.creche_location p {
+  margin: 0 1em;
+}
 .creche_name {
   color: #9c69e2;
   padding-bottom: 4%;
+  margin: 0 1em;
 }
 .reservation {
   display: flex;
@@ -206,7 +210,28 @@
   margin-top: 1em;
   padding: 0.5em;
 }
+.profile_pictures_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+#profile_picture_2,
+#profile_picture_3 {
+  display: none;
+}
+.modify_info {
+  padding: 1em;
+}
+.profile_picture {
+  border-radius: 100%;
+  height: 200px;
+  width: 200px;
+  margin: 1em auto;
+  border: 2px solid var(--second-color);
+  object-fit: cover;
+}
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;
@@ -217,19 +242,35 @@
   }
   .message_pro_dashboard {
     width: 70%;
+    margin-top: 0;
+    margin-bottom: 2em;
+  }
+  #profile_picture_2,
+  #profile_picture_3 {
+    display: initial;
+  }
+  .profile_picture {
+    border-radius: 100%;
+    height: 200px;
+    width: 200px;
+    margin: 0;
+    border: 2px solid var(--first-color);
+  }
+  .profile_pictures_container {
+    gap: 1em;
   }
 
   .creche_name {
     font-size: 2em;
     display: flex;
-    margin-left: 4%;
+    margin: 1em 2em;
+    padding: 0;
   }
   .info_container_pro {
     width: 23%;
     font-size: 1.1em;
-    margin-bottom: 5%;
     padding: 5px;
-    margin-left: 4%;
+    margin: 3% 4%;
     padding-left: 4%;
     justify-content: flex-start;
     background-color: #9c69e2;
@@ -241,7 +282,7 @@
   }
   .creche_adress {
     flex-direction: column;
-    row-gap: 10px;
+    margin: 0;
     padding-bottom: 10px;
   }
   .creche_contact {
@@ -251,7 +292,7 @@
     flex-direction: column;
   }
   .modify_info li {
-    margin-bottom: 2%;
+    margin: 0;
   }
   .creche_number {
     padding-bottom: 0%;
@@ -429,5 +470,8 @@
     background-color: white;
     padding: 1em;
     gap: 1em;
+  }
+  .custom_select {
+    display: none;
   }
 }
