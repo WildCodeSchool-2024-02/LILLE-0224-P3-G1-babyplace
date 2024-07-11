@@ -21,7 +21,7 @@ function Dashboard() {
 
   const formatDate = (date) => date.split("T")[0];
 
-  // Filtre les réservations de l'utilistaeur, selon l'état de celle-ci. Permet d'afficher les réservations selon les catégories sur lequel l'utilisateur clique
+  // Filtre les réservations de l'utilisteur, selon l'état de celles-ci. Permet d'afficher les réservations selon la catégorie sur laquelle l'utilisateur clique
   const getFilteredBookings = () => {
     if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];
