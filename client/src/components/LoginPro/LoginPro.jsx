@@ -1,6 +1,6 @@
-import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import LoginAdmin from "../LoginAdmin/LoginAdmin";
 import "./LoginPro.css";
 
 function LoginPro() {
@@ -36,6 +36,8 @@ function LoginPro() {
   const handleOutsideClick = (e) => {
     if (e.target.className === "popup_admin") {
       handleClosePopup();
+    }
+  };
 
   const handleSubmitParent = async (event) => {
     event.preventDefault();
@@ -59,12 +61,13 @@ function LoginPro() {
       if (response.status === 200) {
         navigate("/dashboard", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite dans le 200");
+        console.error(data.message || "Une erreur s'est produite");
       }
     } catch (err) {
-      console.error("Une erreur s'est produite ailleurs :", err);
+      console.error("Une erreur s'est produite :", err);
     }
   };
+
   const handleSubmitNursery = async (event) => {
     event.preventDefault();
 
@@ -87,10 +90,10 @@ function LoginPro() {
       if (response.status === 200) {
         navigate("/dashboard/pro", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite dans le 200");
+        console.error(data.message || "Une erreur s'est produite");
       }
     } catch (err) {
-      console.error("Une erreur s'est produite ailleurs :", err);
+      console.error("Une erreur s'est produite :", err);
     }
   };
 
