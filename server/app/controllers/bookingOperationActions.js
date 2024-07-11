@@ -19,7 +19,7 @@ const browse = async (req, res, next) => {
 const read = async (req, res, next) => {
   try {
     // Fetch a specific booking from the database based on the provided ID
-    const booking = await tables.booking.read(req.params.id);
+    const booking = await tables.booking_operation.read(req.params.id);
 
     // If the booking is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the booking in JSON format
@@ -43,7 +43,7 @@ const add = async (req, res, next) => {
   try {
     const booking = req.body;
     // Insert the booking into the database
-    const insertId = await tables.booking.create(booking);
+    const insertId = await tables.booking_operation.create(booking);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted booking
     res.status(201).json({ insertId });

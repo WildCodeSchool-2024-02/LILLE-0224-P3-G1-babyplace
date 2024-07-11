@@ -3,7 +3,6 @@ const ModeratorRepository = require("./models/ModeratorRepository");
 const ParentRepository = require("./models/ParentRepository");
 const ChildRepository = require("./models/ChildRepository");
 const AllergyRepository = require("./models/AllergyRepository");
-
 const BookingOperationRepository = require("./models/BookingOperationRepository");
 const NurseryRepository = require("./models/NurseryRepository");
 // Create an empty object to hold data repositories for different tables

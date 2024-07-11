@@ -56,10 +56,11 @@
 .nursery_all_info ul {
   padding: 0;
   margin: 0;
+  margin-bottom: 1em;
 }
 .nursery_all_info h5 {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: 0;
 }
 .nursery_info {
   display: flex;
@@ -221,11 +222,15 @@
   .all_nursery_container {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     margin-bottom: 7%;
+    margin-left: 8%;
   }
   .nursery_container {
     width: 40%;
-    margin-right: 5%;
+    max-width: 350px;
+    margin-right: 2%;
+    margin-left: 2%;
   }
   .child_presentation {
     width: 70%;
