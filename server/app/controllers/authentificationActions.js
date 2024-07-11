@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const tables = require("../../database/tables");
 
 const login = async (req, res) => {
-  // Je vais récupérer le body de la requête d'authentification
+  // Getting authentication's request body
   try {
     const { role } = req.body;
 
