@@ -162,7 +162,7 @@ export default function NurseryRegisterForm() {
 
       // redirection vers la page dashboard de la crèche
       if (response.status === 201) {
-        navigate("/dashboard/pro");
+        navigate("/");
       } else {
         console.info(response);
       }

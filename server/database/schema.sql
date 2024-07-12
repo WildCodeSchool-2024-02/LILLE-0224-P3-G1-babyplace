@@ -81,9 +81,6 @@ CREATE TABLE nursery (
   PRIMARY KEY (nursery_id)
 );
 
-
-
-
 CREATE TABLE booking_operation (
   booking_operation_id int NOT NULL AUTO_INCREMENT,
   booking_operation_date datetime NOT NULL,
