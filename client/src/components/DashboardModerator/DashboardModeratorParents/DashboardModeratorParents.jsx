@@ -12,7 +12,7 @@ function DashboardModeratorParents() {
     setVisibleProfiles((prevState) =>
       prevState.includes(parentId)
         ? prevState.filter((id) => id !== parentId)
-        : [...prevState, parentId]
+        : [prevState, parentId]
     );
   };
 
@@ -58,7 +58,7 @@ function DashboardModeratorParents() {
                   </div>
                   <div className="dashboard_moderator_parent_info">
                     <p className="dashboard_moderator_parent_info_weigh">
-                      Nombre d'enfants :
+                      Nombre d'enfants : {parent.children.length}
                     </p>
                   </div>
                 </div>

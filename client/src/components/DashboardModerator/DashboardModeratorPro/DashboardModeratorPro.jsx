@@ -56,7 +56,10 @@ function DashboardModeratorPro() {
                     <p className="dashboard_moderator_parent_info_weigh">
                       Adresse :
                     </p>
-                    <p>{nursery.adresse}</p>
+                    <p>
+                      {nursery.nursery_street_number} {nursery.nursery_street}{" "}
+                      {nursery.city}
+                    </p>
                   </div>
                 </div>
                 <div
