@@ -8,11 +8,13 @@ function DashboardModeratorReservation() {
   const { booking: allBooking } = useLoaderData();
   const [filteredBookings, setFilteredBookings] = useState(allBooking);
 
+  const formatDate = (date) => date.split("T")[0];
+
   function getStatusClass(state) {
-    if (state === "passed") {
+    if (state === "Passée") {
       return "dashboard_reservation_agree";
     }
-    return state === "pending" ? "dashboard_reservation_disagree" : "";
+    return state === "En attente" ? "dashboard_reservation_disagree" : "";
   }
 
   const handleSearch = (searchValue) => {
@@ -21,7 +23,6 @@ function DashboardModeratorReservation() {
     );
     setFilteredBookings(filteredBookingsList);
   };
-
   return (
     <div>
       <div className="dashboard_reservation_filter">
@@ -41,34 +42,41 @@ function DashboardModeratorReservation() {
       <div className="dashboard_reservation_h2">
         <h2>Gérer les réservations</h2>
       </div>
-      <div className="dashboard_reservation_date">
-        <h3>31/06/2024</h3>
-        <div className="dashboard_reservation_creche">
-          <p>Crèche Picoti Picota</p>
-        </div>
-        <div className="dashboard_reservation_all_container">
-          <div>
-            {filteredBookings.map((reservation) => (
+
+      <div className="dashboard_reservation_all_container">
+        <div>
+          {filteredBookings.map((reservation) => (
+            <div
+              id={`dashboard_agree_moderator_${reservation.id}`}
+              className="dashboard_reservation_container"
+              key={reservation.id}
+            >
               <div
-                id={`dashboard_agree_moderator_${reservation.id}`}
-                className="dashboard_reservation_container"
-                key={reservation.id}
+                className={getStatusClass(reservation.state)}
+                id="dashboard_reservation_state_container"
               >
-                <div className={getStatusClass(reservation.state)}>
-                  <p>{reservation.state}</p>
-                </div>
-                <div className="dashboard_reservation_infos">
-                  <p>Parent : {reservation.account_id}</p>
-                  <p>Enfant : ""</p>
-                  <p>Crèche : {reservation.nursery_id}</p>
-                  <p>Date : {reservation.booking_operation_date}</p>
-                </div>
-                <div className="dashboard_reservation_cancel">
-                  <button type="button">Annuler la réservation</button>
-                </div>
+                <p className="dashboard_reservation_state">
+                  {reservation.state}
+                </p>
               </div>
-            ))}
-          </div>
+              <div className="dashboard_reservation_infos">
+                <p>
+                  Parent : {reservation.parent_firstname}{" "}
+                  {reservation.parent_lastname}
+                </p>
+                <p>
+                  Enfant : {reservation.child_firstname}{" "}
+                  {reservation.child_lastname}
+                </p>
+                <p>Crèche : {reservation.nursery_name}</p>
+                <p>Date : {formatDate(reservation.booking_operation_date)}</p>
+              </div>
+
+              <div className="dashboard_reservation_cancel">
+                <button type="button">Annuler la réservation</button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
