@@ -18,7 +18,8 @@ function getMonday(date) {
 }
 
 export default function CalendarDashboard() {
-  const { nurseryUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   // Fonction pour formater la date
   function formatDate(date) {
     const day = date.getDate();
@@ -75,16 +76,11 @@ export default function CalendarDashboard() {
 
   // Fonction pour faire apparaître les formulaires d'ajout / modif de créneaux
   const [addAvailability, setAddAvailability] = useState(null);
-  const [placesAvailable, setPlacesAvailable] = useState(0);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
 
   function handleAvailabilityForm(index) {
     setAddAvailability(index === addAvailability ? null : index);
-  }
-
-  function handlePlacesAvailable(e) {
-    setPlacesAvailable(Number(e.target.value));
   }
 
   function handleStart(e) {
@@ -113,7 +109,7 @@ export default function CalendarDashboard() {
             booking_operation_date: formattedDate,
             slots: `${start} - ${end}`,
             state: "Libre",
-            nursery_id: nurseryUser.nursery_id,
+            nursery_id: user.nursery_id,
           }),
         }
       );
@@ -136,21 +132,18 @@ export default function CalendarDashboard() {
         .fill()
         .map(() => []);
     }
-    for (let i = 0; i < placesAvailable; i += 1) {
-      newAvailability[weekKey][index].push({
-        start,
-        end,
-      });
-    }
+    newAvailability[weekKey][index].push({
+      start,
+      end,
+    });
     setAvailability(newAvailability);
     setAddAvailability(null);
-    setPlacesAvailable(0);
     setStart("");
     setEnd("");
     const selectedDate = new Date(
       currentWeek[index].split("/").reverse().join("/")
     );
-    sendAvailabilityToAPI(selectedDate, newAvailability);
+    sendAvailabilityToAPI(selectedDate);
   }
 
   function handleDeleteAvailability(dayIndex, slotIndex) {
@@ -217,14 +210,9 @@ export default function CalendarDashboard() {
                   {daysInFrench[index]} - {date}{" "}
                 </div>
                 <div className="form_definition">
-                  Définissez un nombre de places et un créneau horaire
+                  Définissez un créneau horaire
                 </div>
                 <form>
-                  <input
-                    type="number"
-                    onChange={handlePlacesAvailable}
-                    value={placesAvailable}
-                  />
                   Début :{" "}
                   <input type="time" onChange={handleStart} value={start} />
                   Fin : <input type="time" onChange={handleEnd} value={end} />

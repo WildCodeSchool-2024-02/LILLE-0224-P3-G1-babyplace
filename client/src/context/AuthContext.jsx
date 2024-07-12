@@ -6,6 +6,8 @@ export const AuthContext = createContext(null);
 
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState({});
+  const [initialLoad, setInitialLoad] = useState(true);
+
   async function loadDashboardData(role, id) {
     try {
       const response = await myAxios.get(`/api/${role}/${id}`);
@@ -16,7 +18,7 @@ export default function AuthContextProvider({ children }) {
   }
 
   useEffect(() => {
-    if (user) {
+    if (initialLoad && user.role) {
       if (user.role === "parent") {
         loadDashboardData("parent", user.parent_id);
       } else if (user.role === "nursery") {
@@ -24,8 +26,16 @@ export default function AuthContextProvider({ children }) {
       } else if (user.role === "moderator") {
         loadDashboardData("moderator", user.moderator_id);
       }
+      setInitialLoad(false);
     }
-  }, [user]);
+  }, [
+    user.role,
+    initialLoad,
+    user.parent_id,
+    user.nursery_id,
+    user.moderator_id,
+  ]);
+
   const contextValue = useMemo(
     () => ({
       user,

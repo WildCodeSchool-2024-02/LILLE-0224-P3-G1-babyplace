@@ -173,7 +173,6 @@
   border-radius: 25px;
 }
 .form_calender_dashboard input {
-  width: 50%;
   border-radius: 25px;
   border: 1px solid var(--first-color);
   padding: 1em;
@@ -439,7 +438,6 @@
     border-radius: 25px;
   }
   .form_calender_dashboard input {
-    width: 50%;
     border-radius: 25px;
     border: 1px solid var(--first-color);
     padding: 1em;

@@ -44,7 +44,7 @@
 
 .nursery_list_title {
   position: absolute;
-  bottom: 250px;
+  bottom: 302px;
   left: 0;
   text-align: left;
   color: white;
@@ -64,7 +64,7 @@
 }
 /* card description */
 .nursery_list_desc {
-  height: 30vh;
+  height: 38vh;
   background-color: rgb(254, 252, 255);
   width: 90vw;
   border-radius: 0px 0px 20px 20px;
@@ -73,11 +73,12 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 .nursery_list_price {
   font-weight: bolder;
   margin-right: 2em;
+  margin-bottom: 0;
 }
 .nursery_list_button {
   background-color: var(--first-color);
@@ -96,26 +97,24 @@
 .nursery_card_calender_section {
   display: flex;
   width: 100%;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-direction: column;
   text-align: center;
 }
-/* one day */
-.nursery_card_calender_date {
+.one_date_mini {
   display: flex;
-  flex-direction: column;
-  gap: 0.4em;
-  width: 15%;
+  margin-bottom: 0.5em;
 }
-.nursery_card_hour_false {
-  background-color: lightgray;
+.date_mini {
+  background-color: var(--green);
+  padding: 0.2em;
+  width: 100px;
+  border-radius: 25px;
   color: white;
+  margin-right: 1em;
+  margin-left: 5em;
 }
-
-.nursery_card_hour_true {
-  background-color: lightgreen;
-  color: white;
-  box-shadow: 0px 2px 2px black;
+.nursery_card_calender_section h3 {
+  margin-bottom: 0.5em;
 }
 
 /* decorative lines  */
@@ -190,7 +189,7 @@
   }
 
   .nursery_list_title {
-    bottom: 265px;
+    bottom: 342px;
     left: 0;
     padding: 1em;
     height: fit-content;
@@ -198,7 +197,7 @@
   }
 
   .nursery_list_desc {
-    height: 30vh;
+    height: 40vh;
     width: 30vw;
     border-radius: 0px 0px 20px 20px;
     margin-bottom: 12%;
@@ -223,5 +222,9 @@
   }
   .nurseries_all_list_desktop {
     width: 80%;
+  }
+
+  .date_mini {
+    margin-left: 7em;
   }
 }
