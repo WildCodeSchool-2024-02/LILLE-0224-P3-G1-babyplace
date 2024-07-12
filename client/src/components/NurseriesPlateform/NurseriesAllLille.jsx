@@ -50,6 +50,7 @@ function NurseriesAllLille() {
                   image1={nursery.image1}
                   image2={nursery.image2}
                   image3={nursery.image3}
+                  bookings={nursery.bookings}
                 />
               ))}
             </div>
@@ -73,6 +74,7 @@ function NurseriesAllLille() {
                 image1={nursery.image1}
                 image2={nursery.image2}
                 image3={nursery.image3}
+                bookings={nursery.bookings}
               />
             ))}
           </div>

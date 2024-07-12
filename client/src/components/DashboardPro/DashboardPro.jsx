@@ -16,17 +16,19 @@ function DashboardPro() {
     if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];
     switch (selectedButton) {
+      case "Libre":
+        return user.bookings.filter((booking) => booking.state === "Libre");
       case "A venir":
-        return user.bookings.filter((booking) => booking.state === "Validée");
+        return user.bookings.filter((booking) => booking.state === "A venir");
       case "En attente":
         return user.bookings.filter(
           (booking) => booking.state === "En attente"
         );
-      case "Passées":
+      case "Passée":
         return user.bookings.filter((booking) => booking.state === "Passée");
-      case "Refusées":
+      case "Refusée":
         return user.bookings.filter((booking) => booking.state === "Refusée");
-      case "Annulées":
+      case "Annulée":
         return user.bookings.filter((booking) => booking.state === "Annulée");
       default:
         return [];
@@ -103,6 +105,7 @@ function DashboardPro() {
           onChange={(e) => handleViewList(e.target.value)}
         >
           <option value="Sélectionnez">Sélectionnez un état</option>
+          <option value="Libre">Libre &ensp;</option>
           <option value="A venir">À venir &ensp;</option>
           <option value="En attente">En attente</option>
           <option value="Passées">Passées</option>
@@ -111,6 +114,13 @@ function DashboardPro() {
         </select>
       </div>
       <div className="select_desktop">
+        <button
+          type="button"
+          className={selectedButton === "Libre" ? "active" : ""}
+          onClick={() => handleViewList("Libre")}
+        >
+          Libre
+        </button>
         <button
           type="button"
           className={selectedButton === "A venir" ? "active" : ""}

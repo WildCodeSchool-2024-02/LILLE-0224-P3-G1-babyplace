@@ -2,7 +2,6 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "leaflet/dist/leaflet.css";
-import NurseriesCardCalender from "./NurseriesCardCalender";
 import "./nurseriesAll.css";
 
 function NurseriesMapRennes({ allNurseries }) {
@@ -52,7 +51,7 @@ function NurseriesMapRennes({ allNurseries }) {
                 >
                   {nursery.nursery_name}
                 </p>
-                <NurseriesCardCalender />
+
                 <Link to={`/creche/${nursery.nursery_id}`}>
                   <button type="button" className="button_link_map">
                     Voir

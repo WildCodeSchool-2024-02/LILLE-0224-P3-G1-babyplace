@@ -1,12 +1,12 @@
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Footer from "../../components/Footer/Footer";
-import Header from "../../components/Header/Header";
+import HeaderDashboard from "../../components/Header/HeaderDashboard";
 import BottomNavbar from "../../components/Bottom_navbar/BottomNavbar";
 
 function PageDashboard() {
   return (
     <div>
-      <Header />
+      <HeaderDashboard />
       <Dashboard />
       <Footer />
       <BottomNavbar />

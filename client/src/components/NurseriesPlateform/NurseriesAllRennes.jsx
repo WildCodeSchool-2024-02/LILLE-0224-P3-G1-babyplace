@@ -15,7 +15,6 @@ function NurseriesAllRennes() {
   const handleViewMap = () => {
     setViewList(false);
   };
-
   return (
     <>
       <h2 className="nurseries_all_city_title">Rennes</h2>
@@ -50,6 +49,7 @@ function NurseriesAllRennes() {
                   image1={nursery.image1}
                   image2={nursery.image2}
                   image3={nursery.image3}
+                  bookings={nursery.bookings}
                 />
               ))}
             </div>
@@ -73,6 +73,7 @@ function NurseriesAllRennes() {
                 image1={nursery.image1}
                 image2={nursery.image2}
                 image3={nursery.image3}
+                bookings={nursery.bookings}
               />
             ))}
           </div>
