@@ -1,13 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import "./LoginAdmin.css";
 
-function LoginAdmin() {
+export default function LoginAdmin() {
   const navigate = useNavigate();
   const emailWithRefAdmin = useRef();
   const passwordWithRefAdmin = useRef();
 
-  const handleSubmitModerator = async (event) => {
+  const handleSubmitModerator = async (event, setUser) => {
     event.preventDefault();
 
     try {
@@ -27,7 +28,8 @@ function LoginAdmin() {
       const data = await response.json();
 
       if (response.status === 200) {
-        navigate("/dashboard/moderateur", { state: { user: data.user } });
+        setUser(data.user);
+        navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");
       }
@@ -51,16 +53,18 @@ function LoginAdmin() {
             ref={passwordWithRefAdmin}
           />
         </div>
-        <button
-          className="login_admin_button"
-          type="button"
-          onClick={handleSubmitModerator}
-        >
-          Connexion
-        </button>
+        <AuthContext.Consumer>
+          {({ setUser }) => (
+            <button
+              className="login_admin_button"
+              type="button"
+              onClick={(event) => handleSubmitModerator(event, setUser)}
+            >
+              Connexion
+            </button>
+          )}
+        </AuthContext.Consumer>
       </div>
     </div>
   );
 }
-
-export default LoginAdmin;
