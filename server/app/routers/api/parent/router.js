@@ -13,7 +13,6 @@ const {
   edit,
   add,
   readByMail,
-
 } = require("../../../controllers/parentActions");
 
 // Route to get a list of parents
@@ -24,13 +23,14 @@ router.get("/:id", read);
 
 router.put("/:id", edit);
 
-router.get("/mail/:mail", readByMail);
-
 const hashPassword = require("../../../services/HashedPassword");
+
 // Route to add a new parent
 router.post("/", hashPassword, add);
 
 const login = require("../../../controllers/authentificationActions");
+
+router.get("/mail/:mail", readByMail);
 
 router.post("/login", login);
 

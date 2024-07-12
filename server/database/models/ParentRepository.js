@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const AbstractRepository = require("./AbstractRepository");
 
 class ParentRepository extends AbstractRepository {
@@ -5,10 +6,11 @@ class ParentRepository extends AbstractRepository {
     super({ table: "parent" });
   }
 
+  // CREATE
   async create(parent) {
     const [result] = await this.database.query(
       `insert into ${this.table} (parent_firstname, role, parent_lastname, parent_adress, parent_phone, parent_mail, parent_password) values (?, ?, ?, ?, ?, ?, ?)`,
-      [ 
+      [
         parent.parent_firstname,
         parent.role,
         parent.parent_lastname,
@@ -21,6 +23,8 @@ class ParentRepository extends AbstractRepository {
 
     return result.insertId;
   }
+
+  // READ by id with children and bookings
 
   async readParentsAndChildrenId(id) {
     const [rows] = await this.database.query(
@@ -174,6 +178,7 @@ class ParentRepository extends AbstractRepository {
     }))[0];
   }
 
+  // READ all with children and bookings
   async readParentsAndChildren() {
     const [rows] = await this.database.query(`
       SELECT 
@@ -270,8 +275,59 @@ class ParentRepository extends AbstractRepository {
     return rows;
   }
 
+  async readAll() {
+    const parents = await this.readParentsAndChildren();
+    const bookings = await this.readBookings();
+
+    const bookingsMap = {};
+
+    bookings.forEach((booking) => {
+      if (!bookingsMap[booking.parent_id]) {
+        bookingsMap[booking.parent_id] = [];
+      }
+      bookingsMap[booking.parent_id].push({
+        booking_operation_id: booking.booking_operation_id,
+        booking_operation_date: booking.booking_operation_date,
+        slots: booking.slots,
+        state: booking.state,
+        children_id: booking.children_id,
+        child_firstname: booking.child_firstname,
+        child_lastname: booking.child_lastname,
+        nursery: {
+          nursery_id: booking.nursery_id,
+          nursery_role: booking.nursery_role,
+          nursery_name: booking.nursery_name,
+          nursery_street: booking.nursery_street,
+          nursery_street_number: booking.nursery_street_number,
+          latitude: booking.latitude,
+          longitude: booking.longitude,
+          city: booking.city,
+          capacity: booking.capacity,
+          price: booking.price,
+          nursery_phone: booking.nursery_phone,
+          nursery_mail: booking.nursery_mail,
+          image1: booking.image1,
+          image2: booking.image2,
+          image3: booking.image3,
+          activity1: booking.activity1,
+          activity2: booking.activity2,
+          activity3: booking.activity3,
+          certification1: booking.certification1,
+          certification2: booking.certification2,
+          certification3: booking.certification3,
+          about: booking.about,
+        },
+      });
+    });
+
+    return parents.map((parent) => ({
+      ...parent,
+      bookings: bookingsMap[parent.parent_id] || [],
+    }));
+  }
+
+  // READ by email (to get all informations at login)
   async readByEmail(email) {
-    // Execute the SQL SELECT query to retrieve a specific parent by email
     const [parentRows] = await this.database.query(
       `
       SELECT 
@@ -298,7 +354,6 @@ class ParentRepository extends AbstractRepository {
       [email]
     );
 
-    // Transform the result into a more convenient format
     const parentsMap = {};
 
     parentRows.forEach((row) => {
@@ -391,74 +446,38 @@ class ParentRepository extends AbstractRepository {
     return rows[0];
   }
 
-  async readAll() {
-    const parents = await this.readParentsAndChildren();
-    const bookings = await this.readBookings();
+  // UPDATE
+  async update(parent) {
+    const {
+      parent_id,
+      parent_firstname,
+      parent_lastname,
+      parent_adress,
+      parent_phone,
+      parent_mail,
+      parent_password,
+    } = parent;
 
-    const bookingsMap = {};
-
-    bookings.forEach((booking) => {
-      if (!bookingsMap[booking.parent_id]) {
-        bookingsMap[booking.parent_id] = [];
-      }
-      bookingsMap[booking.parent_id].push({
-        booking_operation_id: booking.booking_operation_id,
-        booking_operation_date: booking.booking_operation_date,
-        slots: booking.slots,
-        state: booking.state,
-        children_id: booking.children_id,
-        child_firstname: booking.child_firstname,
-        child_lastname: booking.child_lastname,
-        nursery: {
-          nursery_id: booking.nursery_id,
-          nursery_role: booking.nursery_role,
-          nursery_name: booking.nursery_name,
-          nursery_street: booking.nursery_street,
-          nursery_street_number: booking.nursery_street_number,
-          latitude: booking.latitude,
-          longitude: booking.longitude,
-          city: booking.city,
-          capacity: booking.capacity,
-          price: booking.price,
-          nursery_phone: booking.nursery_phone,
-          nursery_mail: booking.nursery_mail,
-          image1: booking.image1,
-          image2: booking.image2,
-          image3: booking.image3,
-          activity1: booking.activity1,
-          activity2: booking.activity2,
-          activity3: booking.activity3,
-          certification1: booking.certification1,
-          certification2: booking.certification2,
-          certification3: booking.certification3,
-          about: booking.about,
-        },
-      });
-    });
-
-    return parents.map((parent) => ({
-      ...parent,
-      bookings: bookingsMap[parent.parent_id] || [],
-    }));
-  }
-
-  async update(id, parent) {
-    const [rows] = await this.database.query(
-      `update ${this.table} set parent_firstname = ?, parent_lastname = ?, parent_adress = ?, parent_phone = ?, parent_mail = ?, parent_password = ? where parent_id = ?`,
+    const [result] = await this.database.query(
+      `UPDATE ${this.table} 
+       SET parent_firstname = ?, parent_lastname = ?, parent_adress = ?, 
+           parent_phone = ?, parent_mail = ?, parent_password = ? 
+       WHERE parent_id = ?`,
       [
-        parent.parent_firstname,
-        parent.parent_lastname,
-        parent.parent_adress,
-        parent.parent_phone,
-        parent.parent_mail,
-        parent.parent_password,
-        id,
+        parent_firstname,
+        parent_lastname,
+        parent_adress,
+        parent_phone,
+        parent_mail,
+        parent_password,
+        parent_id,
       ]
     );
 
-    return rows;
+    return result;
   }
 
+  // DELETE
   async delete(id) {
     const [rows] = await this.database.query(
       `delete from ${this.table} where parent_id = ?`,

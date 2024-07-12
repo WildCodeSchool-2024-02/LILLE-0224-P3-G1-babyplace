@@ -5,7 +5,7 @@ import BookingsPro from "./BookingsPro";
 import "./DashboardPro.css";
 
 function DashboardPro() {
-  const { nurseryUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [selectedButton, setSelectedButton] = useState(null);
 
   const handleViewList = (buttonName) => {
@@ -13,29 +13,21 @@ function DashboardPro() {
   };
 
   const getFilteredBookings = () => {
-    if (!nurseryUser || !nurseryUser.bookings)
+    if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];
     switch (selectedButton) {
       case "A venir":
-        return nurseryUser.bookings.filter(
-          (booking) => booking.state === "Validée"
-        );
+        return user.bookings.filter((booking) => booking.state === "Validée");
       case "En attente":
-        return nurseryUser.bookings.filter(
+        return user.bookings.filter(
           (booking) => booking.state === "En attente"
         );
       case "Passées":
-        return nurseryUser.bookings.filter(
-          (booking) => booking.state === "Passée"
-        );
+        return user.bookings.filter((booking) => booking.state === "Passée");
       case "Refusées":
-        return nurseryUser.bookings.filter(
-          (booking) => booking.state === "Refusée"
-        );
+        return user.bookings.filter((booking) => booking.state === "Refusée");
       case "Annulées":
-        return nurseryUser.bookings.filter(
-          (booking) => booking.state === "Annulée"
-        );
+        return user.bookings.filter((booking) => booking.state === "Annulée");
       default:
         return [];
     }
@@ -59,38 +51,33 @@ function DashboardPro() {
           <p className="info_pro">Mon Profil</p>
         </div>
         <div className="profile_pictures_container">
+          <img src={user.image1} className="profile_picture" alt="crèche" />
           <img
-            src={nurseryUser.image1}
-            className="profile_picture"
-            alt="crèche"
-          />
-          <img
-            src={nurseryUser.image2}
+            src={user.image2}
             className="profile_picture"
             id="profile_picture_2"
             alt="crèche"
           />
           <img
-            src={nurseryUser.image3}
+            src={user.image3}
             className="profile_picture"
             id="profile_picture_3"
             alt="crèche"
           />
         </div>
-        <h4 className="creche_name">{nurseryUser.nursery_name}</h4>
+        <h4 className="creche_name">{user.nursery_name}</h4>
 
         <div className="creche_info">
           <div className="creche_location">
             <div className="creche_adress">
               <p>
-                {nurseryUser.nursery_street_number} {nurseryUser.nursery_street}{" "}
-                {nurseryUser.city}
+                {user.nursery_street_number} {user.nursery_street} {user.city}
               </p>
             </div>
 
             <div className="creche_contact">
-              <p className="creche_number">{nurseryUser.nursery_phone}</p>
-              <p className="creche_mail">{nurseryUser.nursery_mail}</p>
+              <p className="creche_number">{user.nursery_phone}</p>
+              <p className="creche_mail">{user.nursery_mail}</p>
             </div>
           </div>
           <ul className="modify_info">
@@ -103,7 +90,7 @@ function DashboardPro() {
         <div className="info_container_pro">
           <p className="info_pro">Gérer les créneaux</p>
         </div>
-        <CalendarDashboard nurseryUser={nurseryUser} />
+        <CalendarDashboard user={user} />
       </div>
       <div className="container_dashboard_pro_section">
         <div className="info_container_pro">
@@ -161,7 +148,7 @@ function DashboardPro() {
         </button>
       </div>
 
-      <BookingsPro bookings={getFilteredBookings()} nursery={nurseryUser} />
+      <BookingsPro bookings={getFilteredBookings()} nursery={user} />
     </div>
   );
 }

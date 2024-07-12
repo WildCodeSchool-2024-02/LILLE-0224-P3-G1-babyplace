@@ -233,7 +233,10 @@
   margin-top: 1em;
   margin-bottom: 1em;
 }
-
+.modif_submit {
+  color: var(--second-color);
+  font-weight: bold;
+}
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;

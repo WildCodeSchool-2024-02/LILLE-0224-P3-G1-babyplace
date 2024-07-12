@@ -11,6 +11,8 @@ function Dashboard() {
   const [modifySelected, setModifySelected] = useState(false);
   const [optionSelected, setOptionSelected] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [responseForm, setResponseForm] = useState(false);
+
   const handleViewList = useCallback((buttonName) => {
     setSelectedButton(buttonName);
   }, []);
@@ -21,7 +23,7 @@ function Dashboard() {
 
   const formatDate = (date) => date.split("T")[0];
 
-  // Filtre les réservations de l'utilisteur, selon l'état de celles-ci. Permet d'afficher les réservations selon la catégorie sur laquelle l'utilisateur clique
+  // Filtre les réservations de l'utilisateur, selon l'état de celles-ci. Permet d'afficher les réservations selon la catégorie sur laquelle l'utilisateur clique
   const getFilteredBookings = () => {
     if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];
@@ -43,6 +45,7 @@ function Dashboard() {
     }
   };
 
+  // pour n'afficher les détails que de l'enfant sélectionné
   const selectedChild = user.children.find(
     (child) => child.child_id === selectedChildId
   );
@@ -217,7 +220,11 @@ function Dashboard() {
         <InformationsForm
           data={optionSelected}
           handleCancelModify={handleCancelModify}
+          setResponseForm={setResponseForm}
         />
+      )}
+      {responseForm && (
+        <div className="modif_submit"> Modification enregistrée ! </div>
       )}
       <h5 className="title">Enfants</h5>
 

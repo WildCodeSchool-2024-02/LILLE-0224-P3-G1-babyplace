@@ -79,7 +79,7 @@ export default function ChildForm() {
 
       if (response.status === 201) {
         console.info("Child successfully added");
-        navigate("/dashboard");
+        navigate("/");
       } else {
         const errorData = await response.text();
         console.error("Erreur lors de la soumission:", errorData);
