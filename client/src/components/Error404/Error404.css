@@ -1,0 +1,39 @@
+.all_error {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.error_h1 h1 {
+  color: var(--first-color);
+  font-size: 4em;
+  margin: 0;
+}
+
+.error_h2 h2 {
+  margin: 0;
+  color: black;
+  font-size: 3em;
+}
+
+.error_p {
+  color: black;
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.error_button button {
+  background-color: var(--first-color);
+  padding: 1rem;
+  border: solid 1px var(--first-color);
+  border-radius: 2rem;
+  color: white;
+}
+
+.error_button button:hover {
+  background-color: var(--second-color);
+  border: solid 1px var(--second-color);
+}

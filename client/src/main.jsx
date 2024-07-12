@@ -11,17 +11,16 @@ import App from "./App";
 // page components
 
 import Home from "./pages/Home/Home";
-import PageDashboard from "./pages/Dashboard/PageDashboard";
+
 import NurseryDetails from "./pages/NurseryDetails/NurseryDetails";
 import NurseryRegisterPage from "./pages/Register/nurseryRegisterPage";
 import PageLoginPro from "./pages/Login/LoginPro";
 import NurseriesSearchLille from "./pages/Platform/NurseriesSearchLille";
 import NurseriesSearchRennes from "./pages/Platform/NurseriesSearchRennes";
-import PageProDashboard from "./pages/Dashboard/PageProDashboard";
-import PageModeratorDashboard from "./pages/Dashboard/PageModeratorDashboard";
 import ContactPage from "./pages/Contact/ContactPage";
 import ParentForm from "./components/accueil/ParentForm/ParentForm";
 import ChildForm from "./components/accueil/ChildForm/ChildForm";
+import DashboardComponent from "./pages/Dashboard/DashboardComponent";
 
 // router creation
 
@@ -85,14 +84,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/dashboard",
-        element: <PageDashboard />,
-      },
-      {
-        path: "/dashboard/pro",
-        element: <PageProDashboard />,
-      },
-      {
         path: "/inscription/creche",
         element: <NurseryRegisterPage />,
         loader: getDataAddresses,
@@ -111,13 +102,8 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/dashboard/pro",
-        element: <PageProDashboard />,
-      },
-      { path: "/contact", element: <ContactPage /> },
-      {
-        path: "/dashboard/moderateur",
-        element: <PageModeratorDashboard />,
+        path: "/dashboard",
+        element: <DashboardComponent />,
         loader: async () => {
           const [parentsResponse, nurseryResponse, bookingResponse] =
             await Promise.all([
@@ -161,6 +147,7 @@ const router = createBrowserRouter([
           return null;
         },
       },
+      { path: "/contact", element: <ContactPage /> },
     ],
   },
 ]);

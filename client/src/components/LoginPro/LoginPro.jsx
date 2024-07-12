@@ -99,7 +99,7 @@ export default function LoginPro() {
 
       if (response.status === 200) {
         setUser(data.user);
-        navigate("/dashboard/pro", { state: { user: data.user } });
+        navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");
       }
