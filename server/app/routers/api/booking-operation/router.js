@@ -10,6 +10,8 @@ const router = express.Router();
 const {
   browse,
   read,
+  editBooking,
+  editValidateOrCancel,
   add,
 } = require("../../../controllers/bookingOperationActions");
 
@@ -18,6 +20,10 @@ router.get("/", browse);
 
 // Route to get a specific booking by ID
 router.get("/:id", read);
+
+// Route to modify a specific booking by ID
+router.put("/:id", editValidateOrCancel);
+router.put("/:id/edit", editBooking);
 
 // Route to add a new booking
 router.post("/", add);

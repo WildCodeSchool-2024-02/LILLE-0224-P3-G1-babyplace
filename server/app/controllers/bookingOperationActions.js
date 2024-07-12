@@ -35,7 +35,26 @@ const read = async (req, res, next) => {
 };
 
 // The E of BREAD - Edit (Update) operation
-// This operation is not yet implemented
+
+const editBooking = async (req, res, next) => {
+  try {
+    const updatedBooking = req.body;
+    await tables.booking_operation.updateOnBooking(updatedBooking);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
+const editValidateOrCancel = async (req, res, next) => {
+  try {
+    const updatedBooking = req.body;
+    await tables.booking_operation.updateOnValidateOrCancel(updatedBooking);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
@@ -60,7 +79,8 @@ const add = async (req, res, next) => {
 module.exports = {
   browse,
   read,
-  // edit,
+  editBooking,
+  editValidateOrCancel,
   add,
   // destroy,
 };

@@ -55,7 +55,8 @@ class ParentSeeder extends AbstractSeeder {
         parent_adress: "1 boulevard des cites unies 59000 Lille",
         parent_phone: "03 20 67 84 36",
         parent_mail: "celine.lelouche@gmail.com",
-        parent_password: "************",
+        parent_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
       },
       {
         parent_firstname: "Sebastien",

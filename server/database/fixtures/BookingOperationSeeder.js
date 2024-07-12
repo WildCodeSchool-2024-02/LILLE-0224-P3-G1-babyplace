@@ -52,6 +52,13 @@ class BookingOperationSeeder extends AbstractSeeder {
           .insertId,
       },
       {
+        booking_operation_date: "2024-08-01",
+        slots: "10h-18h",
+        state: "Libre",
+        nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
+          .insertId,
+      },
+      {
         booking_operation_date: "2024-07-31",
         slots: "8h-12h",
         state: "Libre",

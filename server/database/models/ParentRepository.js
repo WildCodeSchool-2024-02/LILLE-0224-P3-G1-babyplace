@@ -31,7 +31,7 @@ class ParentRepository extends AbstractRepository {
       `
       SELECT 
         p.parent_id,
-        p.role AS parent_role,
+        p.role,
         p.parent_firstname,
         p.parent_lastname,
         p.parent_adress,
@@ -59,7 +59,7 @@ class ParentRepository extends AbstractRepository {
       if (!parentsMap[row.parent_id]) {
         parentsMap[row.parent_id] = {
           parent_id: row.parent_id,
-          parent_role: row.parent_role,
+          role: row.role,
           parent_firstname: row.parent_firstname,
           parent_lastname: row.parent_lastname,
           parent_adress: row.parent_adress,
@@ -97,7 +97,6 @@ class ParentRepository extends AbstractRepository {
         c.child_firstname,
         c.child_lastname,
         n.nursery_id,
-        n.role AS nursery_role,
         n.nursery_name,
         n.nursery_street,
         n.nursery_street_number,
@@ -147,7 +146,6 @@ class ParentRepository extends AbstractRepository {
         child_lastname: booking.child_lastname,
         nursery: {
           nursery_id: booking.nursery_id,
-          nursery_role: booking.nursery_role,
           nursery_name: booking.nursery_name,
           nursery_street: booking.nursery_street,
           nursery_street_number: booking.nursery_street_number,
