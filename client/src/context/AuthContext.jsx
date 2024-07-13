@@ -41,7 +41,7 @@ export default function AuthContextProvider({ children }) {
       user,
       setUser,
     }),
-    [user]
+    [user, setUser]
   );
 
   return (
