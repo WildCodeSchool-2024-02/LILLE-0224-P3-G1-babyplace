@@ -28,7 +28,7 @@ export default function LoginAdmin() {
       const data = await response.json();
 
       if (response.status === 200) {
-        setUser(data.user);
+        setUser(data.user.info);
         navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");
