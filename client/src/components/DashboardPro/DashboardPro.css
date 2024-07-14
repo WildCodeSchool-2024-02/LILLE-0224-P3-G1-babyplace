@@ -231,6 +231,91 @@
   border: 2px solid var(--second-color);
   object-fit: cover;
 }
+
+.type_booking {
+  color: var(--second-color);
+  text-align: center;
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+/* réservations en attente */
+
+.informations_title_child {
+  margin-top: 1em;
+  color: var(--first-color);
+}
+
+.informations_lines_child {
+  font-size: 0.9em;
+}
+
+.buttons_container_pending {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 0.5em;
+  background-color: #f5f5f5;
+  padding-bottom: 0.5em;
+}
+
+.buttons_container_pending button {
+  border: none;
+}
+
+.accept_button_pending {
+  background-color: var(--second-color);
+  color: white;
+  padding: 1em;
+  border-radius: 25px;
+}
+
+.cancel_button_pending {
+  color: var(--second-color);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+/* message de confirmation */
+
+.choice_confirmation_pending {
+  text-align: center;
+  padding-top: 1em;
+}
+
+.choice_confirmation_pending button {
+  border: none;
+}
+.container_commit_buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 1em;
+}
+.commit_button_pending {
+  background-color: var(--first-color);
+  color: white;
+  padding: 1em;
+  border-radius: 25px;
+}
+.back_button_pending {
+  color: var(--first-color);
+  background-color: transparent;
+  font-weight: bold;
+}
+.choice_made {
+  color: var(--first-color);
+  font-weight: bolder;
+  margin: 0.5em;
+}
+
+.final_message {
+  color: var(--third-color);
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 0.5em;
+  background-color: #f5f5f5;
+}
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;

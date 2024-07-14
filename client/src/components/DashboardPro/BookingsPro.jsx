@@ -9,7 +9,6 @@ export default function BookingsDashboard({ bookings }) {
     (a, b) =>
       new Date(a.booking_operation_date) - new Date(b.booking_operation_date)
   );
-
   return (
     <div className="all_nursery_container">
       {sortedBookings.length > 0 ? (

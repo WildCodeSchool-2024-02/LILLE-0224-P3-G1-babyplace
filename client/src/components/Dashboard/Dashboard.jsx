@@ -34,11 +34,11 @@ function Dashboard() {
         return user.bookings.filter(
           (booking) => booking.state === "En attente"
         );
-      case "Passées":
+      case "Passée":
         return user.bookings.filter((booking) => booking.state === "Passée");
-      case "Refusées":
+      case "Refusée":
         return user.bookings.filter((booking) => booking.state === "Refusée");
-      case "Annulées":
+      case "Annulée":
         return user.bookings.filter((booking) => booking.state === "Annulée");
       default:
         return [];
@@ -82,9 +82,9 @@ function Dashboard() {
             <option value="Sélectionnez">Sélectionnez un état</option>
             <option value="A venir">À venir &ensp;</option>
             <option value="En attente">En attente</option>
-            <option value="Passées">Passées</option>
-            <option value="Refusées">Refusées</option>
-            <option value="Annulées">Annulées</option>
+            <option value="Passée">Passées</option>
+            <option value="Refusée">Refusées</option>
+            <option value="Annulée">Annulées</option>
           </select>
         </div>
         <div className="select_desktop">
@@ -104,22 +104,22 @@ function Dashboard() {
           </button>
           <button
             type="button"
-            className={selectedButton === "Passées" ? "active" : ""}
-            onClick={() => handleViewList("Passées")}
+            className={selectedButton === "Passée" ? "active" : ""}
+            onClick={() => handleViewList("Passée")}
           >
             Passées
           </button>
           <button
             type="button"
-            className={selectedButton === "Refusées" ? "active" : ""}
-            onClick={() => handleViewList("Refusées")}
+            className={selectedButton === "Refusée" ? "active" : ""}
+            onClick={() => handleViewList("Refusée")}
           >
             Refusées
           </button>
           <button
             type="button"
-            className={selectedButton === "Annulées" ? "active" : ""}
-            onClick={() => handleViewList("Annulées")}
+            className={selectedButton === "Annulée" ? "active" : ""}
+            onClick={() => handleViewList("Annulée")}
           >
             Annulées
           </button>

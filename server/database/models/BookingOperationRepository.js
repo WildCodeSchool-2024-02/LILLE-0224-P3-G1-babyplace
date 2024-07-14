@@ -95,13 +95,28 @@ class BookingOperationRepository extends AbstractRepository {
 
   // The U of CRUD - Update operation
 
-  async update(booking) {
+  async updateOnBooking(booking) {
     // Execute the SQL UPDATE query to update a booking from the 'booking_operation' table
     const [rows] = await this.database.query(
-      `update ${this.table} set booking_operation_date = ?, state = ?, where booking_operation_id = ?`,
-      [booking.booking_operation_date, booking.state]
+      `update ${this.table} set  state = ?, parent_id = ?, child_id = ? where booking_operation_id = ?`,
+      [
+        booking.state,
+        booking.parent_id,
+        booking.child_id,
+        booking.booking_operation_id,
+      ]
     );
 
+    // Return how many rows were affected
+    return rows;
+  }
+
+  async updateOnValidateAndCancel(booking) {
+    // Execute the SQL UPDATE query to update a booking from the 'booking_operation' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set  state = ? where booking_operation_id = ?`,
+      [booking.state, booking.booking_operation_id]
+    );
     // Return how many rows were affected
     return rows;
   }
