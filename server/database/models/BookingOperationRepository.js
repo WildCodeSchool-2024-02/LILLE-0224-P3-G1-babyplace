@@ -104,12 +104,13 @@ class BookingOperationRepository extends AbstractRepository {
         booking.parent_id,
         booking.child_id,
         booking.booking_operation_id,
-      ]
+]
     );
 
     // Return how many rows were affected
     return rows;
   }
+
 
   async updateOnValidateAndCancel(booking) {
     // Execute the SQL UPDATE query to update a booking from the 'booking_operation' table

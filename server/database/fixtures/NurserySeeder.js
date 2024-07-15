@@ -53,7 +53,8 @@ class NurserySeeder extends AbstractSeeder {
         certification1: "Habilitation PMI ",
         certification2: "",
         certification3: "",
-        nursery_password: "",
+        nursery_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
         about:
           "Le programme pédagogique développé au sein des micro-crèches Minilions s’articule autour de trois valeurs essentielles pour l’enfant : éveil, bien-être et épanouissement",
       },
@@ -77,7 +78,8 @@ class NurserySeeder extends AbstractSeeder {
         certification1: "Ecocert",
         certification2: "",
         certification3: "",
-        nursery_password: "",
+        nursery_password:
+          "$argon2id$v=19$m=19456,t=2,p=1$464AEPDzjYRojvO3uiagpQ$7ijvm6sq926t0cjlqCldX4bWjcq/dKthC77pflfnQr0",
         about:
           "Située en plein cœur de Lille sur le boulevard de la Liberté et proche du parc Jean Baptiste Lebas, notre crèche, claire et spacieuse bénéficie d’une très grande terrasse aménagée de 80m2 .",
       },

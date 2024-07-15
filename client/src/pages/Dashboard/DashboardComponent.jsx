@@ -8,7 +8,7 @@ import PageModeratorDashboard from "./PageModeratorDashboard";
 function DashboardComponent() {
   const { user } = useContext(AuthContext);
 
-  const userRole = user?.role; // Safely access the role property
+  const userRole = user?.role; 
 
   let dashboardComponent;
 

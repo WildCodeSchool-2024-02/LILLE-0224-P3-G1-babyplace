@@ -50,13 +50,13 @@ const editValidateOrCancel = async (req, res, next) => {
   try {
     const updatedBooking = req.body;
     await tables.booking_operation.updateOnValidateAndCancel(updatedBooking);
+
     res.sendStatus(204);
   } catch (err) {
     next(err);
   }
 };
 
-// This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {

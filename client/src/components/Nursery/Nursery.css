@@ -92,6 +92,90 @@
     background-color: grey;
     height: 10px;
   }
+  .slot {
+    background-color: var(--green);
+    border-radius: 25px;
+    color: white;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+    margin-top: 1em;
+    border: none;
+    font-weight: bold;
+  }
+
+  .no_slot {
+    background-color: rgb(206, 198, 198);
+    border-radius: 25px;
+    color: white;
+    padding: 1em;
+    font-weight: lighter;
+    margin-top: 1em;
+  }
+
+  /* form */
+  .form_calender_mini {
+    border: 2px solid var(--first-color);
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    border-radius: 25px;
+    padding-top: 1em;
+    background-color: white;
+    margin-top: 1em;
+  }
+  .form_definition_details {
+    margin: 1em;
+  }
+  .form_calender_mini select {
+    border: 2px solid var(--first-color);
+    border-radius: 25px;
+    padding: 0.5em;
+  }
+  .confirm_button_details {
+    background-color: var(--first-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5em;
+  }
+  .cancel_button_details {
+    background-color: transparent;
+    color: var(--first-color);
+    border: none;
+    border-radius: 25px;
+  }
+  .day_dashboard_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 1em;
+  }
+  .buttons_group_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+  .confirmation_message_details {
+    background-color: rgb(234, 250, 235);
+    width: 90%;
+    padding: 0.5em;
+    border-radius: 25px;
+    text-align: center;
+    margin: 1em auto;
+  }
+
+  .demande_accepted {
+    color: var(--first-color);
+    font-weight: bold;
+  }
 }
 
 @media screen and (min-width: 993px) {
@@ -213,27 +297,93 @@
     margin-left: 10em;
     color: #f063b8;
   }
-  .no_slot,
-  slot {
+  .no_slot {
     margin-top: 0;
   }
-}
+  .slot {
+    background-color: var(--green);
+    border-radius: 25px;
+    color: white;
+    padding: 1em;
+    width: 200px;
+    margin-top: 1.5em;
+    text-align: center;
 
-.slot {
-  background-color: var(--green);
-  border-radius: 25px;
-  color: white;
-  padding: 1em;
-  width: 100px;
-  text-align: center;
-  margin-top: 1em;
-}
+    border: none;
+    font-weight: bold;
+  }
 
-.no_slot {
-  background-color: rgb(206, 198, 198);
-  border-radius: 25px;
-  color: white;
-  padding: 1em;
-  font-weight: lighter;
-  margin-top: 1em;
+  .no_slot {
+    background-color: rgb(206, 198, 198);
+    border-radius: 25px;
+    color: white;
+    padding: 1em;
+    font-weight: lighter;
+    margin-top: 1em;
+  }
+  .day_dashboard_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-top: 0;
+    padding: 1em;
+  }
+  /* form */
+  .form_calender_mini {
+    border: 2px solid var(--first-color);
+    width: 40%;
+
+    text-align: center;
+    border-radius: 25px;
+    padding-top: 1em;
+    top: 10%;
+    background-color: white;
+    margin: 1em auto;
+  }
+  .form_definition_details {
+    margin: 1em;
+  }
+  .form_calender_mini select {
+    border: 2px solid var(--first-color);
+    border-radius: 25px;
+    padding: 1em;
+  }
+  .confirm_button_details {
+    background-color: var(--first-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 1em;
+  }
+  .cancel_button_details {
+    background-color: transparent;
+    color: var(--first-color);
+    border: none;
+    border-radius: 25px;
+  }
+
+  .buttons_group_details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1em;
+    gap: 0.5em;
+    margin-bottom: 1em;
+  }
+  .confirmation_message_details {
+    background-color: rgb(234, 250, 235);
+    width: 60%;
+    padding: 1em;
+    border-radius: 25px;
+    text-align: center;
+    margin: 1em auto;
+  }
+
+  .demande_accepted {
+    color: var(--first-color);
+    font-weight: bold;
+  }
 }

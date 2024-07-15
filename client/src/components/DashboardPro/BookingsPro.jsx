@@ -33,23 +33,30 @@ export default function BookingsDashboard({ bookings }) {
             <div className="nursery_all_info">
               <div className="nursery_info">
                 <ul>
-                  <li>
-                    <h5>
-                      Parent : {booking.parent.parent_firstname}{" "}
-                      {booking.parent.parent_lastname}
-                    </h5>
-                  </li>
-                  <li> Enfant : {booking.child.child_firstname}</li>
-                  <li>
-                    <h5>Informations </h5>
-                  </li>
-                  <li>
-                    Date de naissance : {formatDate(booking.child.child_birth)}
-                  </li>
-                  <li>Marche : {booking.child.walk_status ? "Oui" : "Non"} </li>
-                  <li>
-                    Propre : {booking.child.clean_status ? "Oui" : "Non"}{" "}
-                  </li>
+                  {booking.parent.parent_firstname && (
+                    <>
+                      <li>
+                        <h5>
+                          Parent : {booking.parent.parent_firstname}{" "}
+                          {booking.parent.parent_lastname}
+                        </h5>
+                      </li>
+                      <li> Enfant : {booking.child.child_firstname}</li>
+                      <li>
+                        <h5>Informations </h5>
+                      </li>
+                      <li>
+                        Date de naissance :{" "}
+                        {formatDate(booking.child.child_birth)}
+                      </li>
+                      <li>
+                        Marche : {booking.child.walk_status ? "Oui" : "Non"}{" "}
+                      </li>
+                      <li>
+                        Propre : {booking.child.clean_status ? "Oui" : "Non"}{" "}
+                      </li>
+                    </>
+                  )}
                   <li className="booking_state">
                     <h5>{booking.state}</h5>
                   </li>

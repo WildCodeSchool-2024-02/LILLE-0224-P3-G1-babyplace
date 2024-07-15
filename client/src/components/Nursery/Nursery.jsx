@@ -123,14 +123,6 @@ function Nursery() {
 
           <h2 className="color_h2">Disponibilités</h2>
           <NurseryCalendarDetails bookings={data.bookings} />
-
-          <button
-            type="button"
-            className="nursery_list_button"
-            id="nursery_detail_button"
-          >
-            Réserver &gt;
-          </button>
         </div>
       )}
     </div>
