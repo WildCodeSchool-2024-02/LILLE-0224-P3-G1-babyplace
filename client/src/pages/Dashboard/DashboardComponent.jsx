@@ -8,7 +8,7 @@ import PageModeratorDashboard from "./PageModeratorDashboard";
 function DashboardComponent() {
   const { user } = useContext(AuthContext);
 
-  const userRole = user.role; // Accède à la propriété dynamique dans l'objet user
+  const userRole = user?.role; 
 
   let dashboardComponent;
 

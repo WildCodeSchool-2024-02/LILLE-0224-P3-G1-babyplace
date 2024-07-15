@@ -93,4 +93,49 @@
     font-size: 1em;
     padding-left: 1em;
   }
+  .notification_bell {
+    height: 50px;
+
+    position: relative;
+  }
+  .notification_count {
+    background-color: var(--second-color);
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 100%;
+    padding: 0.2em;
+    color: white;
+    position: absolute;
+    top: 20px;
+  }
+  .notification_info_container {
+    position: absolute;
+    background-color: white;
+    top: 100px;
+    border: 2px solid var(--second-color);
+    width: 400px;
+    border-radius: 25px;
+  }
+  .date_notification {
+    font-style: italic;
+    padding-top: 0.5em;
+  }
+  .one_reservation_notification {
+    background-color: rgb(242, 235, 245);
+    margin-bottom: 0.3em;
+    padding-left: 1em;
+    border-radius: 15px;
+  }
+  .notification_info_container h4 {
+    text-align: center;
+    color: var(--second-color);
+  }
+  .notification_info_container p {
+    margin: 0;
+  }
+  .button_notification {
+    border: none;
+    background-color: transparent;
+  }
 }

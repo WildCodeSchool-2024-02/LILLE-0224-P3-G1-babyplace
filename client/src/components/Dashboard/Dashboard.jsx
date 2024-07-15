@@ -29,7 +29,7 @@ function Dashboard() {
       return [<div key="no-bookings">Pas de réservations !</div>];
     switch (selectedButton) {
       case "A venir":
-        return user.bookings.filter((booking) => booking.state === "Validée");
+        return user.bookings.filter((booking) => booking.state === "A venir");
       case "En attente":
         return user.bookings.filter(
           (booking) => booking.state === "En attente"

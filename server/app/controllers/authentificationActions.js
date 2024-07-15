@@ -63,13 +63,10 @@ const login = async (req, res) => {
     // Set the cookie using the options
     res.cookie("token", token, cookieOptions);
 
-    // If the User is found and the password is correct
+    // If the User is found and the password is correct, send user infos
     return res.status(200).json({
       message: "Login is successful",
-      user: {
-        mail: userMail,
-        psw: userPassword,
-      },
+      user: { info },
       token,
     });
   } catch (error) {

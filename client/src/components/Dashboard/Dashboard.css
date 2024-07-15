@@ -259,8 +259,7 @@
   .select_desktop {
     margin-top: 3em;
     display: flex;
-    padding-right: 50%;
-    justify-content: space-between;
+    justify-content: space-evenly;
   }
   .select_desktop:hover {
     cursor: pointer;
