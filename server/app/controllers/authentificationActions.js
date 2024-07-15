@@ -66,13 +66,8 @@ const login = async (req, res) => {
     // If the User is found and the password is correct
     return res.status(200).json({
       message: "Login is successful",
-      // user: info,
-      user: {
-        mail: userMail,
-        psw: userPassword,
-      },
-      // psw: info.parent_password,
-      // mail: info.parent_mail,
+      // user: info returned
+      user: info,
       token,
     });
   } catch (error) {
