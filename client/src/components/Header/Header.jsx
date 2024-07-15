@@ -83,7 +83,9 @@ function Header() {
                     Parent : {booking.parent.parent_firstname}{" "}
                     {booking.parent.parent_lastname}
                     <br />
-                    <Link to="/dashboard">Gérer la réservation</Link>
+                    <Link to="/dashboard#manage-bookings">
+                      Gérer la réservation
+                    </Link>
                   </div>
                 ))}
               </div>

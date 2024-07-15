@@ -49,12 +49,14 @@ const editBooking = async (req, res, next) => {
 const editValidateOrCancel = async (req, res, next) => {
   try {
     const updatedBooking = req.body;
-    await tables.booking_operation.updateOnValidateOrCancel(updatedBooking);
+    await tables.booking_operation.updateOnValidateAndCancel(updatedBooking);
+
     res.sendStatus(204);
   } catch (err) {
     next(err);
   }
 };
+
 
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {

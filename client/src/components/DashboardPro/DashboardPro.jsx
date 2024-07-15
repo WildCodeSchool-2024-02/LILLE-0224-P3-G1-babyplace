@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import CalendarDashboard from "./CalendarDashboard";
+import PendingBookings from "./PendingBookings";
 import { AuthContext } from "../../context/AuthContext";
 import BookingsPro from "./BookingsPro";
 import "./DashboardPro.css";
@@ -35,6 +36,13 @@ function DashboardPro() {
     }
   };
 
+  function getPendingBookings() {
+    if (!user || !user.bookings) {
+      return [<div key="no-bookings">Pas de réservations !</div>];
+    }
+    return user.bookings.filter((booking) => booking.state === "En attente");
+  }
+
   return (
     <div>
       <div className="message_pro_container">
@@ -43,7 +51,7 @@ function DashboardPro() {
           <p>
             Bienvenue dans votre espace professionnel. Ici, nous vous proposons
             d’ajouter à votre fiche crèche vos créneaux disponibles dans les
-            prochaines semaines.{" "}
+            prochaines semaines et de gérer vos réservations en attente.{" "}
           </p>
         </div>
       </div>
@@ -89,7 +97,7 @@ function DashboardPro() {
         </div>
       </div>
       <div className="container_dashboard_pro_section">
-        <div className="info_container_pro">
+        <div className="info_container_pro" id="manage-bookings">
           <p className="info_pro">Gérer les créneaux</p>
         </div>
         <CalendarDashboard user={user} />
@@ -99,7 +107,13 @@ function DashboardPro() {
           <p className="info_pro">Gérer les réservations</p>
         </div>
       </div>
+      <div className="section_pending_container_pro">
+        <h5 className="type_booking">Réservations en attente</h5>
+      </div>
+      <PendingBookings bookings={getPendingBookings()} />
       <div>
+        <h5 className="type_booking">Toutes vos réservations</h5>
+
         <select
           className="custom_select"
           onChange={(e) => handleViewList(e.target.value)}
@@ -108,9 +122,9 @@ function DashboardPro() {
           <option value="Libre">Libre &ensp;</option>
           <option value="A venir">À venir &ensp;</option>
           <option value="En attente">En attente</option>
-          <option value="Passées">Passées</option>
-          <option value="Refusées">Refusées</option>
-          <option value="Annulées">Annulées</option>
+          <option value="Passée">Passées</option>
+          <option value="Refusée">Refusées</option>
+          <option value="Annulée">Annulées</option>
         </select>
       </div>
       <div className="select_desktop">
@@ -137,22 +151,22 @@ function DashboardPro() {
         </button>
         <button
           type="button"
-          className={selectedButton === "Passées" ? "active" : ""}
-          onClick={() => handleViewList("Passées")}
+          className={selectedButton === "Passée" ? "active" : ""}
+          onClick={() => handleViewList("Passée")}
         >
           Passées
         </button>
         <button
           type="button"
-          className={selectedButton === "Refusées" ? "active" : ""}
-          onClick={() => handleViewList("Refusées")}
+          className={selectedButton === "Refusée" ? "active" : ""}
+          onClick={() => handleViewList("Refusée")}
         >
           Refusées
         </button>
         <button
           type="button"
-          className={selectedButton === "Annulées" ? "active" : ""}
-          onClick={() => handleViewList("Annulées")}
+          className={selectedButton === "Annulée" ? "active" : ""}
+          onClick={() => handleViewList("Annulée")}
         >
           Annulées
         </button>
