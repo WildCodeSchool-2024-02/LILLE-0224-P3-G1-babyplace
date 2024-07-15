@@ -41,10 +41,19 @@ export default function BookingsDashboard({ bookings }) {
                           {booking.parent.parent_lastname}
                         </h5>
                       </li>
-                      <li> Enfant : {booking.child.child_firstname}</li>
                       <li>
-                        <h5>Informations </h5>
+                        <h5>
+                          Contact : {booking.parent.parent_mail} -
+                          {booking.parent.parent_phone}
+                        </h5>
                       </li>
+
+                      <li>
+                        <h5 className="informations_title_child">
+                          Informations enfant{" "}
+                        </h5>
+                      </li>
+                      <li> Enfant : {booking.child.child_firstname}</li>
                       <li>
                         Date de naissance :{" "}
                         {formatDate(booking.child.child_birth)}

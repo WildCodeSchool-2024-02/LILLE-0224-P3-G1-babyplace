@@ -12,7 +12,6 @@ function DashboardPro() {
   const handleViewList = (buttonName) => {
     setSelectedButton(buttonName);
   };
-
   const getFilteredBookings = () => {
     if (!user || !user.bookings)
       return [<div key="no-bookings">Pas de réservations !</div>];

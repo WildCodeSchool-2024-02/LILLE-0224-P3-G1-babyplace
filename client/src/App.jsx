@@ -12,12 +12,11 @@ function ScrollToTop() {
 
   return null;
 }
- 
 
 function App() {
   return (
     <AuthContextProvider>
-      <ScrollToTop /> 
+      <ScrollToTop />
       <main>
         <Outlet />
       </main>
