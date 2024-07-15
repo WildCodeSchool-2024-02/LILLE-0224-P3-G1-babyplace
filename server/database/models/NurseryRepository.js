@@ -174,9 +174,8 @@ class NurseryRepository extends AbstractRepository {
       [email]
     );
     const nursery = nurseryRows[0];
-
     if (!nursery) {
-      throw new Error(`Nursery with id ${email} not found`);
+      throw new Error(`Nursery with email ${email} not found`);
     }
 
     const [bookingRows] = await this.database.query(
@@ -221,7 +220,7 @@ class NurseryRepository extends AbstractRepository {
       WHERE 
         bo.nursery_id = ?
     `,
-      [email]
+      [nursery.nursery_id]
     );
 
     const bookingsMap = {};
