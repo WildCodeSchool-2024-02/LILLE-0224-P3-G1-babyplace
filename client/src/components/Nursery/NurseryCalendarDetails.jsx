@@ -116,7 +116,6 @@ export default function NurseryCalendarDetails({ bookings }) {
         {
           method: "PUT",
           headers: {
-            //  "Authorisation": user.token,
             "Content-Type": "application/json",
           },
           body: JSON.stringify(body),
