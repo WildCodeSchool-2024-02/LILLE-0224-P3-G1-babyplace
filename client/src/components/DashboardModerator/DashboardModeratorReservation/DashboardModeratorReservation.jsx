@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import SearchByName from "../../SearchByName/SearchByName";
 import SelectCity from "../../SelectCity/SelectCity";
@@ -6,7 +6,13 @@ import "./DashboardModeratorReservation.css";
 
 function DashboardModeratorReservation() {
   const { booking: allBooking } = useLoaderData();
-  const [filteredBookings, setFilteredBookings] = useState(allBooking);
+  const [filteredBookings, setFilteredBookings] = useState([]);
+
+  useEffect(() => {
+    if (allBooking) {
+      setFilteredBookings(allBooking);
+    }
+  }, [allBooking]);
 
   const formatDate = (date) => date.split("T")[0];
 
@@ -18,9 +24,38 @@ function DashboardModeratorReservation() {
   }
 
   const handleSearch = (searchValue) => {
-    const filteredBookingsList = allBooking.filter((booking) =>
-      booking.account_id.toLowerCase().includes(searchValue.toLowerCase())
-    );
+    const searchString = searchValue.toLowerCase();
+
+    const filteredBookingsList = allBooking.filter((booking) => {
+      const matchesAccountID =
+        booking.account_id &&
+        typeof booking.account_id === "string" &&
+        booking.account_id.toLowerCase().includes(searchString);
+      const matchesParentFirstName =
+        booking.parent_firstname &&
+        booking.parent_firstname.toLowerCase().includes(searchString);
+      const matchesParentLastName =
+        booking.parent_lastname &&
+        booking.parent_lastname.toLowerCase().includes(searchString);
+      const matchesChildFirstName =
+        booking.child_firstname &&
+        booking.child_firstname.toLowerCase().includes(searchString);
+      const matchesChildLastName =
+        booking.child_lastname &&
+        booking.child_lastname.toLowerCase().includes(searchString);
+      const matchesNurseryName =
+        booking.nursery_name &&
+        booking.nursery_name.toLowerCase().includes(searchString);
+
+      return (
+        matchesAccountID ||
+        matchesParentFirstName ||
+        matchesParentLastName ||
+        matchesChildFirstName ||
+        matchesChildLastName ||
+        matchesNurseryName
+      );
+    });
     setFilteredBookings(filteredBookingsList);
   };
 

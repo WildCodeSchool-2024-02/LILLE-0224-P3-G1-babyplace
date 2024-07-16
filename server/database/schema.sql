@@ -98,7 +98,7 @@ CREATE TABLE booking_operation (
   KEY parent_id (parent_id),
   KEY moderator_id (moderator_id),
   CONSTRAINT booking_operation_ibfk_1 FOREIGN KEY (nursery_id) REFERENCES nursery (nursery_id),
-  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (parent_id) REFERENCES parent (parent_id) ON DELETE CASCADE,
+  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (parent_id) REFERENCES parent (parent_id),
   CONSTRAINT booking_operation_ibfk_3 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id)
 );
 
