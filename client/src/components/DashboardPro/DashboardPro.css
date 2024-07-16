@@ -316,6 +316,23 @@
   padding-bottom: 0.5em;
   background-color: #f5f5f5;
 }
+
+/* modifier les informations */
+.modify_info_button {
+  background-color: transparent;
+  color: var(--first-color);
+  text-decoration: underline;
+  border: none;
+  font-weight: bolder;
+}
+.one_line_contact {
+  display: flex;
+}
+#cancel_button_form_pro {
+  background-color: transparent;
+  color: var(--second-color);
+  font-weight: bold;
+}
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;
@@ -547,5 +564,11 @@
   }
   .custom_select {
     display: none;
+  }
+  #pro_modify {
+    margin-left: 40em;
+  }
+  #pro_submit {
+    margin-left: 50em;
   }
 }
