@@ -13,6 +13,7 @@ const {
   edit,
   add,
   readByMail,
+  destroy,
 } = require("../../../controllers/parentActions");
 
 // Route to get a list of parents
@@ -33,6 +34,8 @@ const login = require("../../../controllers/authentificationActions");
 router.get("/mail/:mail", readByMail);
 
 router.post("/login", login);
+
+router.delete("/:id", destroy);
 
 /* ************************************************************************* */
 

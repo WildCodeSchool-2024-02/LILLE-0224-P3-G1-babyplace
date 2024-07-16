@@ -12,7 +12,8 @@ const {
   read,
   editContact,
   add,
-} = require("../../../controllers/nuseryActions");
+  destroy,
+ } = require("../../../controllers/nuseryActions");
 
 // Route to get a list of nurseries
 router.get("/", browse);
@@ -31,6 +32,8 @@ router.post("/", hashPassword, add);
 const login = require("../../../controllers/authentificationActions");
 
 router.post("/login", login);
+
+router.delete("/:id", destroy);
 
 /* ************************************************************************* */
 

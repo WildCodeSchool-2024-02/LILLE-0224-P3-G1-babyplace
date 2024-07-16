@@ -74,7 +74,22 @@ const add = async (req, res, next) => {
 };
 
 // The D of BREAD - Destroy (Delete) operation
-// This operation is not yet implemented
+
+const destroy = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+
+    const result = await tables.booking_operation.delete(id);
+
+    if (result.affectedRows === 0) {
+      res.status(404).json({ message: "Booking not found" });
+    }
+
+    res.status(200).json({ message: "Booking deleted successfully" });
+  } catch (err) {
+    next(err);
+  }
+};
 
 // Ready to export the controller functions
 module.exports = {
@@ -83,5 +98,5 @@ module.exports = {
   editBooking,
   editValidateOrCancel,
   add,
-  // destroy,
+  destroy,
 };

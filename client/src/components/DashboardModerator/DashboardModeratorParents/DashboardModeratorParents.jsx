@@ -12,7 +12,7 @@ function DashboardModeratorParents() {
     setVisibleProfiles((prevState) =>
       prevState.includes(parentId)
         ? prevState.filter((id) => id !== parentId)
-        : [prevState, parentId]
+        : [...prevState, parentId]
     );
   };
 
@@ -23,6 +23,37 @@ function DashboardModeratorParents() {
         .includes(searchValue.toLowerCase())
     );
     setFilteredParents(filteredParentsList);
+  };
+
+  const suspendParent = async (parentId) => {
+    try {
+      if (!parentId) {
+        console.error("Invalid parent ID:", parentId);
+        return;
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/parent/${parentId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const updatedParents = filteredParents.filter(
+          (parent) => parent.parent_id !== parentId
+        );
+        setFilteredParents(updatedParents);
+      } else {
+        const errorMessage = await response.text();
+        console.error(`Failed to suspend parent: ${errorMessage}`);
+      }
+    } catch (error) {
+      console.error("Error suspending parent:", error);
+    }
   };
 
   return (
@@ -76,7 +107,14 @@ function DashboardModeratorParents() {
                   <p>Voir le profil</p>
                 </div>
                 <div className="dashboard_moderator_parent_delete">
-                  <button type="button">Suspendre compte</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      suspendParent(parent.parent_id);
+                    }}
+                  >
+                    Suspendre compte
+                  </button>
                 </div>
               </div>
             </div>
