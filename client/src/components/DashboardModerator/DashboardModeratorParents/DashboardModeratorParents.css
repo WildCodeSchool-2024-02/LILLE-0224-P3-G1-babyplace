@@ -112,3 +112,8 @@
 .dashboard_moderator_parent_info_weigh {
   font-weight: 700;
 }
+
+.dashboard_moderator_parent_child {
+  margin: auto;
+  display: flex;
+}

@@ -153,6 +153,20 @@ function DashboardModeratorParents() {
                     </p>
                     <p>{parent.parent_adress}</p>
                   </div>
+                  <div className="dashboard_moderator_parent_child">
+                    {parent.children.map((child, index) => (
+                      <div
+                        key={`${child.child_firstname}-${child.child_lastname}`}
+                      >
+                        <p className="dashboard_moderator_parent_info_weigh">
+                          Enfant {index + 1} :
+                        </p>
+                        <p>
+                          {child.child_firstname} {child.child_lastname}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
