@@ -48,7 +48,7 @@ const login = async (req, res) => {
     }
 
     // Token generation
-    const token = jwt.sign({ sub: info.id, role }, process.env.APP_SECRET, {
+    const token = jwt.sign({ info }, process.env.APP_SECRET, {
       expiresIn: "1h",
     });
 
@@ -62,11 +62,10 @@ const login = async (req, res) => {
 
     // Set the cookie using the options
     res.cookie("token", token, cookieOptions);
-
     // If the User is found and the password is correct, send user infos
     return res.status(200).json({
       message: "Login is successful",
-      user: { info },
+      user: info,
       token,
     });
   } catch (error) {

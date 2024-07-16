@@ -57,7 +57,6 @@ const editValidateOrCancel = async (req, res, next) => {
   }
 };
 
-
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
   // Extract the allergy data from the request body
