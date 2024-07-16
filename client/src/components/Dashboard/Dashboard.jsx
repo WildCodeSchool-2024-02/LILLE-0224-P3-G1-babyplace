@@ -1,4 +1,4 @@
-import { useContext, useState, useCallback } from "react";
+import { useContext, useState, useCallback, useRef } from "react";
 import "./Dashboard.css";
 import { AuthContext } from "../../context/AuthContext";
 import BookingsDashboard from "./BookingsDashboard";
@@ -67,6 +67,53 @@ function Dashboard() {
     setShowForm(true);
   }
 
+  const [showChildForm, setShowChildForm] = useState(false);
+  const childFirstNameRef = useRef();
+  const childLastNameRef = useRef();
+  const childBirthDateRef = useRef();
+  const [walkStatus, setWalkStatus] = useState();
+  const [cleanStatus, setCleanStatus] = useState();
+  const [confirmedChild, setConfirmedChild] = useState(false);
+
+  function handleChildForm() {
+    setShowChildForm(true);
+  }
+  function handleCancelChildForm() {
+    setShowChildForm(false);
+  }
+  const handleSubmitChild = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/child`,
+        {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            child_firstname: childFirstNameRef.current.value,
+            child_lastname: childLastNameRef.current.value,
+            child_birth: childBirthDateRef.current.value,
+            walk_status: walkStatus,
+            clean_status: cleanStatus,
+            parent_id: user.parent_id,
+            allergies: null,
+          }),
+        }
+      );
+
+      if (response.status === 201) {
+        console.info("Child successfully added");
+        setShowChildForm(false);
+        setConfirmedChild(true);
+      } else {
+        const errorData = await response.text();
+        console.error("Erreur lors de la soumission:", errorData);
+      }
+    } catch (err) {
+      console.error("Erreur réseau ou autre:", err);
+    }
+  };
   return (
     <div className="dashboard">
       <div className="head_dashboard">
@@ -240,11 +287,129 @@ function Dashboard() {
             </button>
           </div>
         ))}
-        <button type="button" className="child_info">
+        <button type="button" className="child_info" onClick={handleChildForm}>
           <p>+</p>
         </button>
       </div>
+      {showChildForm && (
+        <div className="child_add_form">
+          <h3 className="add_child_title">Ajouter un enfant </h3>
+          <p className="p_child_form">
+            Si vous souhaitez ajouter un nouvel enfant à votre profil, merci de
+            remplir ce formulaire
+          </p>
+          <form className="form_add_child">
+            <br />
+            <label htmlFor="child_firstname_form">Prénom</label>
+            <br />
+            <input
+              id="child_firstname_form"
+              className="child_add_input"
+              ref={childFirstNameRef}
+              required
+            />
+            <br />
+            <label htmlFor="child_lastname_form">Nom</label>
+            <br />
+            <input
+              id="child_lastname_form"
+              className="child_add_input"
+              ref={childLastNameRef}
+              required
+            />
+            <br />
+            <label htmlFor="child_birth_form" className="child_subtitles_form">
+              Date de naissance
+            </label>
+            <br />
+            <input
+              id="child_birth_form"
+              type="date"
+              ref={childBirthDateRef}
+              required
+            />
+            <br />
+            <div className="new_entry_child">
+              Votre enfant sait-il marcher ?
+            </div>
+            <div className="check_box_yes_no">
+              <label htmlFor="Oui"> Oui </label>
+              <input
+                type="radio"
+                name="walk_status"
+                value="true"
+                id="Oui"
+                checked={walkStatus === true}
+                onChange={() => setWalkStatus(true)}
+                required
+              />
+              <label htmlFor="Non"> Non </label>{" "}
+              <input
+                type="radio"
+                name="walk_status"
+                value="false"
+                id="Non"
+                checked={walkStatus === false}
+                onChange={() => setWalkStatus(false)}
+                required
+              />
+            </div>
 
+            <div className="new_entry_child">Votre enfant est-il propre ?</div>
+            <div className="check_box_yes_no">
+              <label htmlFor="Oui"> Oui </label>
+              <input
+                type="radio"
+                name="clean_status"
+                value="true"
+                id="Oui"
+                checked={cleanStatus === true}
+                onChange={() => setCleanStatus(true)}
+                required
+              />
+
+              <label htmlFor="Non"> Non </label>
+              <input
+                type="radio"
+                name="clean_status"
+                value="false"
+                id="Non"
+                checked={cleanStatus === false}
+                onChange={() => setCleanStatus(false)}
+                required
+              />
+            </div>
+            <div className="info_add_child">
+              Pour toute information complémentaire que vous souhaiteriez
+              transmettre à une crèche,{" "}
+              <span style={{ fontWeight: "bold" }}>
+                nous vous invitons à contacter l'établissement en amont de votre
+                réservation
+              </span>{" "}
+              grâce aux contacts que vous trouverez sur leur page.
+            </div>
+            <div className="container_buttons_add_child">
+              <button
+                type="button"
+                className="add_button_child"
+                onClick={handleSubmitChild}
+              >
+                Ajouter
+              </button>
+              <button
+                type="button"
+                className="cancel_button_child"
+                onClick={handleCancelChildForm}
+              >
+                Annuler
+              </button>
+            </div>
+          </form>
+        </div>
+      )}
+      {confirmedChild && (
+        <div className="modif_submit"> Ajout d'enfant enregistré </div>
+      )}
       {selectedChild && (
         <div className="child_presentation">
           <p>Prénom : {selectedChild.child_firstname}</p>
