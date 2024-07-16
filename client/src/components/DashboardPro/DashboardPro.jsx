@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useCallback, useRef } from "react";
 import CalendarDashboard from "./CalendarDashboard";
 import PendingBookings from "./PendingBookings";
 import { AuthContext } from "../../context/AuthContext";
@@ -43,6 +43,64 @@ function DashboardPro() {
     return user.bookings.filter((booking) => booking.state === "En attente");
   }
 
+  const [modifySelected, setModifySelected] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [optionSelected, setOptionSelected] = useState("");
+  const [responseForm, setResponseForm] = useState(false);
+
+  const emailRef = useRef();
+  const phoneRef = useRef();
+  const priceRef = useRef();
+  const capacityRef = useRef();
+  const handleCancelModify = useCallback(() => {
+    setModifySelected(false);
+    setShowForm(false);
+  }, []);
+
+  function handleOptions(value) {
+    setOptionSelected(value);
+    setShowForm(true);
+  }
+  function handleModify() {
+    setModifySelected(true);
+    setResponseForm(false);
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const body = {
+      capacity: capacityRef.current?.value || user.capactity,
+      price: priceRef.current?.value || user.price,
+      nursery_phone: phoneRef.current?.value || user.nursery_phone,
+      nursery_mail: emailRef.current?.value || user.nursery_mail,
+      nursery_id: user.nursery_id,
+    };
+
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/nursery/edit/${user.nursery_id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `Failed response: ${response.status} - ${response.statusText}`
+        );
+      }
+
+      setResponseForm(true);
+      handleCancelModify();
+    } catch (error) {
+      console.error("Fetch Error:", error);
+    }
+  };
+
   return (
     <div>
       <div className="message_pro_container">
@@ -76,7 +134,6 @@ function DashboardPro() {
           />
         </div>
         <h4 className="creche_name">{user.nursery_name}</h4>
-
         <div className="creche_info">
           <div className="creche_location">
             <div className="creche_adress">
@@ -86,16 +143,131 @@ function DashboardPro() {
             </div>
 
             <div className="creche_contact">
-              <p className="creche_number">{user.nursery_phone}</p>
-              <p className="creche_mail">{user.nursery_mail}</p>
+              <div className="one_line_contact">
+                <p className="creche_number">{user.nursery_phone}</p>
+                <button
+                  type="button"
+                  className={modifySelected ? "change_info_pen" : "hide_pen"}
+                  onClick={() => {
+                    handleOptions("numéro de téléphone");
+                  }}
+                >
+                  <img src="/assets/images/pen.svg" alt="pen" />
+                </button>
+              </div>
+              <div className="one_line_contact">
+                <p className="creche_mail">{user.nursery_mail}</p>{" "}
+                <button
+                  type="button"
+                  className={modifySelected ? "change_info_pen" : "hide_pen"}
+                  onClick={() => {
+                    handleOptions("e-mail");
+                  }}
+                >
+                  <img src="/assets/images/pen.svg" alt="pen" />
+                </button>
+              </div>
+              <div className="one_line_contact">
+                <p className="creche_mail">
+                  <span style={{ fontWeight: "bold" }}>Capacité </span>:{" "}
+                  {user.capacity}
+                </p>
+                <button
+                  type="button"
+                  className={modifySelected ? "change_info_pen" : "hide_pen"}
+                  onClick={() => {
+                    handleOptions("capacité d'accueil");
+                  }}
+                >
+                  <img src="/assets/images/pen.svg" alt="pen" />
+                </button>
+              </div>
+              <div className="one_line_contact">
+                <p className="creche_mail">
+                  {" "}
+                  <span style={{ fontWeight: "bold" }}>Prix</span> :{" "}
+                  {user.capacity} € / heure
+                </p>
+                <button
+                  type="button"
+                  className={modifySelected ? "change_info_pen" : "hide_pen"}
+                  onClick={() => {
+                    handleOptions("prix par heure");
+                  }}
+                >
+                  <img src="/assets/images/pen.svg" alt="pen" />
+                </button>
+              </div>
             </div>
           </div>
           <ul className="modify_info">
-            <li>Modifier mes informations</li>
-            <li>Modifier mes coordonnées</li>
+            {modifySelected ? (
+              <button
+                type="button"
+                onClick={handleCancelModify}
+                className="modify_info_parent"
+                id="cancel_modify_parent"
+              >
+                Annuler{" "}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={handleModify}
+                className="modify_info_parent"
+              >
+                Modifier mes informations
+              </button>
+            )}
           </ul>
         </div>
+        {showForm && (
+          <div className="modify_informations_form" id="pro_modify">
+            <h3>Entrez vos modifications</h3>
+            <form>
+              <p className="info_form">
+                Veuillez rentrer votre
+                <span style={{ fontWeight: "bolder" }}> {optionSelected}</span>
+              </p>
+
+              {optionSelected === "numéro de téléphone" && (
+                <input type="text" ref={phoneRef} id="" />
+              )}
+
+              {optionSelected === "e-mail" && (
+                <input type="text" ref={emailRef} id="" />
+              )}
+              {optionSelected === "prix par heure" && (
+                <input type="number" ref={priceRef} id="" />
+              )}
+              {optionSelected === "capacité d'accueil" && (
+                <input type="text" ref={capacityRef} id="" />
+              )}
+              <button
+                type="button"
+                className="modify_info_parent"
+                onClick={handleSubmit}
+              >
+                Valider
+              </button>
+              <button
+                type="button"
+                onClick={handleCancelModify}
+                id="cancel_button_form_pro"
+              >
+                Annuler{" "}
+              </button>
+            </form>
+          </div>
+        )}{" "}
+        {responseForm && (
+          <div className="modif_submit" id="pro_submit">
+            {" "}
+            Modification enregistrée !{" "}
+          </div>
+        )}
       </div>
+
       <div className="container_dashboard_pro_section">
         <div className="info_container_pro" id="manage-bookings">
           <p className="info_pro">Gérer les créneaux</p>

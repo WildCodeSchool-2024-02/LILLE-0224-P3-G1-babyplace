@@ -68,8 +68,9 @@ export default function LoginPro() {
       const data = await response.json();
 
       if (response.status === 200) {
-        setUser(data.user.info);
-
+        data.user.token = data.token;
+        setUser(data.user);
+        sessionStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");
@@ -99,7 +100,9 @@ export default function LoginPro() {
       const data = await response.json();
 
       if (response.status === 200) {
-        setUser(data.user.info);
+        data.user.token = data.token;
+        setUser(data.user);
+        sessionStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard", { state: { user: data.user } });
       } else {
         console.error(data.message || "Une erreur s'est produite");

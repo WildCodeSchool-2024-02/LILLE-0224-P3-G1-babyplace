@@ -9,6 +9,7 @@ export default function BookingsDashboard({ bookings }) {
     (a, b) =>
       new Date(a.booking_operation_date) - new Date(b.booking_operation_date)
   );
+
   return (
     <div className="all_nursery_container">
       {sortedBookings.length > 0 ? (
@@ -33,32 +34,35 @@ export default function BookingsDashboard({ bookings }) {
             <div className="nursery_all_info">
               <div className="nursery_info">
                 <ul>
-                  {booking.parent.parent_firstname && (
-                    <>
-                      <li>
-                        <h5>
-                          Parent : {booking.parent.parent_firstname}{" "}
-                          {booking.parent.parent_lastname}
-                        </h5>
-                      </li>
-                      <li> Enfant : {booking.child.child_firstname}</li>
-                      <li>
-                        <h5>Informations </h5>
-                      </li>
-                      <li>
-                        Date de naissance :{" "}
-                        {formatDate(booking.child.child_birth)}
-                      </li>
-                      <li>
-                        Marche : {booking.child.walk_status ? "Oui" : "Non"}{" "}
-                      </li>
-                      <li>
-                        Propre : {booking.child.clean_status ? "Oui" : "Non"}{" "}
-                      </li>
-                    </>
-                  )}
-                  <li className="booking_state">
-                    <h5>{booking.state}</h5>
+                  <li>
+                    <h5>
+                      Parent : {booking.parent.parent_firstname}{" "}
+                      {booking.parent.parent_lastname}
+                    </h5>
+                  </li>
+                  <li>
+                    <h5>
+                      Contact : {booking.parent.parent_mail} -{" "}
+                      {booking.parent.parent_phone}
+                    </h5>
+                  </li>
+                  <li className="informations_title_child">
+                    <h5>Informations enfant </h5>
+                  </li>
+                  <li>
+                    <h5> Enfant : {booking.child.child_firstname} </h5>
+                  </li>
+                  <li
+                    className="informations_lines_child"
+                    id="birthdate_information"
+                  >
+                    Date de naissance : {formatDate(booking.child.child_birth)}
+                  </li>
+                  <li className="informations_lines_child">
+                    Marche : {booking.child.walk_status ? "Oui" : "Non"}
+                  </li>
+                  <li className="informations_lines_child">
+                    Propre : {booking.child.clean_status ? "Oui" : "Non"}
                   </li>
                 </ul>
               </div>
