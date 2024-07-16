@@ -55,6 +55,16 @@ const readByEmail = async (req, res, next) => {
   }
 };
 // The E of BREAD - Edit (Update) operation
+
+const editContact = async (req, res, next) => {
+  try {
+    const updatedNursery = req.body;
+    await tables.nursery.updateContact(updatedNursery);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
 // This operation is not yet implemented
 // The A of BREAD - Add (Create) operation
 const add = async (req, res, next) => {
@@ -77,7 +87,7 @@ module.exports = {
   browse,
   read,
   readByEmail,
-  // edit,
+  editContact,
   add,
   // destroy,
 };

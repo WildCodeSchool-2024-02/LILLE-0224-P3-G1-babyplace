@@ -416,6 +416,18 @@ class NurseryRepository extends AbstractRepository {
     return rows;
   }
 
+  async updateContact(nursery) {
+    // eslint-disable-next-line camelcase
+    const { nursery_id, capacity, price, nursery_phone, nursery_mail } =
+      nursery;
+    // Execute the SQL UPDATE query to update a nursery from the 'nursery' table
+    const [rows] = await this.database.query(
+      `update ${this.table} set capacity = ?, price = ?, nursery_phone = ?, nursery_mail = ? where nursery_id = ?`,
+      // eslint-disable-next-line camelcase
+      [capacity, price, nursery_phone, nursery_mail, nursery_id]
+    );
+    return rows;
+  }
   // The D of CRUD - Delete operation
 
   async delete(id) {

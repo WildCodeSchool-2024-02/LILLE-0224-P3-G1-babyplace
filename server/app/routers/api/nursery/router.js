@@ -7,7 +7,12 @@ const router = express.Router();
 /* ************************************************************************* */
 
 // Import nursery-related actions
-const { browse, read, add } = require("../../../controllers/nuseryActions");
+const {
+  browse,
+  read,
+  editContact,
+  add,
+} = require("../../../controllers/nuseryActions");
 
 // Route to get a list of nurseries
 router.get("/", browse);
@@ -16,6 +21,9 @@ router.get("/", browse);
 router.get("/:id", read);
 
 const hashPassword = require("../../../services/HashedPassword");
+
+// Route to edit a nursery
+router.put("/edit/:id", editContact);
 
 // Route to add a new nursery
 router.post("/", hashPassword, add);
