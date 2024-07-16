@@ -24,6 +24,36 @@ function DashboardModeratorPro() {
     setFilteredNurseries(filteredNurseriesList);
   };
 
+  const cancelNursery = async (nurseryId) => {
+    try {
+      if (!nurseryId) {
+        console.error("Invalid nursery ID:", nurseryId);
+        return;
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/nursery/${nurseryId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const updatedNurseries = filteredNurseries.filter(
+          (nursery) => nursery.nursery_id !== nurseryId
+        );
+        setFilteredNurseries(updatedNurseries);
+      } else {
+        console.error("Failed to cancel nursery");
+      }
+    } catch (error) {
+      console.error("Error cancelling nursery:", error);
+    }
+  };
+
   return (
     <div>
       <div className="dashboard_moderator_pro_select_search">
@@ -76,7 +106,12 @@ function DashboardModeratorPro() {
                   <p>Voir le profil</p>
                 </div>
                 <div className="dashboard_moderator_parent_delete">
-                  <button type="button">Suspendre compte</button>
+                  <button
+                    type="button"
+                    onClick={() => cancelNursery(nursery.nursery_id)}
+                  >
+                    Suspendre compte
+                  </button>
                 </div>
               </div>
             </div>

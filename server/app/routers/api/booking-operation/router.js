@@ -13,6 +13,7 @@ const {
   editBooking,
   editValidateOrCancel,
   add,
+  destroy,
 } = require("../../../controllers/bookingOperationActions");
 
 // Route to get a list of bookings
@@ -27,6 +28,10 @@ router.put("/:id/edit", editBooking);
 
 // Route to add a new booking
 router.post("/", add);
+
+// Route to delete a booking
+
+router.delete("/:id", destroy);
 
 /* ************************************************************************* */
 

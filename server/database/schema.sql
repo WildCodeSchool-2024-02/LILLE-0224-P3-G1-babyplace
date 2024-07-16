@@ -28,8 +28,10 @@ CREATE TABLE child (
   parent_id int DEFAULT NULL,
   PRIMARY KEY (child_id),
   KEY parent_id (parent_id),
-  CONSTRAINT child_ibfk_1 FOREIGN KEY (parent_id) REFERENCES parent (parent_id)
+  CONSTRAINT child_ibfk_1 FOREIGN KEY (parent_id) REFERENCES parent (parent_id) ON DELETE CASCADE
 );
+
+
 
 CREATE TABLE allergy (
   allergy_id int NOT NULL AUTO_INCREMENT,
@@ -51,8 +53,9 @@ CREATE TABLE allergy (
   child_id int DEFAULT NULL,
   PRIMARY KEY (allergy_id),
   KEY fk_child (child_id),
-  CONSTRAINT allergy_ibfk_1 FOREIGN KEY (child_id) REFERENCES child (child_id)
+  CONSTRAINT allergy_ibfk_1 FOREIGN KEY (child_id) REFERENCES child (child_id) ON DELETE CASCADE
 );
+
 
 CREATE TABLE nursery (
   nursery_id int NOT NULL AUTO_INCREMENT,
@@ -95,7 +98,7 @@ CREATE TABLE booking_operation (
   KEY parent_id (parent_id),
   KEY moderator_id (moderator_id),
   CONSTRAINT booking_operation_ibfk_1 FOREIGN KEY (nursery_id) REFERENCES nursery (nursery_id),
-  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (parent_id) REFERENCES parent (parent_id),
+  CONSTRAINT booking_operation_ibfk_2 FOREIGN KEY (parent_id) REFERENCES parent (parent_id) ON DELETE CASCADE,
   CONSTRAINT booking_operation_ibfk_3 FOREIGN KEY (moderator_id) REFERENCES moderator (moderator_id)
 );
 

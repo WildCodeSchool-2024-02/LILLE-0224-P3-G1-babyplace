@@ -23,6 +23,36 @@ function DashboardModeratorReservation() {
     );
     setFilteredBookings(filteredBookingsList);
   };
+
+  const cancelBooking = async (id) => {
+    try {
+      if (!id) {
+        return;
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/booking-operation/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.ok) {
+        const updatedBookings = filteredBookings.filter(
+          (booking) => booking.booking_operation_id !== id
+        );
+        setFilteredBookings(updatedBookings);
+      } else {
+        console.error("Failed to cancel booking");
+      }
+    } catch (error) {
+      console.error("Error cancelling booking:", error);
+    }
+  };
+
   return (
     <div>
       <div className="dashboard_reservation_filter">
@@ -73,7 +103,14 @@ function DashboardModeratorReservation() {
               </div>
 
               <div className="dashboard_reservation_cancel">
-                <button type="button">Annuler la réservation</button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    cancelBooking(reservation.booking_operation_id)
+                  }
+                >
+                  Annuler la réservation
+                </button>
               </div>
             </div>
           ))}
