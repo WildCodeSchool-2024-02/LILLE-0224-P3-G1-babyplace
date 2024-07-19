@@ -43,7 +43,7 @@ class NurserySeeder extends AbstractSeeder {
         capacity: 10,
         price: 20,
         nursery_phone: "03 20 85 96 41",
-        nursery_mail: " contact@minilions.fr",
+        nursery_mail: "contact@minilions.fr",
         image1: "../../public/assets/images/nurseriesImages/0201.jpg",
         image2: "../../public/assets/images/nurseriesImages/0202.jpg",
         image3: "../../public/assets/images/nurseriesImages/0203.jpg",
