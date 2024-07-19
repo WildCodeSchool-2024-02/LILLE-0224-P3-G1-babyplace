@@ -239,16 +239,25 @@ body {
   .login_admin {
     display: flex;
     position: absolute;
-    color: transparent;
-    right: 0;
-    top: 0;
+    color: var(--second-color);
+    background-color: var(--second-color);
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    right: 2%;
+    top: 2%;
     cursor: default;
   }
 
   .login_admin img {
     width: 30px;
   }
-
+  .register_message {
+    background-color: rgb(201, 235, 201);
+    color: green;
+    padding: 0.5em;
+    border-radius: 0.5em;
+  }
   .popup_admin {
     position: fixed;
     top: 0;

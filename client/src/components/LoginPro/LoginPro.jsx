@@ -13,7 +13,7 @@ export default function LoginPro() {
   const emailWithRefNursery = useRef();
   const passwordWithRefNursery = useRef();
   const passwordWithRef = useRef();
-  const { setUser } = useContext(AuthContext);
+  const { setUser, registerMessage } = useContext(AuthContext);
   const registerProRef = useRef(null);
 
   const handleAccountButton = () => {
@@ -123,7 +123,7 @@ export default function LoginPro() {
         role="button"
         tabIndex={0}
       >
-        <img src="/assets/images/lock.svg" alt="Lock" />
+        o
       </div>
       <div className="presentation_login">
         <h1>Babyplace</h1>
@@ -180,6 +180,12 @@ export default function LoginPro() {
             <div className="login_pro_title">
               <h2>PRO</h2>
             </div>
+            {registerMessage && (
+              <div className="register_message">
+                Votre compte a bien été enregistré. Vous pouvez désormais vous
+                connecter.
+              </div>
+            )}
             <h3>Se connecter</h3>
             <div className="input_login_pro">
               <input
@@ -226,6 +232,12 @@ export default function LoginPro() {
             <div className="login_pro_title">
               <h2>PARENT</h2>
             </div>
+            {registerMessage && (
+              <div className="register_message">
+                Votre compte a bien été enregistré. Vous pouvez désormais vous
+                connecter.
+              </div>
+            )}
             <h3>Se connecter</h3>
             <div className="input_login_pro">
               <input

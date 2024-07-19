@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./ChildForm.css";
+import { AuthContext } from "../../../context/AuthContext";
 
 export default function ChildForm() {
+  const { setRegisterMessage } = useContext(AuthContext);
   const [childFirstName, setChildFirstName] = useState("");
   const [childLastName, setChildLastName] = useState("");
   const [childBirth, setChildBirth] = useState("");
@@ -79,6 +81,7 @@ export default function ChildForm() {
 
       if (response.status === 201) {
         console.info("Child successfully added");
+        setRegisterMessage(true);
         navigate("/");
       } else {
         const errorData = await response.text();

@@ -5,6 +5,7 @@ export const AuthContext = createContext(null);
 
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState({});
+  const [registerMessage, setRegisterMessage] = useState(false);
   if (user && !user.role) {
     setUser(JSON.parse(sessionStorage.getItem("user")));
   }
@@ -13,8 +14,10 @@ export default function AuthContextProvider({ children }) {
     () => ({
       user,
       setUser,
+      registerMessage,
+      setRegisterMessage,
     }),
-    [user, setUser]
+    [user, setUser, registerMessage, setRegisterMessage]
   );
 
   return (

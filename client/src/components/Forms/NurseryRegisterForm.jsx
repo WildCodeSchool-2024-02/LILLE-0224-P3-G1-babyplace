@@ -1,9 +1,11 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import "leaflet/dist/leaflet.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "./nurseryRegister.css";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function NurseryRegisterForm() {
+  const { setRegisterMessage } = useContext(AuthContext);
   const navigate = useNavigate();
 
   // charge la database des adresses (lille et rennes)
@@ -162,6 +164,7 @@ export default function NurseryRegisterForm() {
 
       // redirection vers la page dashboard de la crèche
       if (response.status === 201) {
+        setRegisterMessage(true);
         navigate("/");
       } else {
         console.info(response);
