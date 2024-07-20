@@ -30,13 +30,13 @@ const login = async (req, res) => {
     } else {
       return res.status(400).json({ message: "User not found" });
     }
-
-    // Retrieving User informations
-
     // Checking User informations
     if (!info) {
       // if the user doesn't exist
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({
+        message:
+          "Compte et/ou mot de passe incorrect.\n Vérifiez vos informations, ou inscrivez-vous en cliquant sur le lien ci-dessous.",
+      });
     }
 
     // Checking User password
@@ -44,7 +44,10 @@ const login = async (req, res) => {
 
     if (!verified) {
       // If it's a wrong password
-      return res.status(401).json({ message: "Incorrect Password" });
+      return res.status(401).json({
+        message:
+          "Adresse e-mail et/ou mot de passe incorrect.\n Vérifiez vos informations, ou inscrivez-vous en cliquant sur le lien ci-dessous.",
+      });
     }
 
     // Token generation
@@ -70,7 +73,11 @@ const login = async (req, res) => {
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "An error occurred", error });
+    return res.status(500).json({
+      message:
+        "Adresse e-mail et/ou mot de passe incorrect.\n Vérifiez vos informations, ou inscrivez-vous en cliquant sur le lien ci-dessous",
+      error,
+    });
   }
 };
 

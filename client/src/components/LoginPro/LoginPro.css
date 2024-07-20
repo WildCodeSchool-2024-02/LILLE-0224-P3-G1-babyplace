@@ -145,6 +145,15 @@ body {
 .login_admin {
   display: none;
 }
+.error_message_login {
+  background-color: rgb(245, 196, 196);
+  color: rgb(124, 18, 18);
+  padding: 0.5em 3em;
+  border-radius: 10px;
+  margin-top: 1em;
+  width: 20em;
+  text-align: center;
+}
 
 @media screen and (min-width: 990px) {
   .presentation_login {

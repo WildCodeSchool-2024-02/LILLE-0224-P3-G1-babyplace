@@ -192,8 +192,8 @@ PendingBookings.propTypes = {
       child: PropTypes.shape({
         child_firstname: PropTypes.string.isRequired,
         child_birth: PropTypes.string.isRequired,
-        walk_status: PropTypes.bool.isRequired,
-        clean_status: PropTypes.bool.isRequired,
+        walk_status: PropTypes.number.isRequired,
+        clean_status: PropTypes.number.isRequired,
       }).isRequired,
     })
   ).isRequired,
