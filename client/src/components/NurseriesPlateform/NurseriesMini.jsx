@@ -9,7 +9,7 @@ function NurseriesMini({ id, name, image1, price, bookings }) {
       <h3 className="nursery_list_title">{name}</h3>
       <img className="nursery_list_img" src={image1} alt="img nursery" />
       <div className="nursery_list_desc">
-        <p className="nursery_list_price">Tarif : {price} €</p>
+        <p className="nursery_list_price">Tarif : {price} € /h</p>
         <NurseriesCardCalender bookings={bookings} />
         <Link to={`/creche/${id}`}>
           {" "}
