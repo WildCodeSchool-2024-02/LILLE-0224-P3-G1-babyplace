@@ -63,7 +63,7 @@ function DashboardModeratorParents() {
           <SearchByName onSearch={handleSearch} />
         </div>
         <div className="dashboard_moderator_parent_h1">
-          <h1>Parent</h1>
+          <h1>Parents</h1>
         </div>
         {filteredParents.map((parent) => (
           <div
