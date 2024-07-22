@@ -18,61 +18,61 @@ class BookingOperationSeeder extends AbstractSeeder {
     const bookingOperations = [
       {
         booking_operation_date: "2024-02-24",
-        slots: "15h-18h",
+        slots: "15h-19h",
         state: "Passée",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_contact@lillomomes.fr").insertId,
       },
 
       {
         booking_operation_date: "2024-07-01",
-        slots: "10h-12h",
+        slots: "14h-19h",
         state: "Passée",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_contact@lillomomes.fr").insertId,
       },
 
       {
         booking_operation_date: "2024-08-02",
-        slots: "10h-12h",
+        slots: "7h-12h",
         state: "En attente",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_contact@lillomomes.fr").insertId,
       },
 
       {
         booking_operation_date: "2024-08-02",
-        slots: "10h-12h",
+        slots: "7h-12h",
         state: "En attente",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Emilie").insertId,
+        child_id: this.getRef("child_Zoé").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_contact@lillomomes.fr").insertId,
       },
 
       {
         booking_operation_date: "2024-06-01",
-        slots: "10h-18h",
+        slots: "8h-18h",
         state: "Passée",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
           .insertId,
       },
 
       {
-        booking_operation_date: "2024-08-02",
-        slots: "10h-18h",
+        booking_operation_date: "2024-08-06",
+        slots: "8h-18h",
         state: "En attente",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
           .insertId,
@@ -80,15 +80,15 @@ class BookingOperationSeeder extends AbstractSeeder {
 
       {
         booking_operation_date: "2024-08-01",
-        slots: "14h-18h",
+        slots: "9h-17h",
         state: "Libre",
         nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
           .insertId,
       },
 
       {
-        booking_operation_date: "2024-07-17",
-        slots: "8h-12h",
+        booking_operation_date: "2024-08-17",
+        slots: "7h-12h",
         state: "Libre",
         nursery_id: this.getRef("nursery_contact@crechendo-creches.com")
           .insertId,
@@ -123,7 +123,7 @@ class BookingOperationSeeder extends AbstractSeeder {
       },
       {
         booking_operation_date: "2024-07-30",
-        slots: "8h-12h",
+        slots: "7h-12h",
         state: "Libre",
         nursery_id: this.getRef("nursery_contact@lillomomes.fr").insertId,
       },
@@ -155,13 +155,13 @@ class BookingOperationSeeder extends AbstractSeeder {
       },
       {
         booking_operation_date: "2024-08-02",
-        slots: "10h-16h",
+        slots: "10h-17h",
         state: "Libre",
         nursery_id: this.getRef("nursery_hello@petitssoleils.com").insertId,
       },
       {
         booking_operation_date: "2024-08-10",
-        slots: "10h-14h",
+        slots: "10h-17h",
         state: "Libre",
         nursery_id: this.getRef("nursery_hello@petitssoleils.com").insertId,
       },
@@ -204,26 +204,26 @@ class BookingOperationSeeder extends AbstractSeeder {
         slots: "10h-20h",
         state: "Passée",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Emilie").insertId,
+        child_id: this.getRef("child_Zoé").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_hello@tambourin-et-castagnettes.com")
           .insertId,
       },
       {
-        booking_operation_date: "2024-07-08",
+        booking_operation_date: "2024-08-08",
         slots: "8h-12h",
         state: "A venir",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_hello@harmonie.com").insertId,
       },
       {
         booking_operation_date: "2024-07-12",
         slots: "10h-16h",
-        state: "A venir",
+        state: "Passée",
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
         moderator_id: null,
         nursery_id: this.getRef("nursery_hello@tilleul.com").insertId,
       },

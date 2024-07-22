@@ -25,7 +25,7 @@ class ZAllergySeeder extends AbstractSeeder {
         arachides: 1,
         mollusques: 0,
         autres: "Pollen",
-        child_id: this.getRef("child_Emilie").insertId,
+        child_id: this.getRef("child_Zoé").insertId,
       },
 
       {
@@ -44,7 +44,7 @@ class ZAllergySeeder extends AbstractSeeder {
         arachides: 0,
         mollusques: 1,
         autres: "Herbe",
-        child_id: this.getRef("child_Morgan").insertId,
+        child_id: this.getRef("child_Martin").insertId,
       },
       {
         gluten: 0,
