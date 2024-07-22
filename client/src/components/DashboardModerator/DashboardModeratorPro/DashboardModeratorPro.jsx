@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import SearchByName from "../../SearchByName/SearchByName";
-import SelectCity from "../../SelectCity/SelectCity";
 import "./DashboardModeratorPro.css";
 
 function DashboardModeratorPro() {
@@ -57,16 +56,13 @@ function DashboardModeratorPro() {
   return (
     <div>
       <div className="dashboard_moderator_pro_select_search">
-        <div className="dashboard_moderator_pro_select">
-          <SelectCity />
-        </div>
         <div className="dashboard_moderator_pro_search">
           <SearchByName onSearch={handleSearch} />
         </div>
       </div>
       <div>
         <div className="dashboard_moderator_pro_h1">
-          <h1>Lille</h1>
+          <h1>Professionnels</h1>
         </div>
         {filteredNurseries.map((nursery) => (
           <div

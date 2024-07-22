@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import SearchByName from "../../SearchByName/SearchByName";
-import SelectCity from "../../SelectCity/SelectCity";
 import "./DashboardModeratorReservation.css";
 
 function DashboardModeratorReservation() {
@@ -17,10 +16,18 @@ function DashboardModeratorReservation() {
   const formatDate = (date) => date.split("T")[0];
 
   function getStatusClass(state) {
-    if (state === "Passée") {
-      return "dashboard_reservation_agree";
+    switch (state) {
+      case "Libre":
+        return "dashboard_reservation_free";
+      case "Passée":
+        return "dashboard_reservation_passed";
+      case "En attente":
+        return "dashboard_reservation_pending";
+      case "A venir":
+        return "dashboard_reservation_upcoming";
+      default:
+        return "";
     }
-    return state === "En attente" ? "dashboard_reservation_disagree" : "";
   }
 
   const handleSearch = (searchValue) => {
@@ -91,21 +98,12 @@ function DashboardModeratorReservation() {
   return (
     <div>
       <div className="dashboard_reservation_filter">
-        <div className="dashboard_reservation_lille">
-          <SelectCity />
-        </div>
-        <div className="dashboard_reservation_select_date">
-          <p id="dashboard_reservation_p">Trier par date</p>
-        </div>
         <div className="reservation_search_name">
           <SearchByName onSearch={handleSearch} />
         </div>
       </div>
       <div className="dashboard_reservation_title">
-        <h1>Lille</h1>
-      </div>
-      <div className="dashboard_reservation_h2">
-        <h2>Gérer les réservations</h2>
+        <h1>Réservations</h1>
       </div>
 
       <div className="dashboard_reservation_all_container">
@@ -125,14 +123,19 @@ function DashboardModeratorReservation() {
                 </p>
               </div>
               <div className="dashboard_reservation_infos">
-                <p>
-                  Parent : {reservation.parent_firstname}{" "}
-                  {reservation.parent_lastname}
-                </p>
-                <p>
-                  Enfant : {reservation.child_firstname}{" "}
-                  {reservation.child_lastname}
-                </p>
+                {reservation.parent_firstname &&
+                  reservation.parent_lastname && (
+                    <p>
+                      Parent : {reservation.parent_firstname}{" "}
+                      {reservation.parent_lastname}
+                    </p>
+                  )}
+                {reservation.child_firstname && reservation.child_lastname && (
+                  <p>
+                    Enfant : {reservation.child_firstname}{" "}
+                    {reservation.child_lastname}
+                  </p>
+                )}
                 <p>Crèche : {reservation.nursery_name}</p>
                 <p>Date : {formatDate(reservation.booking_operation_date)}</p>
               </div>
