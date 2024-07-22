@@ -395,7 +395,6 @@ export default function NurseryRegisterForm() {
               <input
                 value={email}
                 onChange={handleEmailChange}
-                // id="nursery_email_form"
                 className={
                   missingEmail ? "input_not_filled" : "input_nursery_form"
                 }
