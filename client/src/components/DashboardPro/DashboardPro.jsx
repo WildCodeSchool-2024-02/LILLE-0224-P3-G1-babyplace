@@ -186,7 +186,7 @@ function DashboardPro() {
                 <p className="creche_mail">
                   {" "}
                   <span style={{ fontWeight: "bold" }}>Tarif</span> :{" "}
-                  {user.capacity} € / heure
+                  {user.price} € / heure
                 </p>
                 <button
                   type="button"

@@ -17,7 +17,7 @@ export default function NurseryCalendarDetails({ bookings }) {
   const [btnState, setBtnState] = useState();
 
   useEffect(() => {
-    if (user.role === "nursery") {
+    if (user.role === "nursery" || user.role === "moderator") {
       setBtnState(true);
     } else setBtnState(false);
   }, []);

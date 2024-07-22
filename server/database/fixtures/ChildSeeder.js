@@ -10,15 +10,15 @@ class ChildSeeder extends AbstractSeeder {
   run() {
     const children = [
       {
-        child_firstname: "Emilie",
+        child_firstname: "Zoé",
         child_lastname: "Lelouche",
-        child_birth: "2023-06-17",
+        child_birth: "2022-06-17",
         walk_status: 1,
         clean_status: 0,
         parent_id: this.getRef("parent_celine.lelouche@gmail.com").insertId,
       },
       {
-        child_firstname: "Morgan",
+        child_firstname: "Martin",
         child_lastname: "Lelouche",
         child_birth: "2023-08-24",
         walk_status: 0,

@@ -64,6 +64,7 @@ function Dashboard() {
   // fonction pour envoyer la bonne entité à modifier dans le formulaire
   function handleOptions(value) {
     setOptionSelected(value);
+    setSelectedChildId(false);
     setShowForm(true);
   }
 

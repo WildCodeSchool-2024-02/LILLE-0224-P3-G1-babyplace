@@ -103,6 +103,7 @@
 }
 .modify_info {
   list-style: none;
+  color: var(--first-color);
 }
 #title_informations {
   margin-top: 2em;
@@ -110,7 +111,7 @@
 .title {
   color: #9c69e2;
   font-size: x-large;
-  margin: 1em 0;
+  margin: 2em 0;
 }
 .child {
   margin-top: 4%;
@@ -238,6 +239,8 @@
 .modif_submit {
   color: var(--second-color);
   font-weight: bold;
+  text-align: center;
+  margin-top: 1em;
 }
 /* formulaire enfant */
 .child_add_form {
@@ -444,7 +447,7 @@
     text-align: center;
     background-color: #efe4fe;
     width: 50%;
-    margin-top: -12%;
+    margin-top: -10%;
     margin-left: 30%;
   }
 
