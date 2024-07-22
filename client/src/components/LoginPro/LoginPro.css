@@ -154,6 +154,14 @@ body {
   width: 20em;
   text-align: center;
 }
+.register_message {
+  background-color: rgb(201, 235, 201);
+  color: green;
+  padding: 0.5em;
+  border-radius: 0.5em;
+  text-align: center;
+  width: 90%;
+}
 
 @media screen and (min-width: 990px) {
   .presentation_login {
@@ -262,10 +270,7 @@ body {
     width: 30px;
   }
   .register_message {
-    background-color: rgb(201, 235, 201);
-    color: green;
-    padding: 0.5em;
-    border-radius: 0.5em;
+    width: 60%;
   }
   .popup_admin {
     position: fixed;

@@ -184,7 +184,10 @@ export default function LoginPro() {
               <h2>PRO</h2>
             </div>
             {registerMessage && (
-              <div className="register_message">{registerMessage}</div>
+              <div className="register_message">
+                Votre compte a bien été enregistré. Vous pouvez désormais vous
+                connecter.
+              </div>
             )}
             <h3>Se connecter</h3>
             <div className="input_login_pro">

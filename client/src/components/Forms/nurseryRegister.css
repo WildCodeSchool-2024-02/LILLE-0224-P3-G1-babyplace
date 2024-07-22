@@ -35,7 +35,7 @@
   font-size: 1.5em;
   text-decoration: none;
   margin-left: 320px;
-  margin-top: 3em;
+  margin-top: 1em;
 }
 /* titles */
 .nursery_title_form {
@@ -56,6 +56,20 @@
 }
 
 /* inputs */
+
+.input_not_filled {
+  border: 2px solid rgb(205, 56, 56);
+  width: 500px;
+  padding: 0.5em;
+  border-radius: 10px;
+  margin-top: 1em;
+  background-color: rgb(251, 234, 234);
+}
+
+.red_input_number {
+  color: red;
+  font-weight: bold;
+}
 .input_nursery_form {
   width: 500px;
   padding: 0.5em;
@@ -78,13 +92,29 @@
   border: 1px solid grey;
   margin-top: 1em;
 }
+
+.input_nursery_form_street_number_red {
+  width: 30px;
+  padding: 0.5em;
+  border-radius: 10px;
+  border: 2px solid red;
+  margin-top: 1em;
+  background-color: rgb(251, 234, 234);
+}
 .street_number_register_nursery {
   margin-left: 1em;
 }
 .street_number_container {
   margin-right: 1em;
 }
+.red_text {
+  color: red;
+  font-weight: bold;
+}
 
+#error_msg {
+  margin: 1em auto;
+}
 .images_input_container input[type="file"]::file-selector-button {
   border: none;
   background: var(--first-color);
@@ -166,6 +196,14 @@
     margin: 0;
     width: 80vw;
     padding: 0.5em;
+  }
+
+  .input_not_filled {
+    border: 2px solid rgb(205, 56, 56);
+    margin: 0;
+    width: 80vw;
+    padding: 0.5em;
+    background-color: rgb(251, 234, 234);
   }
   .check_box_container_register {
     display: flex;

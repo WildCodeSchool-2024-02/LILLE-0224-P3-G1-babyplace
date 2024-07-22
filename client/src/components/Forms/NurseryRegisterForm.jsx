@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from "react";
+import { useState, useContext } from "react";
 import "leaflet/dist/leaflet.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import "./nurseryRegister.css";
@@ -48,6 +48,9 @@ export default function NurseryRegisterForm() {
         )
       : [];
 
+  // Gérer les messages d'erreur si le numéro de rue n'est pas valable
+  const [addressError, setAddressError] = useState(null);
+
   // fonctions qui permettent de changer les states selon les données entrées par l'utilisateur
   const handleStreetNameChange = (e) => {
     setStreetNameInput(e.target.value);
@@ -84,15 +87,37 @@ export default function NurseryRegisterForm() {
     }
   };
 
-  const emailRef = useRef();
-  const nurseryNameRef = useRef();
-  const capacityRef = useRef();
-  const phoneNumberRef = useRef();
-  const priceRef = useRef();
-  const image1Ref = useRef();
-  const image2Ref = useRef();
-  const image3Ref = useRef();
-  const aboutRef = useRef();
+  const [email, setEmail] = useState(null);
+  const [nurseryName, setNurseryName] = useState(null);
+  const [capacityInput, setCapacityInput] = useState(null);
+  const [phoneNumber, setPhoneNumber] = useState(null);
+  const [priceInput, setPrice] = useState(null);
+  const [image1, setImage1] = useState(null);
+  const [image2, setImage2] = useState(null);
+  const [image3, setImage3] = useState(null);
+  const [aboutInput, setAboutInput] = useState(null);
+
+  const [missingEmail, setMissingEmail] = useState(false);
+  const [missingNurseryName, setMissingNurseryName] = useState(false);
+  const [missingCapacityInput, setMissingCapacityInput] = useState(false);
+  const [missingPhoneNumber, setMissingPhoneNumber] = useState(false);
+  const [missingPriceInput, setMissingPriceInput] = useState(false);
+  const [missingImage1, setMissingImage1] = useState(false);
+  const [missingImage2, setMissingImage2] = useState(false);
+  const [missingImage3, setMissingImage3] = useState(false);
+  const [missingAboutInput, setMissingAboutInput] = useState(false);
+
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handleNurseryNameChange = (e) => setNurseryName(e.target.value);
+  const handleCapacityChange = (e) => setCapacityInput(e.target.value);
+  const handlePhoneNumberChange = (e) => setPhoneNumber(e.target.value);
+  const handlePriceChange = (e) => setPrice(e.target.value);
+  const handleImage1Change = (e) => setImage1(e.target.value);
+  const handleImage2Change = (e) => setImage2(e.target.value);
+  const handleImage3Change = (e) => setImage3(e.target.value);
+  const handleAboutChange = (e) => setAboutInput(e.target.value);
+
+  const [missingFields, setMissingFields] = useState(false);
 
   // fonction pour upload les images et les envoyer en back
   const handleUpload = async (image) => {
@@ -117,10 +142,89 @@ export default function NurseryRegisterForm() {
   // fonction pour envoyer les données du formulaire crèche vers le back, créer une nouvelle crèche dans notre db (après avoir récupéré les images)
   const handleSubmit = async (event) => {
     event.preventDefault();
+    if (email.length < 1) {
+      setMissingEmail(true);
+    } else {
+      setMissingEmail(false);
+    }
 
-    const image1File = image1Ref.current.files[0];
-    const image2File = image2Ref.current.files[0];
-    const image3File = image3Ref.current.files[0];
+    if (nurseryName === null) {
+      setMissingNurseryName(true);
+    } else {
+      setMissingNurseryName(false);
+    }
+
+    if (capacityInput === null) {
+      setMissingCapacityInput(true);
+    } else {
+      setMissingCapacityInput(false);
+    }
+
+    if (phoneNumber === null) {
+      setMissingPhoneNumber(true);
+    } else {
+      setMissingPhoneNumber(false);
+    }
+
+    if (priceInput === null) {
+      setMissingPriceInput(true);
+    } else {
+      setMissingPriceInput(false);
+    }
+
+    if (image1 === null) {
+      setMissingImage1(true);
+    } else {
+      setMissingImage1(false);
+    }
+
+    if (image2 === null) {
+      setMissingImage2(true);
+    } else {
+      setMissingImage2(false);
+    }
+
+    if (image3 === null) {
+      setMissingImage3(true);
+    } else {
+      setMissingImage3(false);
+    }
+
+    if (aboutInput === null) {
+      setMissingAboutInput(true);
+    } else {
+      setMissingAboutInput(false);
+    }
+    if (
+      email === null ||
+      nurseryName === null ||
+      capacityInput === null ||
+      phoneNumber === null ||
+      priceInput === null ||
+      image1 === null ||
+      image2 === null ||
+      image3 === null ||
+      aboutInput === null
+    ) {
+      setMissingFields(true);
+    }
+    const image1File = image1;
+    const image2File = image2;
+    const image3File = image3;
+
+    const addressExists = data.some(
+      (address) =>
+        address.voie_nom.toLowerCase() === streetName.toLowerCase() &&
+        parseInt(address.numero, 10) === parseInt(streetNumber, 10)
+    );
+
+    if (!addressExists) {
+      setAddressError("Le numéro de rue entré n'est pas valide.");
+      return;
+    }
+
+    // Réinitialise l'erreur d'adresse si tout est correct
+    setAddressError(null);
 
     try {
       const image1Path = await handleUpload(image1File);
@@ -132,17 +236,17 @@ export default function NurseryRegisterForm() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            nursery_name: nurseryNameRef.current.value,
+            nursery_name: nurseryName,
             nursery_street: streetName,
             role: "nursery",
             nursery_street_number: streetNumber,
             latitude: adresseDefinitive[0].lat,
             longitude: adresseDefinitive[0].longitude,
             city: selectedCity,
-            capacity: capacityRef.current.value,
-            price: priceRef.current.value,
-            nursery_phone: phoneNumberRef.current.value,
-            nursery_mail: emailRef.current.value,
+            capacity: capacityInput,
+            price: priceInput,
+            nursery_phone: phoneNumber,
+            nursery_mail: email,
             image1: image1Path,
             image2: image2Path,
             image3: image3Path,
@@ -157,7 +261,7 @@ export default function NurseryRegisterForm() {
               selectedActivities.length > 1 ? selectedActivities[1] : "",
             certification3:
               selectedActivities.length > 2 ? selectedActivities[2] : "",
-            about: aboutRef.current.value,
+            about: aboutInput,
           }),
         }
       );
@@ -167,10 +271,11 @@ export default function NurseryRegisterForm() {
         setRegisterMessage(true);
         navigate("/");
       } else {
-        console.info(response);
+        console.info(response.data);
       }
     } catch (err) {
       console.error(err);
+      setAddressError("Une erreur s'est produite lors de l'inscription.");
     }
   };
 
@@ -186,10 +291,14 @@ export default function NurseryRegisterForm() {
             >
               Quel est le nom de votre structure ? *
             </label>
+
             <input
               id="nursery_name_form"
-              className="input_nursery_form"
-              ref={nurseryNameRef}
+              className={
+                missingNurseryName ? "input_not_filled" : "input_nursery_form"
+              }
+              value={nurseryName}
+              onChange={handleNurseryNameChange}
               required
             />
             <div>
@@ -246,11 +355,19 @@ export default function NurseryRegisterForm() {
                 </>
               )}
               {adressSelected && (
-                <span className="street_number_container">
+                <span
+                  className={
+                    addressError ? "red_text" : "street_number_container"
+                  }
+                >
                   <label htmlFor="street_number">N°:</label>
                   <input
                     id="street_number"
-                    className="input_nursery_form_street_number"
+                    className={
+                      addressError
+                        ? "input_nursery_form_street_number_red"
+                        : "input_nursery_form_street_number"
+                    }
                     value={streetNumber}
                     onChange={handleStreetNumberChange}
                   />
@@ -262,20 +379,26 @@ export default function NurseryRegisterForm() {
               <div>Numéro de téléphone *</div>
               <input
                 id="phone_number_nursery"
-                className="input_nursery_form"
+                className={
+                  missingPhoneNumber ? "input_not_filled" : "input_nursery_form"
+                }
                 type="tel"
                 pattern="[0-9]{10}"
                 title="Veuillez entrer un numéro de téléphone valide"
-                ref={phoneNumberRef}
+                value={phoneNumber}
+                onChange={handlePhoneNumberChange}
                 required
               />
             </label>
             <label htmlFor="nursery_email_form">
               <div>Adresse e-mail * </div>
               <input
-                ref={emailRef}
-                id="nursery_email_form"
-                className="input_nursery_form"
+                value={email}
+                onChange={handleEmailChange}
+                // id="nursery_email_form"
+                className={
+                  missingEmail ? "input_not_filled" : "input_nursery_form"
+                }
                 type="email"
                 required
               />
@@ -307,10 +430,15 @@ export default function NurseryRegisterForm() {
               <div>Quelle est votre capacité d'accueil ? *</div>
               <input
                 id="nursery_capacity_form"
-                className="input_nursery_form"
+                className={
+                  missingCapacityInput
+                    ? "input_not_filled"
+                    : "input_nursery_form"
+                }
                 type="number"
                 min="0"
-                ref={capacityRef}
+                value={capacityInput}
+                onChange={handleCapacityChange}
                 required
               />
             </label>
@@ -318,10 +446,13 @@ export default function NurseryRegisterForm() {
               <div>Quel est le tarif pour une heure? *</div>
               <input
                 id="nursery_price_form"
-                className="input_nursery_form"
+                className={
+                  missingPriceInput ? "input_not_filled" : "input_nursery_form"
+                }
                 type="number"
                 min="0"
-                ref={priceRef}
+                value={priceInput}
+                onChange={handlePriceChange}
                 required
               />
               €
@@ -331,8 +462,11 @@ export default function NurseryRegisterForm() {
               <div> Décrivez votre crèche en quelques lignes</div>
               <textarea
                 id="nursery_about_form"
-                className="input_nursery_form"
-                ref={aboutRef}
+                className={
+                  missingAboutInput ? "input_not_filled" : "input_nursery_form"
+                }
+                value={aboutInput}
+                onChange={handleAboutChange}
               />
             </label>
 
@@ -404,31 +538,50 @@ export default function NurseryRegisterForm() {
               </h4>
               <div className="images_input_container">
                 <div>
-                  Image 1 * :{" "}
+                  <span className={missingImage1 ? "red_text" : "normal_text"}>
+                    Image 1 * :
+                  </span>{" "}
                   <input
-                    ref={image1Ref}
+                    value={image1}
+                    onChange={handleImage1Change}
                     type="file"
                     className="image_input_register"
                   />
                 </div>
                 <div>
-                  Image 2 * :{" "}
+                  <span className={missingImage2 ? "red_text" : "normal_text"}>
+                    Image 2 * :{" "}
+                  </span>
                   <input
-                    ref={image2Ref}
+                    value={image2}
+                    onChange={handleImage2Change}
                     type="file"
                     className="image_input_register"
                   />
                 </div>
                 <div>
-                  Image 3 * :{" "}
+                  <span className={missingImage3 ? "red_text" : "normal_text"}>
+                    Image 3 * :{" "}
+                  </span>
                   <input
-                    ref={image3Ref}
+                    value={image3}
+                    onChange={handleImage3Change}
                     type="file"
                     className="image_input_register"
                   />
                 </div>
               </div>
             </label>
+            {missingFields && (
+              <div className="red_text" id="error_msg">
+                Veuillez remplir tous les champs
+              </div>
+            )}
+            {addressError && (
+              <div className="red_text" id="error_msg">
+                {addressError}
+              </div>
+            )}
             <button
               type="submit"
               className="validate_button_nursery_form"
