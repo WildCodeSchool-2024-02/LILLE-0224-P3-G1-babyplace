@@ -315,7 +315,7 @@ export default function NurseryRegisterForm() {
               />
             </label>
             <label htmlFor="nursery_price_form">
-              <div>Quel est le tarif pour une demie-journée ? *</div>
+              <div>Quel est le tarif pour une heure? *</div>
               <input
                 id="nursery_price_form"
                 className="input_nursery_form"

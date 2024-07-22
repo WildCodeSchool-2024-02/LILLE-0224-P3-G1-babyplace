@@ -15,6 +15,7 @@ export default function LoginPro() {
   const passwordWithRef = useRef();
   const { setUser, registerMessage } = useContext(AuthContext);
   const registerProRef = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleAccountButton = () => {
     setAccountButton(true);
@@ -73,7 +74,8 @@ export default function LoginPro() {
         sessionStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite");
+        setErrorMessage(data.message);
+        console.error(`${data.message} Une erreur s'est produite`);
       }
     } catch (err) {
       console.error("Une erreur s'est produite :", err);
@@ -105,7 +107,8 @@ export default function LoginPro() {
         sessionStorage.setItem("user", JSON.stringify(data.user));
         navigate("/dashboard", { state: { user: data.user } });
       } else {
-        console.error(data.message || "Une erreur s'est produite");
+        setErrorMessage(data.message);
+        console.error(`${data.message} Une erreur s'est produite`);
       }
     } catch (err) {
       console.error("Une erreur s'est produite :", err);
@@ -181,10 +184,7 @@ export default function LoginPro() {
               <h2>PRO</h2>
             </div>
             {registerMessage && (
-              <div className="register_message">
-                Votre compte a bien été enregistré. Vous pouvez désormais vous
-                connecter.
-              </div>
+              <div className="register_message">{registerMessage}</div>
             )}
             <h3>Se connecter</h3>
             <div className="input_login_pro">
@@ -198,12 +198,13 @@ export default function LoginPro() {
                 placeholder="mot de passe"
                 ref={passwordWithRefNursery}
               />
-            </div>
-
+              {errorMessage && (
+                <div className="error_message_login">{errorMessage}</div>
+              )}
+            </div>{" "}
             <button type="button" onClick={handleSubmitNursery}>
               Connexion
             </button>
-
             {accountButton && (
               <Link
                 to="/inscription/creche"
@@ -250,6 +251,9 @@ export default function LoginPro() {
                 placeholder="mot de passe"
                 ref={passwordWithRef}
               />
+              {errorMessage && (
+                <div className="error_message_login">{errorMessage}</div>
+              )}
             </div>
 
             <button type="button" onClick={handleSubmitParent}>

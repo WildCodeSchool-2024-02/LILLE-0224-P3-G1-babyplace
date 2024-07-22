@@ -116,7 +116,7 @@ function Nursery() {
                   </div>
                 )}
 
-                <h3 className="rate">{data.price} €/demie-journée</h3>
+                <h3 className="rate">{data.price} €/heure</h3>
               </section>
             </section>
           </section>

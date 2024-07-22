@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "../DashboardPro/DashboardPro.css";
 import { AuthContext } from "../../context/AuthContext";
@@ -14,6 +14,13 @@ function getMonday(date) {
 
 export default function NurseryCalendarDetails({ bookings }) {
   const { user } = useContext(AuthContext);
+  const [btnState, setBtnState] = useState();
+
+  useEffect(() => {
+    if (user.role === "nursery") {
+      setBtnState(true);
+    } else setBtnState(false);
+  }, []);
 
   // Fonction pour formater la date affichée en YYYY-MM-DD (pour comparaison avec les dates de la bdd)
   function formatDate(date) {
@@ -148,6 +155,7 @@ export default function NurseryCalendarDetails({ bookings }) {
           &gt;
         </button>
       </div>
+
       <div className="week_dashboard">
         {currentWeek.map((dateObj, index) => {
           // Trouver les créneaux libres pour la date actuelle
@@ -162,6 +170,7 @@ export default function NurseryCalendarDetails({ bookings }) {
                     key={slot.bookingOperationId}
                     className="slot"
                     type="button"
+                    disabled={btnState}
                     onClick={() =>
                       handleShowResForm(dateObj, slot.bookingOperationId)
                     }

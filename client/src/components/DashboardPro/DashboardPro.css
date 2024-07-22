@@ -333,6 +333,10 @@
   color: var(--second-color);
   font-weight: bold;
 }
+.available_booking_msg {
+  padding-bottom: 1em;
+  font-style: italic;
+}
 @media screen and (min-width: 990px) {
   .select_mobile {
     display: none;
