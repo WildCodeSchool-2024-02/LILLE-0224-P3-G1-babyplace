@@ -25,7 +25,6 @@ class BookingOperationRepository extends AbstractRepository {
   }
 
   // The Rs of CRUD - Read operations
-
   async read(id) {
     // Execute the SQL SELECT query to retrieve a specific booking by its ID
     const [rows] = await this.database.query(
@@ -40,53 +39,70 @@ class BookingOperationRepository extends AbstractRepository {
   async readAll() {
     try {
       const [rows] = await this.database.query(`
-        SELECT
-            bo.booking_operation_id,
-            bo.booking_operation_date,
-            bo.slots,
-            bo.state,
-            p.parent_id,
-            p.role AS parent_role,
-            p.parent_firstname,
-            p.parent_lastname,
-            p.parent_adress,
-            p.parent_phone,
-            p.parent_mail,
-            p.parent_password,
-            c.child_id,
-            c.child_firstname,
-            c.child_lastname,
-            c.child_birth,
-            c.walk_status,
-            c.clean_status,
-            n.nursery_id,
-            n.role AS nursery_role,
-            n.nursery_name,
-            n.nursery_street,
-            n.nursery_street_number,
-            n.latitude,
-            n.longitude,
-            n.city,
-            n.capacity,
-            n.price,
-            n.nursery_phone,
-            n.nursery_mail,
-            n.image1,
-            n.image2,
-            n.image3,
-            n.activity1,
-            n.activity2,
-            n.activity3,
-            n.certification1,
-            n.certification2,
-            n.certification3,
-            n.about
-        FROM
-            booking_operation bo
-            LEFT JOIN parent p ON bo.parent_id = p.parent_id
-            LEFT JOIN child c ON bo.child_id = c.child_id
-            LEFT JOIN nursery n ON bo.nursery_id = n.nursery_id
-      `);
+          SELECT
+              bo.booking_operation_id,
+              bo.booking_operation_date,
+              bo.slots,
+              bo.state,
+              p.parent_id,
+              p.role AS parent_role,
+              p.parent_firstname,
+              p.parent_lastname,
+              p.parent_adress,
+              p.parent_phone,
+              p.parent_mail,
+              p.parent_password,
+              c.child_id,
+              c.child_firstname,
+              c.child_lastname,
+              c.child_birth,
+              c.walk_status,
+              c.clean_status,
+              n.nursery_id,
+              n.role AS nursery_role,
+              n.nursery_name,
+              n.nursery_street,
+              n.nursery_street_number,
+              n.latitude,
+              n.longitude,
+              n.city,
+              n.capacity,
+              n.price,
+              n.nursery_phone,
+              n.nursery_mail,
+              n.image1,
+              n.image2,
+              n.image3,
+              n.activity1,
+              n.activity2,
+              n.activity3,
+              n.certification1,
+              n.certification2,
+              n.certification3,
+              n.about,
+              a.allergy_id,
+              a.gluten,
+              a.fruitsacoque,
+              a.crustaces,
+              a.celeri,
+              a.oeufs,
+              a.moutarde,
+              a.poissons,
+              a.soja,
+              a.lait,
+              a.sulfites,
+              a.sesame,
+              a.lupin,
+              a.arachides,
+              a.mollusques,
+              a.autres
+          FROM
+              booking_operation bo
+              LEFT JOIN parent p ON bo.parent_id = p.parent_id
+              LEFT JOIN child c ON bo.child_id = c.child_id
+              LEFT JOIN nursery n ON bo.nursery_id = n.nursery_id
+              LEFT JOIN allergy a ON c.child_id = a.child_id
+        `);
       return rows;
     } catch (error) {
       throw new Error(`Error fetching all bookings: ${error.message}`);

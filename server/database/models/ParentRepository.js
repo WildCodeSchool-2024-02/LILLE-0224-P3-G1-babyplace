@@ -25,7 +25,6 @@ class ParentRepository extends AbstractRepository {
   }
 
   // READ by id with children and bookings
-
   async readParentsAndChildrenId(id) {
     const [rows] = await this.database.query(
       `
@@ -43,10 +42,27 @@ class ParentRepository extends AbstractRepository {
         c.child_lastname,
         c.child_birth,
         c.walk_status,
-        c.clean_status
+        c.clean_status,
+        a.allergy_id,
+        a.gluten,
+        a.fruitsacoque,
+        a.crustaces,
+        a.celeri,
+        a.oeufs,
+        a.moutarde,
+        a.poissons,
+        a.soja,
+        a.lait,
+        a.sulfites,
+        a.sesame,
+        a.lupin,
+        a.arachides,
+        a.mollusques,
+        a.autres
       FROM 
         parent p
         LEFT JOIN child c ON p.parent_id = c.parent_id
+        LEFT JOIN allergy a ON c.child_id = a.child_id
       WHERE 
         p.parent_id = ?
     `,
@@ -69,7 +85,12 @@ class ParentRepository extends AbstractRepository {
           children: [],
         };
       }
-      if (row.child_id) {
+      if (
+        row.child_id &&
+        !parentsMap[row.parent_id].children.some(
+          (child) => child.child_id === row.child_id
+        )
+      ) {
         parentsMap[row.parent_id].children.push({
           child_id: row.child_id,
           child_firstname: row.child_firstname,
@@ -77,6 +98,26 @@ class ParentRepository extends AbstractRepository {
           child_birth: row.child_birth,
           walk_status: row.walk_status,
           clean_status: row.clean_status,
+          allergies: row.allergy_id
+            ? {
+                allergy_id: row.allergy_id,
+                gluten: row.gluten,
+                fruitsacoque: row.fruitsacoque,
+                crustaces: row.crustaces,
+                celeri: row.celeri,
+                oeufs: row.oeufs,
+                moutarde: row.moutarde,
+                poissons: row.poissons,
+                soja: row.soja,
+                lait: row.lait,
+                sulfites: row.sulfites,
+                sesame: row.sesame,
+                lupin: row.lupin,
+                arachides: row.arachides,
+                mollusques: row.mollusques,
+                autres: row.autres,
+              }
+            : null,
         });
       }
     });
@@ -340,10 +381,26 @@ class ParentRepository extends AbstractRepository {
         c.child_lastname,
         c.child_birth,
         c.walk_status,
-        c.clean_status
+        c.clean_status,
+        a.arachides,
+        a.autres,
+        a.celeri,
+        a.crustaces,
+        a.fruitsacoque,
+        a.gluten,
+        a.lait,
+        a.lupin,
+        a.mollusques,
+        a.moutarde,
+        a.oeufs,
+        a.poissons,
+        a.sesame,
+        a.soja,
+        a.sulfites
       FROM 
         parent p
         LEFT JOIN child c ON p.parent_id = c.parent_id
+        LEFT JOIN allergy a ON c.child_id = a.child_id
       WHERE 
         p.parent_mail = ?
     `,
@@ -367,6 +424,24 @@ class ParentRepository extends AbstractRepository {
         };
       }
       if (row.child_id) {
+        const allergiesArray = {
+          arachides: row.arachides,
+          autres: row.autres,
+          celeri: row.celeri,
+          crustaces: row.crustaces,
+          fruitsacoque: row.fruitsacoque,
+          gluten: row.gluten,
+          lait: row.lait,
+          lupin: row.lupin,
+          mollusques: row.mollusques,
+          moutarde: row.moutarde,
+          oeufs: row.oeufs,
+          poissons: row.poissons,
+          sesame: row.sesame,
+          soja: row.soja,
+          sulfites: row.sulfites,
+        };
+
         parentsMap[row.parent_id].children.push({
           child_id: row.child_id,
           child_firstname: row.child_firstname,
@@ -374,6 +449,7 @@ class ParentRepository extends AbstractRepository {
           child_birth: row.child_birth,
           walk_status: row.walk_status,
           clean_status: row.clean_status,
+          allergies: allergiesArray,
         });
       }
     });
@@ -383,7 +459,6 @@ class ParentRepository extends AbstractRepository {
     if (parents.length === 0) {
       return null;
     }
-
     const bookings = await this.readBookingsId();
 
     const bookingsMap = {};

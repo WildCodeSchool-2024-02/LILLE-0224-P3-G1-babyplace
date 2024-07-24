@@ -9,21 +9,47 @@ class ChildRepository extends AbstractRepository {
 
   // The C of CRUD - Create operation
 
-  async create(child) {
-    const [result] = await this.database.query(
-      `INSERT INTO ${this.table} (child_firstname, child_lastname, child_birth, walk_status, clean_status, parent_id) VALUES (?, ?, ?, ?, ?, ?)`,
+  async createChildAndAllergies(childData, allergiesArray) {
+    // Insérer l'enfant
+    const [childResult] = await this.database.query(
+      `INSERT INTO child (child_firstname, child_lastname, child_birth, walk_status, clean_status, parent_id) 
+       VALUES (?, ?, ?, ?, ?, ?)`,
       [
-        child.child_firstname,
-        child.child_lastname,
-        child.child_birth,
-        child.walk_status,
-        child.clean_status,
-        child.parent_id,
+        childData.child_firstname,
+        childData.child_lastname,
+        childData.child_birth,
+        childData.walk_status,
+        childData.clean_status,
+        childData.parent_id,
       ]
     );
 
-    // Return the ID of the newly inserted child
-    return result.insertId;
+    const childId = childResult.insertId;
+
+    // Préparer les données d'allergies
+    const allergyData = {
+      gluten: allergiesArray.includes("Gluten") ? 1 : 0,
+      fruitsacoque: allergiesArray.includes("Fruits à coque") ? 1 : 0,
+      crustaces: allergiesArray.includes("Crustacés") ? 1 : 0,
+      celeri: allergiesArray.includes("Célerie") ? 1 : 0,
+      oeufs: allergiesArray.includes("Oeufs") ? 1 : 0,
+      moutarde: allergiesArray.includes("Moutarde") ? 1 : 0,
+      poissons: allergiesArray.includes("Poissons") ? 1 : 0,
+      soja: allergiesArray.includes("Soja") ? 1 : 0,
+      lait: allergiesArray.includes("Lait") ? 1 : 0,
+      sulfites: allergiesArray.includes("Sulfites") ? 1 : 0,
+      sesame: allergiesArray.includes("Sésame") ? 1 : 0,
+      lupin: allergiesArray.includes("Lupin") ? 1 : 0,
+      arachides: allergiesArray.includes("Arachides") ? 1 : 0,
+      mollusques: allergiesArray.includes("Mollusques") ? 1 : 0,
+      autres: allergiesArray.includes("autres") ? "Autres allergies" : null,
+      child_id: childId,
+    };
+
+    // Insérer les allergies
+    await this.database.query(`INSERT INTO allergy SET ?`, allergyData);
+
+    return childId;
   }
 
   // The Rs of CRUD - Read operations

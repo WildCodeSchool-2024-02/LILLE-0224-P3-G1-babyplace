@@ -60,7 +60,6 @@ export default function ChildForm() {
       console.error("Parent ID not found");
       return;
     }
-
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/child`,
