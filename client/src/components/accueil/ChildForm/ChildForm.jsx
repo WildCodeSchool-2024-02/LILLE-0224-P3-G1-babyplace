@@ -11,7 +11,7 @@ export default function ChildForm() {
   const [walkStatus, setWalkStatus] = useState(false);
   const [cleanStatus, setCleanStatus] = useState(false);
   const [selectedAllergies, setSelectedAllergies] = useState([]);
-  const [selectedCertifications, setSelectedCertifications] = useState([]);
+  const [hasAllergies, setHasAllergies] = useState(false);
   const [parentMail, setParentMail] = useState("");
   const [parentId, setParentId] = useState(null);
   const navigate = useNavigate();
@@ -45,12 +45,12 @@ export default function ChildForm() {
     fetchParentId();
   }, [parentMail]);
 
-  const handleCheckboxChange = (e, setSelected, selected) => {
+  const handleCheckboxChange = (e) => {
     const { value } = e.target;
-    if (selected.includes(value)) {
-      setSelected(selected.filter((item) => item !== value));
+    if (selectedAllergies.includes(value)) {
+      setSelectedAllergies(selectedAllergies.filter((item) => item !== value));
     } else {
-      setSelected([...selected, value]);
+      setSelectedAllergies([...selectedAllergies, value]);
     }
   };
 
@@ -60,6 +60,7 @@ export default function ChildForm() {
       console.error("Parent ID not found");
       return;
     }
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/child`,
@@ -189,25 +190,28 @@ export default function ChildForm() {
 
           <div>Votre enfant a-t-il des allergies ?</div>
           <div className="check_box_container_register2">
-            {["Oui", "Non"].map((certification) => (
-              <label key={certification}>
-                <input
-                  type="radio"
-                  name="oui_non"
-                  value={certification}
-                  checked={selectedCertifications.includes(certification)}
-                  onChange={(e) =>
-                    handleCheckboxChange(
-                      e,
-                      setSelectedCertifications,
-                      selectedCertifications
-                    )
-                  }
-                  required
-                />
-                {certification}
-              </label>
-            ))}
+            <label>
+              <input
+                type="radio"
+                name="allergies_status"
+                value="true"
+                checked={hasAllergies === true}
+                onChange={() => setHasAllergies(true)}
+                required
+              />
+              Oui
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="allergies_status"
+                value="false"
+                checked={hasAllergies === false}
+                onChange={() => setHasAllergies(false)}
+                required
+              />
+              Non
+            </label>
           </div>
 
           <div className="yes_no">Si oui, lesquelles ?</div>
@@ -228,21 +232,16 @@ export default function ChildForm() {
               "Arachides",
               "Mollusques",
               "autres",
-            ].map((allergies) => (
-              <label key={allergies}>
+            ].map((allergy) => (
+              <label key={allergy}>
                 <input
                   type="checkbox"
-                  value={allergies}
-                  checked={selectedAllergies.includes(allergies)}
-                  onChange={(e) =>
-                    handleCheckboxChange(
-                      e,
-                      setSelectedAllergies,
-                      selectedAllergies
-                    )
-                  }
+                  value={allergy}
+                  checked={selectedAllergies.includes(allergy)}
+                  onChange={handleCheckboxChange}
+                  disabled={!hasAllergies}
                 />
-                {allergies}
+                {allergy}
               </label>
             ))}
           </div>

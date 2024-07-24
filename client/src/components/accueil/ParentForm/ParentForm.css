@@ -161,7 +161,11 @@
 
 .navigation_flex {
   display: ruby;
-  margin-top: -5em;
+  margin-top: -1em;
+}
+
+.parent_password_confirmation_form {
+  position: absolute;
 }
 
 @media screen and (max-width: 990px) {
