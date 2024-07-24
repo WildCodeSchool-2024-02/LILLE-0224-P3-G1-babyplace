@@ -38,18 +38,36 @@ const read = async (req, res, next) => {
 // This operation is not yet implemented
 
 // The A of BREAD - Add (Create) operation
+// eslint-disable-next-line consistent-return
 const add = async (req, res, next) => {
-  // Extract the child data from the request body
   try {
+    // Extract the child data from the request body
     const child = req.body;
-    // Insert the child into the database
-    const insertId = await tables.child.create(child);
+
+    // Vérifier que les allergies sont un tableau
+    if (!Array.isArray(child.allergies)) {
+      return res
+        .status(400)
+        .json({ error: "Les allergies doivent être un tableau" });
+    }
+
+    // Insert the child and allergies into the database
+    const insertId = await tables.child.createChildAndAllergies(
+      child,
+      child.allergies
+    );
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted child
     res.status(201).json({ insertId });
   } catch (err) {
-    // Pass any errors to the error-handling middleware
-    next(err);
+    console.error("Erreur lors de l'ajout de l'enfant:", err);
+    // Si c'est une erreur connue, renvoyez un message d'erreur approprié
+    if (err.message === "Invalid data") {
+      res.status(400).json({ error: "Données invalides" });
+    } else {
+      // Pour les autres erreurs, passez-les au middleware de gestion des erreurs
+      next(err);
+    }
   }
 };
 

@@ -9,7 +9,6 @@ export default function PendingBookings({ bookings }) {
       new Date(a.booking_operation_date) - new Date(b.booking_operation_date)
   );
   const formatDate = (date) => date.split("T")[0];
-
   // Gérer le formulaire de confirmation de décision (acceptation ou refus de la réservations)
   const [choice, setChoice] = useState(null);
   const [selectedBooking, setSelectedBooking] = useState(null);
@@ -20,6 +19,17 @@ export default function PendingBookings({ bookings }) {
     setSelectedBooking(booking);
   }
 
+  // Fonction pour formater les allergies et récupérer les valeurs dans un tableau
+  const formatAllergies = (allergies) => {
+    const allergyList = [];
+    // eslint-disable-next-line no-restricted-syntax
+    for (const [key, value] of Object.entries(allergies)) {
+      if (value === 1) {
+        allergyList.push(key);
+      }
+    }
+    return allergyList.length ? allergyList.join(", ") : "Aucune";
+  };
   // Changer l'état de la réservation dans la bdd selon la réponse de la crèche
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -87,7 +97,6 @@ export default function PendingBookings({ bookings }) {
                     {booking.parent.parent_lastname}
                   </h5>
                 </li>
-
                 <li>
                   {" "}
                   <h5>
@@ -115,6 +124,7 @@ export default function PendingBookings({ bookings }) {
                 <li className="informations_lines_child">
                   Propre : {booking.child.clean_status ? "Oui" : "Non"}
                 </li>
+                Allergies : {formatAllergies(booking.child.allergies)}
               </ul>
             </div>
           </div>

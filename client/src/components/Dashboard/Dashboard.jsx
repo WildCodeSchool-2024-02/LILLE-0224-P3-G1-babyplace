@@ -6,6 +6,7 @@ import InformationsForm from "./InformationsForm";
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
+
   const [selectedButton, setSelectedButton] = useState(null);
   const [selectedChildId, setSelectedChildId] = useState(null);
   const [modifySelected, setModifySelected] = useState(false);
@@ -44,6 +45,12 @@ function Dashboard() {
         return [];
     }
   };
+
+  // pour formater les allergies
+  const formatAllergies = (allergies) =>
+    Object.keys(allergies)
+      .filter((key) => allergies[key] === 1)
+      .join(", ");
 
   // pour n'afficher les détails que de l'enfant sélectionné
   const selectedChild = user.children.find(
@@ -209,7 +216,7 @@ function Dashboard() {
               </button>
             </li>
             <li>
-              {user.parent_mail}{" "}
+              {user.parent_mail}
               <button
                 type="button"
                 className={modifySelected ? "change_info_pen" : "hide_pen"}
@@ -415,9 +422,16 @@ function Dashboard() {
         <div className="child_presentation">
           <p>Prénom : {selectedChild.child_firstname}</p>
           <p>Date de naissance : {formatDate(selectedChild.child_birth)}</p>
-          Marche: {selectedChild.walk_status ? "Oui" : "Non"}
+          Marche : {selectedChild.walk_status ? "Oui" : "Non"}
           <br />
-          Propre: {selectedChild.clean_status ? "Oui" : "Non"}
+          Propre : {selectedChild.clean_status ? "Oui" : "Non"}
+          <br />
+          Allergies :
+          {selectedChild.allergies ? (
+            formatAllergies(selectedChild.allergies)
+          ) : (
+            <div>aucune </div>
+          )}
           <p className="modify_info">Modifier</p>
         </div>
       )}
