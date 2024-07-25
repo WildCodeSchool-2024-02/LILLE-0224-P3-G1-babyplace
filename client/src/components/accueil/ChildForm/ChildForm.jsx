@@ -45,6 +45,13 @@ export default function ChildForm() {
     fetchParentId();
   }, [parentMail]);
 
+  useEffect(() => {
+    if (!hasAllergies) {
+      // Reset selected allergies when hasAllergies is set to false
+      setSelectedAllergies([]);
+    }
+  }, [hasAllergies]);
+
   const handleCheckboxChange = (e) => {
     const { value } = e.target;
     if (selectedAllergies.includes(value)) {
@@ -239,7 +246,7 @@ export default function ChildForm() {
                   value={allergy}
                   checked={selectedAllergies.includes(allergy)}
                   onChange={handleCheckboxChange}
-                  disabled={!hasAllergies}
+                  disabled={!hasAllergies} // Disable checkboxes if hasAllergies is false
                 />
                 {allergy}
               </label>
